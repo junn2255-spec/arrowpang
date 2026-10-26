@@ -1,0 +1,50 @@
+/* Completed stage only. Asset proportions and existing control handlers are preserved. */
+#game.clear-screen:has(#next:not([hidden])){display:flex!important;flex-direction:column;align-items:center;gap:0!important;height:auto!important;min-height:0!important;width:100%;max-width:min(430px,calc((100dvh - 85px)/1.65));container-type:inline-size;margin:auto;padding:0 0 max(6px,env(safe-area-inset-bottom));overflow:visible}
+#game.clear-screen:has(#next:not([hidden])) .wallet-row{order:0;width:100%;display:flex;justify-content:center;margin:0 0 4px}
+#game.clear-screen:has(#next:not([hidden])) .wallet-row .coin-wallet{position:relative;width:max(60%,196px);max-width:100%;min-width:0;min-height:0;height:auto;aspect-ratio:700/253;padding:0;background:url('assets/ui/play-wallet.webp') center/contain no-repeat}
+#game.clear-screen:has(#next:not([hidden])) #wallet{position:absolute;left:30%;right:7%;top:29%;bottom:27%;padding:0;display:flex;align-items:center;justify-content:center;font-size:min(var(--clear-wallet-size,32px),9cqw);line-height:1;color:#542b0c;white-space:nowrap}
+#game.clear-screen:has(#next:not([hidden])) .board-slot{order:1;display:block;width:100%;height:auto!important;min-height:0;padding:0!important}
+#game.clear-screen:has(#next:not([hidden])) #celebrate{display:flex;flex-direction:column;align-items:center;position:relative!important;inset:auto!important;width:100%;height:auto!important;padding:0!important;gap:0;background:none!important;overflow:visible}
+#game.clear-screen:has(#next:not([hidden])) #celebrate .star{width:clamp(36px,calc((100dvh - 550px)*.5),126px);height:auto!important;max-width:none;max-height:none;object-fit:contain;filter:drop-shadow(0 0 15px #ffe57b);transition:none;opacity:1;transform:none;animation:clear-star-pop .35s ease-out both}
+#game.clear-screen:has(#next:not([hidden])) #celebrate .complete-clear{width:92%;height:auto!important;max-height:none;object-fit:contain;margin:-3px 0 -12px;animation:clear-arrive .3s .12s ease-out both}
+#game.clear-screen:has(#next:not([hidden])) #reward-panel{order:2;display:block!important;position:relative;flex:none;width:90%;max-width:none;min-width:0;aspect-ratio:768/576;height:auto;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;animation:clear-arrive .3s .2s ease-out both;container-type:inline-size}
+#game.clear-screen:has(#next:not([hidden])) #reward-panel>img{display:block!important;max-width:none;max-height:none;width:100%;height:auto;aspect-ratio:768/576;object-fit:contain}
+#game.clear-screen:has(#next:not([hidden])) #reward-amount,#game.clear-screen:has(#next:not([hidden])) #reward-total,#game.clear-screen:has(#next:not([hidden])) #reward-note{display:none!important}
+#game.clear-screen:has(#next:not([hidden])) .clear-amount{position:absolute;left:12%;right:12%;top:32%;height:23%;display:flex;align-items:center;justify-content:center;gap:2%;white-space:nowrap}
+#game.clear-screen:has(#next:not([hidden])) .clear-amount>img{width:20%;height:auto;max-height:100%;object-fit:contain;flex:none}
+#game.clear-screen:has(#next:not([hidden])) .clear-amount strong{font-size:min(var(--number-size,42px),13cqw);font-weight:900;color:#ffcc2e;line-height:1.15;-webkit-text-stroke:1.3px #713707;paint-order:stroke fill;text-shadow:0 2px 1px #6f380a;min-width:0}
+#game.clear-screen:has(#next:not([hidden])) .clear-total{position:absolute;left:9%;right:9%;top:54%;margin:0;padding:0;font-size:min(var(--number-size,23px),7cqw);font-weight:700;line-height:1.3;color:#542b0c;white-space:nowrap;text-align:center}
+#game.clear-screen:has(#next:not([hidden])) .status-row{order:3;width:100%;height:auto;min-height:0;display:block;padding:0;margin:-4px 0 -5px}
+#game.clear-screen:has(#next:not([hidden])) #message{display:none!important}
+#game.clear-screen:has(#next:not([hidden])) #next{width:82%;max-width:none;min-height:44px;height:auto;margin:0 auto;padding:0;border:0;background:none;display:block;animation:clear-arrive .3s .28s ease-out both}
+#game.clear-screen:has(#next:not([hidden])) #next img{width:100%;height:auto;aspect-ratio:640/264;object-fit:contain}
+#game.clear-screen:has(#next:not([hidden])) nav{order:4;display:flex!important;justify-content:center!important;gap:6%!important;width:100%;height:auto;margin:0!important}
+#game.clear-screen:has(#next:not([hidden])) nav button{width:22%!important;height:auto!important;min-width:44px;min-height:44px;padding:0!important;border:0;background:none;box-shadow:none;aspect-ratio:1;flex:none}
+#game.clear-screen:has(#next:not([hidden])) nav button img{display:block;width:100%;height:auto;object-fit:contain}
+#game.clear-screen:has(#next:not([hidden])) #undo{display:none!important}
+#game.clear-screen:has(#next:not([hidden])) #all-complete{order:5;text-align:center;margin:4px 0 0;padding:0 8px;font-size:16px;line-height:1.3;color:#542b0c;text-shadow:none}
+#game.clear-screen:has(#next:not([hidden])) footer{display:none}
+@keyframes clear-star-pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes clear-arrive{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+html[data-reduce-effects="true"] #game.clear-screen:has(#next:not([hidden])) *,html[data-reduce-effects="true"] #game.clear-screen:has(#next:not([hidden])) #celebrate .star{animation:none!important}
+@media(prefers-reduced-motion:reduce){#game.clear-screen:has(#next:not([hidden])) *{animation:none!important}}
+@media(max-height:600px) and (orientation:portrait){#game.clear-screen:has(#next:not([hidden])) #celebrate .star{width:32px}#game.clear-screen:has(#next:not([hidden])) #celebrate .complete-clear{margin-top:-5px;margin-bottom:-16px}#game.clear-screen:has(#next:not([hidden])) .wallet-row{margin-bottom:0}}
+
+@media(max-height:680px) and (orientation:portrait){#game.clear-screen:has(#next:not([hidden])) #celebrate .star{width:24px}}
+#game.clear-screen[hidden]{display:none!important}
+#game.clear-screen:has(#all-complete:not([hidden])){max-width:min(430px,calc((100dvh - 175px)/1.65))}
+
+/* Two original controls at exactly 1.5 times the former 22% width. */
+#game.clear-screen:has(#next:not([hidden])) nav #restart,#game.clear-screen:has(#next:not([hidden])) nav #home{width:33%!important}
+#game.clear-screen:has(#next:not([hidden])) #hint{display:none!important}
+#home{position:relative;isolation:isolate}
+#home:after{content:'';position:absolute;inset:5%;border:2px solid #e8ff64;border-radius:22%;box-shadow:0 0 5px #dfff43,0 0 10px #9dff54;pointer-events:none;animation:home-soft-glow 1.8s ease-in-out infinite}
+@keyframes home-soft-glow{0%,100%{opacity:.65;box-shadow:0 0 4px #dfff43,0 0 7px #9dff54}50%{opacity:1;box-shadow:0 0 7px #eaff87,0 0 14px #b1ff62}}
+html[data-reduce-effects="true"] #home:after{animation:none;opacity:.85}
+@media(prefers-reduced-motion:reduce){#home:after{animation:none;opacity:.85}}
+
+#game.clear-screen:has(#next:not([hidden])) .status-row{margin-bottom:0}
+@media(max-height:680px) and (orientation:portrait){
+ #game.clear-screen:has(#next:not([hidden])) #reward-panel{width:82%}
+ #game.clear-screen:has(#next:not([hidden])) #celebrate .star{width:12px}
+}

@@ -1,0 +1,37 @@
+{
+  "sheet": "canary-4x2.webp",
+  "columns": 4,
+  "rows": 2,
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "frames": 8,
+  "order": "row-major",
+  "idleFrame": 0,
+  "blinkFrames": [
+    0,
+    1,
+    2,
+    3,
+    0
+  ],
+  "actionFrames": [
+    0,
+    4,
+    5,
+    6,
+    7,
+    0
+  ],
+  "blinkIntervalMs": [
+    3500,
+    6500
+  ],
+  "actionIntervalMs": [
+    14000,
+    24000
+  ],
+  "soundTriggerFrame": 5,
+  "soundCooldownMs": 12000,
+  "reducedMotionFrame": 0,
+  "padding": "at least 15% horizontally; fixed baseline 82%"
+}

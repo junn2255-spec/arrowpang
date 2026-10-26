@@ -1,0 +1,27 @@
+.tutorial-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:#16331d33}
+.tutorial-bubble{box-sizing:border-box;width:min(100%,410px);max-height:calc(100dvh - 32px);overflow:auto;padding:20px 18px;border:5px solid #d99513;border-radius:24px;background:rgba(255,235,139,.9);box-shadow:0 4px 18px #14272166;color:#49350b}
+#tutorial-text{white-space:pre-line;word-break:keep-all;overflow-wrap:anywhere;margin:0 0 16px;font-size:19px;line-height:1.65;font-weight:700;text-align:center;opacity:1}
+#tutorial-close{display:block;min-height:48px;min-width:100px;padding:10px 20px;margin:0 auto;background:#ffdf67;border:2px solid #876227;border-radius:12px;font-size:18px;font-weight:700;color:#423514}
+#game:has(#next:not([hidden])) #undo{display:none}
+#game:has(#next:not([hidden])) nav{grid-template-columns:repeat(3,calc((100% - 12px)/4))!important;justify-content:center}
+#home-panel .home-top #home-back{width:min(207px,calc((100vw - 214px)*1.15));max-width:none;min-height:48px}
+@media(max-width:420px){#home-panel .home-top #home-back{grid-column:1 / -1;grid-row:2;justify-self:end}#home-panel .home-top .home-cost{grid-row:3}}
+
+/* Complete artwork: preserve proportions, with an accessible real confirmation hit area. */
+#tutorial:is([data-guide="play"],[data-guide="home"]) .tutorial-bubble{position:relative;width:min(100%,520px,calc((100dvh - 32px)*1.25));padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+#tutorial-image{display:block;width:100%;height:auto;object-fit:contain}
+#tutorial-image[hidden]{display:none}
+#tutorial:is([data-guide="play"],[data-guide="home"]) #tutorial-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:normal}
+#tutorial:is([data-guide="play"],[data-guide="home"]) #tutorial-close{position:absolute;left:34%;top:75%;width:33%;height:15%;min-width:0;min-height:48px;margin:0;padding:0;border:0;border-radius:18px;background:transparent;color:transparent;text-shadow:none;box-shadow:none}
+#tutorial:is([data-guide="play"],[data-guide="home"]) #tutorial-close{outline:none;animation:none;-webkit-tap-highlight-color:transparent}
+#tutorial[data-keyboard="true"] #tutorial-close:focus{outline:2px solid #574d3c;outline-offset:2px}
+
+#tutorial[data-guide="home"] .tutorial-bubble{width:min(100%,520px,calc((100dvh - 32px)*1.333333))}
+#tutorial[data-guide="home"] #tutorial-close{left:31%;top:70%;width:38%;height:16%}
+#tutorial-image{opacity:.90}
+#tutorial[data-keyboard="false"] #tutorial-close:focus{outline:none}
+
+/* Both axes use the visible viewport and resolved safe-area padding. */
+#tutorial{box-sizing:border-box;min-width:0;min-height:0;overflow:hidden}
+#tutorial:is([data-guide="play"],[data-guide="home"]) .tutorial-bubble{width:var(--guide-width,min(100%,520px));min-width:0;max-width:100%;max-height:none;flex:none}
+#tutorial:is([data-guide="play"],[data-guide="home"]) #tutorial-close{min-height:0;min-width:0}

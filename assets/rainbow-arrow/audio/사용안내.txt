@@ -1,0 +1,15 @@
+무지개 효과음 에셋
+
+다운로드 원본은 그대로 보존했습니다.
+모바일용 MP3: 모노 / 22,050Hz / 64kbps
+앞뒤 무음 정리, 피크 음량 조절, 시작·끝 페이드 적용
+
+무지개 화살표탈출.mp3 → sfx/rainbow-escape.mp3 (2.10초)
+주변 화살표 제거.mp3 → sfx/rainbow-pop.mp3 (0.17초)
+강한폭발효과.mp3 → sfx/rainbow-impact.mp3 (1.40초)
+무지개잔광.mp3 → sfx/rainbow-shimmer.mp3 (0.88초)
+크리스탈파편.mp3 → sfx/crystal-shatter.mp3 (1.91초)
+
+권장 재생: 탈출음 → 폭발음 1회 + 제거음 3회(0·70·140ms 간격) → 잔광음
+크리스탈 소리는 파편 연출에 작게 겹쳐 사용하세요.
+source-originals 폴더는 보관용 원본이며 모바일 배포에서는 제외하세요.

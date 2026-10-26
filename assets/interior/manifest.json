@@ -1,0 +1,110 @@
+[
+  {
+    "file": "01-room-empty.webp",
+    "width": 768,
+    "height": 1484,
+    "bytes": 113254
+  },
+  {
+    "file": "02-sofa.webp",
+    "width": 512,
+    "height": 350,
+    "bytes": 34536
+  },
+  {
+    "file": "03-sink-corner.webp",
+    "width": 512,
+    "height": 320,
+    "bytes": 30802
+  },
+  {
+    "file": "04-table-stools.webp",
+    "width": 512,
+    "height": 300,
+    "bytes": 33626
+  },
+  {
+    "file": "05-fireplace-unlit.webp",
+    "width": 450,
+    "height": 512,
+    "bytes": 50952
+  },
+  {
+    "file": "06-ramen-stove.webp",
+    "width": 256,
+    "height": 252,
+    "bytes": 22478
+  },
+  {
+    "file": "07-steak-plate.webp",
+    "width": 256,
+    "height": 144,
+    "bytes": 16304
+  },
+  {
+    "file": "08-shrimp-plate.webp",
+    "width": 256,
+    "height": 149,
+    "bytes": 15580
+  },
+  {
+    "file": "09-cross-lights.webp",
+    "width": 512,
+    "height": 173,
+    "bytes": 34292
+  },
+  {
+    "file": "10-empty-hanging-cage.webp",
+    "width": 159,
+    "height": 384,
+    "bytes": 27558
+  },
+  {
+    "file": "11-fire-flames-4x2.webp",
+    "width": 384,
+    "height": 192,
+    "bytes": 26688
+  },
+  {
+    "file": "12-food-steam-4x2.webp",
+    "width": 384,
+    "height": 192,
+    "bytes": 27586
+  },
+  {
+    "file": "13-oval-wool-rug.webp",
+    "width": 512,
+    "height": 214,
+    "bytes": 33666
+  },
+  {
+    "file": "ui-title-home-interior.webp",
+    "width": 512,
+    "height": 168,
+    "bytes": 29004
+  },
+  {
+    "file": "ui-to-yard.webp",
+    "width": 320,
+    "height": 103,
+    "bytes": 9860
+  },
+  {
+    "file": "ui-enter-interior.webp",
+    "width": 320,
+    "height": 104,
+    "bytes": 11460
+  },
+  {
+    "file": "dog-resting-4x2.webp",
+    "width": 768,
+    "height": 384,
+    "bytes": 52034
+  },
+  {
+    "file": "canary-4x2.webp",
+    "width": 256,
+    "height": 128,
+    "bytes": 11390
+  }
+]

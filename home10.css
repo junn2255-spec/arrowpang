@@ -1,0 +1,20 @@
+/* Home ten-stage scene only. Existing puzzle and clear layout remain scoped elsewhere. */
+.home10-panel{padding:calc(8px + env(safe-area-inset-top)) 10px calc(8px + env(safe-area-inset-bottom));}
+.home10-panel .home-wrap{max-width:460px}.home10-panel .home-title{height:94px}.home10-panel .home-scene{height:clamp(260px,48dvh,510px);overflow:hidden;transform-origin:50% 70%}
+.home10-panel .home-scene .house-body{width:84%;height:auto;bottom:24%;left:50%;object-fit:contain;transform:translateX(-50%);z-index:3}
+.home10-panel .yard{width:100%;height:auto;bottom:3%;left:0;z-index:0}.home10-panel .garden{height:auto;z-index:4}
+.home10-panel .flowers-left{width:25%;left:1%;bottom:24%}.home10-panel .flowers-right{width:23%;right:0;bottom:27%}
+.home10-panel .fence-left{width:28%;left:0;bottom:31%;z-index:1}.home10-panel .fence-right{width:28%;right:0;bottom:32%;z-index:1}.home10-panel .bench{width:24%;left:0;bottom:3%}
+.home10-panel .pond-wrap{position:absolute;right:0;bottom:9%;width:39%;aspect-ratio:3/2;z-index:5}.home10-panel .pond-wrap>img{width:100%;height:100%;inset:0}.home10-panel .fish-water{position:absolute;left:17%;top:24%;width:63%;height:48%;clip-path:ellipse(49% 48% at 50% 50%);overflow:hidden;pointer-events:none}
+.home10-panel .swimming-fish{position:absolute;width:clamp(28px,8vw,38px);height:clamp(28px,8vw,38px);pointer-events:none}.home10-panel .swimming-fish:nth-child(2){width:30px;height:30px}.home10-panel .fish-sprite{display:block;width:100%;height:100%;background:url('assets/home10/13-goldfish-swim-3x2.webp') 0 0/300% 200% no-repeat}.home10-panel .fish-fallback{background-image:url('assets/home10/13-goldfish.webp');background-size:contain!important;background-position:center!important}
+.home10-panel .pond-touch{position:absolute;inset:10%;border:0;background:transparent;box-shadow:none;border-radius:50%;padding:0}.home10-panel .pond-ripples{position:absolute;inset:27% 20% 29%;border:1px solid #ffffff50;border-radius:50%;pointer-events:none}
+.home10-panel .life-actor{position:absolute;z-index:7;padding:0;border:0;box-shadow:none;background-color:transparent;background-repeat:no-repeat;min-width:0;min-height:0;filter:drop-shadow(0 2px 1px #2d351c55);border-radius:0;touch-action:manipulation}
+.home10-panel .hero-actor{width:27%;aspect-ratio:192/224;left:24%;bottom:4%;background-size:300% 300%}.home10-panel .dog-actor{width:25%;aspect-ratio:1;left:48%;bottom:0%;background-size:400% 300%}.home10-panel .life-actor:focus-visible,.home10-panel .pond-touch:focus-visible{outline:2px solid #fff3a0;outline-offset:1px}
+.home10-panel #home-finished{display:none!important}.home10-panel #home-cost{text-align:left}.home10-panel .home-stage{color:#fff7dc;text-shadow:0 2px 3px #3b291d;font-size:17px;text-align:center;margin:3px 0}.home10-panel #upgrade{max-width:310px;width:68%;margin:0 auto}.home10-panel #home-status{margin:2px 0;font-size:16px;min-height:24px}
+.home10-panel .upgrade-wave,.home10-panel .upgrade-light{bottom:24%}.home10-panel .upgrade-dust{bottom:15%}.home10-panel .upgrade-shard{bottom:25%}
+.home10-panel .new-part{animation:home10-part 500ms ease-out}@keyframes home10-part{50%{filter:drop-shadow(0 0 10px #ffe987)}}
+@media(max-height:700px){.home10-panel .home-title{height:68px}.home10-panel .home-scene{height:clamp(220px,44dvh,310px)}.home10-panel #upgrade{width:56%}.home10-panel .home-stage{font-size:15px}.home10-panel .home-cost{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.home10-panel .new-part{animation:none}}[data-reduce-effects="true"] .home10-panel .new-part{animation:none}
+
+#home-panel.home10-panel .home-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 8px}#home-panel.home10-panel .home-top .coin-wallet{min-width:0;width:100%;min-height:54px;font-size:23px;padding:13px 8px 8px 33px}#home-panel.home10-panel .home-top #home-back{grid-column:2;grid-row:1;width:100%;min-height:48px}#home-panel.home10-panel .home-top .home-cost{grid-row:2;grid-column:1/-1}
+.home10-panel .home-scene .house-body{height:76%;width:84%;bottom:24%;object-position:center bottom}

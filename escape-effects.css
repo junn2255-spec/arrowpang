@@ -1,0 +1,12 @@
+/* Separate body-level layer: no board/main ancestor can crop an escaping proxy. */
+.escape-effects{position:fixed;pointer-events:none;overflow:hidden;z-index:8;contain:layout paint;isolation:isolate}
+.escape-effects .escape-proxy{position:absolute;left:0;top:0;margin:0;transition:none!important;animation:none;pointer-events:none;will-change:transform,opacity;z-index:2}
+.escape-effects .escape-proxy:before,.escape-effects .escape-proxy:after{display:none}
+.escape-trail,.escape-spark{position:absolute;left:0;top:0;pointer-events:none;object-fit:contain;will-change:transform,opacity}
+.escape-trail{z-index:0}.escape-spark{z-index:1}
+.escape-effects .escape-proxy{transform-origin:50% 50%}.escape-proxy>span,.escape-proxy[data-dir="U"]>span,.escape-proxy[data-dir="D"]>span{scale:1;animation:none!important}
+.block em{display:none}
+.block.pressing>span{animation:arrow-press 60ms ease-out}
+@keyframes arrow-press{0%,100%{transform:scale(1)}45%{transform:scale(.92)}}
+/* Existing collision/rotation animations remain independent of the exit layer. */
+@media(prefers-reduced-motion:reduce){.block.pressing>span{animation:none}.escape-trail{display:none}}

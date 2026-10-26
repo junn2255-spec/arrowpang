@@ -1,0 +1,15 @@
+/* Presentation only. Existing board geometry and dynamic text are preserved. */
+#game:has(#next[hidden]) .stats{border:0;border-image:none;box-shadow:none;border-radius:12px;background:url('assets/simple-game-ui/01-status-panel-820x152.png') center/100% 100% no-repeat;gap:0;padding:7px 9px;isolation:isolate}
+#game:has(#next[hidden]) .stats div{background:none;border:0;box-shadow:none;padding:4px 2px}
+#game:has(#next[hidden]) .stats div::before,#game:has(#next[hidden]) .stats div::after{content:none;display:none}
+#game:has(#next[hidden]) .stats span{color:#80502b;text-shadow:none;font-size:clamp(12px,3.3vw,14px);line-height:1.2;white-space:nowrap}
+#game:has(#next[hidden]) .stats strong{color:#4b260e;text-shadow:none;line-height:1.15}
+#game:has(#next[hidden]) .frame{background:none;overflow:visible}
+#game:has(#next[hidden]) .frame i{display:none}
+#game:has(#next[hidden]) .frame::before{content:'';position:absolute;inset:-5px;width:auto;height:auto;background:url('assets/simple-game-ui/02-board-frame-832x832.png') center/100% 100% no-repeat;pointer-events:none}
+#game:has(#next[hidden]) .frame::after{content:none}
+
+#game:has(#next[hidden]) #board{border-color:transparent;background-color:transparent;box-shadow:none}
+
+/* Remove the outer board frame completely; keep all tile geometry. */
+#game .frame{display:none!important}

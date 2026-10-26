@@ -1,0 +1,8 @@
+#welcome{position:relative;min-height:calc(100dvh - 16px);height:auto;inset:auto;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));gap:8px}#welcome .logo{max-height:180px;width:100%;object-fit:contain}#welcome .mascot{height:110px;width:auto;max-width:70%}.welcome-bottom{width:100%}
+#install-area{padding:10px 12px;background:#fff8e8ed;border-radius:14px;color:#392f23;font-size:14px;line-height:1.5;text-align:left;word-break:keep-all}#install-area p{font:inherit;color:inherit;text-shadow:none;margin:8px 0}#install-app,#copy-link,#update-app{font:inherit;min-height:44px;padding:10px 14px;border-radius:12px;background:#ffe5a1;color:#49351f;font-weight:700}#install-app{width:100%;font-size:17px}#share-link{width:100%;font:inherit;padding:8px}.storage-note{font-size:14px!important;line-height:1.5;color:#fffbed!important;text-shadow:0 1px 3px #183421!important;letter-spacing:0;word-break:keep-all}
+#offline-note,#update-area{position:relative;z-index:80;padding:12px max(16px,env(safe-area-inset-right)) 12px max(16px,env(safe-area-inset-left));background:#fff5d9;color:#382e1c;font-size:15px;line-height:1.5}#update-status{margin:8px 0}#home-panel{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+@media(display-mode:standalone){#install-area{display:none!important}}
+
+/* The title owns the only background while the welcome screen is visible. */
+main:has(#welcome:not([hidden])){padding:0;background:none}
+#welcome{min-height:100dvh;width:100%;background-repeat:no-repeat}

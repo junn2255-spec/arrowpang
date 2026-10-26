@@ -1,0 +1,74 @@
+[
+  {
+    "key": "key",
+    "source": "황금열쇠 발동.mp3",
+    "duration": 1.3,
+    "start": 0.05,
+    "rms": 0.12467394846957724,
+    "rate": 22050,
+    "bytes": 57374
+  },
+  {
+    "key": "rock",
+    "source": "돌이사라질때.mp3",
+    "duration": 1,
+    "start": 0.012666666666666666,
+    "rms": 0.06772130970441795,
+    "rate": 22050,
+    "bytes": 44144
+  },
+  {
+    "key": "bomb",
+    "source": "폭탄발동.mp3",
+    "duration": 1,
+    "start": 0.018000000000000002,
+    "rms": 0.2472062140822647,
+    "rate": 22050,
+    "bytes": 44144
+  },
+  {
+    "key": "flame",
+    "source": "2콤보불꽃.mp3",
+    "duration": 0.8,
+    "start": 0.11399999999999999,
+    "rms": 0.07988205968035748,
+    "rate": 22050,
+    "bytes": 35324
+  },
+  {
+    "key": "coin",
+    "source": "3 4 5콤보코인.mp3",
+    "duration": 0.8,
+    "start": 0.15666666666666668,
+    "rms": 0.06588401421019029,
+    "rate": 22050,
+    "bytes": 35324
+  },
+  {
+    "key": "build",
+    "source": "집건설.mp3",
+    "duration": 1.6,
+    "start": 1.0473333333333332,
+    "rms": 0.0673669028358311,
+    "rate": 22050,
+    "bytes": 70604
+  },
+  {
+    "key": "levelup",
+    "source": "레벨업.mp3",
+    "duration": 1.6,
+    "start": 0.044666666666666674,
+    "rms": 0.13151641551599463,
+    "rate": 22050,
+    "bytes": 70604
+  },
+  {
+    "key": "coin-bonus-v2",
+    "source": "universfield-game-bonus-144751.mp3",
+    "duration": 2.1,
+    "start": 0.14066666666666666,
+    "rms": 0.05080060366730435,
+    "rate": 22050,
+    "bytes": 92654
+  }
+]

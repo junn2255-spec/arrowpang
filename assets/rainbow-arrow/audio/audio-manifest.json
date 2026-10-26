@@ -1,0 +1,92 @@
+{
+  "format": "MP3",
+  "originals_preserved": true,
+  "assets": [
+    {
+      "id": "rainbow-escape",
+      "file": "sfx/rainbow-escape.mp3",
+      "source_name": "무지개 화살표탈출.mp3",
+      "source_original": "source-originals/rainbow-escape-original.mp3",
+      "original_duration": 9.796,
+      "trim_start": 0.875,
+      "trim_end": 2.98,
+      "duration": 2.105,
+      "peak": 0.7381,
+      "sample_rate": 22050,
+      "channels": 1,
+      "bitrate": 64000,
+      "bytes": 17598,
+      "use": "Rainbow arrow escape / whoosh"
+    },
+    {
+      "id": "rainbow-pop",
+      "file": "sfx/rainbow-pop.mp3",
+      "source_name": "주변 화살표 제거.mp3",
+      "source_original": "source-originals/rainbow-pop-original.mp3",
+      "original_duration": 0.72,
+      "trim_start": 0.17,
+      "trim_end": 0.34,
+      "duration": 0.17,
+      "peak": 0.7247,
+      "sample_rate": 22050,
+      "channels": 1,
+      "bitrate": 64000,
+      "bytes": 2133,
+      "use": "One arrow pop; trigger separately for each of the three removed arrows"
+    },
+    {
+      "id": "rainbow-impact",
+      "file": "sfx/rainbow-impact.mp3",
+      "source_name": "강한폭발효과.mp3",
+      "source_original": "source-originals/rainbow-impact-original.mp3",
+      "original_duration": 3.192,
+      "trim_start": 0.01,
+      "trim_end": 1.41,
+      "duration": 1.4,
+      "peak": 0.7848,
+      "sample_rate": 22050,
+      "channels": 1,
+      "bitrate": 64000,
+      "bytes": 11955,
+      "use": "Main rainbow burst impact; play once per activation"
+    },
+    {
+      "id": "rainbow-shimmer",
+      "file": "sfx/rainbow-shimmer.mp3",
+      "source_name": "무지개잔광.mp3",
+      "source_original": "source-originals/rainbow-shimmer-original.mp3",
+      "original_duration": 2.038,
+      "trim_start": 0.185,
+      "trim_end": 1.06,
+      "duration": 0.875,
+      "peak": 0.7207,
+      "sample_rate": 22050,
+      "channels": 1,
+      "bitrate": 64000,
+      "bytes": 7776,
+      "use": "Rainbow afterglow"
+    },
+    {
+      "id": "crystal-shatter",
+      "file": "sfx/crystal-shatter.mp3",
+      "source_name": "크리스탈파편.mp3",
+      "source_original": "source-originals/crystal-shatter-original.mp3",
+      "original_duration": 3.456,
+      "trim_start": 0.025,
+      "trim_end": 1.93,
+      "duration": 1.905,
+      "peak": 0.7262,
+      "sample_rate": 22050,
+      "channels": 1,
+      "bitrate": 64000,
+      "bytes": 15926,
+      "use": "Crystal fragment accent"
+    }
+  ],
+  "notes": [
+    "Download originals are unchanged.",
+    "Only sfx/ is required at runtime; source-originals/ is an archive.",
+    "Use one short pop per removed arrow; a stagger of 0/70/140ms is suggested.",
+    "Reduce gain when layering effects; play impact once, not three times."
+  ]
+}

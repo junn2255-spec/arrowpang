@@ -1,0 +1,38 @@
+/* Complete illustrations contain their own labels, icons and frames. No slicing. */
+#game header{display:flex;height:auto;min-height:48px;background:none;border:0;padding:0 4px;margin:0;gap:12px;box-shadow:none}
+#game header h1{margin:0;line-height:0;flex:1}#game header h1 img{display:block;width:190px;max-width:100%;height:auto;object-fit:contain}
+#game header #settings{width:44px;height:44px;flex:none}
+#game{gap:4px}.stats{min-height:78px}.stats div{padding-top:8px;padding-bottom:8px}
+#message:empty{display:none!important}#message:before,#message:after{content:none!important}
+nav{gap:8px;align-items:end}nav .complete-button{display:block;min-height:44px;min-width:44px;height:auto;padding:0;border:0;border-image:none;background:none;box-shadow:none;border-radius:14px;line-height:0;opacity:1;transition:transform 75ms,filter 75ms}
+nav .complete-button img{display:block;width:100%;height:auto;margin:0;object-fit:contain}
+.complete-button:active:not(:disabled){transform:scale(.95);filter:brightness(.94)}.complete-button:disabled{opacity:1;filter:brightness(.65);transform:scale(.97)}
+.status-row #next.complete-button{display:block;flex:0 1 100%;width:min(100%,300px);max-width:300px;min-height:44px;height:auto;padding:0;margin:0 auto;border:0!important;border-image:none!important;background:none!important;box-shadow:none;line-height:0;border-radius:14px}
+#next.complete-button img{display:block;width:100%;height:auto;object-fit:contain}
+#celebrate .complete-clear{width:94%;height:auto;object-fit:contain;animation:complete-appear 240ms ease-out}#celebrate .star{width:30%}
+@keyframes complete-appear{from{opacity:0;transform:translateY(8px) scale(.95)}to{opacity:1;transform:none}}
+.rotation-zone{background:none!important;display:grid;place-items:center;padding:0;z-index:0}.rotation-zone:before,.rotation-zone:after{content:none!important;display:none!important}.rotation-zone img{width:100%;height:100%;object-fit:contain;min-width:0;min-height:0;pointer-events:none}
+
+.rotation-zone.zone-lit{filter:brightness(1.3) drop-shadow(0 0 4px #f9e58b)}
+.escape-effects{overflow:visible;contain:layout;pointer-events:none}.escape-big{position:absolute;left:0;top:0;pointer-events:none;z-index:3;background:var(--trail-color);mask:url('assets/ui/sparkle-1.webp') center/contain no-repeat;-webkit-mask:url('assets/ui/sparkle-1.webp') center/contain no-repeat}
+.escape-spark{background:var(--particle-color);mask:url('assets/ui/sparkle-1.webp') center/contain no-repeat;-webkit-mask:url('assets/ui/sparkle-1.webp') center/contain no-repeat}
+@media(prefers-reduced-motion:reduce){#celebrate .complete-clear{animation:none}.complete-button{transition:none}}
+
+
+
+/* User adjustment: exactly 80% of the prior grid-cell button width, same aspect/baseline. */
+nav .complete-button{width:80%;justify-self:center;align-self:end}
+/* 11px → 13.2px (+20%), on the upper portion of the stone body. */
+.rock b{left:50%;right:auto;top:10%;bottom:auto;transform:translateX(-50%);font-size:13.2px;min-width:19.2px;height:19.2px;line-height:19.2px;text-align:center}
+
+html:not([data-reduce-effects="true"]) .escape-trail,html:not([data-reduce-effects="true"]) .escape-spark{filter:drop-shadow(0 0 2px var(--trail-color))}
+
+/* The same single floor element rises above an occupying block; no clone or badge. */
+.rotation-zone[data-occupied="true"]{z-index:3;opacity:.42;pointer-events:none}
+.rotation-zone[data-occupied="false"]{z-index:0;opacity:1}
+
+/* Ten selectable missions, retaining the existing artwork and touch controls. */
+.stage-options{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stage-options button{width:100%!important;min-width:44px;min-height:52px;margin:0!important;font-size:20px}
+#stage-panel>div{max-height:calc(100dvh - 48px);overflow-y:auto}
+#all-complete{margin:0;padding:10px 14px;border-radius:12px;background:#fff2d9;color:#513b22;text-align:center;font-size:16px;line-height:1.5;word-break:keep-all}

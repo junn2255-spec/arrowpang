@@ -1,0 +1,136 @@
+/* Play-only presentation. Completion and home retain their existing layout. */
+#game:has(#next[hidden]){gap:4px}
+#game:has(#next[hidden]) header{display:flex;position:relative;height:auto;min-height:0;padding:0;border:0;background:none;box-shadow:none;justify-content:center}
+#game:has(#next[hidden]) header h1{flex:none;width:96%;margin:0;line-height:0}
+#game:has(#next[hidden]) header h1 img{width:100%;height:auto;max-width:none;margin:-3% 0 -4%;object-fit:contain;pointer-events:none}
+#game:has(#next[hidden]) #settings{position:absolute;right:0;top:0;z-index:2;width:44px;height:44px;min-height:44px}
+#game:has(#next[hidden]) .wallet-row{position:relative;justify-content:center}
+#game:has(#next[hidden]) .wallet-row .coin-wallet{position:relative;width:60%;min-width:0;min-height:0;aspect-ratio:700/253;padding:0;background:url('assets/ui/play-wallet.webp') center/contain no-repeat;filter:drop-shadow(0 0 4px #ffd85a66)}
+#game:has(#next[hidden]) #wallet{position:absolute;left:30%;right:7%;top:29%;bottom:27%;display:flex;align-items:center;justify-content:center;font-size:var(--wallet-font,36px);line-height:1;font-weight:900;color:#482209;text-shadow:0 1px #fff1bb;white-space:nowrap;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+#game:has(#next[hidden]) .coin-wallet:after{content:'✦';position:absolute;right:-3%;top:25%;color:#fff1a3;font-size:14px;pointer-events:none;animation:wallet-shimmer 3s ease-in-out infinite}
+#game:has(#next[hidden]) .stats{min-height:64px;padding:4px 6px}
+#game:has(#next[hidden]) .stats div{padding:5px 2px}
+#game:has(#next[hidden]) .stats span{font-size:14px;margin-bottom:3px}
+#game:has(#next[hidden]) .stats strong{font-size:23px}
+#game:has(#next[hidden]) .board-slot{padding:8px 0}
+#game:has(#next[hidden]) .status-row{min-height:52px;align-items:center}
+#game:has(#next[hidden]) #message{background:none;border:0;box-shadow:none;border-radius:0;padding:0 2px;margin:0;min-height:0;height:auto;max-height:56px;overflow:auto;font-family:'ArrowTok Original',sans-serif;font-size:clamp(19px,5.4vw,23px);line-height:1.2;font-weight:900;color:#fff4d4;-webkit-text-stroke:2px #49240e;paint-order:stroke fill;text-shadow:0 2px 2px #321707;word-break:keep-all;overflow-wrap:anywhere;transform-origin:center}
+#game:has(#next[hidden]) #message .stone-durability{color:#ffdb36}
+@keyframes wallet-shimmer{0%,100%{opacity:.35}50%{opacity:.85}}
+html[data-reduce-effects="true"] #game .coin-wallet:after{animation:none}
+@media(prefers-reduced-motion:reduce){#game .coin-wallet:after{animation:none}}
+@media(max-height:680px){#game:has(#next[hidden]){gap:2px}#game:has(#next[hidden]) header h1{width:90%}#game:has(#next[hidden]) .wallet-row .coin-wallet{width:54%}#game:has(#next[hidden]) .board-slot{padding:5px 0}}
+
+/* V23: shared full-width cell geometry, play-only. */
+main:has(#game:not([hidden]) #next[hidden]){padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
+#game:has(#next[hidden]) #board,#game:has(#next[hidden]) .frame{width:100%;max-width:none;min-width:0}
+#game:has(#next[hidden]) .status-row:has(#message:empty),#game[data-blocked]:has(#next[hidden]) .status-row{min-height:0;height:0}
+#game[data-blocked]:has(#next[hidden]) #message{display:none!important}
+#blocked-notice{position:absolute;z-index:12;left:3%;right:3%;top:50%;transform:translateY(-50%);pointer-events:none;text-align:center;padding:14px 10px;border-radius:18px;background:#44270cbd;color:#fff5c7;font-family:'ArrowTok Original',sans-serif;font-size:clamp(25px,7vw,32px);font-weight:900;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-stroke:1px #42230d;paint-order:stroke fill;text-shadow:0 2px 3px #211306}
+@media(max-height:700px){
+ #game:has(#next[hidden]){gap:2px}
+ #game:has(#next[hidden]) header h1{width:62%}
+ #game:has(#next[hidden]) .wallet-row .coin-wallet{width:46%}
+ #game:has(#next[hidden]) .stats{min-height:58px;padding:2px 4px}
+ #game:has(#next[hidden]) .stats div{padding:2px}
+ #game:has(#next[hidden]) .stats strong{font-size:21px}
+ #game:has(#next[hidden]) .board-slot{padding:5px 0}
+ #game:has(#next[hidden]) .status-row{min-height:30px}
+ #game:has(#next[hidden]) #message{font-size:17px;line-height:1.15;max-height:40px}
+}
+
+/* Keep the four control illustrations at their previous widths. */
+#game:has(#next[hidden]) nav{width:calc(100% - 8px);justify-self:center}
+@media(max-height:600px) and (orientation:portrait){
+ #game:has(#next[hidden]){gap:0}
+ #game:has(#next[hidden]) header{height:24px}
+ #game:has(#next[hidden]) header h1{width:40%;height:24px}
+ #game:has(#next[hidden]) header h1 img{height:24px;width:100%;margin:0}
+ #game:has(#next[hidden]) .wallet-row .coin-wallet{width:90px}
+ #game:has(#next[hidden]) #wallet{font-size:min(var(--wallet-font,36px),22px)}
+ #game:has(#next[hidden]) .stats{min-height:50px}
+ #game:has(#next[hidden]) .stats span{margin-bottom:0}
+ #game:has(#next[hidden]) .board-slot{padding:2px 0}
+}
+
+/* Relocate the same home button, preserving its event listeners. */
+#game:has(#next[hidden]) header{justify-content:flex-start}
+#game:has(#next[hidden]) header h1{width:calc(100% - 112px)}
+#game:has(#next[hidden]) header #home{position:absolute;right:52px;top:0;width:48px;height:48px;min-height:44px;padding:0;background:none;border:0;line-height:0;z-index:3}
+#game:has(#next[hidden]) header #home img{display:block;width:100%;height:auto;object-fit:contain}
+#game:has(#next[hidden]) nav{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#game:has(#next[hidden]) nav .complete-button{width:calc(75% - 1px)!important}
+
+/* V25: visual inset only; cell boxes, floor and hit areas remain unchanged. Also applies to the cloned escape block. */
+.block{padding:1px}
+
+/* Visual artwork fit: alpha > 16 painted bounds, uniform source-pixel scale. Cell geometry and hit boxes stay unchanged. */
+.block{padding:0}
+.floor[data-tile="0"]{background-size:119.08860759493672% 119.08860759493672%;background-position:71.1206896551724% 72.74535809018566%;background-repeat:no-repeat}
+.floor[data-tile="1"]{background-size:119.08860759493672% 119.08860759493672%;background-position:32.12864721485411% 72.74535809018566%;background-repeat:no-repeat}
+.floor[data-tile="2"]{background-size:119.84713375796177% 119.84713375796177%;background-position:68.87034659820286% 20.12195121951221%;background-repeat:no-repeat}
+.floor[data-tile="3"]{background-size:117.35031847133757% 119.84713375796177%;background-position:39.207048458149785% 23.267008985879347%;background-repeat:no-repeat}
+.block[data-dir="R"] span{background-size:100.0421052631579% 100.0421052631579%;background-position:50.000000000007205% 50.000000000008235%;background-repeat:no-repeat}
+.block[data-dir="D"] span{background-size:100.0421052631579% 100.0421052631579%;background-position:50.000000000007205% 50.000000000008235%;background-repeat:no-repeat}
+.block[data-dir="L"] span{background-size:99.51832460732986% 99.51832460732986%;background-position:103.8043478260886% 50.00000000000079%;background-repeat:no-repeat}
+.block[data-dir="U"] span{background-size:100.0421052631579% 100.0421052631579%;background-position:50.000000000007205% 50.00000000000989%;background-repeat:no-repeat}
+
+/* Play-only combo lane, obstacle artwork fit and header home target. */
+#game:has(#next[hidden]) .board-slot{padding-top:38px}
+#game #combo{top:4px;left:50%;width:96%;height:30px;gap:5px;pointer-events:none;animation:none!important}
+#game #combo img{width:55px;height:26px}
+#game #combo b{font-size:clamp(26px,7.2vw,32px);line-height:30px;white-space:nowrap;-webkit-text-stroke:1px #57300c;paint-order:stroke fill}
+#game:has(#next[hidden]) header #home{width:60px;height:60px}
+#game:has(#next[hidden]) header h1{width:calc(100% - 124px);margin-right:12px}
+.rock[data-hp="3"]:not(.breaking)>span{background-size:136.93023255813955% 136.93023255813955%;background-position:53.862300587741395% 47.103274559193956%}
+.rock[data-hp="2"]:not(.breaking)>span{background-size:135.87692307692308% 135.87692307692308%;background-position:50.98627787307033% 46.05488850771871%}
+.rock[data-hp="1"]:not(.breaking)>span{background-size:136.93023255813955% 136.93023255813955%;background-position:50% 47.103274559193956%}
+@media(max-height:700px){
+ #game:has(#next[hidden]) .board-slot{padding-top:32px}
+ #game:has(#next[hidden]) header{height:60px}
+ #game:has(#next[hidden]) header h1{height:60px}
+ #game:has(#next[hidden]) header h1 img{height:60px;width:100%;margin:0;object-fit:contain}
+ #game:has(#next[hidden]) .wallet-row .coin-wallet{width:40%}
+ #game #combo{top:1px}
+}
+@media(max-height:700px){#game:has(#next[hidden]) .stats span,#game:has(#next[hidden]) .stats strong{line-height:1.1}#game:has(#next[hidden]) .stats{min-height:50px}}
+@media(max-height:700px){#game:has(#next[hidden]) .wallet-row .coin-wallet{width:26%}#game:has(#next[hidden]) #wallet{font-size:min(var(--wallet-font,36px),22px)}}
+
+/* Non-layout notices: length never moves the board or controls. */
+#game:has(#next[hidden]) .board-slot{padding-top:38px}
+#play-notice-lane{position:absolute;left:3%;top:4px;width:94%;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;z-index:5}
+#game #play-notice-lane #combo{position:relative;top:auto;left:auto;transform:none;width:100%;flex-shrink:0}
+#game:has(#next[hidden]) #play-notice-lane #message{width:100%;max-height:none;overflow:visible;text-align:center;pointer-events:none;overflow-wrap:anywhere}
+#play-notice-lane #message:empty{display:none}
+#game:has(#next[hidden]) .status-row{display:none}
+@media(max-height:700px){#game:has(#next[hidden]) .board-slot{padding-top:32px}}
+/* Short viewport: reuse header row for wallet, without clipping or shrinking board/buttons. */
+@media(max-height:600px) and (orientation:portrait){
+ #game:has(#next[hidden]){position:relative}
+ #game:has(#next[hidden]) header{justify-content:flex-start}
+ #game:has(#next[hidden]) header h1{width:38%;margin-right:auto}
+ #game:has(#next[hidden]) .wallet-row{position:absolute;top:20px;left:40%;width:26%;z-index:3}
+ #game:has(#next[hidden]) .wallet-row .coin-wallet{width:100%}
+ #game:has(#next[hidden]) .board-slot{padding-top:0}
+}
+/* Three status-plaque artwork layers only: width/text/layout remain unchanged. */
+#game:has(#next[hidden]) .stats div::before{transform:scaleY(1.3);transform-origin:center;pointer-events:none}
+/* These two assists remain readable/clickable to explain exhausted limits. */
+#game #undo,#game #hint,#game #undo:disabled,#game #hint:disabled{opacity:1;filter:none}
+
+/* Next home reward uses the existing notice space without moving the board. */
+#next-reward-preview{position:absolute;top:4px;left:3%;width:94%;margin:0;min-height:0;text-align:center;font-size:clamp(12px,3.3vw,14px);font-weight:800;line-height:1.25;color:#fff5d8;text-shadow:0 1px 2px #47270b,0 0 3px #47270b;pointer-events:none;word-break:keep-all;z-index:4}
+#game:has(#combo:not([hidden])) #next-reward-preview,#game:has(#message:not(:empty)) #next-reward-preview,#game:has(#next:not([hidden])) #next-reward-preview{display:none}
+.home10-panel #home-cost{line-height:1.35;word-break:keep-all}
+
+.home10-panel #home-cost{white-space:pre-line;font-size:clamp(12px,3.5vw,15px)}
+
+/* Play wallet artwork +20%, without changing row height or board geometry. */
+#game:has(#next[hidden]) .wallet-row .coin-wallet{background:none;isolation:isolate}
+#game:has(#next[hidden]) .wallet-row .coin-wallet::before{content:"";position:absolute;inset:-10%;background:url('assets/ui/play-wallet.webp') center/contain no-repeat;pointer-events:none;z-index:-1}
+#game:has(#next[hidden]) #wallet{left:26%;right:-1.6%;top:24.8%;bottom:22.4%}
+@media(max-height:700px){
+ #game:has(#next[hidden]) #wallet[data-digits="6"]{font-size:14px}
+ #game:has(#next[hidden]) #wallet[data-digits="7"]{font-size:12px}
+ #game:has(#next[hidden]) #wallet[data-digits="8"],#game:has(#next[hidden]) #wallet[data-digits="9"],#game:has(#next[hidden]) #wallet[data-digits="10"]{font-size:10px}
+}

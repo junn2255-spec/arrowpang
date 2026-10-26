@@ -1,0 +1,17 @@
+@font-face{font-family:'ArrowTok Basic';src:url('assets/fonts/bithumb-basic.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'ArrowTok Original';src:url('assets/fonts/bithumb-original.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+body,button,input,summary{font-family:'ArrowTok Basic',system-ui,sans-serif;font-weight:700;font-synthesis:none}
+h1,h2,#celebrate strong,#combo{font-family:'ArrowTok Original','ArrowTok Basic',system-ui,sans-serif;font-weight:700;font-synthesis:none}
+.rock.stone-push{animation:stone-push 170ms ease-out!important}@keyframes stone-push{30%{translate:var(--hit-x) var(--hit-y)}65%{translate:calc(var(--hit-x)*-.35) calc(var(--hit-y)*-.35)}100%{translate:0 0}}
+.feedback-particle.shard{background-size:contain;z-index:4;transform-origin:center}
+@keyframes shard-flight{0%{opacity:1;transform:translate(-50%,-50%) rotate(0deg)}25%{opacity:.99;transform:translate(calc(-50% + var(--x25)),calc(-50% + var(--y25))) rotate(var(--r25))}50%{opacity:.875;transform:translate(calc(-50% + var(--x50)),calc(-50% + var(--y50))) rotate(var(--r50))}75%{opacity:.58;transform:translate(calc(-50% + var(--x75)),calc(-50% + var(--y75))) rotate(var(--r75))}100%{opacity:0;transform:translate(calc(-50% + var(--x100)),calc(-50% + var(--y100))) rotate(var(--r100))}}
+.feedback-particle.stone-dust{background:url('assets/ui/particle-4.webp') center/contain no-repeat;filter:brightness(.48);z-index:3}
+.feedback-particle.stone-flash{border-radius:50%;background:#fff7df;box-shadow:0 0 10px 4px #fff5d2;z-index:5}
+@keyframes impact-flash{from{opacity:.85;scale:.7}to{opacity:0;scale:1.3}}
+.escape-trail{background:var(--trail-color);mask:url('assets/ui/trail.webp') center/contain no-repeat;-webkit-mask:url('assets/ui/trail.webp') center/contain no-repeat}
+.escape-line,.escape-ring,.escape-finish,.escape-edge{position:absolute;left:0;top:0;pointer-events:none}
+.escape-line{height:2px;border-radius:50%;background:linear-gradient(90deg,transparent,var(--trail-color),#fff9dc);z-index:0}
+.escape-ring{border:2px solid #fff2a0;border-radius:50%;box-shadow:0 0 5px #fff0a077;z-index:1}
+.escape-finish{border-radius:50%;background:#fffce4;box-shadow:0 0 12px 3px #ffe7aa;z-index:3}
+.escape-edge{border-radius:5px;background:#fff5c8;box-shadow:0 0 8px #ffeab5;z-index:1}
+html[data-reduce-effects="true"] .stone-flash{display:none}@media(prefers-reduced-motion:reduce){.stone-flash{display:none}.rock.stone-push{animation:none!important}}
