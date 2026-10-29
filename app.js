@@ -1,3 +1,4 @@
+import {initGameOver} from './game-over.js';
 import {nextYard} from './home-ownership.js';
 import {interiorState} from './interior-progress.js';
 import{installFishingBonus,shouldOpenFishingGame}from'./fishing-bonus.js';
@@ -20,6 +21,7 @@ const specialFX=new SpecialEffects();const rainbowFX=new RainbowEffects();
 const completed=new Set();const escapeEffects=new EscapeEffects();const feedback=new Feedback();let comboTimer;
 let index=0,game=new Game(LEVELS[0]),locked=false,assistBusy=false,epoch=0,timer,wasStuck=false,starTimer,moleOpening=false;
 const stageKey=i=>LEVELS[i].id;
+const gameOver=initGameOver(()=>$('restart').click());
 const tutorials=initTutorials();
 const home=initHome({capture:()=>({index,stageKey:stageKey(index),level:game.level,game:{...game.snapshot(),history:game.history}}),restore:p=>{if(p.level?.specialRules!==1||!Number.isInteger(p.index)||p.index<0||p.index>=LEVELS.length||p.stageKey!==stageKey(p.index)||!Array.isArray(p.game?.blocks)||!Array.isArray(p.game?.rocks)||!Array.isArray(p.game?.history))return false;index=p.index;game=new Game(missionSpecials(p.level??LEVELS[index],index+1));Object.assign(game,structuredClone(p.game));const rainbowIds=new Set(game.level.blocks.filter(b=>b.rainbow).map(b=>b.id));for(const list of [game.blocks,...game.history.map(h=>h.blocks)])for(const b of list)b.rainbow=rainbowIds.has(b.id);return true;},isBusy:()=>locked||assistBusy,cancelEffects:()=>cancel(),onHomeIntro:()=>tutorials.home()});
 const frogUI=new FrogUI({board:$('board'),sound,reduced:()=>preferences.reduced,isBusy:()=>locked||assistBusy||home.transitionPending||game.won,onRemove:id=>{game.frogs=game.frogs.filter(f=>f.id!==id);home.commit(false);}});
@@ -53,6 +55,7 @@ function render(note=''){
  if($('celebrate')){$('celebrate').hidden=!game.won;if(!game.won)$('celebrate').classList.remove('stars-in');}if($('combo')){$('combo').hidden=true;$('combo-count').textContent='×'+game.combo;}
  const impossible=!game.won&&(game.stuck||solve(game.blocks,level.n,1200,game.rocks,level.zones??[],level.specials??[],game.used).status==='unsolvable');
  playUI.setBlocked(!game.won&&warnings.size>0);
+ const assist=home.store.read().assistRun;gameOver.update(impossible&&assist?.stage===stageKey(index)&&Number(assist.undo)>=3);
  if(impossible&&!wasStuck)sound.play('stuck');wasStuck=impossible;
  $('message').textContent=game.won?'':impossible?'이 상태로는 탈출할 수 없어요. 되돌려 주세요.':note||'';controls();
 }
