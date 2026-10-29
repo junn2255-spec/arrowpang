@@ -5,7 +5,6 @@ import {interiorState} from './interior-progress.js';
 import{installFishingBonus,shouldOpenFishingGame}from'./fishing-bonus.js';
 import{FrogUI}from'./frog-ui.js';
 import{RainbowEffects}from'./rainbow-effects.js';
-import {openMoleBonus,shouldOpenMoleGame} from './mole-bonus.js';
 import{SpecialEffects}from'./special-effects.js';
 import {initMissionMenu} from './mission-menu.js';
 import {initPlayUI} from './play-ui.js';
@@ -73,9 +72,9 @@ function play(id,el){if(locked||assistBusy||game.won||frogUI.departing)return;le
    if(!r.exit&&!r.bombRemoved&&!r.hit&&r.moved){const b=game.blocks.find(b=>b.id===id);feedback.impact($('board'),b,b.d);const dirs={U:[0,-1],R:[1,0],D:[0,1],L:[-1,0]},[dx,dy]=dirs[b.d];const target=game.blocks.find(q=>q.x===b.x+dx&&q.y===b.y+dy);feedback.pulse(document.querySelector(`[data-id="${target?.id}"]`),'bumped',180);}
    if(r.exit&&game.combo>1&&!game.won){if(steps.length>1)$('combo-count').textContent=steps.length+'연쇄';showCombo();}
    home.commit(game.won);
-   if(game.won){if(shouldOpenMoleGame(index+1)||shouldOpenFishingGame(index+1)){locked=true;controls();setTimeout(()=>{if(ticket===epoch&&game.won){locked=false;launchClearMinigames();}},2100);}clearTimeout(comboTimer);if($('combo'))$('combo').hidden=true;feedback.shakeScreen();completed.add(index);sound.play('success');starTimer=setTimeout(()=>{if(ticket===epoch&&game.won){$('celebrate')?.classList.add('stars-in');sound.play('star');}},350);}return;
+   if(game.won){if(shouldOpenFishingGame(index+1)){locked=true;controls();setTimeout(()=>{if(ticket===epoch&&game.won){locked=false;launchClearMinigames();}},2100);}clearTimeout(comboTimer);if($('combo'))$('combo').hidden=true;feedback.shakeScreen();completed.add(index);sound.play('success');starTimer=setTimeout(()=>{if(ticket===epoch&&game.won){$('celebrate')?.classList.add('stars-in');sound.play('star');}},350);}return;
   }
-  const e=plan[pos++];if(e.type==='move'){const previousZone=document.querySelector(`[data-zone="${cursor.x},${cursor.y}"]`);if(previousZone)previousZone.dataset.occupied='false';}if(e.type==='move'&&e.exit){if(!movingSound){sound.play('move');movingSound=true;}escapeEffects.run({board:$('board'),element:el,from:cursor,d:e.d,n:game.level.n,onBoundary:()=>{if(before.rainbow)rainbowFX.escape($('board'),cursor,e.d);sound.play(game.combo>=1?'combo':'exit');preferences.vibrate(game.blocks.length===1?22:14);},last:game.blocks.length===1,bright:game.combo>=1,reduced:preferences.reduced,onComplete:advance});return;}if(e.type==='move'){if(!movingSound){sound.play('move');movingSound=true;}el.style.transform=`translate(${(e.x-before.x)*step}px,${(e.y-before.y)*step}px)`;el.classList.remove('moving');void el.offsetWidth;el.classList.add('moving');cursor={x:e.x,y:e.y};
+  const e=plan[pos++];if(e.type==='move'){const previousZone=document.querySelector(`[data-zone="${cursor.x},${cursor.y}"]`);if(previousZone)previousZone.dataset.occupied='false';}if(e.type==='move'&&e.exit){if(!movingSound){sound.play('move');movingSound=true;}escapeEffects.run({board:$('board'),element:el,from:cursor,d:e.d,n:game.level.n,onBoundary:()=>{if(before.rainbow)rainbowFX.escape($('board'),cursor,e.d);sound.play(game.combo>=1?'combo':'exit');},last:game.blocks.length===1,bright:game.combo>=1,reduced:preferences.reduced,onComplete:advance});return;}if(e.type==='move'){if(!movingSound){sound.play('move');movingSound=true;}el.style.transform=`translate(${(e.x-before.x)*step}px,${(e.y-before.y)*step}px)`;el.classList.remove('moving');void el.offsetWidth;el.classList.add('moving');cursor={x:e.x,y:e.y};
 
   }
   if(e.type==='special'){if(e.kind==='rainbow')rainbowFX.burst($('board'),e);else specialFX.burst($('board'),e);specialFX.later(()=>{if(ticket!==epoch)return;for(const q of e.removedRocks??[])document.querySelector(`[data-rock="${q.id}"]`)?.remove();for(const [i,q]of (e.removedBlocks??[]).entries()){if(e.kind==='rainbow')rainbowFX.later(()=>{if(ticket===epoch)document.querySelector(`[data-id="${q.id}"]`)?.remove();},65*i+40);else document.querySelector(`[data-id="${q.id}"]`)?.remove();}},preferences.reduced?0:200);document.querySelector(`[data-special="${e.id}"]`)?.remove();}
@@ -113,13 +112,13 @@ $('hint').addEventListener('click',()=>{
 });
 function advanceStage(){cancel();sound.play('next');index=(index+1)%LEVELS.length;game=new Game(LEVELS[index]);beginAssistRun(stageKey(index));home.newRun();wasStuck=false;render();}
 async function launchClearMinigames(){
- if(moleOpening||!game.won||(!shouldOpenMoleGame(index+1)&&!shouldOpenFishingGame(index+1)))return false;
+ if(moleOpening||!game.won||!shouldOpenFishingGame(index+1))return false;
  moleOpening=true;locked=true;controls();
- try{await home.store.queue;const run=home.runId,key=stageKey(index),stage=index+1;if(home.store.read().paid[run]?.stage!==key)throw Error('클리어 보상을 먼저 저장해야 합니다.');if(shouldOpenFishingGame(stage)){const result=await fishingBonus.open({automatic:true,clearKey:run+':'+key});if(!result?.success)return false;}if(shouldOpenMoleGame(stage))await openMoleBonus({home,sound,preferences,stage,runId:run,stageKey:key});advanceStage();return true;}
+ try{await home.store.queue;const run=home.runId,key=stageKey(index),stage=index+1;if(home.store.read().paid[run]?.stage!==key)throw Error('클리어 보상을 먼저 저장해야 합니다.');if(shouldOpenFishingGame(stage)){const result=await fishingBonus.open({automatic:true,clearKey:run+':'+key});if(!result?.success)return false;}advanceStage();return true;}
  catch(e){$('message').textContent='미니게임을 준비하지 못했어요. 다음 버튼으로 다시 시도해 주세요.';console.error(e);return false;}
  finally{moleOpening=false;locked=false;controls();}
 }
-$('next').addEventListener('click',()=>{if(locked||assistBusy||home.transitionPending||!game.won)return;if(shouldOpenMoleGame(index+1)||shouldOpenFishingGame(index+1)){launchClearMinigames();return;}advanceStage();});
+$('next').addEventListener('click',()=>{if(locked||assistBusy||home.transitionPending||!game.won)return;if(shouldOpenFishingGame(index+1)){launchClearMinigames();return;}advanceStage();});
 const missionMenu=initMissionMenu({levels:LEVELS,read:()=>home.store.read(),sound,launch:i=>{
  if(locked||assistBusy||home.transitionPending)return false;
  cancel();tutorials.close();index=i;game=new Game(LEVELS[i]);beginAssistRun(stageKey(i));home.newRun();wasStuck=false;render();
@@ -159,3 +158,4 @@ document.addEventListener('garden-help',()=>{if(!locked) tutorials.play(true);})
 new MutationObserver(updateStatusCounters).observe($('wallet'),{childList:true,characterData:true,subtree:true});
 
 installMinigameMenu({read:()=>home.store.read(),isBusy:()=>locked||assistBusy||moleOpening||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>{const coins=home.store.read().coins;for(const id of ['wallet','home-wallet'])$(id).textContent=coins;render();},playMole:()=>openMenuMole({home,sound,preferences}),playFishing:()=>fishingBonus.open()});
+

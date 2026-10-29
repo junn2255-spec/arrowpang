@@ -3,7 +3,7 @@ importScripts('./pwa-cache.js');
 const PREFIX='arrowtok-pwa-',CACHE=PREFIX+PWA_VERSION,BASE=self.registration.scope;
 const url=p=>new URL(p,BASE).href;
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);const response=await fetch(url('index.html'),{cache:'reload'});if(!response.ok)throw Error('Latest game unavailable');await cache.put(url('index.html'),response);await self.skipWaiting();})()));
-self.addEventListener('activate',event=>event.waitUntil((async()=>{const keys=await caches.keys(),upgrading=keys.some(key=>key.startsWith(PREFIX)&&key!==CACHE);for(const key of keys)if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);await self.clients.claim();if(upgrading){for(const client of await self.clients.matchAll({type:'window'})){const target=new URL(client.url);if(target.href.startsWith(BASE)){target.searchParams.set('v','158');await client.navigate(target.href);}}}})()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{const keys=await caches.keys(),upgrading=keys.some(key=>key.startsWith(PREFIX)&&key!==CACHE);for(const key of keys)if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);await self.clients.claim();if(upgrading){for(const client of await self.clients.matchAll({type:'window'})){const target=new URL(client.url);if(target.href.startsWith(BASE)){target.searchParams.set('v','159');await client.navigate(target.href);}}}})()));
 async function missed(){for(const client of await self.clients.matchAll({type:'window'}))client.postMessage({type:'CACHE_MISS'});}
 self.addEventListener('fetch',event=>{
  const req=event.request,u=new URL(req.url);if(req.method!=='GET'||u.origin!==new URL(BASE).origin||!u.href.startsWith(BASE))return;

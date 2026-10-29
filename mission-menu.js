@@ -15,7 +15,7 @@ export function initMissionMenu({levels,read,sound,launch}){
    b.addEventListener('click',()=>{selected=i;sound.play('menu');refresh();grid.children[i]?.focus({preventScroll:true});});return b;}));
   $('mission-start').disabled=false;$('mission-start').textContent=`${selected+1}번 미션 ${s.cleared[selected]?'다시 도전':'시작'}`;
  }
- function start(i){if(starting||$('welcome').inert||screen.inert||(screen.hidden&&$('welcome').hidden))return;const s=state();if(!s||!s.allowed[i]){refresh();return;}starting=true;try{sound.unlock();sound.play('menu');launch(i);}finally{starting=false;}}
+ function start(i){if(starting||$('welcome').inert||screen.inert||(screen.hidden&&$('welcome').hidden))return;const s=state();if(!s||!s.allowed[i]){refresh();return;}starting=true;try{sound.startGame();sound.play('menu');launch(i);}finally{starting=false;}}
  $('stage-select').addEventListener('click',()=>{sound.unlock();sound.play('menu');$('welcome').hidden=true;screen.hidden=false;refresh();$('mission-back').focus({preventScroll:true});});
  $('mission-back').addEventListener('click',()=>{sound.play('menu');screen.hidden=true;$('welcome').hidden=false;$('stage-select').focus({preventScroll:true});});
  $('mission-start').addEventListener('click',()=>start(selected));
