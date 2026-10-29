@@ -1,3 +1,4 @@
+import {installMinigameMenu,openMenuMole} from './minigame-menu.js';
 import {initGameOver} from './game-over.js';
 import {nextYard} from './home-ownership.js';
 import {interiorState} from './interior-progress.js';
@@ -156,3 +157,5 @@ const fishingBonus=installFishingBonus({home,sound,isBusy:()=>locked||assistBusy
 document.addEventListener('garden-help',()=>{if(!locked) tutorials.play(true);});
 
 new MutationObserver(updateStatusCounters).observe($('wallet'),{childList:true,characterData:true,subtree:true});
+
+installMinigameMenu({read:()=>home.store.read(),isBusy:()=>locked||assistBusy||moleOpening||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>{const coins=home.store.read().coins;for(const id of ['wallet','home-wallet'])$(id).textContent=coins;render();},playMole:()=>openMenuMole({home,sound,preferences}),playFishing:()=>fishingBonus.open()});
