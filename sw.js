@@ -1,8 +1,8 @@
 importScripts('./pwa-cache.js');
 const PREFIX='arrowtok-pwa-',CACHE=PREFIX+PWA_VERSION,BASE=self.registration.scope;
 const url=p=>new URL(p,BASE).href;
-self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);for(const p of PWA_CORE){const source=p==='index.html'?'./':p==='offline.html'?'offline.html':p;const response=await fetch(url(source),{cache:'reload',credentials:'same-origin'});if(!response.ok||response.redirected)throw Error('Required file unavailable');await cache.put(url(p),response);}})()));
-self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);})()));
+self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);for(const p of PWA_CORE){const source=p==='index.html'?'./':p==='offline.html'?'offline.html':p;const response=await fetch(url(source),{cache:'reload',credentials:'same-origin'});if(!response.ok||response.redirected)throw Error('Required file unavailable');await cache.put(url(p),response);}await self.skipWaiting();})()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);await self.clients.claim();})()));
 async function missed(){for(const client of await self.clients.matchAll({type:'window'}))client.postMessage({type:'CACHE_MISS'});}
 self.addEventListener('fetch',event=>{
  const req=event.request,u=new URL(req.url);if(req.method!=='GET'||u.origin!==new URL(BASE).origin||!u.href.startsWith(BASE))return;

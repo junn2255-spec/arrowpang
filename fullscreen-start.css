@@ -1,0 +1,4 @@
+body.garden-theme #welcome #fullscreen-start{display:block;flex:none;width:72%;min-height:46px;margin:auto auto 8px;padding:10px 12px;border:2px solid #ffdc61;border-radius:18px;background:linear-gradient(#66d930,#138c2a);box-shadow:inset 0 2px 2px #ffffff80,0 3px 0 #164e19,0 5px 10px #092d1950;color:#fff9da;font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800;font-size:19px;line-height:1.2;text-shadow:0 2px 1px #164b23;cursor:pointer}
+body.garden-theme #welcome:has(#fullscreen-start) .menu-actions{margin-top:0}
+body.garden-theme #welcome #fullscreen-start:active{transform:translateY(2px)}
+@media(max-height:700px){body.garden-theme #welcome #fullscreen-start{min-height:42px;padding:8px;font-size:17px;margin-bottom:5px}}

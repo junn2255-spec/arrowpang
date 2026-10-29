@@ -1,0 +1,444 @@
+{
+  "status": "화살표팡 퍼즐 UI 적용 완료",
+  "generation": "Built-in image_gen",
+  "assets": [
+    {
+      "key": "01-garden-background",
+      "label": "정원 배경",
+      "transparent": false,
+      "size": [
+        1080,
+        2340
+      ],
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. Create ONLY a continuous portrait 9:19.5 game background. Blue summer sky and soft white clouds, sun rays from upper right. Leafy treetops arch around the upper corners, slim tree trunks near outermost sides, daisies and shrubs along edges. Center must be visually quiet and open, upper half mostly sky, central board area unobstructed. Bottom fifth has a warm stone garden path, lush flowerbeds, and small wooden fence posts in lower corners. No logos, no tiles, no board, no UI, no frames, no buttons, no text. One seamless illustrated scene with NO horizontal joins, bands or repeated patches. Match reference sunny garden atmosphere.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-5883091d-0c2e-40b6-a9dc-94f711285bc5.png",
+      "width": 1080,
+      "height": 2340,
+      "alpha": false,
+      "file": "png/01-garden-background.png"
+    },
+    {
+      "key": "02-arrowpang-logo",
+      "label": "화살표팡 로고",
+      "transparent": true,
+      "size": [
+        900,
+        500
+      ],
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. Isolated full game title logo, exact Korean text '화살표팡'. '화살표' icy white/cyan/blue thick 3D bevel lettering, '팡' golden yellow with coral red extrusion, dark navy outlines. A warm wooden sign behind word and small green leaves and white daisies peeking out, small colorful up-arrow game tiles above. Compact wide landscape composition like reference logo, whole silhouette within canvas with margin. Transparent background. NO extra words, no other UI.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-3b98721d-bc97-4e42-82ef-69657c273a03.png",
+      "width": 900,
+      "height": 500,
+      "alpha": true,
+      "file": "png/02-arrowpang-logo.png"
+    },
+    {
+      "key": "03-coin-icon",
+      "label": "금화 아이콘",
+      "transparent": true,
+      "size": [
+        256,
+        256
+      ],
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated gold coin icon for currency HUD. Face on, slightly thick golden rim, embossed five-point star at center, warm gold gradient, clean bright highlight. Entire circular coin contained with 8% margin, no numerals, no text, no external rays, no background. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-8db484a1-9d5d-45b7-840a-f39bc7e7b3cc.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/03-coin-icon.png"
+    },
+    {
+      "key": "04-coin-plate",
+      "label": "코인 숫자 표시판",
+      "transparent": true,
+      "size": [
+        700,
+        180
+      ],
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One empty horizontal rounded capsule HUD plate for displaying a coin balance. Warm ivory flat readable center, thick rounded honey-gold beveled rim, subtle soft shadow, width to height about4:1, entirely within canvas. Left end is simple rounded edge; no coin integrated. No text, no numbers, no icons, no ornaments in center. Transparent background outside plate.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-d8ae470f-abcd-46e0-bb52-c1563d0c8731.png",
+      "width": 700,
+      "height": 180,
+      "alpha": true,
+      "file": "png/04-coin-plate.png"
+    },
+    {
+      "key": "05-status-panel",
+      "label": "상태창 · 고정 글씨 포함",
+      "size": [
+        1000,
+        200
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated horizontal HUD panel divided into THREE equal columns, 5:1 aspect. Warm ivory-white, faint sky-blue tint, thin gold trim and two gold vertical separators. At top of columns include EXACT Korean labels left '스테이지', center '남은 화살표', right '이동 횟수'. Labels bold dark slate geometric Korean Gothic, extra bold weight800 like Paperlogy ExtraBold, large clean readable matching screenshot. Bottom 60% of each column EMPTY for live game numbers. NO sample numbers, no slash, no icons. Soft rounded corners and very subtle blue outer shadow. Transparent background outside panel.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-e6b95a5e-ac58-42d5-9384-da1281a746ad.png",
+      "width": 1000,
+      "height": 200,
+      "alpha": true,
+      "file": "png/05-status-panel.png"
+    },
+    {
+      "key": "06-board-frame",
+      "label": "나무 보드 테두리",
+      "size": [
+        1024,
+        1024
+      ],
+      "transparent": true,
+      "source": "C:/Users/USER/.codex/generated_images/01a17810-5da2-7643-b764-46f41d4413db/exec-2cb40362-7757-47be-b612-7d98a4954b96.png",
+      "prompt": "Square honey wood perimeter frame, transparent center and outside; match sunny garden puzzle reference.",
+      "width": 1024,
+      "height": 1024,
+      "alpha": true,
+      "file": "png/06-board-frame.png"
+    },
+    {
+      "key": "07-plain-tile",
+      "label": "기본 타일",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded puzzle floor tile, warm pale apricot sandstone with honey wood warmth like reference emptycells. Very subtle fine organic grain and faint stone veins, softbevel, bright upperleft highlight, warmbrown loweredge, straight-on view. Fill96% squarewith2% transparentmargin. NO icons, arrows, numerals or text. Transparent outside tile.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-12e71e39-2ef5-42b8-b361-1c0749993e8f.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/07-plain-tile.png"
+    },
+    {
+      "key": "08-arrow-up",
+      "label": "위 화살표",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded thick glossy GOLDEN YELLOW puzzle tile. A large raised white-to-pale-cyan arrow points strictly UP, centered,dark cyanblue thin outline and soft3Dextrusion. Match reference arrows. Frontal view, tile fills96% squarewith2% transparentmargin, broad radius and warmbrown loweredge. No text,numbers,particles. Transparent outside tile.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-bb648f49-b3b2-43d6-9e0c-25e135f574fc.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/08-arrow-up.png"
+    },
+    {
+      "key": "09-arrow-down",
+      "label": "아래 화살표",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source": "C:/Users/USER/.codex/generated_images/01a17810-5da2-7643-b764-46f41d4413db/exec-25654d3e-6422-484b-baa3-a9bb63dac4c2.png",
+      "prompt": "Glossy coral red square tile, white cyan DOWN arrow, transparent outside; match garden reference.",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/09-arrow-down.png"
+    },
+    {
+      "key": "10-arrow-left",
+      "label": "왼쪽 화살표",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source": "C:/Users/USER/.codex/generated_images/01a17810-5da2-7643-b764-46f41d4413db/exec-636330a1-6a99-4ca7-bf36-8f74726ad319.png",
+      "prompt": "Glossy emerald square tile, white cyan LEFT arrow, transparent outside; match garden reference.",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/10-arrow-left.png"
+    },
+    {
+      "key": "11-arrow-right",
+      "label": "오른쪽 화살표",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded thick glossy CYAN TO ROYAL BLUE puzzle tile. A large raised white-to-pale-cyan arrow points strictly RIGHT, centered,dark cyanblue thin outline and soft3Dextrusion. Match reference arrows. Frontal view,tile fills96% squarewith2% transparentmargin,broad radius and warmbrown loweredge. No text,numbers,particles. Transparent outside tile.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-182e1262-ebf1-45fd-b794-6c75f54403e4.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/11-arrow-right.png"
+    },
+    {
+      "key": "12-bomb",
+      "label": "폭탄",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated round charcoalblack cartoon puzzle bomb with polished metal volume, shortcurled fuse atupperright and small brightyelloworange sparkling fuse flame. Friendly adventure gameobject,3/4 front view,readable on honeycolored floortile. Entire bombandflame within canvas,fill85% square. NO tilebase,platform,text,numbers. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-cd39203e-e16d-42f0-8c34-b24cd58c9a6d.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/12-bomb.png"
+    },
+    {
+      "key": "13-rock",
+      "label": "숫자 바위 · 숫자 자리 비움",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded gray stone obstacle puzzle tile matching the reference grayrock with number3 but WITHOUT ANY NUMBER. Rounded charcoal slate stone block with chunky beveled craggy edge, a few subtlecracks atoutercorners, smooth darkgray center reservedfor live white count. Fill96% squarewith2%transparentmargin, straighton view. NO letters,numbers, symbols, base or background. Transparent outsideblock.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-4721a6db-6fce-44a3-906b-7c4179c69fb8.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/13-rock.png"
+    },
+    {
+      "key": "14-rotation",
+      "label": "90도 회전 타일 · 회색 돌",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Edit this 90-degree rotation puzzle tile. Change its GREEN/TEAL stone body to natural neutral GRAY STONE: slate-gray central face, lighter gray beveled rock edges, subtle stone grain and small cracks at corners. Clearly rough stone material, not glossy green enamel. Preserve exact same square shape, proportions, clockwise quarter-turn raised arrow, and fixed '90°' text, same positions and sizes. Arrow and 90° lettering are ivory-white with a subtle warm shadow, highly readable on gray. Match a polished 3D cartoon garden puzzle game. No green or teal tint anywhere in the stone. Keep entire tile visible with narrow transparent margin, transparent background outside tile. No extra text or numbers.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-afe53c8a-f0bd-4f96-a2c3-9b2837e169c3.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/14-rotation.png"
+    },
+    {
+      "key": "15-key",
+      "label": "황금 열쇠",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated magical but simple golden key puzzle item, diagonally lowerleft to upperright, round ring bow withemptyhole, short sturdyshaft and2clear teeth, polished gold volume, subtlewarmhighlight. Cute mobile adventuregame object readable at40px. Whole keywithin squarecanvas fill82%, no floor tilebase,noplatform,no externalparticles,no text,no numbers. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-7bcbac91-2ca1-4b40-b4c5-67f42fdce7d5.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/15-key.png"
+    },
+    {
+      "key": "16-button-undo",
+      "label": "되돌리기 버튼",
+      "size": [
+        320,
+        320
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded glossy BLUE game action button matching reference lower-left button. Large white/light cyan curved undo arrow icon in upper65% pointing back left. Bottom25% contains EXACT Korean text '되돌리기' in bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold, dark navy outline, clearly readable. Gold/ivory thin bevel rim, soft lower shadow, complete button fills92% ofsquare with4% transparentmargin. No other text, no surrounding scene. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-5eed28a3-f158-4e77-be5e-fc52f7df42d4.png",
+      "width": 320,
+      "height": 320,
+      "alpha": true,
+      "file": "png/16-button-undo.png"
+    },
+    {
+      "key": "17-button-restart",
+      "label": "다시 시작 버튼",
+      "size": [
+        320,
+        320
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded glossy CORAL RED game action button matching reference restartbutton. Large white clockwise circular restart arrow icon in upper65%. Bottom25% contains EXACT Korean text '다시 시작' in bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold, dark burgundy outline. Gold/ivory thin bevel rim, soft lower shadow. Button fills92% square,4%transparentmargin. No other text, no scene. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-43da394a-479b-4af7-9f65-f2736edc020e.png",
+      "width": 320,
+      "height": 320,
+      "alpha": true,
+      "file": "png/17-button-restart.png"
+    },
+    {
+      "key": "18-button-hint",
+      "label": "힌트 버튼",
+      "size": [
+        320,
+        320
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded glossy GOLDEN YELLOW game action button matching reference hintbutton. Large warm glowing yellow-white light bulb with metalbase in upper65%, no exterior sparkle particles. Bottom25% contains EXACT Korean text '힌트' in bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold, dark warmbrown outline. Ivory-gold thin bevel rim,soft lower shadow. Button fills92% square,4%transparentmargin. No othertext, no scene. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-d4e14629-2a4e-44a1-8942-61704e1f0f76.png",
+      "width": 320,
+      "height": 320,
+      "alpha": true,
+      "file": "png/18-button-hint.png"
+    },
+    {
+      "key": "19-button-home",
+      "label": "나의집 버튼",
+      "size": [
+        320,
+        320
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded glossy GREEN game action button matching reference homebutton. Charming small house with red gabled roof, creamwalls and roundbluedoor/window, tiny shrubs in upper65%. Bottom25% contains EXACT Korean text '나의집' in bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold, dark forestgreen outline. Ivory-gold thin bevel rim,soft lower shadow. Button fills92% square,4%transparentmargin. No othertext,no scene. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-4b3d4509-e036-41a0-9b82-3cd711927ca0.png",
+      "width": 320,
+      "height": 320,
+      "alpha": true,
+      "file": "png/19-button-home.png"
+    },
+    {
+      "key": "20-sound-on",
+      "label": "소리 켜짐 버튼",
+      "size": [
+        192,
+        192
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated circular small settings button for bright garden mobilegame. Pearly paleivorywhite disc with subtlyblue beveled rim. Large dark periwinkle-blue musicalnote centered upperpart, fixed small bold text 'ON' below. Clean soft3D volume, straighton view, contained with6%transparentmargin. No other words,no othericons. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-f9185e51-bc38-4397-ab2c-36e39065c0ad.png",
+      "width": 192,
+      "height": 192,
+      "alpha": true,
+      "file": "png/20-sound-on.png"
+    },
+    {
+      "key": "21-sound-off",
+      "label": "소리 꺼짐 버튼",
+      "size": [
+        192,
+        192
+      ],
+      "transparent": true,
+      "prompt": "Built-in imagegen edit: preserve sound ON button, replace label with exact uppercase OFF, no other change.",
+      "source": "C:/Users/USER/.codex/generated_images/01a17810-5da2-7643-b764-46f41d4413db/exec-5c6c1cf1-30cc-494c-83f1-087f3cb165fc.png",
+      "width": 192,
+      "height": 192,
+      "alpha": true,
+      "file": "png/21-sound-off.png"
+    },
+    {
+      "key": "22-help",
+      "label": "도움말 버튼",
+      "size": [
+        192,
+        192
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated circular small help button matching garden game's soundbuttons. Pearly paleivorywhite disc with subtlyblue beveled rim. Large thick dark periwinkle-blue questionmark '?' centered. Clean soft3Dvolume,straightonview,contained with6%transparentmargin. No othertext,no scene,no decorativeparticles. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-27e38a95-fe3f-4e34-85c9-08361b5331cf.png",
+      "width": 192,
+      "height": 192,
+      "alpha": true,
+      "file": "png/22-help.png"
+    },
+    {
+      "key": "23-guide-panel",
+      "label": "안내 말풍선",
+      "size": [
+        800,
+        300
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated horizontal rounded speech panel for garden puzzle guidance. Warm ivory-white center, subtle pale blue tint, thin honeygoldbeveled border, small clean speech tail centered near bottomleft, small polished wooden top-center tab with EXACT Korean heading '안내' in bold white extra-bold geometric Korean GothiclikePaperlogy ExtraBold. Remaining80% ofpanel completely EMPTY for changing hints and frog messages. No otherwords,numbers,icons,stars or ornaments. Wideapprox3:1 rectangle, transparent outside and tail.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-df9f91d2-1b73-4c22-90b7-24e605a63ee8.png",
+      "width": 800,
+      "height": 300,
+      "alpha": true,
+      "file": "png/23-guide-panel.png"
+    },
+    {
+      "key": "24-stage-clear",
+      "label": "스테이지 클리어 제목",
+      "size": [
+        900,
+        350
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated wide celebratory mobile puzzle game title emblem. Exact Korean text '스테이지 클리어!' in large dimensional golden-yellow and warmivory chunky extra-bold geometric Korean lettering, darkwarmbrown outline. Small honeywood ribbon behind word, a few emerald leaves and white daisies peek atends, three smallgoldstarsabove. Compact cheerfulclear composition, texthighlyreadable. Entire emblem inside canvas with8%margin. No othertext,no numbers,no coins,no background. Transparent background.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-b202bb3a-d5c2-4652-b8a9-cd6e5c603b1c.png",
+      "width": 900,
+      "height": 350,
+      "alpha": true,
+      "file": "png/24-stage-clear.png"
+    },
+    {
+      "key": "25-reward-panel",
+      "label": "코인 획득 보상 패널",
+      "size": [
+        800,
+        500
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated rounded rectangular reward popup panel, warm ivory blank center and thin goldwoodbeveled trim with small dark honeywood header tab. Header includes EXACT Korean title '코인 획득!' in large bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold, thin darkoutline. Small shiny goldstarcoinicon near headerleft. Main center and lower75% remain completely EMPTY for dynamicamount and explanatorytext; no sample numbers,no otherwords. Mostlyfrontview,widthtoheightabout1.6:1. Transparent outside panel. No external sparkles.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-8afdaf61-7e7d-49ee-a811-7c88857f9619.png",
+      "width": 800,
+      "height": 500,
+      "alpha": true,
+      "file": "png/25-reward-panel.png"
+    },
+    {
+      "key": "26-next-button",
+      "label": "다음 버튼",
+      "size": [
+        600,
+        220
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated wide horizontal rounded game actionbutton, glossy emerald green with thin ivorygold beveled border. Exact large Korean text '다음' in bold white geometric Korean Gothic extra-bold style like Paperlogy ExtraBold with darkgreenoutline, centeredleft, clear white right-pointing arrow on right. Widthtoheightabout3:1, entire shape has5%transparentmargin. No otherwords,numbers,scene or externalparticles. Transparent outsidebutton.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-2e31566a-255e-463a-9a3e-4681848fd62c.png",
+      "width": 600,
+      "height": 220,
+      "alpha": true,
+      "file": "png/26-next-button.png"
+    },
+    {
+      "key": "27-rainbow-tile",
+      "label": "무지개 특수 타일",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated square rounded glossy special puzzle tile with vivid smooth rainbow enamel gradient across face, softgoldbevelededge, large centered clean white fivepointstar. Match same tile silhouette as bluegreenredyellow arrowtiles. Straighton flatview,fill96% squarewith2%transparentmargin. NO arrows,letters,numbers, scene or particles. Transparent outside tile.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-925e34cf-037a-47c2-a70e-57a3cdc76c72.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/27-rainbow-tile.png"
+    },
+    {
+      "key": "28-frog",
+      "label": "개구리 장애물",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One adorable small emerald/lime-green frog obstacle sprite sitting still, rounded plumpbody, largefriendly eyes, tinygolden toes, cheerful closed-mouth smile. Three-quarter frontal view, no platform, no rock, no tile under it, no crown, no extraobjects. Wholebody fits85%squarecanvas, smallshadow directly attached to feet only. Readable at48px ingame, matches glossy cartoon gardenpuzzle assets. No words,numbers,UI. Transparentbackground.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-bf46cad4-eb6e-4c8e-ad54-b5436b125b1d.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/28-frog.png"
+    },
+    {
+      "key": "29-hammer",
+      "label": "망치 아이템",
+      "size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "prompt": "Premium polished 3D cartoon mobile puzzle game UI matching the provided reference: bright sunlit garden, rich emerald foliage, warm honey wood, glossy saturated enamel, soft beveled edges, clean highlights from upper left, tidy chunky silhouettes, high clarity on a small phone screen. One isolated friendly cartoon puzzle hammer item, sturdy polished silver-metal rectangular mallet head, honeywoodhandle, smallgold connector. Diagonal pose handle towardlowerleft headtowardupperright, no hands, no people, no impacteffects, no tilebase, no scene. Entirehammerfits85%squarecanvas. Match warm polished3Dmobilegardenpuzzle art, legibleat48px. Noletters,numbers. Transparentbackground.",
+      "source": "C:\\Users\\USER\\.codex\\generated_images\\01a17810-5da2-7643-b764-46f41d4413db\\exec-9503129f-5c5f-4781-b1ef-6bac8fabab6c.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "file": "png/29-hammer.png"
+    }
+  ],
+  "rotation": "14-rotation: 마지막 확정 회색 돌 에셋",
+  "mole": "두더지잡기 UI 및 파일 변경 없음",
+  "logoMotion": "5초 주기, 상하 3px"
+}

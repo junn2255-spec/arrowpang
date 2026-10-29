@@ -1,0 +1,519 @@
+@font-face{font-family:'Garden Paperlogy';src:url('assets/garden-ui-v1/Paperlogy-8ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap}
+body.garden-theme{background:#9bd9ed url('assets/garden-ui-v1/01-garden-background.webp') center top/cover fixed no-repeat}
+body.garden-theme main{background:none}
+body.garden-theme #game#game{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;container-type:inline-size}
+body.garden-theme #game#game:not(.clear-screen){position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:31cqw 19cqw minmax(0,1fr) 22cqw 38px;gap:5px;height:100%;min-height:0;width:100%;align-content:stretch;align-items:center}
+body.garden-theme #game#game:not(.clear-screen) header{grid-row:1;position:relative;display:block;height:100%;min-height:0;padding:0;margin:0;background:none;border:0;box-shadow:none}
+body.garden-theme #game#game:not(.clear-screen) header h1{position:absolute;left:0;top:0;width:62%;height:29cqw;flex:none;margin:0;line-height:0}
+body.garden-theme #game#game:not(.clear-screen) header h1 img{display:block;width:100%;height:100%;max-height:none;margin:0;object-fit:contain;animation:gardenLogoFloat 5s ease-in-out infinite}
+@keyframes gardenLogoFloat{0%,100%{translate:0 0}50%{translate:0 -6px}}
+body.garden-theme #game#game:not(.clear-screen) #settings,body.garden-theme #game#game:not(.clear-screen) #garden-help{position:absolute;top:0;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;margin:0;border:0;background:none;box-shadow:none;z-index:3;line-height:0}
+body.garden-theme #game#game:not(.clear-screen) #settings{right:48px}
+body.garden-theme #garden-help{right:0}
+body.garden-theme #settings img,body.garden-theme #garden-help img{display:block;width:100%;height:100%;object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) .wallet-row{position:absolute;top:19cqw;left:auto;right:0;width:37%;height:11cqw;margin:0;z-index:3;display:block}
+body.garden-theme #game#game .wallet-row .coin-wallet{position:relative;width:100%;max-width:none;min-width:0;min-height:0;height:100%;aspect-ratio:auto;background:url('assets/garden-ui-v1/04-coin-plate.webp') center/100% 100% no-repeat;filter:none;padding:0;isolation:isolate}
+body.garden-theme #game#game .wallet-row .coin-wallet::before{content:'';position:absolute;left:-10%;top:-8%;width:32%;height:116%;inset:auto auto auto -10%;background:url('assets/garden-ui-v1/03-coin-icon.webp') center/contain no-repeat;z-index:1}
+body.garden-theme #game#game .wallet-row .coin-wallet::after{display:none}
+body.garden-theme #game#game #wallet{position:absolute;left:20%;right:7%;top:14%;bottom:14%;display:flex;align-items:center;justify-content:center;font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-size:min(var(--wallet-font,30px),7cqw);line-height:1;color:#563725;text-shadow:0 1px #fff7df;white-space:nowrap}
+body.garden-theme #game#game:not(.clear-screen) .stats{grid-row:2;position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:100%;min-height:0;width:100%;aspect-ratio:auto;margin:0;padding:0 6%;border:0;border-image:none;border-radius:0;background:url('assets/garden-ui-v1/05-status-panel.webp') center/100% 100% no-repeat;box-shadow:none;gap:0;overflow:visible}
+body.garden-theme #game#game .stats div{position:relative;min-width:0;height:100%;padding:0;border:0;background:none}
+body.garden-theme #game#game .stats div::before,body.garden-theme #game#game .stats div::after{display:none!important}
+body.garden-theme #game#game .stats span{position:absolute;width:1px;height:1px;margin:-1px;padding:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+body.garden-theme #game#game .stats strong{position:absolute;left:50%;right:auto;top:49%;transform:translateX(-50%);font-family:'User Paperlogy Bold',sans-serif;font-size:clamp(21px,6.4cqw,30px);line-height:1.1;font-weight:700;color:#42545b;text-shadow:none;white-space:nowrap}
+body.garden-theme #game#game:not(.clear-screen) .board-slot{grid-row:3;position:relative;display:block;align-self:center;justify-self:center;width:100%;max-width:min(100%,calc(100dvh - 290px));height:auto;min-height:0;aspect-ratio:1;padding:3.5%;margin:0;isolation:isolate}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{content:'';position:absolute;inset:0;background:url('assets/garden-ui-v1/06-board-frame.webp') center/100% 100% no-repeat;pointer-events:none;z-index:-1}
+body.garden-theme #game#game:not(.clear-screen) #board{position:relative;display:block;width:100%;min-width:0;max-width:none;height:auto;aspect-ratio:1;border:0;border-radius:6px;background:#995c2c;box-shadow:none;overflow:visible}
+body.garden-theme #game#game .frame{display:none!important}
+body.garden-theme #game#game .floor{background-image:url('assets/garden-ui-v1/07-plain-tile.webp')!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat}
+body.garden-theme .block{padding:0}
+body.garden-theme .block span{border:0;border-radius:10px;box-shadow:none;background-color:transparent;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important}
+body.garden-theme .block[data-dir='U']:not([data-rainbow='true']) span{background-image:url('assets/garden-ui-v1/08-arrow-up.webp')!important}
+body.garden-theme .block[data-dir='D']:not([data-rainbow='true']) span{background-image:url('assets/garden-ui-v1/09-arrow-down.webp')!important}
+body.garden-theme .block[data-dir='L']:not([data-rainbow='true']) span{background-image:url('assets/garden-ui-v1/10-arrow-left.webp')!important}
+body.garden-theme .block[data-dir='R']:not([data-rainbow='true']) span{background-image:url('assets/garden-ui-v1/11-arrow-right.webp')!important}
+body.garden-theme .block:not([data-rainbow='true']) span::after{content:none;display:none!important}
+body.garden-theme #game#game .rock:not(.breaking)>span{border:0;border-radius:0;box-shadow:none;background:transparent url('assets/garden-ui-v1/13-rock.webp') center/100% 100% no-repeat!important}
+body.garden-theme #game#game .rock{padding:0}
+body.garden-theme #game#game .rock b{left:0;right:0;top:0;bottom:0;transform:none;display:grid;place-items:center;width:100%;height:100%;min-width:0;border-radius:0;background:none;font:800 clamp(20px,7cqw,34px)/1 'Garden Paperlogy',sans-serif;color:#fff;-webkit-text-stroke:1px #33434f;paint-order:stroke fill;text-shadow:0 2px 2px #253340}
+body.garden-theme #game#game .rotation-zone{padding:0}
+body.garden-theme #game#game .rotation-zone img{width:100%;height:100%;object-fit:contain;filter:none;transform:none}
+body.garden-theme #game#game .special-marker{padding:5px}
+body.garden-theme #game#game .special-marker img{width:100%;height:100%;object-fit:contain}
+body.garden-theme .block[data-rainbow='true'][data-dir] span{background:transparent url('assets/garden-ui-v1/27-rainbow-tile.webp') center/100% 100% no-repeat!important}
+body.garden-theme .block[data-rainbow='true'][data-dir] span::after{content:'';display:block!important;position:absolute;inset:12%;background-position:center;background-size:100% 100%;background-repeat:no-repeat;filter:drop-shadow(0 1px 1px #143a75)}
+body.garden-theme .block[data-rainbow='true'][data-dir='U'] span::after{background-image:url('assets/ui/arrow-U.webp')}
+body.garden-theme .block[data-rainbow='true'][data-dir='D'] span::after{background-image:url('assets/ui/arrow-D.webp')}
+body.garden-theme .block[data-rainbow='true'][data-dir='L'] span::after{background-image:url('assets/ui/arrow-L.webp')}
+body.garden-theme .block[data-rainbow='true'][data-dir='R'] span::after{background-image:url('assets/ui/arrow-R.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav{grid-row:4;position:relative;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:3%;width:96%;height:auto;margin:0 auto!important;align-self:center;justify-self:center;align-items:center}
+body.garden-theme #game#game:not(.clear-screen) nav .complete-button{position:static;width:100%!important;height:auto!important;min-height:44px;min-width:44px;aspect-ratio:1;padding:0!important;margin:0;border:0;background:none;box-shadow:none;align-self:center;justify-self:center;line-height:0}
+body.garden-theme #game#game nav .complete-button img{display:block;width:100%;height:auto;object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) footer,body.garden-theme #game#game:not(.clear-screen) .status-row{display:none}
+body.garden-theme #game#game #fishing-entry{grid-row:5;position:relative;justify-self:center;align-self:center;width:96%;min-height:34px;height:34px;margin:0;padding:3px 8px;border:1px solid #7d9e51;border-radius:12px;background:#fff8ddea;color:#345336;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 2px 5px #31572833}
+body.garden-theme #game#game #fishing-entry b{font:800 13px 'Garden Paperlogy',sans-serif}body.garden-theme #game#game #fishing-entry small{font-size:9px;letter-spacing:0;color:#56694a}
+body.garden-theme #game#game #play-notice-lane{top:-35px;left:0;width:100%;z-index:12}
+body.garden-theme #game#game #play-notice-lane #message:not(:empty),body.garden-theme #blocked-notice{border:0;border-image:none;background:url('assets/garden-ui-v1/23-guide-panel.webp') center/100% 100% no-repeat;box-shadow:none;color:#53452f;-webkit-text-stroke:0;text-shadow:none;font-family:'User Paperlogy Bold',sans-serif;font-size:clamp(12px,3.4cqw,16px);line-height:1.3;padding:25px 14px 14px;min-height:70px}
+body.garden-theme #game#game .frog-notice{border:0;border-radius:0;box-shadow:none;background:url('assets/garden-ui-v1/23-guide-panel.webp') center/100% 100% no-repeat;padding:24px 12px 12px;color:#42532b;font-family:'User Paperlogy Bold',sans-serif}
+body.garden-theme #game#game .frog-notice::before{display:none}
+body.garden-theme #next-reward-preview{top:-24px;color:#4c573e;text-shadow:0 1px 1px white;font-size:12px}
+body.garden-theme #game#game.clear-screen .wallet-row .coin-wallet{width:190px;height:50px;aspect-ratio:auto}
+body.garden-theme #game#game.clear-screen #celebrate .star{display:none}
+body.garden-theme #game#game.clear-screen #celebrate .complete-clear{width:100%;margin:6px 0 0;aspect-ratio:900/350;object-fit:contain}
+body.garden-theme #game#game.clear-screen #reward-panel{aspect-ratio:800/500}
+body.garden-theme #game#game.clear-screen #reward-panel>img{width:100%;aspect-ratio:800/500;object-fit:contain}
+body.garden-theme #game#game.clear-screen .clear-amount{top:37%;height:22%}
+body.garden-theme #game#game.clear-screen .clear-total{top:65%}
+body.garden-theme #game#game.clear-screen #next img{aspect-ratio:600/220}
+body.garden-theme #game#game.clear-screen #fishing-entry{display:none}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen){grid-template-rows:28cqw 18cqw minmax(0,1fr) 21cqw 34px;gap:3px}body.garden-theme #game#game:not(.clear-screen) .board-slot{max-width:min(100%,calc(100dvh - 270px))}body.garden-theme #game#game:not(.clear-screen) .wallet-row{top:17cqw;height:10cqw}body.garden-theme #game#game #fishing-entry small{display:none}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game header h1 img{animation:none!important}}
+html[data-reduce-effects='true'] body.garden-theme #game#game header h1 img{animation:none!important}
+
+body.garden-theme:has(#game:not([hidden])) main{height:100dvh;min-height:0}
+
+/* Welcome screen: slightly larger title, white type with shaded charcoal rims, lower menu. */
+body.garden-theme #welcome h1{padding:7.5px 0}
+body.garden-theme #welcome .logo{transform:scale(1.1);transform-origin:center}
+body.garden-theme #welcome .menu-intro p{font-size:clamp(17.6px,4.4vw,20.9px)!important;line-height:1.45}
+body.garden-theme #welcome .menu-intro,body.garden-theme #welcome .menu-intro p,body.garden-theme #welcome .menu-intro p+p,body.garden-theme #welcome .menu-actions button,body.garden-theme #welcome .menu-actions span{color:#fff!important;-webkit-text-fill-color:#fff;-webkit-text-stroke:2px #50545a;paint-order:stroke fill;text-shadow:0 -2px 0 #85898e,1px -1px 0 #74797f,-1px -1px 0 #74797f,2px 0 0 #53585e,-2px 0 0 #53585e,2px 2px 0 #353a40,-2px 2px 0 #353a40,0 3px 1px #22262b}
+body.garden-theme #welcome .menu-actions{margin-top:auto;transform:scale(.95);transform-origin:center bottom;flex:none}
+body.garden-theme #welcome .menu-footer{display:none!important}
+@media(max-height:700px){body.garden-theme #welcome h1{padding:5.5px 0}}
+
+/* Welcome text refinements: 20% transparency on the larger intro, plain lower labels. */
+body.garden-theme #welcome .menu-intro p{font-size:clamp(19.36px,4.84vw,22.99px)!important;opacity:.8}
+body.garden-theme #welcome .menu-actions button,body.garden-theme #welcome .menu-actions span,body.garden-theme #welcome #reset-game{-webkit-text-stroke:0;text-shadow:none}
+
+/* Only the two welcome instructions: +3pt (4 CSS px) and blue lettering. */
+body.garden-theme #welcome .menu-intro p,body.garden-theme #welcome .menu-intro p+p{font-size:calc(clamp(19.36px,4.84vw,22.99px) + 4px)!important;color:#1675e8!important;-webkit-text-fill-color:#1675e8}
+
+/* Highlight only the action phrases; the final instructions are two points smaller. */
+body.garden-theme #welcome .menu-intro p,body.garden-theme #welcome .menu-intro p+p,body.garden-theme #welcome .menu-intro .intro-bridge,body.garden-theme #welcome .menu-intro .intro-detail{color:#fff!important;-webkit-text-fill-color:#fff}
+body.garden-theme #welcome .menu-intro .intro-lead{color:#fff2a3!important;-webkit-text-fill-color:#fff2a3}
+body.garden-theme #welcome .menu-intro .intro-detail{font-size:calc(1em - 2pt)}
+
+body.garden-theme #welcome .menu-intro p{opacity:1}
+
+/* Approved welcome instruction artwork, full opacity and no CSS text effects. */
+body.garden-theme #welcome .menu-intro{width:100%;flex:none;margin:12px 0 8px;padding:0;line-height:0;text-shadow:none;-webkit-text-stroke:0;opacity:1}
+body.garden-theme #welcome .welcome-instructions-art{display:block;width:100%;height:auto;max-width:100%;margin:0;object-fit:contain;filter:none;opacity:1}
+
+/* Lower menu labels: 20 percent transparent, artwork stays opaque. */
+body.garden-theme #welcome .menu-actions button span{opacity:.8}
+
+/* Plain play instructions: white sheet covers the entire block view, 25% transparent. */
+body.garden-theme #tutorial[data-guide="play"]{background:rgba(255,255,255,.75);padding:20px;overflow:auto;backdrop-filter:none}
+body.garden-theme #tutorial[data-guide="play"] .tutorial-bubble{position:relative;width:min(100%,520px);max-height:100%;overflow:auto;background:transparent;border:0;border-radius:0;box-shadow:none;padding:16px 8px;color:#000}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-image{display:none!important}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-text{position:static;width:auto;height:auto;margin:0 0 24px;padding:0;overflow:visible;clip-path:none;white-space:pre-line;color:#000;-webkit-text-fill-color:#000;-webkit-text-stroke:0;text-shadow:none;opacity:1;font:800 clamp(15px,4vw,19px)/1.7 'Garden Paperlogy',sans-serif;text-align:left;word-break:keep-all}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-close{position:static;display:block;width:auto;height:auto;min-width:100px;min-height:44px;padding:10px 24px;margin:0 auto;border:1px solid #000;border-radius:0;background:#fff;color:#000;-webkit-text-fill-color:#000;-webkit-text-stroke:0;text-shadow:none;box-shadow:none;font:800 18px/1.3 'Garden Paperlogy',sans-serif;opacity:1}
+
+/* Approved guide artwork covers the board only. White background is 25% transparent; lettering remains opaque. */
+body.garden-theme #tutorial[data-guide="play"]{background:transparent;padding:0;overflow:hidden}
+body.garden-theme #tutorial[data-guide="play"] .tutorial-bubble{position:fixed;left:var(--play-guide-left);top:var(--play-guide-top);width:var(--play-guide-width);height:var(--play-guide-height);max-width:none;max-height:none;margin:0;padding:0;overflow:hidden;border:0;border-radius:0;background:rgba(255,255,255,.75);box-shadow:none}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-image{display:block!important;width:100%;height:100%;object-fit:fill;opacity:1}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-text{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:normal}
+body.garden-theme #tutorial[data-guide="play"] #tutorial-close{position:absolute;left:31%;top:81%;width:38%;height:13%;min-width:0;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:transparent;-webkit-text-fill-color:transparent;box-shadow:none;text-shadow:none}
+
+/* Guide artwork reduced to 90%; board coverage retained. */
+body.garden-theme #tutorial[data-guide='play'] #tutorial-image{position:absolute;left:5%;top:5%;width:90%;height:90%}
+body.garden-theme #tutorial[data-guide='play'] #tutorial-close{left:32.9%;top:77.9%;width:34.2%;height:11.7%}
+
+/* Align title base with wallet, soften HUD artwork, compact lower controls. */
+body.garden-theme #game#game:not(.clear-screen) header h1{top:1cqw}
+body.garden-theme #game#game:not(.clear-screen) .stats{background:none;isolation:isolate}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/garden-ui-v1/05-status-panel.webp') center/100% 100% no-repeat;opacity:.85;pointer-events:none}
+body.garden-theme #game#game:not(.clear-screen) nav .complete-button img{transform:scale(.9);transform-origin:center}
+body.garden-theme #game#game #home::after{display:none!important;content:none!important;animation:none!important;box-shadow:none!important}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen) header h1{top:-2cqw}}
+/* Move the visible logo slightly below the wallet baseline. */
+body.garden-theme #game#game:not(.clear-screen) header h1{top:4cqw}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen) header h1{top:1cqw}}
+
+/* Welcome uses one continuous scene across the viewport, including lower and side margins. */
+body.garden-theme:has(#welcome:not([hidden])){min-height:100dvh;background:#264d21 url('assets/ui/title-bg.webp') center center/cover fixed no-repeat}
+body.garden-theme:has(#welcome:not([hidden])) main{background:transparent;box-shadow:none}
+body.garden-theme #welcome.menu-screen{background:transparent}
+/* Darken only the puzzle scene background by 30%, keeping UI and tiles unchanged. */
+body.garden-theme:has(#game:not([hidden])){background-image:linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.30)),url('assets/garden-ui-v1/01-garden-background.webp')}
+/* Lower puzzle button artwork: 20% transparent; interaction remains unchanged. */
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home) img{opacity:.8}
+
+/* Approved thick puzzle pieces and slate board. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot{padding:5.5%}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-frame.webp')}
+body.garden-theme #game#game:not(.clear-screen) #board{background:#273138}
+body.garden-theme #game#game .floor{background-image:url('assets/stone-refresh-v1/stone-floor.webp')!important}
+body.garden-theme #game#game .rock:not(.breaking)>span{background-image:url('assets/stone-refresh-v1/rock.webp')!important}
+body.garden-theme #game#game .rock[data-hp='2']:not(.breaking)>span{background-image:url('assets/stone-refresh-v1/stone-break-1.webp')!important}
+body.garden-theme #game#game .rock[data-hp='1']:not(.breaking)>span{background-image:url('assets/stone-refresh-v1/stone-break-2.webp')!important}
+body.garden-theme #game#game .rock i,body.garden-theme #game#game .rock>span::after{display:none!important}
+body.garden-theme #game#game .rock.breaking{visibility:hidden}
+.garden-stone-break{position:absolute;pointer-events:none;background-position:center;background-size:100% 100%;background-repeat:no-repeat;z-index:8}
+body.garden-theme .block[data-dir='U']:not([data-rainbow='true']) span{background-image:url('assets/stone-refresh-v1/arrow-up.webp')!important}
+body.garden-theme .block[data-dir='D']:not([data-rainbow='true']) span{background-image:url('assets/stone-refresh-v1/arrow-down.webp')!important}
+body.garden-theme .block[data-dir='L']:not([data-rainbow='true']) span{background-image:url('assets/stone-refresh-v1/arrow-left.webp')!important}
+body.garden-theme .block[data-dir='R']:not([data-rainbow='true']) span{background-image:url('assets/stone-refresh-v1/arrow-right.webp')!important}
+
+/* One complete stone board image: no separate floor sprites or transparent joins. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-board-complete.webp')}
+body.garden-theme #game#game:not(.clear-screen) #board{background:transparent;overflow:visible}
+body.garden-theme #game#game .floor{display:none!important}
+/* Plain large white status messages sit entirely above the stone frame. */
+body.garden-theme #game#game #play-notice-lane{top:auto;bottom:calc(100% + 8px);left:0;width:100%;z-index:20}
+body.garden-theme #game#game #play-notice-lane #message:not(:empty),body.garden-theme #game#game #blocked-notice{background:none!important;background-image:none!important;border:0;border-image:none;border-radius:0;box-shadow:none;padding:0 4px;min-height:0;height:auto;max-height:none;color:#fff!important;-webkit-text-fill-color:#fff;-webkit-text-stroke:0;font:800 clamp(19px,5.2cqw,24px)/1.3 'Garden Paperlogy',sans-serif;text-align:center;text-shadow:0 2px 3px #162824;opacity:1}
+body.garden-theme #game#game #blocked-notice{top:auto;bottom:calc(100% + 8px);left:0;width:100%;transform:none;z-index:20}
+body.garden-theme #game#game #message::before,body.garden-theme #game#game #message::after,body.garden-theme #game#game #blocked-notice::before,body.garden-theme #game#game #blocked-notice::after{display:none!important;content:none!important}
+body.garden-theme #game#game #message .stone-durability{color:#fff;-webkit-text-fill-color:#fff}
+/* Image and gameplay use identical measured 6x6 cell geometry. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot{padding:0;overflow:visible}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-board-aligned.webp');background-size:100% 100%;inset:0}
+body.garden-theme #game#game:not(.clear-screen) #board{position:absolute;left:6.6666666667%;top:6.6666666667%;width:86.6666666666%;height:86.6666666666%;max-width:none;min-width:0;aspect-ratio:auto;margin:0;padding:0;border:0;background:transparent;box-shadow:none}
+/* Size game grid rows against the centered game column, not the browser width. */
+body.garden-theme main:has(#game:not([hidden])){container-type:inline-size}
+
+/* Complete beveled outer contour stays inside the image; exact matching inner grid. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-board-finished.webp')}
+body.garden-theme #game#game:not(.clear-screen) #board{left:14.4444444444%;top:13.7037037037%;width:71.1111111111%;height:71.1111111111%}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen){grid-template-rows:28cqw 18cqw minmax(0,1fr) 24cqw 34px}body.garden-theme #game#game:not(.clear-screen) .board-slot{max-width:min(100%,calc(100dvh - 300px))}}
+/* Thin frame restores the original large playing cells; no extra interior padding. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-board-thin-rim.webp')}
+body.garden-theme #game#game:not(.clear-screen) #board{left:6.6666666667%;top:6.6666666667%;width:86.6666666666%;height:86.6666666666%}
+/* Refined cracked slate surface and whole-board cast shadow. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/stone-refresh-v1/stone-board-depth-cracks.webp');filter:drop-shadow(0 6px 3px rgba(10,19,22,.5)) drop-shadow(0 14px 9px rgba(10,19,22,.38))}
+
+/* Supplied wood buttons: opaque artwork and soft shadows below. */
+body.garden-theme #game#game:not(.clear-screen) nav,body.garden-theme #game#game:not(.clear-screen) nav .complete-button{overflow:visible}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home) img{opacity:1;filter:drop-shadow(0 3px 2px rgba(9,25,14,.5)) drop-shadow(0 7px 4px rgba(9,25,14,.35))}
+
+/* Supplied stone-and-leaf status panel; values align beneath baked labels. */
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 22.7cqw minmax(0,1fr) 22cqw 38px}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/stone-status-panel-v1/status-panel.webp')}
+body.garden-theme #game#game .stats div{position:static}
+body.garden-theme #game#game .stats strong{top:51%;color:#504c48}
+body.garden-theme #game#game .stats div:nth-child(1) strong{left:22%}
+body.garden-theme #game#game .stats div:nth-child(2) strong{left:50%}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:78%}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen){grid-template-rows:28cqw 22.7cqw minmax(0,1fr) 24cqw 34px}}
+/* Supplied integrated coin icon and counter plate. */
+body.garden-theme #game#game:not(.clear-screen) .wallet-row{height:12.5cqw}
+body.garden-theme #game#game:not(.clear-screen) .wallet-row .coin-wallet{background-image:url('assets/gold-coin-wallet-v1/coin-wallet.webp');background-size:100% 100%;filter:none}
+body.garden-theme #game#game:not(.clear-screen) .wallet-row .coin-wallet::before,body.garden-theme #game#game:not(.clear-screen) .wallet-row .coin-wallet::after{display:none!important;content:none!important}
+body.garden-theme #game#game:not(.clear-screen) #wallet{left:35%;right:8%;top:18%;bottom:18%}
+@media(max-height:650px){body.garden-theme #game#game:not(.clear-screen) .wallet-row{top:15cqw}}
+
+/* Equal resting controls: no idle or disabled dimming/scaling; press feedback retained. */
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home){opacity:1;filter:none;transform:none;scale:1;animation:none}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home):disabled{opacity:1;filter:none;transform:none;scale:1}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home):active:not(:disabled){transform:scale(.95);filter:brightness(.94)}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#restart,#hint,#home) img{width:100%;height:auto;aspect-ratio:1;transform:scale(.9);opacity:1;animation:none}
+/* Opaque HUD artwork, consistent cast shadows, optical coin-value centering. */
+body.garden-theme #game#game:not(.clear-screen) .stats::before{opacity:1;filter:drop-shadow(0 4px 3px rgba(10,25,22,.42)) drop-shadow(0 8px 5px rgba(10,25,22,.24))}
+body.garden-theme #game#game:not(.clear-screen) .wallet-row .coin-wallet{filter:drop-shadow(0 3px 2px rgba(10,25,22,.42)) drop-shadow(0 7px 4px rgba(10,25,22,.26))}
+body.garden-theme #game#game:not(.clear-screen) header h1 img{filter:drop-shadow(0 3px 2px rgba(10,25,22,.4)) drop-shadow(0 7px 4px rgba(10,25,22,.24))}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{filter:drop-shadow(0 6px 3px rgba(10,19,22,.5)) drop-shadow(0 14px 9px rgba(10,19,22,.38))}
+body.garden-theme #game#game:not(.clear-screen) #wallet{left:34%;right:7%;top:18%;bottom:18%;height:auto;margin:0;padding:3px 0 0;display:flex;align-items:center;justify-content:center;line-height:1;text-align:center}
+/* Paperlogy ExtraBold notices: white faces, blue neon edges, minimum 26px. */
+body.garden-theme #game#game #combo img{display:none}
+body.garden-theme #game#game #combo{height:auto;min-height:34px;gap:7px;align-items:center;justify-content:center;flex-wrap:wrap}
+body.garden-theme #game#game #combo::before{content:'COMBO!';display:block}
+body.garden-theme #game#game #combo::before,body.garden-theme #game#game #combo-count,body.garden-theme #game#game #play-notice-lane #message:not(:empty),body.garden-theme #game#game #blocked-notice{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important;font-size:clamp(26px,7cqw,30px)!important;line-height:1.3;color:#fff!important;-webkit-text-fill-color:#fff;-webkit-text-stroke:1px #007de8;paint-order:stroke fill;text-shadow:0 0 2px #008bff,0 0 5px #078bff,0 0 9px #0e68d9,0 2px 2px #12305e}
+body.garden-theme #game#game #message .stone-durability{color:#fff;-webkit-text-fill-color:#fff}
+/* Lower in-game notices toward the top blocks; 20% transparency. */
+body.garden-theme #game#game #play-notice-lane{bottom:calc(100% - 12px)}
+body.garden-theme #game#game #play-notice-lane #combo,body.garden-theme #game#game #play-notice-lane #message:not(:empty),body.garden-theme #game#game #blocked-notice{opacity:.8}
+body.garden-theme #game#game #blocked-notice{bottom:calc(100% - 12px)}
+
+/* One solid cracked rock at unchanged size for every HP value. */
+body.garden-theme #game#game .rock:not(.breaking)>span,body.garden-theme #game#game .rock[data-hp='2']:not(.breaking)>span,body.garden-theme #game#game .rock[data-hp='1']:not(.breaking)>span{background-image:url('assets/stone-obstacles-v2/cracked-rock.webp')!important;background-size:100% 100%!important;transform:none;scale:1}
+body.garden-theme #game#game .rock{transform:none!important;scale:1!important}
+body.garden-theme #game#game .rock.impact,body.garden-theme #game#game .rock.breaking{animation:none!important}
+.garden-stone-break{transform:none!important;scale:1!important}
+.garden-stone-break-piece{position:absolute;display:block;background-repeat:no-repeat;will-change:transform,opacity}
+
+/* Soft black shadow follows the obstacle silhouette without changing its size. */
+body.garden-theme #game#game .rock:not(.breaking)>span{filter:drop-shadow(0 2px 2px rgba(0,0,0,.75)) drop-shadow(0 4px 4px rgba(0,0,0,.45))!important}
+
+body.garden-theme #game#game .rock[data-hp="2"]:not(.breaking)>span{background-image:url("assets/stone-damage-v1/rock-hp2.webp")!important}
+
+body.garden-theme #game#game .rock[data-hp="1"]:not(.breaking)>span{background-image:url("assets/stone-damage-v1/rock-hp1.webp")!important}
+
+/* Six-frame burning fuse sheet, isolated to puzzle bomb pickups. */
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"] img{visibility:hidden}
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"]::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url('assets/bomb-fire-v1/bomb-fire-strip.webp');background-size:600% 100%;background-repeat:no-repeat;animation:garden-bomb-fire 900ms steps(1,end) infinite}
+@keyframes garden-bomb-fire{0%,100%{background-position:0% 0}16.666%{background-position:20% 0}33.333%{background-position:40% 0}50%{background-position:60% 0}66.666%{background-position:80% 0}83.333%{background-position:100% 0}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game .special-marker[aria-label^="폭탄"]::after{animation:none}}
+
+/* Stable original bomb body; animate only the burning tip, never its outline. */
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"] img{visibility:visible;clip-path:polygon(0 0,58% 0,58% 25%,70% 40%,100% 40%,100% 100%,0 100%);transform:none;animation:none;filter:none}
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"]::after{inset:5px;clip-path:polygon(58% 0,100% 0,100% 40%,70% 40%,58% 25%);image-rendering:auto}
+
+/* Center the round body (39%,65% in the art), letting the fuse overhang. */
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"]{padding:0;overflow:visible}
+body.garden-theme #game#game .special-marker[aria-label^="폭탄"] img,body.garden-theme #game#game .special-marker[aria-label^="폭탄"]::after{position:absolute;inset:auto;left:6%;top:-23%;width:112%;height:112%;max-width:none;max-height:none;pointer-events:none}
+
+/* Clear screen: larger wallet and smaller, separated actions. */
+body.garden-theme #game#game.clear-screen .wallet-row .coin-wallet{width:285px;height:75px;max-width:100%}
+body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) #next{width:57.4%}
+body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) .status-row{margin:28px 0 24px}
+body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) nav #restart,body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) nav #home{width:26.4%!important}
+
+/* Hide the top wallet only on the stage-clear screen. */
+body.garden-theme #game#game.clear-screen .wallet-row{display:none!important}
+
+body.garden-theme #game#game.clear-screen #reward-panel :is(.clear-earned-label,.clear-amount,.clear-total){font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700}
+.clear-earned-label{display:none}
+body.garden-theme #game#game.clear-screen .clear-earned-label{display:block;position:absolute;top:35%;left:0;width:100%;text-align:center;color:#593213;font-size:6.2cqw;line-height:1.2}
+body.garden-theme #game#game.clear-screen .clear-amount{top:47%;height:25%;left:8%;right:8%;gap:2%;align-items:center}
+body.garden-theme #game#game.clear-screen .clear-amount>img{width:19%;max-height:100%;object-fit:contain}
+body.garden-theme #game#game.clear-screen .clear-amount strong{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-size:clamp(26px,17cqw,64px);color:#ffce31;-webkit-text-stroke:1.5px #65310d;text-shadow:0 2px 0 #86400e;line-height:1}
+body.garden-theme #game#game.clear-screen .clear-coin-unit{align-self:flex-end;margin-bottom:3%;font-size:7cqw;color:#ffce31;-webkit-text-stroke:1px #65310d;paint-order:stroke fill;text-shadow:0 1px 0 #86400e}
+body.garden-theme #game#game.clear-screen .clear-total{top:77%;left:8%;right:8%;height:17%;display:flex;align-items:center;justify-content:center;gap:1.3%;border:1px solid #e6bc8d;border-radius:18px;background:rgba(218,167,106,.14);font-size:5.3cqw;line-height:1;color:#593213}
+body.garden-theme #game#game.clear-screen .clear-total strong{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-size:7.4cqw;color:#ffc72d;-webkit-text-stroke:1px #65310d;paint-order:stroke fill}
+
+/* Prevent native blue selection overlays on game artwork. */
+body.garden-theme #game,body.garden-theme #game *{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+body.garden-theme #game img{-webkit-user-drag:none}
+body.garden-theme #game ::selection{background:transparent}
+/* Match board and status panel widths, preserving the aligned inner grid. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot{width:100%;max-width:100%;min-width:0}
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 22.7cqw minmax(100cqw,1fr) 22cqw 38px;min-height:calc(175.7cqw + 58px)}
+body.garden-theme main:has(#game:not([hidden]):not(.clear-screen)){overflow-y:auto;overflow-x:hidden}
+
+/* Artwork has 27px/24px transparent side margins in its 1080px canvas.
+   Match the visible 1029px stone contour to the full-width status artwork. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot{width:104.956268%;max-width:none;left:-.145773%;justify-self:center}
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 22.7cqw minmax(105cqw,1fr) 22cqw 38px;min-height:calc(180.7cqw + 58px)}
+
+body.garden-theme #game#game.clear-screen #next img{aspect-ratio:720/302;object-fit:contain}
+body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) nav{margin-top:24px!important}
+
+/* Layered chestnut outline gives the reward figures a warm beveled edge. */
+body.garden-theme #game#game.clear-screen .clear-amount strong,body.garden-theme #game#game.clear-screen .clear-coin-unit,body.garden-theme #game#game.clear-screen .clear-total strong{-webkit-text-stroke:2.5px #713912;paint-order:stroke fill;text-shadow:0 -1px 0 #b57943,1px 0 0 #8c4a20,-1px 0 0 #8c4a20,0 2px 0 #51250e,0 3px 1px #361708}
+body.garden-theme #game#game.clear-screen .clear-total{left:16.4%;right:16.4%;top:75%;border:2px solid #d5a16c}
+
+body.garden-theme .block[data-rainbow='true'][data-dir='U'] span{background-image:url('assets/rainbow-integrated-v1/arrow-up.webp')!important;background-size:100% 100%!important;background-position:center!important}
+
+body.garden-theme .block[data-rainbow='true'][data-dir='R'] span{background-image:url('assets/rainbow-integrated-v1/arrow-right.webp')!important;background-size:100% 100%!important;background-position:center!important}
+
+body.garden-theme .block[data-rainbow='true'][data-dir='D'] span{background-image:url('assets/rainbow-integrated-v1/arrow-down.webp')!important;background-size:100% 100%!important;background-position:center!important}
+
+body.garden-theme .block[data-rainbow='true'][data-dir='L'] span{background-image:url('assets/rainbow-integrated-v1/arrow-left.webp')!important;background-size:100% 100%!important;background-position:center!important}
+body.garden-theme .block[data-rainbow='true'][data-dir] span::after{content:none!important;display:none!important}
+
+/* Reference reward typography; artwork and layout remain unchanged. */
+body.garden-theme #game#game.clear-screen .clear-earned-label,body.garden-theme #game#game.clear-screen .clear-total{color:#681b0c;font-family:'User Paperlogy Bold',sans-serif;font-weight:700}
+body.garden-theme #game#game.clear-screen .clear-amount strong{color:#fff48a;-webkit-text-fill-color:#fff48a;-webkit-text-stroke:clamp(3px,1.15cqw,4.5px) #751b08;paint-order:stroke fill;text-shadow:0 3px 0 #481405,0 4px 1px #a26736}
+body.garden-theme #game#game.clear-screen .clear-coin-unit{color:#ffdc32;-webkit-text-fill-color:#ffdc32;-webkit-text-stroke:2.5px #751b08;paint-order:stroke fill;text-shadow:0 3px 0 #481405}
+body.garden-theme #game#game.clear-screen .clear-total strong{color:#ff78a5;-webkit-text-fill-color:#ff78a5;-webkit-text-stroke:2.5px #741b21;paint-order:stroke fill;text-shadow:0 2px 0 #491016}
+
+body.garden-theme #game#game.clear-screen .clear-amount strong{position:relative;text-shadow:none;-webkit-text-stroke:0}
+.reward-number-measure{visibility:hidden}
+.reward-gradient-number{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 0 #401405)}
+body.garden-theme #game#game.clear-screen .clear-amount .reward-gradient-number text{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-size:inherit;-webkit-text-stroke:0;-webkit-text-fill-color:initial}
+
+body.garden-theme #game#game.clear-screen .clear-total strong{position:relative;-webkit-text-stroke:0;text-shadow:none;line-height:1.15}
+body.garden-theme #game#game.clear-screen :is(.clear-total,.clear-amount) .reward-gradient-number text{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-size:inherit;-webkit-text-stroke:0;-webkit-text-fill-color:initial;text-shadow:none}
+
+/* Taller reward panel leaves clear gaps between label, amount and balance. */
+body.garden-theme #game#game.clear-screen #reward-panel{aspect-ratio:800/620}
+body.garden-theme #game#game.clear-screen #reward-panel>img{aspect-ratio:800/620;object-fit:fill}
+body.garden-theme #game#game.clear-screen .clear-earned-label{top:35%;line-height:1.25}
+body.garden-theme #game#game.clear-screen .clear-amount{top:49%;height:23%}
+body.garden-theme #game#game.clear-screen .clear-total{top:80%;height:13%}
+
+/* Preserve the artwork's original 8:5 ratio with proportional enlargement. */
+body.garden-theme #game#game.clear-screen #reward-panel{width:min(110%,calc(100vw - 24px));aspect-ratio:800/500;align-self:center}
+body.garden-theme #game#game.clear-screen #reward-panel>img{width:100%;aspect-ratio:800/500;object-fit:contain}
+body.garden-theme #game#game.clear-screen .clear-earned-label{top:35%;font-size:5.4cqw}
+body.garden-theme #game#game.clear-screen .clear-amount{top:48%;height:23%}
+body.garden-theme #game#game.clear-screen .clear-amount strong{font-size:clamp(26px,14.2cqw,64px)}
+body.garden-theme #game#game.clear-screen .clear-coin-unit{font-size:5.8cqw}
+body.garden-theme #game#game.clear-screen .clear-total{top:77%;height:13%;font-size:4.5cqw}
+body.garden-theme #game#game.clear-screen .clear-total strong{font-size:6.2cqw}
+
+body.garden-theme #game#game #fishing-entry{display:none!important}
+body.garden-theme #game#game.clear-screen:has(#next:not([hidden])) nav #fishing-entry{display:block!important;width:26.4%!important;height:auto!important;min-width:44px;min-height:44px;aspect-ratio:1;padding:0!important;margin:0;border:0;background:none;box-shadow:none}
+body.garden-theme #game#game.clear-screen nav #fishing-entry img{display:block;width:100%;height:auto}
+body.garden-theme #game#game.clear-screen .clear-total{gap:3%;overflow:visible}
+body.garden-theme #game#game.clear-screen .clear-total strong{font-size:6.82cqw;flex-shrink:0}
+
+/* Match the fishing artwork footprint to the padded home icon. */
+body.garden-theme #game#game.clear-screen nav #fishing-entry img{transform:scale(.9);transform-origin:center}
+
+body.garden-theme #game#game.clear-screen nav #fishing-entry{position:relative;overflow:visible;opacity:1}
+.fishing-entry-lock,.fishing-entry-note{display:none!important}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked img{filter:brightness(.45) saturate(.45);opacity:.65}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-lock{display:block!important;position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-size:26px;line-height:1;text-shadow:0 2px 3px #000}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{display:block!important;position:absolute;top:100%;left:50%;transform:translateX(-50%);width:125px;margin-top:7px;font-family:'User Paperlogy Bold',sans-serif;font-size:11px;font-weight:700;line-height:1.4;letter-spacing:0;color:white;text-shadow:0 1px 3px #142c20;white-space:normal}
+body.garden-theme #game#game.clear-screen:has(.fishing-locked) nav{margin-bottom:45px!important}
+
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked img{filter:brightness(.7);opacity:1}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-lock{left:auto;right:0;top:0;transform:none}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-size:22px;width:145px;line-height:1.3;white-space:nowrap}
+body.garden-theme #game#game.clear-screen:has(.fishing-locked) nav{margin-bottom:100px!important}
+
+@font-face{font-family:'Garden Paperlogy';src:url('assets/garden-ui-v1/Paperlogy-7Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-family:'User Paperlogy Bold',sans-serif;font-weight:700}
+
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{color:#fff;-webkit-text-stroke:2px #414141;paint-order:stroke fill;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+
+body.garden-theme #game#game.clear-screen .clear-total strong{font-size:8.184cqw}
+
+body.garden-theme #game#game.clear-screen .clear-total .reward-gradient-number text{stroke:#101b40}
+body.garden-theme #game#game.clear-screen .clear-total .reward-gradient-number{filter:drop-shadow(0 2px 0 #080f28)}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{-webkit-text-stroke:3px #414141;paint-order:stroke fill;opacity:.9}
+
+@font-face{font-family:'User Paperlogy Bold';src:url('assets/user-fonts-paperlogy/Paperlogy-7Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;-webkit-text-stroke:4px #414141;paint-order:stroke fill;opacity:.9}
+
+@font-face{font-family:'User Paperlogy SemiBold';src:url('assets/user-fonts-paperlogy/Paperlogy-6SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;-webkit-text-stroke:5px #414141;paint-order:stroke fill;opacity:.9}
+
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important;font-synthesis:none}
+
+@font-face{font-family:'User Paperlogy Bold';src:url('assets/user-fonts-paperlogy/Paperlogy-7Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+:root,body,body *,body *::before,body *::after,:host,:host *{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important}
+
+@font-face{font-family:'User Paperlogy Black';src:url('assets/user-fonts-paperlogy/Paperlogy-9Black.ttf') format('truetype');font-weight:900;font-display:swap}
+@font-face{font-family:'User Paperlogy ExtraBold';src:url('assets/user-fonts-paperlogy/Paperlogy-8ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap}
+body.garden-theme #game#game .stats strong{font-family:'User Paperlogy Black',sans-serif!important;font-weight:900!important;font-synthesis:none}
+
+body.garden-theme #game#game.clear-screen .clear-amount strong{letter-spacing:1.5px}
+body.garden-theme #game#game.clear-screen .clear-amount .reward-gradient-number text{letter-spacing:1.5px}
+body.garden-theme #game#game.clear-screen nav #fishing-entry.fishing-locked .fishing-entry-note{font-size:18px;opacity:.8}
+
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/status-deficit-v1/status-panel.webp')}
+
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game header h1 img{animation:none!important}}
+
+body.garden-theme #game#game .stats strong{top:42%;height:49%;width:29%;line-height:1;overflow:visible}
+body.garden-theme #game#game .stats strong .status-number-art{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 0 #182334) drop-shadow(0 2px 1px #0007)}
+body.garden-theme #game#game .stats strong .status-number-art text{-webkit-text-fill-color:initial;-webkit-text-stroke:0;letter-spacing:-2px}
+
+body.garden-theme #game#game .stats strong .status-number-art text{letter-spacing:1px}
+
+body.garden-theme #game#game .stats strong .status-number-art text{letter-spacing:-2px}
+body.garden-theme #game#game .stats strong{top:calc(42% - 3px)}
+
+body.garden-theme #game#game #puzzle-entry-guide{position:absolute;inset:2.5%;z-index:60;background:rgba(255,255,255,.65);border-radius:5%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2%;padding:5% 2%;touch-action:none;cursor:default}
+body.garden-theme #game#game #puzzle-entry-guide img{width:40%;height:auto;object-fit:contain;flex:none}
+body.garden-theme #game#game #puzzle-entry-guide p{margin:0;color:#171717;font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important;font-size:clamp(16px,5.8cqw,25px);line-height:1.3;letter-spacing:-.6px}
+body.garden-theme #game#game #puzzle-entry-guide p span{color:#ca2727}
+body.garden-theme #game#game #puzzle-entry-guide .guide-rock-rule{font-size:clamp(13px,4.7cqw,20px);letter-spacing:-.7px}
+
+body.garden-theme #game#game #stage-one-touch-hint{position:absolute;right:0;top:8%;width:56%;height:auto;z-index:60;pointer-events:none;user-select:none;object-fit:contain}
+
+/* Reduce only the live status values; baked headings retain their size. */
+body.garden-theme #game#game .stats strong .status-number-art{transform:scale(.88);transform-origin:center}
+
+/* Compact stage / wallet / next upgrade status artwork. */
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 15.54cqw minmax(105cqw,1fr) 22cqw 38px;min-height:calc(173.54cqw + 58px)}
+body.garden-theme #game#game:not(.clear-screen) header h1{left:20%;top:0;width:60%;height:31cqw}
+body.garden-theme #game#game:not(.clear-screen) .wallet-row{display:none}
+body.garden-theme #game#game:not(.clear-screen) .stats{padding:0}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/top-status-redesign-v1/status-progress.webp')}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready="true"]::before{background-image:url('assets/top-status-redesign-v1/status-upgrade-ready.webp')}
+body.garden-theme #game#game .stats div:nth-child(1) strong{left:15.5%;top:43%;width:23%;height:43%}
+body.garden-theme #game#game .stats div:nth-child(2) strong{left:43.5%;top:45%;width:18%;height:42%}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:85.4%;top:25%;width:9.4%;height:30%}
+body.garden-theme #game#game .stats[data-upgrade-ready="true"] div:nth-child(3) strong{visibility:hidden}
+body.garden-theme #game#game .top-upgrade-gauge{position:absolute;left:64.4%;top:60.5%;width:28.2%;height:12%;border-radius:99px;overflow:hidden;pointer-events:none;display:block}
+body.garden-theme #game#game .top-upgrade-gauge::before{content:'';display:block;width:var(--upgrade-progress,0%);height:100%;border-radius:99px;background:linear-gradient(#edff99 0%,#b9ff27 28%,#5bda00 65%,#25a100);box-shadow:inset 0 1px 1px #fff9;transition:width .4s ease}
+body.garden-theme #game#game .stats[data-upgrade-ready="true"] .top-upgrade-gauge{display:none}
+body.garden-theme #game#game #top-upgrade-home{position:absolute;left:65.4%;top:26%;width:30.5%;height:52%;padding:0;margin:0;border:0;background:none;box-shadow:none;z-index:4;cursor:pointer;min-height:0;min-width:0}
+body.garden-theme #game#game #top-upgrade-home[hidden]{display:none!important}
+body.garden-theme #game#game #top-upgrade-home:active{background:#fff2;border-radius:99px;transform:scale(.98)}
+body.garden-theme #game#game #top-upgrade-home:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:99px}
+
+/* Two top cards and a full-width house upgrade card below. */
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 51.75cqw minmax(105cqw,1fr) 22cqw 38px;min-height:calc(209.75cqw + 58px)}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/stacked-status-v1/status-progress.webp')}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready="true"]::before{background-image:url('assets/stacked-status-v1/status-upgrade-ready.webp')}
+body.garden-theme #game#game .stats div:nth-child(1) strong{left:29%;top:29%;width:36%;height:20%}
+body.garden-theme #game#game .stats div:nth-child(2) strong{left:82%;top:29%;width:30%;height:20%}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:71%;top:65%;width:21%;height:16%}
+body.garden-theme #game#game .top-upgrade-gauge{left:26.2%;top:84.2%;width:65.2%;height:6.5%}
+body.garden-theme #game#game #top-upgrade-home{left:26%;top:64%;width:67%;height:25%;border-radius:99px}
+
+/* Reference-matched v2 status frames. */
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:31cqw 46.5cqw minmax(105cqw,1fr) 22cqw 38px;min-height:calc(204.5cqw + 58px)}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/stacked-status-v2/status-progress.webp')}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready="true"]::before{background-image:url('assets/stacked-status-v2/status-upgrade-ready.webp')}
+body.garden-theme #game#game .stats div:nth-child(1) strong{left:30.5%;top:26%;width:30%;height:20%}
+body.garden-theme #game#game .stats div:nth-child(2) strong{left:82%;top:26%;width:27%;height:20%}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:71%;top:62%;width:20%;height:17%}
+body.garden-theme #game#game .top-upgrade-gauge{left:26.5%;top:81%;width:65%;height:7.7%}
+body.garden-theme #game#game #top-upgrade-home{left:26%;top:61%;width:67%;height:29%}
+
+/* Fit the puzzle, HUD and controls inside the usable viewport. */
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{width:100%;max-width:min(430px,calc((100dvh - 32px)/1.99 + 24px));height:100dvh;min-height:0;overflow:hidden}
+body.garden-theme #game#game:not(.clear-screen){height:100%;min-height:0;grid-template-rows:23cqw 46.34cqw 104.956268cqw 22cqw;gap:4px;align-content:space-between}
+body.garden-theme #game#game:not(.clear-screen) header h1{height:23cqw;top:0;left:24%;width:52%}
+body.garden-theme #game#game:not(.clear-screen) .board-slot{width:104.956268%;max-width:none}
+body.garden-theme #game#game:not(.clear-screen) .stats::before{background-image:url('assets/stacked-status-v4/status-progress.webp')}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready="true"]::before{background-image:url('assets/stacked-status-v4/status-upgrade-ready.webp')}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:68.8%;top:62%;width:16.6%;height:17%}
+
+/* Larger logo and optically matched status values. */
+body.garden-theme #game#game:not(.clear-screen) header h1{width:57.2%;height:25.3cqw;left:21.4%;top:0}
+body.garden-theme #game#game .stats div:nth-child(1) strong{left:30.5%;top:24%;width:32%;height:23%}
+body.garden-theme #game#game .stats div:nth-child(2) strong{left:82%;top:24%;width:29%;height:23%}
+body.garden-theme #game#game .stats div:nth-child(3) strong{left:68.7%;top:59.5%;width:17.5%;height:23%}
+
+/* Bolder value outlines, lifted stage and wallet values. */
+body.garden-theme #game#game .stats strong .status-number-art text{stroke-width:12px}
+body.garden-theme #game#game .stats div:nth-child(1) strong,body.garden-theme #game#game .stats div:nth-child(2) strong{top:21.5%}
+
+/* Upgrade-ready rays stay behind the home button in puzzle and clear views. */
+body.garden-theme #game#game nav{overflow:visible}
+body.garden-theme #game#game nav #home.upgrade-glowing{position:relative;isolation:isolate;overflow:visible}
+body.garden-theme #game#game nav #home.upgrade-glowing img{position:relative;z-index:2}
+body.garden-theme #game#game nav #home.upgrade-glowing::before,body.garden-theme #game#game nav #home.upgrade-glowing::after{content:'';display:block;position:absolute;pointer-events:none;border:0;border-radius:50%;z-index:0}
+body.garden-theme #game#game nav #home.upgrade-glowing::before{inset:-22%;background:repeating-conic-gradient(from 0deg,transparent 0deg 13deg,#78ffed 15deg 20deg,transparent 23deg 30deg);-webkit-mask-image:radial-gradient(circle,transparent 0% 28%,#000 42%,transparent 70%);mask-image:radial-gradient(circle,transparent 0% 28%,#000 42%,transparent 70%);filter:drop-shadow(0 0 5px #38ffd8);animation:homeUpgradeRays 1.5s ease-in-out infinite}
+body.garden-theme #game#game nav #home.upgrade-glowing::after{inset:-6%;background:radial-gradient(ellipse,#d5ff58 15%,#73ffeab3 42%,transparent 72%);filter:blur(5px);animation:homeUpgradeHalo 1.5s ease-in-out infinite}
+@keyframes homeUpgradeRays{0%,100%{opacity:.2;transform:rotate(-6deg) scale(.9)}50%{opacity:1;transform:rotate(6deg) scale(1.08)}}
+@keyframes homeUpgradeHalo{0%,100%{opacity:.2;transform:scale(.94)}50%{opacity:.85;transform:scale(1.08)}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game nav #home.upgrade-glowing::before,body.garden-theme #game#game nav #home.upgrade-glowing::after{animation:none;opacity:.55}}
+html[data-reduce-effects='true'] body.garden-theme #game#game nav #home.upgrade-glowing::before,html[data-reduce-effects='true'] body.garden-theme #game#game nav #home.upgrade-glowing::after{animation:none;opacity:.55}
+
+/* Enlarge the existing background 12% and reduce its current brightness another 15%. */
+body.garden-theme:has(#game:not([hidden])){background-image:linear-gradient(rgba(0,0,0,.405),rgba(0,0,0,.405)),url('assets/garden-ui-v1/01-garden-background.webp');background-size:100% 100%,max(112vw,51.692308dvh) auto;background-position:center center;background-repeat:no-repeat;background-attachment:fixed}
+
+body.garden-theme #game#game .stats #moves .status-number-art text{stroke-width:18px}
+
+body.garden-theme #game#game .stats div:nth-child(1) strong,body.garden-theme #game#game .stats div:nth-child(2) strong{top:20%}
+
+/* Only opposing-arrow guidance remains in the puzzle notice area. */
+body.garden-theme #game#game #play-notice-lane{display:none!important}
+
+/* Clean, padded puppy animation frames. */
+.home10-panel .dog-actor{background-image:url("assets/puppy-clean-v113/puppy-4x3.webp")!important}
+
+/* Clear reward typography refinement. */
+body.garden-theme #game#game.clear-screen #reward-panel .clear-earned-label{font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800;font-size:calc(5.4cqw + 3pt)}
+body.garden-theme #game#game.clear-screen .clear-coin-unit{-webkit-text-stroke:4px #751b08;paint-order:stroke fill}
+body.garden-theme #game#game.clear-screen .clear-total{font-size:calc(4.5cqw + 3pt)}
+
+body.garden-theme #game#game.clear-screen #reward-panel .clear-earned-label{font-weight:800!important}
+
+body.garden-theme #game#game.clear-screen #next img{aspect-ratio:720/264;object-fit:contain}
+
+/* Three overlapping reward coins with individual depth shadows. */
+body.garden-theme #game#game.clear-screen .clear-coin-stack{position:relative;display:block;width:23%;height:100%;flex:0 0 23%;filter:drop-shadow(0 4px 3px #60300e66)}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img{position:absolute;width:74%;height:auto;max-height:100%;object-fit:contain;filter:drop-shadow(1px 2px 1px #66300c88)}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(1){left:0;top:0;transform:rotate(-15deg);z-index:1}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(2){right:0;top:11%;transform:rotate(12deg);z-index:2}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(3){left:9%;top:25%;transform:rotate(-4deg);z-index:3}
+
+/* One large star coin behind two medium star coins. */
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(1){width:88%;left:6%;right:auto;top:-5%;transform:rotate(-8deg);z-index:1}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(2){width:62%;left:-7%;right:auto;top:33%;transform:rotate(-16deg);z-index:2}
+body.garden-theme #game#game.clear-screen .clear-coin-stack img:nth-child(3){width:62%;left:43%;right:auto;top:39%;transform:rotate(12deg);z-index:3}
+
+body.garden-theme #game#game.clear-screen #next img{aspect-ratio:485/157;object-fit:contain}
+
+body.garden-theme #game#game:not(.clear-screen) nav{grid-template-columns:repeat(5,minmax(0,1fr))!important;width:100%;gap:.25%}
+body.garden-theme #game#game:not(.clear-screen) nav #minigame-preview img{aspect-ratio:1;transform:scale(.9);filter:drop-shadow(0 3px 2px #09190e80) drop-shadow(0 7px 4px #09190e59)}
+body.garden-theme #game#game.clear-screen #minigame-preview{display:none!important}

@@ -1,0 +1,118 @@
+/* Mobile forest home UI, user-approved title and second asset set. */
+#home-panel.home10-panel{padding:8px 10px;overflow:hidden}
+#home-panel.home10-panel .home-wrap{position:relative;max-width:480px;height:calc(100dvh - 16px);display:flex;flex-direction:column;container-type:inline-size}
+#home-panel.home10-panel .home-title{position:absolute;left:0;top:0;width:51%;height:auto;content:url('assets/forest-home-ui-v115/title.webp');z-index:20}
+#home-panel.home10-panel .home-top{position:relative;margin:0 0 8px;height:27cqw;min-height:90px;flex:none;display:block;padding:0;background:none}
+#home-panel.home10-panel .coin-wallet{position:absolute;right:0;top:1cqw;width:45%;height:11.2cqw;min-height:0;background:url('assets/forest-home-ui-v115/wallet.webp') center/100% 100% no-repeat;border:0;box-shadow:none;padding:0}
+#home-panel.home10-panel #home-wallet{position:absolute;left:23%;right:3%;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(19px,6cqw,29px);color:#fff9e5;text-shadow:0 2px 2px #421c04}
+#home-panel.home10-panel #home-back{position:absolute;right:0;top:14cqw;width:45%;height:12.9cqw;padding:0;min-height:0;border:0;background:none;box-shadow:none}
+#home-panel.home10-panel #home-back img{content:url('assets/forest-home-ui-v115/back.webp');width:100%;height:100%;object-fit:contain}
+#home-panel.home10-panel .home-scene{flex:1;min-height:180px;height:auto;margin:0}
+#home-panel.home10-panel #home-upgrade-actions{display:flex;align-items:center;justify-content:space-between;gap:4%;padding:0;margin:10px 0 8px;height:14cqw;flex:none}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle,#home-panel.home10-panel #home-upgrade-actions #upgrade{position:relative;width:48%;max-width:none;height:100%;min-height:0;padding:0;margin:0;border:0;border-radius:0;box-shadow:none;font-size:0;background:transparent center/contain no-repeat;filter:drop-shadow(0 3px 2px #32190055)}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle{background-image:url('assets/forest-home-ui-v115/bonus.webp')}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle::before,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle::after{display:none}
+#home-panel.home10-panel #upgrade img{content:url('assets/forest-home-ui-v115/upgrade.webp');width:100%;height:100%;object-fit:contain}
+#home-panel.home10-panel #home-guidance{position:relative;flex:none;width:100%;height:21.5cqw;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:url('assets/forest-home-ui-v115/guidance.webp') center/100% 100% no-repeat;box-shadow:none}
+#home-panel.home10-panel #home-guidance #home-stage{display:none}
+#home-panel.home10-panel #home-guidance .guidance-icon{display:none}
+#home-panel.home10-panel #home-guidance .guidance-row,#home-panel.home10-panel #home-guidance .guidance-copy{display:contents}
+#home-panel.home10-panel #home-guidance .guidance-reward-name{position:absolute;left:62%;right:5%;top:19%;font-size:clamp(11px,3.2cqw,16px);line-height:1.15;text-align:center;color:#462307;text-shadow:none}
+#home-panel.home10-panel #home-guidance .guidance-action{position:absolute;left:28%;right:26%;top:54%;display:flex;justify-content:center;align-items:baseline;gap:4px;font-size:clamp(11px,3cqw,15px);line-height:1.3;white-space:nowrap;flex-wrap:nowrap}
+#home-panel.home10-panel #home-guidance .guidance-action>b{font-size:clamp(19px,5.6cqw,27px)}
+#home-panel.home10-panel #home-guidance .guidance-complete{position:absolute;left:28%;right:10%;top:54%;font-size:18px}
+#home-panel.home10-panel #home-guidance #home-status:not(:empty){position:absolute;bottom:100%;left:0;right:0;background:#fff4dc;border-radius:10px;font-size:14px!important;padding:4px;margin:0 0 8px}
+#home-panel.home10-panel .home-top .coin-wallet{width:45%!important;min-width:0!important;left:auto!important;right:0!important;top:1cqw!important;height:11.2cqw!important;transform:none!important}
+#home-panel.home10-panel .home-top #home-back{width:45%!important;max-width:none!important;min-width:0!important;left:auto!important;right:0!important;top:14cqw!important;height:12.9cqw!important;transform:none!important}
+#home-panel.home10-panel .home-title{max-height:none!important;margin:0!important}
+/* Preserve full gold borders and enlarge changing guidance text. */
+#home-panel.home10-panel .home-top .coin-wallet{background-image:url('assets/forest-home-ui-v116/wallet.webp')}
+#home-panel.home10-panel #home-back img{content:url('assets/forest-home-ui-v116/back.webp')}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle{background-image:url('assets/forest-home-ui-v116/bonus.webp')}
+#home-panel.home10-panel #upgrade img{content:url('assets/forest-home-ui-v116/upgrade.webp')}
+#home-panel.home10-panel #home-upgrade-actions{width:100%!important;max-width:none!important;box-sizing:border-box;justify-content:space-between!important;overflow:visible}
+#home-panel.home10-panel #home-upgrade-actions #upgrade{margin-left:auto!important;margin-right:0!important;overflow:visible}
+#home-panel.home10-panel #home-guidance .guidance-reward-name{font-size:calc(clamp(11px,3.2cqw,16px) + 4pt);left:60%;right:3%;top:17%;line-height:1.1}
+#home-panel.home10-panel #home-guidance .guidance-action{font-size:calc(clamp(11px,3cqw,15px) + 3pt);left:25%;right:21%;gap:3px}
+#home-panel.home10-panel .home-scene .house-body{width:63%;height:auto;left:50%;transform:translateX(-50%)}
+/* House upgrade confirmation floats above the house without a speech bubble. */
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast{position:absolute;left:0;right:0;bottom:auto;z-index:25;width:100%;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;text-align:center;font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;font-size:clamp(23px,6.7cqw,32px)!important;line-height:1.35;color:#fff;-webkit-text-fill-color:#fff;-webkit-text-stroke:3px #218443;paint-order:stroke fill;text-shadow:0 2px 2px #15572f55;opacity:.85;pointer-events:none;white-space:nowrap}
+
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast{white-space:pre-line;text-align:center}
+
+#home-panel.home10-panel .home-upgrade-toast .home-upgrade-detail{color:#ff981f;-webkit-text-fill-color:#ff981f;font:inherit!important}
+/* Opaque dimensional upgrade lettering, matching the supplied reference. */
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast{opacity:1;font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;font-size:clamp(25px,7cqw,34px)!important;line-height:1.4;color:#fff8df;-webkit-text-fill-color:#fff8df;-webkit-text-stroke:6px #064747;paint-order:stroke fill;text-shadow:0 3px 0 #033438,0 5px 0 #022d31,0 7px 3px #001d2870;white-space:pre-line}
+#home-panel.home10-panel .home-upgrade-toast .home-upgrade-detail{position:relative;display:inline-block;color:#ffb900;-webkit-text-fill-color:transparent;background:linear-gradient(#fff333 10%,#ffcf00 45%,#ff8a00 95%);background-clip:text;-webkit-background-clip:text;-webkit-text-stroke:0;text-shadow:none;isolation:isolate}
+#home-panel.home10-panel .home-upgrade-toast .home-upgrade-detail::before{content:attr(data-label);position:absolute;inset:0;z-index:-1;color:#ffb900;-webkit-text-fill-color:#ffb900;-webkit-text-stroke:6px #064747;paint-order:stroke fill;text-shadow:0 3px 0 #033438,0 5px 0 #022d31,0 7px 3px #001d2870}
+#home-panel.home10-panel #home-wallet::before{content:'현재';font-size:.64em;margin-right:5px;color:#fff9e5;-webkit-text-fill-color:#fff9e5;font-family:'User Paperlogy Bold',sans-serif;font-weight:700}
+/* ExtraBold on both lines; keep the outline layer hollow so it cannot cover the gradient. */
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast,#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail,#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail::before{font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;letter-spacing:.3px}
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail{background-image:linear-gradient(to bottom,#fff76a 0%,#ffe82c 24%,#ffcd00 52%,#ff9900 80%,#f57900 100%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 #b76400)}
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail::before{color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:7px #064747;text-shadow:0 4px 0 #033438,0 6px 2px #022d3180}
+
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail{background:none;-webkit-text-stroke:0;text-shadow:none;filter:none;vertical-align:top}
+#home-panel.home10-panel .home-wrap>#home-status.home-upgrade-toast .home-upgrade-detail::before{display:none;content:none}
+#home-panel.home10-panel .home-upgrade-detail svg{display:block;height:1.625em;width:auto;overflow:visible;filter:drop-shadow(0 3px 0 #033438)}
+#home-panel.home10-panel .home-upgrade-detail svg text{font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;-webkit-text-fill-color:initial;-webkit-text-stroke:0;letter-spacing:0;text-shadow:none}
+
+#home-panel.home10-panel #home-back img{content:url("assets/home-back-v133/back.webp");object-fit:contain}
+
+#home-panel.home10-panel #home-upgrade-actions .home-action-ready{border-radius:999px!important;animation:homeActionAvailable 1.6s ease-in-out infinite!important;isolation:isolate}
+@keyframes homeActionAvailable{0%,100%{box-shadow:0 0 3px 1px #e5ffaf44,0 0 10px 4px #9fff5733,0 0 18px 6px #44ffd91a}50%{box-shadow:0 0 7px 3px #f2ffb5dd,0 0 17px 8px #a5ff6677,0 0 29px 13px #45ffd93d}}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-upgrade-actions .home-action-ready{animation:none!important;box-shadow:0 0 12px 5px #afff6680!important}}
+#home-panel.home10-panel .home-top .coin-wallet{background-image:url('assets/home-wallet-v137/wallet.webp');background-size:contain;background-position:center;height:12.15cqw!important}
+#home-panel.home10-panel #home-wallet::before{display:none;content:none}
+#home-panel.home10-panel #home-wallet{left:59%;right:12%;top:9%;height:83%;font-size:clamp(16px,5cqw,24px);letter-spacing:-.5px}
+/* Upgrade readiness: radiating light behind the button artwork. */
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready{animation:none!important;box-shadow:none!important;position:relative;isolation:isolate;overflow:visible}
+#home-panel.home10-panel #upgrade.home-action-ready img{position:relative;z-index:2}
+#home-panel.home10-panel #upgrade.home-action-ready::before,#home-panel.home10-panel #upgrade.home-action-ready::after{content:'';display:block;position:absolute;pointer-events:none;border:0;border-radius:50%;z-index:0}
+#home-panel.home10-panel #upgrade.home-action-ready::before{inset:-65% -20%;background:repeating-conic-gradient(transparent 0deg 13deg,#78ffed 15deg 20deg,transparent 23deg 30deg);-webkit-mask-image:radial-gradient(ellipse,transparent 18%,#000 42%,transparent 72%);mask-image:radial-gradient(ellipse,transparent 18%,#000 42%,transparent 72%);filter:drop-shadow(0 0 5px #38ffd8);animation:homeUpgradeRays 1.5s ease-in-out infinite}
+#home-panel.home10-panel #upgrade.home-action-ready::after{inset:-20% -8%;background:radial-gradient(ellipse,#d5ff58 15%,#73ffeab3 42%,transparent 72%);filter:blur(5px);animation:homeUpgradeHalo 1.5s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #upgrade.home-action-ready::before,#home-panel.home10-panel #upgrade.home-action-ready::after{animation:none;opacity:.55}}
+/* Match the embedded 현재 lettering in size and vertical alignment. */
+#home-panel.home10-panel #home-wallet{left:59%;right:12%;top:16%;height:77%;font-size:clamp(17px,5.35cqw,26px);line-height:1;font-family:'User Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;color:#fff8db;-webkit-text-fill-color:#fff8db;-webkit-text-stroke:1.3px #df9a10;paint-order:stroke fill;text-shadow:0 2px 0 #76500d;letter-spacing:0}
+#home-panel.home10-panel #home-wallet{-webkit-text-stroke:3px #492609;paint-order:stroke fill;text-shadow:0 2px 0 #2c1706}
+#home-panel.home10-panel #home-wallet{-webkit-text-stroke:5px #492609;paint-order:stroke fill;text-shadow:0 2px 0 #2c1706,0 3px 1px #2c1706}
+/* Golden star sparkle accents replace the radial readiness glow. */
+#home-panel.home10-panel #home-wallet{color:#fff2a8;-webkit-text-fill-color:#fff2a8}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready{animation:none!important;box-shadow:none!important;overflow:visible;isolation:isolate}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready::before,#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready::after,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready::before,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready::after{content:''!important;display:block!important;position:absolute;inset:-24px -15px;z-index:4;border:0;border-radius:0;pointer-events:none;mask:none;-webkit-mask:none;filter:drop-shadow(0 0 3px #ffe64b);background-image:url('assets/button-sparkle-v143/star.webp'),url('assets/button-sparkle-v143/star.webp'),url('assets/button-sparkle-v143/star.webp');background-repeat:no-repeat;background-size:32px 32px,22px 22px,28px 28px;background-position:8% 5%,98% 35%,80% 100%;animation:homeStarTwinkle 2.1s ease-in-out infinite!important}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready::after,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready::after{background-position:1% 87%,89% 3%,39% 100%;background-size:25px 25px,30px 30px,17px 17px;animation-delay:-1.05s!important}
+@keyframes homeStarTwinkle{0%,100%{opacity:.08;transform:scale(.88)}45%{opacity:1;transform:scale(1)}65%{opacity:.75;transform:scale(.97)}}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-upgrade-actions .home-action-ready::before,#home-panel.home10-panel #home-upgrade-actions .home-action-ready::after{animation:none!important;opacity:.7}}
+/* A soft gold halo follows each rounded button silhouette, without floating sprites. */
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready::before,#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready::after,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready::before,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready::after{display:none!important;content:none!important;animation:none!important}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready{filter:none!important}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready img{animation:homeGoldHalo 1.8s ease-in-out infinite!important}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready{animation:homeGoldHalo 1.8s ease-in-out infinite!important;box-shadow:none!important}
+@keyframes homeGoldHalo{0%,100%{filter:drop-shadow(0 0 2px #fff3b3) drop-shadow(0 0 4px #ffc928aa) drop-shadow(0 0 8px #ffb30055)}50%{filter:drop-shadow(0 0 3px #fff8cf) drop-shadow(0 0 7px #ffd331ee) drop-shadow(0 0 13px #ffb00099)}}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready img,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready{animation:none!important;filter:drop-shadow(0 0 3px #fff3b3) drop-shadow(0 0 8px #ffc928aa)!important}}
+/* Strong, clearly visible gold pulse, kept on the image silhouette. */
+@keyframes homeGoldHalo{0%,100%{filter:drop-shadow(0 0 2px #fff7b8) drop-shadow(0 0 5px #ffd000) drop-shadow(0 0 10px #ffb00088)}45%,55%{filter:drop-shadow(0 0 4px #ffffdc) drop-shadow(0 0 9px #ffe000) drop-shadow(0 0 18px #ffbd00ee) drop-shadow(0 0 25px #ff9a0099)}}
+#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready img,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready{animation-duration:1.35s!important}
+/* Bright white readiness halo. */
+@keyframes homeGoldHalo{0%,100%{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #ffffffdd) drop-shadow(0 0 10px #ffffff88)}45%,55%{filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 9px #fff) drop-shadow(0 0 18px #ffffffee) drop-shadow(0 0 25px #ffffff99)}}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-upgrade-actions #upgrade.home-action-ready img,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-action-ready{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px #ffffffbb)!important}}
+/* Shorter white halo falloff. */
+@keyframes homeGoldHalo{0%,100%{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #ffffffdd) drop-shadow(0 0 7px #ffffff88)}45%,55%{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #ffffffee) drop-shadow(0 0 17px #ffffff99)}}
+/* Lift the home layout slightly to leave more breathing room at the bottom. */
+#home-panel.home10-panel .home-wrap{height:calc(100dvh - 36px - env(safe-area-inset-bottom))}
+#home-panel.home10-panel .home-scene .house-body{bottom:26%}
+
+#home-panel.home10-panel .home-top #home-back.home-return-ready{overflow:visible}
+#home-panel.home10-panel #home-back.home-return-ready img{animation:homeGoldHalo 1.35s ease-in-out infinite!important}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-back.home-return-ready img{animation:none!important;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px #ffffffbb)}}
+
+/* Bonus decoration artwork with a scrollable list and exact close hit area. */
+dialog.bonus-inventory{width:min(96vw,600px);height:auto;aspect-ratio:1687/856;max-height:90dvh;padding:0;border:0;border-radius:18px;overflow:hidden;background:url('assets/bonus-popup-v151/panel.webp') center/100% 100% no-repeat;box-shadow:0 10px 35px #23122d66;container-type:inline-size}
+dialog.bonus-inventory h2{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+dialog.bonus-inventory .bonus-popup-list{position:absolute;left:12%;right:12%;top:37%;bottom:35%;overflow:auto;overscroll-behavior:contain;padding:0 4px}
+dialog.bonus-inventory .bonus-popup-list>p{font-size:clamp(13px,3.8cqw,20px);text-align:center;margin:10px 0}
+dialog.bonus-inventory .bonus-inventory-row{gap:7px;margin:3px 0}
+dialog.bonus-inventory .bonus-inventory-row img{width:38px;height:38px}
+dialog.bonus-inventory .bonus-inventory-row span{font-size:clamp(14px,3.8cqw,20px)}
+dialog.bonus-inventory .bonus-inventory-row button{min-height:36px;min-width:52px;padding:4px 8px;font-size:14px}
+dialog.bonus-inventory>button{position:absolute;left:33%;top:67%;width:34%;height:21%;min-height:0;padding:0;margin:0;border:0;background:transparent;box-shadow:none;color:transparent;font-size:0;cursor:pointer}
+dialog.bonus-inventory>button:focus-visible{outline:3px solid #7531bf;outline-offset:-3px}

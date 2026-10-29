@@ -1,0 +1,152 @@
+{
+  "version": 37,
+  "coordinateSystem": "Pixels measured from top-left of cropped PNG; x increases right, y increases down.",
+  "cropMethod": "Full nonzero alpha bounds (alpha > 0), then 4 transparent pixels on every side. No rescaling or artwork changes.",
+  "anchorMethod": "Original mouth/head points were visually estimated; their coordinate transformations after cropping are exact.",
+  "fish": {
+    "sogari": {
+      "file": "sogari.png",
+      "width": 1511,
+      "height": 978,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceAlphaBounds": [
+        16,
+        23,
+        1519,
+        993
+      ],
+      "transparentPadding": 4,
+      "mouth": {
+        "x": 1481,
+        "y": 491
+      },
+      "mouthNormalized": {
+        "x": 0.9801455989410987,
+        "y": 0.5020449897750511
+      },
+      "head": {
+        "x": 1338,
+        "y": 491
+      },
+      "sourceMouth": {
+        "x": 1493,
+        "y": 510
+      },
+      "alphaBounds": [
+        4,
+        4,
+        1507,
+        974
+      ]
+    },
+    "carp": {
+      "file": "carp.png",
+      "width": 1536,
+      "height": 993,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceAlphaBounds": [
+        0,
+        39,
+        1528,
+        1024
+      ],
+      "transparentPadding": 4,
+      "mouth": {
+        "x": 1508,
+        "y": 543
+      },
+      "mouthNormalized": {
+        "x": 0.9817708333333334,
+        "y": 0.5468277945619335
+      },
+      "head": {
+        "x": 1364,
+        "y": 495
+      },
+      "sourceMouth": {
+        "x": 1504,
+        "y": 578
+      },
+      "alphaBounds": [
+        4,
+        4,
+        1532,
+        989
+      ]
+    },
+    "catfish": {
+      "file": "catfish.png",
+      "width": 1544,
+      "height": 1011,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceAlphaBounds": [
+        0,
+        21,
+        1536,
+        1024
+      ],
+      "transparentPadding": 4,
+      "mouth": {
+        "x": 1424,
+        "y": 549
+      },
+      "mouthNormalized": {
+        "x": 0.9222797927461139,
+        "y": 0.543026706231454
+      },
+      "head": {
+        "x": 1294,
+        "y": 523
+      },
+      "sourceMouth": {
+        "x": 1420,
+        "y": 566
+      },
+      "alphaBounds": [
+        4,
+        4,
+        1540,
+        1007
+      ]
+    },
+    "eel": {
+      "file": "eel.png",
+      "width": 1543,
+      "height": 863,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceAlphaBounds": [
+        0,
+        135,
+        1535,
+        990
+      ],
+      "transparentPadding": 4,
+      "mouth": {
+        "x": 1521,
+        "y": 404
+      },
+      "mouthNormalized": {
+        "x": 0.9857420609202852,
+        "y": 0.4681344148319815
+      },
+      "head": {
+        "x": 1454,
+        "y": 406
+      },
+      "sourceMouth": {
+        "x": 1517,
+        "y": 535
+      },
+      "alphaBounds": [
+        4,
+        4,
+        1539,
+        859
+      ]
+    }
+  }
+}

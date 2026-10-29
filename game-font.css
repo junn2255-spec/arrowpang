@@ -1,0 +1,47 @@
+@font-face{font-family:'Paperlogy ExtraBold';src:url('assets/fonts/Paperlogy-8ExtraBold.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
+html body,html body *,html body *::before,html body *::after{font-family:'Paperlogy ExtraBold','Malgun Gothic',sans-serif!important;font-synthesis:none}
+body{font-size:16px}
+button,input,select,textarea,summary{font-size:16px}
+button{overflow:visible}
+p,label,li{font-size:16px;line-height:1.45}
+small,footer,footer span,.guide,.stats span{font-size:14px}
+.stats strong{font-size:26px}
+#audio-panel button,#reward-panel p,#reward-note,#skip-reward{font-size:17px}
+#home-panel.home10-panel .guidance-reward-name{font-size:clamp(15px,4cqw,38px);line-height:1.12}
+#home-panel.home10-panel .guidance-action>b{font-size:clamp(16px,4.3cqw,40px);line-height:1.1}
+#home-panel.home10-panel .guidance-copy{left:-3%;width:106%;top:30%;overflow:visible}
+#home-panel.home10-panel .guidance-reward-name{max-width:none;white-space:nowrap}
+#home-panel.home10-panel .home-top .coin-wallet{font-size:clamp(20px,5.2cqw,50px)}
+#home-panel.home10-panel #home-guidance #home-status{font-size:17px!important}
+#interior-panel .interior-guidance #interior-status{font-size:20px}
+.bonus-inventory-row{font-size:16px}
+#home-panel.home10-panel .guidance-copy{top:24%}
+#home-panel.home10-panel .guidance-reward-name,#home-panel.home10-panel .guidance-action>b{line-height:1}
+#home-panel.home10-panel .guidance-icon{top:-22%}
+#tutorial-text b{font-size:max(14px,1em)}
+.rock b{font-size:16px;min-width:22px;height:22px;line-height:22px;overflow:visible}
+/* Three fixed header labels are baked into the chosen relic panel; values stay live. */
+#game:has(#next[hidden]) .stats{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;height:auto;min-height:0;aspect-ratio:1640/446;padding:0 8%;gap:0;border:0;border-image:none;border-radius:0;box-shadow:none;background:url('assets/stats/ancient-relic-labels.webp') center/100% 100% no-repeat;overflow:visible}
+#game:has(#next[hidden]) .stats div{position:relative;height:100%;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible}
+#game:has(#next[hidden]) .stats span{position:absolute;width:1px;height:1px;margin:-1px;padding:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+#game:has(#next[hidden]) .stats strong{position:absolute;left:50%;top:53%;transform:translateX(-50%);font-size:clamp(23px,6.4vw,30px);line-height:1.05;color:#4b260e;text-shadow:0 1px #fff4d5;white-space:nowrap}
+/* One stable requirement label for all unbuilt rewards, independent of balance. */
+#home-panel.home10-panel #home-guidance:has(#home-cost:not([data-reward-key="complete"])){background-image:url('assets/home-reference/reward.webp')}
+#home-panel.home10-panel #home-cost:not([data-reward-key="complete"]) .guidance-action>span{position:static;width:auto;height:auto;margin:2px 0 0;padding:0;clip-path:none;overflow:visible;white-space:nowrap;font-size:clamp(17px,4.5cqw,42px);line-height:1;color:#633015;text-shadow:0 1px #fff3d2}
+#home-panel.home10-panel #home-cost .guidance-currency{display:none}
+
+html body,html body *,html body *::before,html body *::after{letter-spacing:-.02em!important}
+#home-panel.home10-panel .home-wrap>#home-status{position:absolute;top:23%;left:3%;right:3%;bottom:auto;width:94%;margin:0;padding:0;z-index:35;pointer-events:none;text-align:center;color:#fff;font-size:clamp(30px,7.8cqw,72px)!important;font-weight:900;line-height:1.2;white-space:normal;word-break:keep-all;text-shadow:0 3px 2px #21451c,0 0 8px #153517,1px 0 #21451c,-1px 0 #21451c;background:none;border:0;box-shadow:none}
+#home-panel.home10-panel .home-wrap>#home-status:empty{display:none}
+#home-panel.home10-panel #home-upgrade-actions #upgrade,#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle{isolation:isolate;overflow:visible}
+#home-panel.home10-panel #home-upgrade-actions .home-neon-ready::after{content:''!important;display:block!important;position:absolute;inset:-18%;z-index:-1;pointer-events:none;border-radius:50%;border:5px solid #d9ff70;background:radial-gradient(circle,transparent 45%,#8dff3d55 57%,#e1ff7699 66%,transparent 74%);box-shadow:0 0 15px 8px #b7ff5b,0 0 32px 14px #61ff3b99,inset 0 0 14px #efffa6;filter:blur(2px);animation:home-neon-pulse 1.2s ease-in-out infinite}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle.home-neon-ready::after{border-color:#fff3b0;background:radial-gradient(circle,transparent 45%,#fa7dff55 57%,#ffe19399 66%,transparent 74%);box-shadow:0 0 15px 8px #fc8dff,0 0 32px 14px #d570ff99,inset 0 0 14px #fff2b3}
+@keyframes home-neon-pulse{0%,100%{opacity:.3;transform:scale(.92)}50%{opacity:1;transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){#home-panel.home10-panel #home-upgrade-actions .home-neon-ready::after{animation:none;opacity:.75}}
+[data-reduce-effects="true"] #home-panel.home10-panel #home-upgrade-actions .home-neon-ready::after{animation:none;opacity:.75}
+
+/* Reward wording is all real text in Paperlogy; no coin lettering image. */
+#home-panel.home10-panel .guidance-action>b::after{content:none!important;display:none!important;background:none!important}
+#home-panel.home10-panel #home-cost .guidance-currency{display:inline;font-size:.78em;line-height:1;white-space:nowrap;letter-spacing:inherit!important}
+#home-panel.home10-panel #home-cost .guidance-need{font-weight:700}
+#home-panel.home10-panel #home-cost[data-reward-key="roof"] .guidance-reward-name{font-size:clamp(14px,3.9cqw,36px)}

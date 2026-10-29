@@ -9,7 +9,7 @@
 .rainbow-atlas{background:url('assets/rainbow-arrow/rainbow-actions-768x512.png') 0 100%/300% 200% no-repeat}
 .rainbow-beam{background:linear-gradient(90deg,#ff5e79,#ffd94e,#76ff93,#6cdaff,#bd87ff);transform-origin:left center;border-radius:50%;box-shadow:0 0 12px #eaffff}
 .rainbow-particle{border-radius:30%;box-shadow:0 0 7px currentColor}
-.rainbow-reward{height:auto!important;text-align:center;font-family:'ArrowTok Basic',sans-serif;font-size:30px;font-weight:900;color:#fff4a4;-webkit-text-stroke:1px #87400b;paint-order:stroke fill;text-shadow:0 3px #87400b,0 0 12px #ffd940}
+.rainbow-reward{height:auto!important;text-align:center;font-family:'User Paperlogy Bold',sans-serif;font-size:30px;font-weight:700;color:#fff4a4;-webkit-text-stroke:1px #87400b;paint-order:stroke fill;text-shadow:0 3px #87400b,0 0 12px #ffd940}
 
 /* Match the opaque tile footprint to ordinary arrows, compensating for atlas gutters. */
 .block[data-rainbow="true"][data-dir] span{background-size:123% 123%!important}
@@ -17,4 +17,7 @@
 .block[data-rainbow="true"][data-dir="R"] span{background-position:29% 67%!important}
 .block[data-rainbow="true"][data-dir="D"] span{background-position:71% 31%!important}
 .block[data-rainbow="true"][data-dir="L"] span{background-position:29% 31%!important}
-.rotation-zone img{transform:translate(-.95%,.95%) scale(1.22);transform-origin:center}
+.rotation-zone img{transform:none;transform-origin:center}
+
+
+

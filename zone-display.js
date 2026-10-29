@@ -7,4 +7,4 @@ export function zoneEntries(blocks,rocks,n,zones,zone){
  return [[...dirs][0]??'U'];
 }
 // A single upright clockwise symbol, independent of entry direction.
-export function zoneMarkup(dirs){return '<img src="assets/rotation-crystal/rotation-crystal-128.png" alt="" data-rotation="clockwise-90">';}
+export function zoneMarkup(dirs){return '<img src="assets/rotation-stone/rotation-limestone-256.webp" alt="" data-rotation="clockwise-90">';}

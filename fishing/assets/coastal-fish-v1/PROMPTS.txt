@@ -1,0 +1,4 @@
+Built-in image_gen, transparent background.
+돌돔: realistic Korean striped beakfish, full side view facing right, silver oval body, strong black vertical stripes, spiny dorsal fin, beaklike mouth.
+농어: realistic Japanese sea bass, full side view facing right, long streamlined silver body, dark back, subtle upper speckles, two dorsal fins, large mouth.
+Both: polished lifelike fishing-game sprites, all fins inside frame, no water, no hook, no words, transparent background.

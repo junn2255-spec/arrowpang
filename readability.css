@@ -22,7 +22,7 @@ main{height:auto;min-height:100svh;min-height:100dvh;overflow:visible}
 .status-row #next{width:100%;min-height:52px;flex:1 1 100%;font-size:17px;line-height:1.45;padding:10px 16px;margin:0;border:12px solid transparent!important;border-image:url('assets/ui/button-yellow.webp') 40 90 fill /12px 25px stretch;background:none!important;border-radius:0}
 nav{height:auto;margin:0;gap:8px;align-items:stretch}
 nav button{height:auto;min-height:72px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 2px;border:12px solid transparent;border-image:url('assets/ui/bottom-button.webp') 55 fill /12px stretch;background:none;box-shadow:none;border-radius:0}
-nav button img{height:24px;width:24px;flex:none;margin:0;object-fit:contain}nav button span{font-size:16px;line-height:22px;white-space:nowrap;margin:0;color:#57381d;font-weight:800}
+nav button img{height:24px;width:24px;flex:none;margin:0;object-fit:contain}nav button span{font-size:16px;line-height:22px;white-space:nowrap;margin:0;color:#57381d;font-weight:700}
 #celebrate{inset:16px 0;border-radius:12px}#celebrate strong{font-size:20px;line-height:1.4;padding:16px 12px;word-break:keep-all}#combo b{font-size:28px}
 @media(max-width:360px){main{padding-left:12px;padding-right:12px}.stats{gap:2px}.stats div{padding-left:4px;padding-right:4px}.stage-plaque{padding-left:28px;padding-right:28px}}
 @media(orientation:landscape) and (max-height:600px){main{display:none}}

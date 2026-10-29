@@ -1,0 +1,91 @@
+/* Reference composition: one full-height forest, compact header and three round controls. */
+#home-panel.home10-panel{padding:0;overflow:hidden;background-position:center;background-size:cover}
+#home-panel.home10-panel .home-wrap{position:relative;width:100%;max-width:560px;height:100dvh;margin:auto;padding:0}
+#home-panel.home10-panel .home-title{position:absolute;left:5%;top:calc(1.5% + env(safe-area-inset-top));width:52%;height:10%;max-height:none;margin:0;z-index:20;object-fit:contain}
+#home-panel.home10-panel .home-top{position:absolute;inset:0;display:block;pointer-events:none;z-index:20}
+#home-panel.home10-panel .home-top .coin-wallet{position:absolute;left:60%;top:calc(1.6% + env(safe-area-inset-top));width:18%;aspect-ratio:1;height:auto;min-height:0;padding:49% 0 0;background:none;border:0;box-sizing:border-box;pointer-events:auto;border-radius:50%;padding:0;background:radial-gradient(circle at 35% 25%,#fff3a3,#ffd535 56%,#f5a91c 72%,#c27412);border:3px solid #fff19b;box-shadow:0 0 0 2px #a45a1d,inset 0 0 0 3px #f0ac25,0 3px 4px #4d341c66;display:flex;align-items:flex-end;justify-content:center;font-size:clamp(17px,4.5vw,27px);line-height:1.3;padding-bottom:5%;color:#5d2c13}
+#home-panel.home10-panel .home-top .coin-wallet::before{content:'';position:absolute;inset:8% 20% 37%;background:url('assets/home/24-coin.webp') center/contain no-repeat}
+#home-panel.home10-panel .home-top #home-back{position:absolute;right:3%;top:calc(1.4% + env(safe-area-inset-top));width:19%;aspect-ratio:1;min-height:0;max-width:none;border:5px solid #995321;border-radius:50%;background:radial-gradient(circle at 40% 30%,#fff9df,#ffe5a7);box-shadow:inset 0 0 0 2px #e7b05f,0 3px 4px #4c2c1866;pointer-events:auto;color:#58270f;font-size:clamp(14px,3.5vw,23px);font-weight:900;line-height:1.1;flex-direction:column}
+#home-panel.home10-panel #home-back img{display:none}
+#home-panel.home10-panel #home-back::before{content:'↶';display:block;font-size:1.6em;line-height:.9}
+#home-panel.home10-panel #home-back::after{content:'게임\A으로';white-space:pre;text-align:center}
+#home-panel.home10-panel .home-scene{position:absolute;left:0;top:25%;width:100%;height:48%;min-height:0;overflow:visible;pointer-events:none}
+#home-panel.home10-panel .home-scene .house-body{width:58%;height:55%;left:51%;bottom:37%;object-position:center bottom}
+#home-panel.home10-panel .yard{display:none}
+#home-panel.home10-panel .hero-actor{left:21%;bottom:10%;width:21%;pointer-events:auto}
+#home-panel.home10-panel .dog-actor{left:52%;bottom:9%;width:20%;pointer-events:auto}
+#home-panel.home10-panel .pond-touch,#home-panel.home10-panel #interior-enter,#home-panel.home10-panel .bonus-treat-control{pointer-events:auto}
+#home-panel.home10-panel .flowers-left{left:7%;bottom:36%;width:23%}
+#home-panel.home10-panel .flowers-right{right:4%;bottom:36%;width:23%}
+#home-panel.home10-panel .fence-left{bottom:42%;width:23%}
+#home-panel.home10-panel .fence-right{bottom:42%;width:23%}
+#home-panel.home10-panel .bench{bottom:15%;width:22%}
+#home-panel.home10-panel .pond-wrap{bottom:13%;width:30%}
+#home-panel.home10-panel #interior-enter{left:40%;top:41%;width:23%;min-height:35px}
+#home-panel.home10-panel #home-upgrade-actions{position:absolute;left:8%;right:8%;bottom:calc(3% + env(safe-area-inset-bottom));width:auto;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9%;align-items:center;z-index:22}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle,#home-panel.home10-panel #home-upgrade-actions #upgrade,#home-panel.home10-panel #home-guidance{position:relative;inset:auto;width:100%;max-width:none;min-height:0;aspect-ratio:1;margin:0;padding:8%;box-sizing:border-box;border:3px solid #ffe89a;border-radius:50%;box-shadow:0 0 0 2px #ae641d,inset 0 0 0 2px #e0a631,inset 0 2px 5px #fff6b6,0 4px 5px #43351a66;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle{background:radial-gradient(circle at 40% 20%,#de9eff,#9733cd 60%,#65149e);font-size:clamp(14px,4vw,24px);line-height:1.08;word-break:keep-all;color:#fff8e0;text-shadow:0 2px #521e70}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle::before{content:'🎁';font-size:clamp(27px,8vw,47px);line-height:1.1;margin:0 0 2px}
+#home-panel.home10-panel #home-upgrade-actions #upgrade{background:radial-gradient(circle at 35% 20%,#b5ee44,#458b20 65%,#286417);color:#fff9da;line-height:1.1;font-weight:900;font-size:clamp(13px,3.5vw,22px);text-shadow:0 2px #244813;filter:none;opacity:1;gap:2px}
+#home-panel.home10-panel #upgrade img{display:none}
+#home-panel.home10-panel #upgrade::before{content:'';display:block;width:59%;aspect-ratio:1;background:url('assets/home/24-coin.webp') center/contain no-repeat}
+#home-panel.home10-panel #upgrade::after{content:'업그레이드';white-space:nowrap}
+#home-panel.home10-panel #upgrade:disabled{cursor:default}
+#home-panel.home10-panel #upgrade:focus-visible,#home-panel.home10-panel #home-back:focus-visible{outline:3px solid white;outline-offset:4px}
+#home-panel.home10-panel #home-guidance{background:radial-gradient(circle at 36% 20%,#fffbe2,#ffedb3 65%,#ffd16e);pointer-events:none;overflow:visible;padding:19% 3% 5%}
+#home-panel.home10-panel #home-guidance #home-stage{display:none}
+#home-panel.home10-panel #home-guidance #home-cost{width:100%;line-height:1!important;margin:0!important}
+#home-panel.home10-panel .guidance-row{display:flex;flex-direction:column;gap:0;min-width:0}
+#home-panel.home10-panel .guidance-icon{position:absolute;top:-12%;left:20%;width:60%;height:40%;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+#home-panel.home10-panel .guidance-icon img,#home-panel.home10-panel .guidance-icon .guidance-sprite{transform:scale(1.12);object-fit:contain}
+#home-panel.home10-panel .guidance-icon::before,#home-panel.home10-panel .guidance-icon::after,#home-panel.home10-panel .guidance-sparkles{display:none}
+#home-panel.home10-panel .guidance-copy{align-items:center;gap:0;text-align:center;width:100%}
+#home-panel.home10-panel .guidance-reward-name{font-size:clamp(12px,3.5vw,21px);line-height:1.05;max-width:100%;word-break:keep-all}
+#home-panel.home10-panel .guidance-action{display:flex;flex-direction:column;align-items:center;gap:0;font-size:clamp(10px,2.7vw,17px);line-height:1.1;color:#653013}
+#home-panel.home10-panel .guidance-action>b{font-size:clamp(14px,4vw,25px);letter-spacing:-.5px;line-height:1.15;color:#653013}
+#home-panel.home10-panel .guidance-action>span{white-space:normal;word-break:keep-all}
+#home-panel.home10-panel .guidance-complete{font-size:clamp(12px,3vw,20px)}
+#home-panel.home10-panel #home-guidance #home-status{position:absolute;bottom:calc(100% + 22px);right:0;width:min(76vw,350px);margin:0;padding:7px 10px;background:#fff2cddd;border-radius:12px;font-size:15px!important;box-sizing:border-box}
+#home-panel.home10-panel #home-status:empty{display:none}
+@media(min-aspect-ratio:4/5){#home-panel.home10-panel .home-wrap{max-width:min(560px,65dvh)}#home-panel.home10-panel .home-scene{top:22%;height:56%}#home-panel.home10-panel #home-upgrade-actions{bottom:3%}}
+/* Compensate transparent margins in the existing title and actor sprite cells. */
+#home-panel.home10-panel .home-title{left:0;width:62%;top:calc(.5% + env(safe-area-inset-top));height:12%}
+#home-panel.home10-panel .home-top .coin-wallet{padding-bottom:4px}
+#home-panel.home10-panel .home-top .coin-wallet::before{inset:-5% -5% 22%}
+#home-panel.home10-panel .hero-actor{left:14%;bottom:9%;width:36%}
+#home-panel.home10-panel .dog-actor{left:48%;bottom:8%;width:29%}
+#home-panel.home10-panel #upgrade::before{width:65%;background-size:170%}
+#home-panel.home10-panel .guidance-currency{display:none}
+#home-panel.home10-panel .guidance-action>span{font-size:clamp(12px,3.2vw,19px)}
+/* Generated artwork contains the permanent Korean lettering. Keep semantic labels in DOM. */
+#home-panel.home10-panel{background-image:url('assets/home-reference/background.webp')!important}
+#home-panel.home10-panel .home-title{left:5%;width:53%;height:11%;top:calc(.6% + env(safe-area-inset-top));filter:drop-shadow(0 2px 2px #3b281b33)}
+#home-panel.home10-panel .home-top .coin-wallet{background:url('assets/home-reference/wallet.webp') center/contain no-repeat;border:0;box-shadow:none;padding-bottom:9%;font-size:clamp(17px,4.5vw,27px)}
+#home-panel.home10-panel .home-top .coin-wallet::before{display:none}
+#home-panel.home10-panel .home-top .coin-wallet{padding-bottom:8px}
+#home-panel.home10-panel .home-top #home-back{background:url('assets/home-reference/back-v2.webp') center/contain no-repeat;border:0;box-shadow:none}
+#home-panel.home10-panel #home-back::before,#home-panel.home10-panel #home-back::after{display:none}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle{background:url('assets/home-reference/bonus-v2.webp') center/contain no-repeat;border:0;box-shadow:none;color:transparent;text-shadow:none;font-size:0!important;padding:0}
+#home-panel.home10-panel #home-upgrade-actions #upgrade{background:url('assets/home-reference/upgrade-v2.webp') center/contain no-repeat;border:0;box-shadow:none;font-size:0!important;padding:0}
+#home-panel.home10-panel #bonus-inventory-toggle::before,#home-panel.home10-panel #upgrade::before,#home-panel.home10-panel #upgrade::after{display:none!important}
+#home-panel.home10-panel #home-upgrade-actions #bonus-inventory-toggle:active,#home-panel.home10-panel #upgrade:active:not(:disabled){transform:scale(.96);box-shadow:none;filter:brightness(1.06)}
+#home-panel.home10-panel #home-guidance{border:0;box-shadow:none;background:url('assets/home-reference/reward-collect-v2.webp') center/contain no-repeat;padding:0}
+#home-panel.home10-panel #home-guidance:has(#home-cost.can-build){background-image:url('assets/home-reference/reward-build-v2.webp')}
+#home-panel.home10-panel #home-guidance:has(#home-cost.can-build[data-reward-key="dog"]){background-image:url('assets/home-reference/reward-dog-v2.webp')}
+#home-panel.home10-panel #home-guidance:has([data-reward-key="complete"]){background-image:url('assets/home-reference/reward.webp');padding:16% 5%}
+#home-panel.home10-panel .guidance-copy{position:absolute;left:7%;top:34%;width:86%;gap:1px}
+#home-panel.home10-panel .guidance-reward-name{font-size:clamp(12px,3.7vw,23px);line-height:1.1;font-weight:900;letter-spacing:-.4px}
+#home-panel.home10-panel .guidance-action>b{font-size:clamp(14px,3.9vw,25px);line-height:1.1;font-weight:900}
+#home-panel.home10-panel .guidance-action>span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+#home-panel.home10-panel .guidance-icon{top:-11%;left:16%;width:68%;height:42%}
+#home-panel.home10-panel .guidance-icon img{transform:none}
+#home-panel.home10-panel .guidance-action{justify-content:center}
+#home-panel.home10-panel #home-guidance:has([data-reward-key="complete"]) .guidance-action>span{position:static;clip-path:none;width:auto;height:auto;margin:0;white-space:normal}
+/* Scale the scene to the reference's portrait width and keep the live price above baked copy. */
+#home-panel.home10-panel .home-wrap{max-width:941px;container-type:inline-size}
+#home-panel.home10-panel .home-top .coin-wallet{font-size:clamp(17px,5cqw,48px);padding-bottom:10%}
+#home-panel.home10-panel .home-top .coin-wallet{padding-bottom:8px}
+#home-panel.home10-panel .guidance-copy{top:29%}
+#home-panel.home10-panel .guidance-reward-name{font-size:clamp(12px,3.7cqw,35px);line-height:1.05}
+#home-panel.home10-panel .guidance-action>b{font-size:clamp(13px,3.7cqw,35px);line-height:1.05;white-space:nowrap}
+@media(min-aspect-ratio:4/5){#home-panel.home10-panel .home-wrap{max-width:min(560px,65dvh)}}

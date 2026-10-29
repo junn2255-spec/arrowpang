@@ -6,7 +6,7 @@ import {art,createArtTextures,applyArt} from './art.js';
 const ASSETS=new URL('../assets/whack-a-mole/',import.meta.url);
 const loadImage=path=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(`이미지 로드 실패: ${path}`));im.src=new URL(path,ASSETS);});
 const uuid=()=>globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`;
-const fontPromise=typeof FontFace==='function'?new FontFace('Mole Gothic',`url("${new URL('fonts/bithumb-gothic-basic.ttf',ASSETS)}")`,{weight:'700'}).load().then(font=>document.fonts.add(font)).catch(e=>console.warn('게임 서체 로드 실패',e)):Promise.resolve();
+const fontPromise=typeof FontFace==='function'?new FontFace('Mole Paperlogy ExtraBold',`url("${new URL('../../assets/user-fonts-paperlogy/Paperlogy-8ExtraBold.ttf',import.meta.url)}")`,{weight:'800'}).load().then(font=>document.fonts.add(font)).catch(e=>console.warn('게임 서체 로드 실패',e)):Promise.resolve();
 const FX_MARGIN=380;
 const HAMMER_SCALE=1.3*1.5;
 const CHARACTER_SCALE=1.08*1.12;
@@ -171,7 +171,7 @@ export function mountMoleGame(root,{stage=5,runId=uuid(),credit,onExit=()=>{},pr
       // vertical impact frame the lower striking cap lands on the tap target.
       fx.drawImage(images.hammer,(pose.frame%3)*256,Math.floor(pose.frame/3)*256,256,256,s.x+(92-pivot.x)*scale,s.y+(-29-pivot.y)*scale,256*scale,256*scale);fx.restore();
     }
-    floats=floats.filter(f=>f.life<850);for(const f of floats){f.life+=dt;fx.save();fx.globalAlpha=Math.max(0,1-f.life/850);fx.font=`700 ${f.number?104:Math.round(76*(1+.16*Math.sin(Math.min(1,f.life/240)*Math.PI)))}px "Mole Gothic", sans-serif`;fx.textAlign='center';const inset=fx.measureText(f.text).width/2+18,textX=Math.max(inset,Math.min(720-inset,f.x));fx.lineWidth=10;fx.strokeStyle='#7c3516';fx.shadowColor='#ffca3c';fx.shadowBlur=14;fx.strokeText(f.text,textX,f.y-f.life*.07);fx.fillStyle=f.number?(f.text==='3'?'#ffdf3e':'#ffffff'):'#fff4a6';fx.fillText(f.text,textX,f.y-f.life*.07);fx.restore();}
+    floats=floats.filter(f=>f.life<850);for(const f of floats){f.life+=dt;fx.save();fx.globalAlpha=Math.max(0,1-f.life/850);fx.font=`800 ${f.number?104:Math.round(76*(1+.16*Math.sin(Math.min(1,f.life/240)*Math.PI)))}px "Mole Paperlogy ExtraBold", sans-serif`;fx.textAlign='center';const inset=fx.measureText(f.text).width/2+18,textX=Math.max(inset,Math.min(720-inset,f.x));fx.lineWidth=10;fx.strokeStyle='#7c3516';fx.shadowColor='#ffca3c';fx.shadowBlur=14;fx.strokeText(f.text,textX,f.y-f.life*.07);fx.fillStyle=f.number?(f.text==='3'?'#ffdf3e':'#ffffff'):'#fff4a6';fx.fillText(f.text,textX,f.y-f.life*.07);fx.restore();}
   }
   function drawCatchBurst(p,age){
     if(reduced)return;

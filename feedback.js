@@ -17,8 +17,24 @@ export class Feedback{
  impact(board,b,d,kind='spark'){const cell=board.clientWidth/Number(board.dataset.n||5),[dx,dy]=vectors[d];this.burst(board,(b.x+.5+dx*.45)*cell,(b.y+.5+dy*.45)*cell,kind==='dust'?5:4,kind);}
  settle(){for(const f of this.cleanups)f();this.cleanups=[];}
  take(){const p=this.pool.find(p=>!p.active)??this.pool.reduce((a,b)=>(a.serial??0)<(b.serial??0)?a:b);p.active=true;p.el.hidden=false;p.serial=(this.serial=(this.serial??0)+1);p.version=(p.version??0)+1;return p;}
- stone(board,rock,el,d,hp){this.attach(board);const cell=this.cell,plan=stonePlan({hp,cell,d}),x=(rock.x+.5-plan.dx*.42)*cell,y=(rock.y+.5-plan.dy*.42)*cell;
+ stone(board,rock,el,d,hp){this.attach(board);const rockArt=hp>=2?'assets/stone-obstacles-v2/cracked-rock.webp':'assets/stone-damage-v1/rock-hp'+(hp===1?2:1)+'.webp';const cell=this.cell,plan=stonePlan({hp,cell,d}),x=(rock.x+.5-plan.dx*.42)*cell,y=(rock.y+.5-plan.dy*.42)*cell;
   el?.style.setProperty('--hit-x',plan.dx*plan.push+'px');el?.style.setProperty('--hit-y',plan.dy*plan.push+'px');if(!preferences.reduced)this.pulse(el,'stone-push',170);
+  if(this.doc.body.classList.contains('garden-theme')){if(hp>=0){const effect=this.doc.createElement('div');effect.className='garden-stone-break';Object.assign(effect.style,{left:rock.x*cell+'px',top:rock.y*cell+'px',width:cell+'px',height:cell+'px'});this.root.append(effect);const remove=()=>effect.remove();this.cleanups.push(remove);if(preferences.reduced){effect.style.backgroundImage="url('"+rockArt+"')";effect.animate?.([{opacity:1},{opacity:0}],{duration:150,fill:'forwards'});this.later(remove,150);}else{
+// Full-size rock flashes into independently rotating, ballistic stone fragments.
+const count=hp===0?12:6;
+for(let i=0;i<count;i++){
+ const piece=this.doc.createElement('i'),angle=(i/count)*Math.PI*2-.35;
+ const size=cell*(hp===0?(i<4?.42:i<8?.25:.14):(.12+(i%3)*.04)),speed=cell*(hp===0?(.7+(i%4)*.22):(.35+(i%3)*.15));
+ const dx=Math.cos(angle)*speed+plan.dx*cell*.18,dy=Math.sin(angle)*speed*.65;
+ const spin=(i%2?1:-1)*(100+(i%5)*55),duration=560+(i%4)*65;
+ piece.className='garden-stone-break-piece';
+ Object.assign(piece.style,{left:(cell-size)/2+'px',top:(cell-size)/2+'px',width:size+'px',height:size+'px',backgroundImage:"url('assets/stone-shards-v1/shard-"+(i%4+1)+".webp')",backgroundSize:'contain',backgroundPosition:'center',filter:'drop-shadow(0 2px 1px rgba(0,0,0,.55))'});
+ effect.append(piece);
+ const frames=[0,.2,.4,.6,.8,1].map(t=>({offset:t,transform:'translate('+(dx*t)+'px,'+(dy*t+cell*1.2*t*t-cell*.65*t)+'px) rotate('+(spin*t)+'deg)',opacity:t<.6?1:1-(t-.6)/.4}));
+ piece.animate?.(frames,{duration,delay:80,fill:'forwards',easing:'linear'});
+}
+this.burst(board,(rock.x+.5)*cell,(rock.y+.5)*cell,6,'dust');
+this.later(remove,900);}}preferences.vibrate(plan.vibration);return plan;}
   const parts=preferences.reduced?plan.particles.slice(0,4):plan.particles;
   for(const particle of parts){const p=this.take(),v=p.version,e=p.el,q={...particle};if(x+q.dx<0||x+q.dx>board.clientWidth)q.dx=-q.dx;if(y+q.dy<0||y+q.dy>board.clientWidth)q.dy=-q.dy;q.arc=Math.min(q.arc,y+12);
    e.className='feedback-particle shard';e.style.left=x+'px';e.style.top=y+'px';e.style.width=e.style.height=q.size+'px';e.style.backgroundImage=`url('assets/ui/particle-${q.asset}.webp')`;for(const t of [.25,.5,.75,1]){const f=shardFrame(q,t),key=t*100;e.style.setProperty('--x'+key,f.x+'px');e.style.setProperty('--y'+key,f.y+'px');e.style.setProperty('--r'+key,f.rotation+'deg');}e.style.animation='none';void e.offsetWidth;e.style.animation=`shard-flight ${q.duration}ms linear forwards`;this.later(()=>{if(p.version===v){p.active=false;e.hidden=true;}},q.duration);

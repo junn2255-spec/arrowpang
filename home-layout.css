@@ -11,7 +11,7 @@
 #interior-panel .interior-header h2{left:60px;top:6px;width:330px}
 #interior-panel .interior-header #interior-exit{right:auto;left:129px;top:116px;width:192px;min-height:60px}
 #interior-panel .interior-guidance{position:absolute;left:5%;right:5%;bottom:max(12px,env(safe-area-inset-bottom));z-index:31;pointer-events:none;display:flex;flex-direction:column;gap:5px}
-#interior-panel .interior-guidance p{position:static;width:auto;margin:0;font-size:clamp(18px,4.6vw,20px);line-height:1.4;font-weight:800;color:#fff5d7;text-align:center;word-break:keep-all;text-shadow:-1px -1px 1px #4a2c19,1px 1px 2px #4a2c19,0 2px 4px #29190e}
+#interior-panel .interior-guidance p{position:static;width:auto;margin:0;font-size:clamp(18px,4.6vw,20px);line-height:1.4;font-weight:700;color:#fff5d7;text-align:center;word-break:keep-all;text-shadow:-1px -1px 1px #4a2c19,1px 1px 2px #4a2c19,0 2px 4px #29190e}
 #interior-panel .interior-guidance p:empty{display:none}
 @media(max-height:700px){.home10-panel #home-guidance{padding:6px 10px;margin-top:auto}.home10-panel #home-guidance p{font-size:15px!important}.home10-panel #home-guidance #home-stage{font-size:14px!important}}
 
@@ -19,13 +19,13 @@
 .home10-panel #home-scene #interior-unlock-note{display:none}
 
 /* Shared visual rule: next reward picture, large price, and clear Gothic copy. */
-#home-guidance,#next-reward-preview,.interior-guidance{font-family:'ArrowTok Basic','Malgun Gothic',sans-serif;font-weight:700}
+#home-guidance,#next-reward-preview,.interior-guidance{font-family:'User Paperlogy Bold',sans-serif;font-weight:700}
 .home10-panel #home-guidance{padding:10px 12px 12px;margin:6px 2px 2px;border:3px solid #cf902c;border-radius:23px;background:linear-gradient(135deg,#fff1b7,#ffdc83);box-shadow:inset 0 1px 0 #fff3c2,0 4px 0 #854a1b,0 7px 12px #59370d33}
 .home10-panel #home-guidance::before{display:none}
 .home10-panel #home-guidance #home-stage{display:flex;justify-content:center;align-items:center;gap:8px;margin:0 0 6px;font-size:22px!important;line-height:1.25}
 .home-progress-badge{display:inline-flex;align-items:baseline;gap:5px;padding:4px 15px 5px;border:2px solid #c99432;border-radius:30px;background:linear-gradient(#64863b,#365d2e);color:#fff0b5;text-shadow:0 2px #27471c;box-shadow:inset 0 1px #9cab6680,0 2px #b17c2355}
 .home-progress-badge b{font-size:28px;color:#ffe467}.home-progress-badge small{font-size:20px;color:#ffeeb4}.interior-progress-badge{font-size:16px;color:#80501d}
-.reward-guidance-content{font-family:'ArrowTok Basic','Malgun Gothic',sans-serif!important}
+.reward-guidance-content{font-family:'User Paperlogy Bold',sans-serif!important}
 .guidance-row{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0}
 .guidance-icon{display:block;width:76px;height:76px;flex:none;border:2px solid #e2ab42;border-radius:20px;background:radial-gradient(#fff6ca,#f9ce67);box-shadow:inset 0 1px #fff2c1,0 3px #bc782544;overflow:hidden;padding:4px}
 .guidance-icon img{position:static!important;display:block;width:100%!important;height:100%!important;object-fit:contain;filter:drop-shadow(0 2px 1px #68411f33)}
@@ -37,10 +37,10 @@
 .guidance-action>b{font-size:clamp(27px,7vw,34px);color:#b35c10;text-shadow:0 1px #ffedaa;letter-spacing:-1px}.guidance-action>span{white-space:nowrap}
 .guidance-complete{display:block;font-size:25px;color:#6b421b}.can-build .guidance-action>b{color:#386a2d}
 .home10-panel #home-guidance #home-cost{margin:0!important;font-size:20px!important;white-space:normal;overflow-wrap:normal}
-.home10-panel #home-guidance #home-status{font-family:'ArrowTok Basic',sans-serif;font-size:18px!important;line-height:1.45;margin:8px 0 0;color:#654019}
+.home10-panel #home-guidance #home-status{font-family:'User Paperlogy Bold',sans-serif;font-size:18px!important;line-height:1.45;margin:8px 0 0;color:#654019}
 #home-lock-guidance,#interior-unlock-note{display:none!important}
 #interior-panel .interior-guidance #interior-next{padding:10px 12px;border:3px solid #cf902c;border-radius:21px;background:linear-gradient(135deg,#fff1b7,#ffdc83);box-shadow:0 4px #854a1b;text-shadow:none;overflow-wrap:normal}
-#interior-panel .interior-guidance #interior-status{font-family:'ArrowTok Basic',sans-serif;font-size:19px}
+#interior-panel .interior-guidance #interior-status{font-family:'User Paperlogy Bold',sans-serif;font-size:19px}
 @media(max-height:700px){.home10-panel .home-scene{min-height:160px}.home10-panel #home-guidance{padding:7px 9px 9px;margin-top:5px}.home10-panel #home-guidance #home-stage{font-size:20px!important;margin-bottom:4px}.home-progress-badge{padding:2px 12px 3px}.home-progress-badge b{font-size:25px}.home-progress-badge small{font-size:18px}.guidance-icon{width:61px;height:61px}.guidance-row{gap:8px}.guidance-reward-name{font-size:20px}.guidance-action{font-size:17px}.guidance-action>b{font-size:27px}.home10-panel #home-guidance #home-status{font-size:17px!important}}
 
 /* Reward guidance belongs only in My Home. */
@@ -49,7 +49,7 @@
 
 /* Bithumb Gothic across menus, gameplay, dialogs and home. */
 @font-face{font-family:'Bithumb Gothic';src:url('assets/fonts/bithumb-basic.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-html body,html body *,html body *::before,html body *::after{font-family:'Bithumb Gothic','Malgun Gothic',sans-serif!important}
+html body,html body *,html body *::before,html body *::after{font-family:'User Paperlogy Bold',sans-serif!important}
 #next-reward-preview{display:none!important}
 
 /* Jewel-like reward bubble, with a framed illustration and star highlights. */
@@ -60,7 +60,7 @@ html body,html body *,html body *::before,html body *::after{font-family:'Bithum
 .guidance-icon::before{left:-8px;top:0;font-size:23px;transform:rotate(-12deg)}
 .guidance-icon::after{right:-7px;bottom:0;font-size:19px;transform:rotate(10deg)}
 .guidance-sparkles{position:absolute;right:0;top:-11px;z-index:2;font-size:17px;color:#fffce2;text-shadow:0 0 4px #e8a700}
-.guidance-reward-name{color:#6b2f0d;text-shadow:0 2px #fff8d3;font-weight:900}
+.guidance-reward-name{color:#6b2f0d;text-shadow:0 2px #fff8d3;font-weight:700}
 .guidance-action>b{color:#bd540a;text-shadow:0 2px #fff7c4,0 0 10px #fff6b3}
 .can-build .guidance-icon{box-shadow:0 0 0 2px #78a443,inset 0 0 10px #fffbee,0 0 18px #eaffb0,0 4px 6px #446c3255}
 .home10-panel #home-upgrade-actions #bonus-inventory-toggle{border:3px solid #ffe399;border-radius:18px;background:radial-gradient(ellipse at 50% 0,#c78bf1,transparent 65%),linear-gradient(#9653b6,#6b348e);color:#fff6d2;text-shadow:0 2px #4f2168;box-shadow:inset 0 0 0 2px #bb79cb,inset 0 2px 4px #f7caff,0 4px 0 #4d285b,0 0 0 1px #9a662d,0 6px 12px #3c183d55}

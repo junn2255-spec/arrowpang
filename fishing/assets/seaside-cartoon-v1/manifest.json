@@ -1,0 +1,976 @@
+{
+  "version": 1,
+  "artStyle": "cartoon",
+  "referenceViewport": {
+    "width": 390,
+    "height": 844
+  },
+  "assets": {
+    "background-coast-day": {
+      "png": "background-coast-day.png",
+      "webp": "background-coast-day.webp",
+      "width": 1080,
+      "height": 1920,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": false,
+      "recommendedDisplayWidth": 390
+    },
+    "foreground-rocks": {
+      "png": "foreground-rocks.png",
+      "webp": "foreground-rocks.webp",
+      "width": 1080,
+      "height": 640,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "transparent": true,
+      "recommendedDisplayWidth": 390
+    },
+    "equipment/rod-idle": {
+      "png": "equipment/rod-idle.png",
+      "webp": "equipment/rod-idle.webp",
+      "width": 384,
+      "height": 1024,
+      "anchor": {
+        "x": 0.7249,
+        "y": 0.9518
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 70,
+        "top": 0,
+        "width": 240,
+        "height": 830
+      },
+      "recommendedDisplayWidth": 145,
+      "anchorMeaning": "Rod handle base. Align this point when swapping bend poses."
+    },
+    "equipment/rod-bend-medium": {
+      "png": "equipment/rod-bend-medium.png",
+      "webp": "equipment/rod-bend-medium.webp",
+      "width": 384,
+      "height": 1024,
+      "anchor": {
+        "x": 0.8213,
+        "y": 0.9518
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 390,
+        "top": 0,
+        "width": 310,
+        "height": 830
+      },
+      "recommendedDisplayWidth": 145,
+      "anchorMeaning": "Rod handle base. Align this point when swapping bend poses."
+    },
+    "equipment/rod-bend-heavy": {
+      "png": "equipment/rod-bend-heavy.png",
+      "webp": "equipment/rod-bend-heavy.webp",
+      "width": 384,
+      "height": 1024,
+      "anchor": {
+        "x": 0.8912,
+        "y": 0.8643
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 700,
+        "top": 0,
+        "width": 386,
+        "height": 840
+      },
+      "recommendedDisplayWidth": 145,
+      "anchorMeaning": "Rod handle base. Align this point when swapping bend poses."
+    },
+    "equipment/reel-body": {
+      "png": "equipment/reel-body.png",
+      "webp": "equipment/reel-body.webp",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 850,
+        "width": 405,
+        "height": 598
+      },
+      "recommendedDisplayWidth": 115
+    },
+    "equipment/reel-handle": {
+      "png": "equipment/reel-handle.png",
+      "webp": "equipment/reel-handle.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 408,
+        "top": 850,
+        "width": 290,
+        "height": 598
+      },
+      "recommendedDisplayWidth": 45
+    },
+    "equipment/reel-complete": {
+      "png": "equipment/reel-complete.png",
+      "webp": "equipment/reel-complete.webp",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 700,
+        "top": 850,
+        "width": 386,
+        "height": 598
+      },
+      "recommendedDisplayWidth": 115
+    },
+    "fish/black-seabream-01": {
+      "png": "fish/black-seabream-01.png",
+      "webp": "fish/black-seabream-01.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 0,
+        "width": 315,
+        "height": 400
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-02": {
+      "png": "fish/black-seabream-02.png",
+      "webp": "fish/black-seabream-02.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 315,
+        "top": 0,
+        "width": 316,
+        "height": 400
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-03": {
+      "png": "fish/black-seabream-03.png",
+      "webp": "fish/black-seabream-03.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 631,
+        "top": 0,
+        "width": 304,
+        "height": 400
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-04": {
+      "png": "fish/black-seabream-04.png",
+      "webp": "fish/black-seabream-04.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 935,
+        "top": 0,
+        "width": 319,
+        "height": 400
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-05": {
+      "png": "fish/black-seabream-05.png",
+      "webp": "fish/black-seabream-05.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 400,
+        "width": 315,
+        "height": 390
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-06": {
+      "png": "fish/black-seabream-06.png",
+      "webp": "fish/black-seabream-06.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 315,
+        "top": 400,
+        "width": 316,
+        "height": 390
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-07": {
+      "png": "fish/black-seabream-07.png",
+      "webp": "fish/black-seabream-07.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 631,
+        "top": 400,
+        "width": 304,
+        "height": 390
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-08": {
+      "png": "fish/black-seabream-08.png",
+      "webp": "fish/black-seabream-08.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 935,
+        "top": 400,
+        "width": 319,
+        "height": 390
+      },
+      "recommendedDisplayWidth": 110
+    },
+    "fish/black-seabream-09": {
+      "png": "fish/black-seabream-09.png",
+      "webp": "fish/black-seabream-09.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 790,
+        "width": 315,
+        "height": 464
+      },
+      "recommendedDisplayWidth": 125
+    },
+    "fish/black-seabream-10": {
+      "png": "fish/black-seabream-10.png",
+      "webp": "fish/black-seabream-10.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 315,
+        "top": 790,
+        "width": 316,
+        "height": 464
+      },
+      "recommendedDisplayWidth": 125
+    },
+    "fish/black-seabream-11": {
+      "png": "fish/black-seabream-11.png",
+      "webp": "fish/black-seabream-11.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 631,
+        "top": 790,
+        "width": 304,
+        "height": 464
+      },
+      "recommendedDisplayWidth": 125
+    },
+    "fish/black-seabream-12": {
+      "png": "fish/black-seabream-12.png",
+      "webp": "fish/black-seabream-12.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 935,
+        "top": 790,
+        "width": 319,
+        "height": 464
+      },
+      "recommendedDisplayWidth": 125
+    },
+    "fish/black-seabream-icon": {
+      "png": "fish/black-seabream-icon.png",
+      "webp": "fish/black-seabream-icon.webp",
+      "width": 128,
+      "height": 128,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "recommendedDisplayWidth": 36
+    },
+    "effects/float-splash-1": {
+      "png": "effects/float-splash-1.png",
+      "webp": "effects/float-splash-1.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 0,
+        "width": 314,
+        "height": 315
+      },
+      "recommendedDisplayWidth": 65
+    },
+    "effects/float-splash-2": {
+      "png": "effects/float-splash-2.png",
+      "webp": "effects/float-splash-2.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 314,
+        "top": 0,
+        "width": 313,
+        "height": 315
+      },
+      "recommendedDisplayWidth": 65
+    },
+    "effects/float-splash-3": {
+      "png": "effects/float-splash-3.png",
+      "webp": "effects/float-splash-3.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 627,
+        "top": 0,
+        "width": 314,
+        "height": 315
+      },
+      "recommendedDisplayWidth": 65
+    },
+    "effects/float-splash-4": {
+      "png": "effects/float-splash-4.png",
+      "webp": "effects/float-splash-4.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 941,
+        "top": 0,
+        "width": 313,
+        "height": 315
+      },
+      "recommendedDisplayWidth": 65
+    },
+    "effects/fish-splash-1": {
+      "png": "effects/fish-splash-1.png",
+      "webp": "effects/fish-splash-1.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 315,
+        "width": 314,
+        "height": 370
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/fish-splash-2": {
+      "png": "effects/fish-splash-2.png",
+      "webp": "effects/fish-splash-2.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 314,
+        "top": 315,
+        "width": 313,
+        "height": 370
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/fish-splash-3": {
+      "png": "effects/fish-splash-3.png",
+      "webp": "effects/fish-splash-3.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 627,
+        "top": 315,
+        "width": 314,
+        "height": 370
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/fish-splash-4": {
+      "png": "effects/fish-splash-4.png",
+      "webp": "effects/fish-splash-4.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 941,
+        "top": 315,
+        "width": 313,
+        "height": 370
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/shore-foam-1": {
+      "png": "effects/shore-foam-1.png",
+      "webp": "effects/shore-foam-1.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 685,
+        "width": 314,
+        "height": 270
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/shore-foam-2": {
+      "png": "effects/shore-foam-2.png",
+      "webp": "effects/shore-foam-2.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 314,
+        "top": 685,
+        "width": 313,
+        "height": 270
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/shore-foam-3": {
+      "png": "effects/shore-foam-3.png",
+      "webp": "effects/shore-foam-3.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 627,
+        "top": 685,
+        "width": 314,
+        "height": 270
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/shore-foam-4": {
+      "png": "effects/shore-foam-4.png",
+      "webp": "effects/shore-foam-4.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 941,
+        "top": 685,
+        "width": 313,
+        "height": 270
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/water-glint-1": {
+      "png": "effects/water-glint-1.png",
+      "webp": "effects/water-glint-1.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 955,
+        "width": 314,
+        "height": 299
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/water-glint-2": {
+      "png": "effects/water-glint-2.png",
+      "webp": "effects/water-glint-2.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 314,
+        "top": 955,
+        "width": 313,
+        "height": 299
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/water-glint-3": {
+      "png": "effects/water-glint-3.png",
+      "webp": "effects/water-glint-3.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 627,
+        "top": 955,
+        "width": 314,
+        "height": 299
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "effects/water-glint-4": {
+      "png": "effects/water-glint-4.png",
+      "webp": "effects/water-glint-4.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 941,
+        "top": 955,
+        "width": 313,
+        "height": 299
+      },
+      "recommendedDisplayWidth": 160
+    },
+    "ui/button-cast": {
+      "png": "ui/button-cast.png",
+      "webp": "ui/button-cast.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 0,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 105
+    },
+    "ui/button-hook": {
+      "png": "ui/button-hook.png",
+      "webp": "ui/button-hook.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 384,
+        "top": 0,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 105
+    },
+    "ui/button-reel": {
+      "png": "ui/button-reel.png",
+      "webp": "ui/button-reel.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 768,
+        "top": 0,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 105
+    },
+    "ui/button-retrieve": {
+      "png": "ui/button-retrieve.png",
+      "webp": "ui/button-retrieve.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 1152,
+        "top": 0,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 105
+    },
+    "ui/float-idle": {
+      "png": "ui/float-idle.png",
+      "webp": "ui/float-idle.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 0,
+        "top": 512,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 35
+    },
+    "ui/float-tilted": {
+      "png": "ui/float-tilted.png",
+      "webp": "ui/float-tilted.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 384,
+        "top": 512,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 35
+    },
+    "ui/float-submerged": {
+      "png": "ui/float-submerged.png",
+      "webp": "ui/float-submerged.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 768,
+        "top": 512,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 35
+    },
+    "ui/bait-krill": {
+      "png": "ui/bait-krill.png",
+      "webp": "ui/bait-krill.webp",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "sourceRect": {
+        "left": 1152,
+        "top": 512,
+        "width": 384,
+        "height": 512
+      },
+      "recommendedDisplayWidth": 35
+    },
+    "atlases/fish-4x3": {
+      "png": "atlases/fish-4x3.png",
+      "webp": "atlases/fish-4x3.webp",
+      "width": 1024,
+      "height": 768,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "grid": {
+        "columns": 4,
+        "rows": 3,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "frames": [
+          "fish/black-seabream-01.png",
+          "fish/black-seabream-02.png",
+          "fish/black-seabream-03.png",
+          "fish/black-seabream-04.png",
+          "fish/black-seabream-05.png",
+          "fish/black-seabream-06.png",
+          "fish/black-seabream-07.png",
+          "fish/black-seabream-08.png",
+          "fish/black-seabream-09.png",
+          "fish/black-seabream-10.png",
+          "fish/black-seabream-11.png",
+          "fish/black-seabream-12.png"
+        ]
+      }
+    },
+    "atlases/effects-4x4": {
+      "png": "atlases/effects-4x4.png",
+      "webp": "atlases/effects-4x4.webp",
+      "width": 1024,
+      "height": 1024,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "frames": [
+          "effects/float-splash-1.png",
+          "effects/float-splash-2.png",
+          "effects/float-splash-3.png",
+          "effects/float-splash-4.png",
+          "effects/fish-splash-1.png",
+          "effects/fish-splash-2.png",
+          "effects/fish-splash-3.png",
+          "effects/fish-splash-4.png",
+          "effects/shore-foam-1.png",
+          "effects/shore-foam-2.png",
+          "effects/shore-foam-3.png",
+          "effects/shore-foam-4.png",
+          "effects/water-glint-1.png",
+          "effects/water-glint-2.png",
+          "effects/water-glint-3.png",
+          "effects/water-glint-4.png"
+        ]
+      }
+    },
+    "atlases/controls-4x2": {
+      "png": "atlases/controls-4x2.png",
+      "webp": "atlases/controls-4x2.webp",
+      "width": 1024,
+      "height": 512,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "transparent": true,
+      "grid": {
+        "columns": 4,
+        "rows": 2,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "frames": [
+          "ui/button-cast.png",
+          "ui/button-hook.png",
+          "ui/button-reel.png",
+          "ui/button-retrieve.png",
+          "ui/float-idle.png",
+          "ui/float-tilted.png",
+          "ui/float-submerged.png",
+          "ui/bait-krill.png"
+        ]
+      }
+    }
+  },
+  "animations": {
+    "swim": {
+      "frames": [
+        "fish/black-seabream-01.png",
+        "fish/black-seabream-02.png",
+        "fish/black-seabream-03.png",
+        "fish/black-seabream-04.png"
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "struggle": {
+      "frames": [
+        "fish/black-seabream-05.png",
+        "fish/black-seabream-06.png",
+        "fish/black-seabream-07.png",
+        "fish/black-seabream-08.png"
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "catch": {
+      "frames": [
+        "fish/black-seabream-09.png",
+        "fish/black-seabream-10.png",
+        "fish/black-seabream-11.png",
+        "fish/black-seabream-12.png"
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "float-splash": {
+      "frames": [
+        "effects/float-splash-1.png",
+        "effects/float-splash-2.png",
+        "effects/float-splash-3.png",
+        "effects/float-splash-4.png"
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "fish-splash": {
+      "frames": [
+        "effects/fish-splash-1.png",
+        "effects/fish-splash-2.png",
+        "effects/fish-splash-3.png",
+        "effects/fish-splash-4.png"
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "shore-foam": {
+      "frames": [
+        "effects/shore-foam-1.png",
+        "effects/shore-foam-2.png",
+        "effects/shore-foam-3.png",
+        "effects/shore-foam-4.png"
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "water-glint": {
+      "frames": [
+        "effects/water-glint-1.png",
+        "effects/water-glint-2.png",
+        "effects/water-glint-3.png",
+        "effects/water-glint-4.png"
+      ],
+      "fps": 8,
+      "loop": true
+    }
+  },
+  "notes": [
+    "Source images generated with built-in image_gen.",
+    "Runtime files resized and atlas cells extracted without repainting artwork.",
+    "Controls have blank plaques for live Korean text.",
+    "This pack is not yet connected to the running fishing game."
+  ]
+}

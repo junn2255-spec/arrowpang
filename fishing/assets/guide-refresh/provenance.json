@@ -1,0 +1,43 @@
+{
+  "source": "generated with supported image_gen tool; reference new JPEG1 materialized officially",
+  "original": "/workspace/generated_images/exec-9ff92ee6-4e92-45ce-b080-3d2423a5f617.png",
+  "sha256": "742fdc49e2a8a8f0a7badf86b7fb337c1fca0347777496426b3993efd5c0e4a2",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "transparent": true,
+  "regions": {
+    "guide": [
+      0,
+      0,
+      700,
+      1024
+    ],
+    "bag": [
+      747,
+      140,
+      365,
+      350
+    ],
+    "bait": [
+      1130,
+      140,
+      365,
+      350
+    ],
+    "equipment": [
+      747,
+      522,
+      365,
+      350
+    ],
+    "underwater": [
+      1130,
+      522,
+      365,
+      350
+    ]
+  },
+  "text": "Rendered separately as live HTML/CSS; sprite contains no labels."
+}

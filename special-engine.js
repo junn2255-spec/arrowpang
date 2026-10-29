@@ -1,3 +1,4 @@
+import{initialFrogs,frogOnPath}from'./frog-rules.js';
 import{rainbowLevel,rainbowExit}from'./rainbow-rules.js';
 import{DIR,CLOCKWISE,clone,key,move as ordinaryMove}from'./engine.js';
 import{move as chainMove}from'./chain-engine.js';
@@ -25,7 +26,7 @@ function single(s,id,n,rocks,zones,specials,used){
  flush();const hitResult=hit?{id:hit.id,hp:hit.hp-1,broken:hit.hp===1}:null;if(hit){stone=stone.filter(q=>q.id!==hit.id||q.hp>1).map(q=>q.id===hit.id?{...q,hp:q.hp-1}:q);events.push({type:'hit',...hitResult});}
  return{changed:moved||!!hit,moved,exit:false,to:{x,y},state:moved?state.map(q=>q.id===id?{...q,x,y,d}:q):state,rocks:stone,hit:hitResult,events,collision,used:[...consumed]};
 }
-export function move(s,id,n,rocks=[],zones=[],specials=[],used=[]){
+function moveWithoutFrogs(s,id,n,rocks=[],zones=[],specials=[],used=[]){
  if(!specials.length&&!s.some(b=>b.rainbow)){const r=chainMove(s,id,n,rocks,zones);return{...r,used:[...used],collision:!r.exit&&!r.loop};}
  const first=single(s,id,n,rocks,zones,specials,used);if(!first.changed)return{...first,steps:[]};const steps=[{id,before:clone(s),beforeRocks:clone(rocks),beforeUsed:[...used],result:first}];let state=first.state,stone=first.rocks,consumed=first.used;const leader=s.find(q=>q.id===id);
  if(first.exit&&!first.events.some(e=>e.type==='rotate')){const[dx,dy]=DIR[leader.d];let x=leader.x-dx,y=leader.y-dy;while(x>=0&&y>=0&&x<n&&y<n){if(stone.some(q=>q.x===x&&q.y===y))break;const b=state.find(q=>q.x===x&&q.y===y);if(b){if(b.d!==leader.d)break;const r=single(state,b.id,n,stone,zones,specials,consumed);if(!r.exit||r.hit||r.loop||r.events.some(e=>e.type==='rotate'))break;steps.push({id:b.id,before:clone(state),beforeRocks:clone(stone),beforeUsed:[...consumed],result:r});state=r.state;stone=r.rocks;consumed=r.used;}x-=dx;y-=dy;}}
@@ -35,12 +36,14 @@ export function facingPairs(blocks,rocks=[],zones=[]){const pairs=[];for(const a
 export function solve(s,n,limit=150000,rocks=[],zones=[],specials=[],used=[]){const nodes=[{state:s,rocks,used,parent:-1,id:null}],stack=[0],seen=new Set([key(s,rocks)+'#'+[...used].sort()]);let visited=0;while(stack.length){if(visited>=limit)return{path:null,visited,status:'limit'};const i=stack.pop(),node=nodes[i];visited++;if(!node.state.length){const path=[];for(let j=i;nodes[j].parent!==-1;j=nodes[j].parent)path.push(nodes[j].id);return{path:path.reverse(),visited,status:'solved'};}const options=node.state.map(b=>({id:b.id,...move(node.state,b.id,n,node.rocks,zones,specials,node.used)})).filter(r=>r.changed);options.sort((a,b)=>a.state.length-b.state.length||a.rocks.length-b.rocks.length);for(let j=options.length-1;j>=0;j--){const m=options[j],k=key(m.state,m.rocks)+'#'+m.used.slice().sort();if(seen.has(k))continue;seen.add(k);nodes.push({state:m.state,rocks:m.rocks,used:m.used,parent:i,id:m.id});stack.push(nodes.length-1);}}return{path:null,visited,status:'unsolvable'};}
 export class Game{
  constructor(level){this.level=missionSpecials(level);this.restart();}
- restart(){this.blocks=clone(this.level.blocks);this.rocks=clone(this.level.rocks??[]);this.used=[];this.naturalEscaped=[];this.bombEscaped=[];this.moves=0;this.combo=0;this.won=false;this.history=[];}
- snapshot(){return copy({blocks:this.blocks,rocks:this.rocks,used:this.used,naturalEscaped:this.naturalEscaped,bombEscaped:this.bombEscaped,moves:this.moves,combo:this.combo,won:this.won});}
- play(id){if(this.won)return{changed:false,events:[]};const r=move(this.blocks,id,this.level.n,this.rocks,this.level.zones??[],this.level.specials??[],this.used);r.comboEvents=[];if(!r.changed){if(!r.loop)this.combo=0;return r;}this.history.push(this.snapshot());this.blocks=r.state;this.rocks=r.rocks;this.used=r.used;if(r.moved)this.moves++;
+ restart(){this.frogs=initialFrogs(this.level);this.blocks=clone(this.level.blocks);this.rocks=clone(this.level.rocks??[]);this.used=[];this.naturalEscaped=[];this.bombEscaped=[];this.moves=0;this.combo=0;this.won=false;this.history=[];}
+ snapshot(){return copy({frogs:this.frogs,blocks:this.blocks,rocks:this.rocks,used:this.used,naturalEscaped:this.naturalEscaped,bombEscaped:this.bombEscaped,moves:this.moves,combo:this.combo,won:this.won});}
+ play(id){if(this.won)return{changed:false,events:[]};const r=move(this.blocks,id,this.level.n,this.rocks,this.level.zones??[],this.level.specials??[],this.used,this.frogs);r.comboEvents=[];if(!r.changed){if(!r.loop)this.combo=0;return r;}this.history.push(this.snapshot());this.blocks=r.state;this.rocks=r.rocks;this.used=r.used;if(r.moved)this.moves++;
   for(const step of r.steps??[{id,result:r}]){for(const e of step.result.events??[])if(e.type==='special'&&e.kind==='bomb')this.bombEscaped.push(...e.removedBlocks.map(b=>b.id));if(step.result.exit){this.naturalEscaped.push(step.id);const tier=this.combo+1;this.combo=tier===5?0:tier;r.comboEvents.push({tier,amount:tier>=3?tier*10:0,naturalCount:this.naturalEscaped.length});}else if(!step.result.loop&&!step.result.bombRemoved)this.combo=0;}
   this.won=this.blocks.length===0;return r;
  }
  undo(){const s=this.history.pop();if(!s)return false;Object.assign(this,copy(s));return true;}
  get stuck(){return this.blocks.length>0&&!this.blocks.some(b=>move(this.blocks,b.id,this.level.n,this.rocks,this.level.zones??[],this.level.specials??[],this.used).changed);}
 }
+
+export function move(s,id,n,rocks=[],zones=[],specials=[],used=[],frogs=[]){const result=moveWithoutFrogs(s,id,n,rocks,zones,specials,used);const frog=frogs.length?frogOnPath(result,s,id,frogs):null;return frog?{changed:false,moved:false,state:s,rocks,used,events:[],steps:[],frog}:result;}

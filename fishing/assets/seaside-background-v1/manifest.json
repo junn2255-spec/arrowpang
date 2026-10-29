@@ -1,0 +1,25 @@
+{
+  "background": "seaside-background-1080x1920.webp",
+  "bird": {
+    "atlas": "seagull-flight-atlas.webp",
+    "frameWidth": 192,
+    "frameHeight": 192,
+    "columns": 4,
+    "frames": 8,
+    "fps": 7,
+    "playback": [
+      0,
+      1,
+      2,
+      4,
+      2,
+      1
+    ],
+    "displayCanvasWidth": 64,
+    "bodyAnchor": {
+      "x": 0.52,
+      "y": 0.56
+    }
+  },
+  "notes": "Eight generated poses. Use selected reversible wingbeat sequence to avoid inconsistent generated recovery poses."
+}

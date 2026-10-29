@@ -1,0 +1,219 @@
+@font-face{font-family:'Bithumb Mini';src:url('../assets/fonts/bithumb-basic.ttf') format('truetype');font-display:swap}
+html,body,button{font-family:'User Paperlogy Bold',sans-serif}
+.wood-sign,.left-tools,#clock,#coinDisplay,.weather>.sun,.weather>div,#startInvitation,#methodArrow,#lineInfo{display:none!important}
+.weather{display:contents!important}.weather>#sound{position:absolute!important;right:4%;top:3%;width:42px;height:42px;z-index:62;margin:0!important}
+#mini-objective{position:absolute;left:3%;right:3%;top:2%;z-index:60;padding:12px 56px 10px 52px;color:#fff9e7;border:2px solid #d9c77e;border-radius:20px;background:linear-gradient(130deg,#123f46ed,#1d5c5ce8);box-shadow:0 4px 12px #001f3855;pointer-events:none}
+#mini-objective>div{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}#mini-objective b{font-size:clamp(15px,4cqw,22px);white-space:nowrap}#mini-count{font-size:clamp(15px,4cqw,22px);color:#ffe194;white-space:nowrap;font-weight:700}
+#mini-objective small{display:block;font-size:clamp(11px,2.8cqw,15px);margin-top:6px;white-space:nowrap;color:#dfefdf}
+#mini-back{position:absolute;left:7px;top:9px;width:38px;height:44px;border:1px solid #e9d69688;border-radius:12px;background:#0e3942;color:#fff1c6;font-size:32px;line-height:1;pointer-events:auto}
+#mini-result{position:absolute;inset:0;z-index:80;background:#06292bb8;display:grid;place-items:center;padding:20px;backdrop-filter:blur(4px)}
+#mini-result>div{width:100%;padding:25px 20px;border:3px solid #e0bc69;border-radius:26px;background:linear-gradient(#fff8df,#f3e7c4);box-shadow:0 12px 35px #001f3277;color:#374e37;text-align:center}
+#mini-result img{width:64px;height:64px;object-fit:contain}#mini-result h2{font-size:27px;margin:10px 0}#mini-result p{font-size:18px;line-height:1.6}#mini-result button{width:100%;min-height:46px;margin-top:10px;border:2px solid #879c50;border-radius:14px;background:#437855;color:#fff8dc;font-size:17px;font-weight:700}
+#mini-save-status{position:absolute;top:19%;left:5%;right:5%;z-index:90;background:#fff0c9;color:#643e20;padding:10px;border-radius:12px;text-align:center;font-size:14px}
+#loading{z-index:55}#game .dialogue{bottom:3%;max-height:22%;overflow:auto}#game .dialogue #hintPage{font-size:clamp(15px,3.4cqw,20px);line-height:1.45}
+#game #cast{bottom:16%}#mini-objective button:focus-visible,#mini-result button:focus-visible{outline:3px solid #fff6a4;outline-offset:3px}
+.weather>#sound{display:none!important}#mini-sound{position:absolute;right:10px;top:13px;width:36px;height:36px;border:1px solid #e9d69688;border-radius:50%;background:#0e3942;color:#fff1c6;font-size:22px;pointer-events:auto}
+
+/* Leave the near-hand tackle visible on the right. */
+#game:not(.guided-tutorial) #cast{left:5%;right:auto;bottom:4%;width:29%}
+#game:not(.guided-tutorial) .dialogue{left:4%;right:auto;bottom:23%;max-width:53%}
+
+/* One opaque illustrated control; original input handlers remain attached. */
+#game #cast,#game:not(.guided-tutorial) #cast{left:auto;right:2%;bottom:3%;width:39%;height:auto;aspect-ratio:1;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/reel-buttons-v1/cast-256.webp') center/contain no-repeat!important;opacity:1!important;filter:none!important;transform:none!important}
+#game #cast[data-role="retrieve"]{background-image:url('assets/reel-buttons-v1/retrieve-256.webp')!important}
+#game #cast[data-role="hook"],#game #cast[data-role="lift"]{background-image:url('assets/reel-buttons-v1/reel-256.webp')!important}
+#game #cast>* ,#game #cast::before,#game #cast::after{display:none!important}
+#game #cast:focus-visible{outline:3px solid #fff0a6;outline-offset:2px}
+#game:not(.guided-tutorial) .dialogue{left:4%;right:auto;bottom:23%;max-width:53%}
+
+#game #worm-equip{position:absolute;left:3%;bottom:3%;width:32%;aspect-ratio:1;background:transparent url('assets/worm-button-v1/worm-equip-256.webp') center/contain no-repeat;border:0;padding:0;z-index:7;opacity:1;filter:none;touch-action:manipulation}
+#game #worm-equip:disabled{opacity:1;cursor:default}
+.worm-status{position:absolute;bottom:-3%;left:8%;right:8%;padding:3px;border-radius:9px;background:#133d43;color:#fff0b8;font-size:clamp(10px,2.6cqw,15px);white-space:nowrap}
+#game #worm-equip[aria-pressed="true"] .worm-status{background:#23654c;color:#fff}
+#game #worm-equip:focus-visible{outline:3px solid #ffdf71}
+
+/* Clear fight feedback above both controls. */
+#game #fightHud{position:absolute;left:6%!important;right:6%!important;top:42%!important;bottom:auto!important;width:auto!important;height:auto!important;transform:none!important;z-index:35;padding:12px 14px!important;background:#0b303df5!important;border:2px solid #f6d379;border-radius:15px;box-shadow:0 4px 16px #001b2bcc;color:#fff;pointer-events:none}
+#game #fightHud .meter-label,#game #fightHud .hp-label{font-size:clamp(12px,3.3cqw,18px)}
+#game #fightHud #tensionMeter{min-height:25px}
+#game.reel-fighting .dialogue{bottom:24%!important}
+#game #cast.reel-glowing::before{display:block!important;content:'';position:absolute;inset:1% 4% 7%;border-radius:50%;pointer-events:none;border:3px solid #80ffed;box-shadow:0 0 9px #4cffe4,0 0 22px #00d9ff,inset 0 0 9px #fff4a2;animation:reelHaloPulse .8s ease-in-out infinite;z-index:-1}
+#game #cast.reel-glowing::after{display:block!important;content:'';position:absolute;inset:-2% 1% 4%;border-radius:50%;border:2px solid transparent;border-top-color:#fff6ad;border-bottom-color:#65ffe8;pointer-events:none;animation:reelHaloSpin 1.1s linear infinite;box-shadow:0 0 12px #35eaff88}
+@keyframes reelHaloPulse{0%,100%{opacity:.5;transform:scale(.99)}50%{opacity:1;transform:scale(1.06);box-shadow:0 0 15px #81ffcb,0 0 36px #00dfff,inset 0 0 12px #fff4a2}}
+@keyframes reelHaloSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#game #cast.reel-glowing::before,#game #cast.reel-glowing::after{animation:none!important}}
+
+#game #worm-equip{width:19.2%}
+.worm-status{display:none!important}
+#game #worm-equipped-notice{position:absolute;left:3%;right:3%;top:43%;z-index:80;text-align:center;font-size:clamp(24px,7.5cqw,42px);font-weight:700;color:#fff6bd;text-shadow:0 3px 2px #173d36,0 0 12px #09292d;pointer-events:none}
+#game #worm-equipped-notice.show{animation:wormNotice 1.8s ease both}
+@keyframes wormNotice{0%{opacity:0;transform:scale(.85) translateY(8px)}15%,75%{opacity:1;transform:scale(1) translateY(0)}100%{opacity:0;transform:translateY(-12px)}}
+@media(prefers-reduced-motion:reduce){#game #worm-equipped-notice.show{animation:none}}
+
+/* Compact sea-glass fight panel, anchored below the upper objective bubble. */
+#game #fightHud{left:12%!important;right:12%!important;top:var(--fight-top,13%)!important;padding:8px 11px!important;border:1px solid #b9dacf;border-radius:14px;background:linear-gradient(145deg,#123f50f5,#082b3cf5)!important;box-shadow:inset 0 1px 0 #ffffff38,0 4px 12px #001d3255;outline:none;animation:none}
+#game #fightHud.hook-sparkle{animation:none;border-color:#a5d9d1;box-shadow:inset 0 1px 0 #ffffff38,0 4px 12px #001d3255}
+#game #fightHud .meter-label{display:flex;align-items:center;justify-content:space-between;margin:0 0 6px;line-height:1.1}
+#game #fightHud .meter-label>span{font-size:clamp(11px,3cqw,16px);color:#f8e5ad;letter-spacing:.04em}
+#game #fightHud #tensionNumber{display:block;font-size:clamp(11px,3cqw,16px);color:#d6fff4;font-variant-numeric:tabular-nums}
+#game #fightHud #tensionMeter{height:14px;min-height:14px;border:1px solid #9be6dc99;border-radius:7px;background:linear-gradient(90deg,#258ba2,#69d4ae var(--safe-end,85%),#ebad54 var(--safe-end,85%),#d86758);box-shadow:inset 0 2px 3px #021b3680,0 1px 0 #ffffff20}
+#game #fightHud #tensionNeedle{width:3px;top:-3px;bottom:-3px;border-radius:3px;background:#fff8d8;box-shadow:0 0 5px #fff6b6}
+#game #fightHud .tension-zones{margin-top:4px;font-size:clamp(9px,2.4cqw,12px);line-height:1.2}
+#game #fightHud .hp-label{display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:5px;border-top:1px solid #b9e8e322;font-size:clamp(10px,2.5cqw,13px);line-height:1.1;color:#c8dfe3}
+#game #fightHud #hpNumber{font-size:inherit;color:#a0e6ed;font-variant-numeric:tabular-nums}
+#game #fightHud .hp-track{height:5px;margin-top:4px;border:0;border-radius:4px;background:#031d2e;overflow:hidden}
+#game #fightHud .hp-track i{background:linear-gradient(90deg,#239bc8,#9aeeed);border-radius:4px;box-shadow:0 0 5px #62dce6;transition:width .15s linear}
+#game #fightHud[data-tension="high"]{border-color:#ffb37c}
+#game #fightHud[data-tension="high"] #tensionNumber{color:#ffc495}
+
+/* Ocean reward header: live text and progress over a compact blue panel. */
+#game #mini-objective{top:1%;left:2%;right:2%;padding:0;background:none;border:0;border-radius:0;box-shadow:none;color:#fff;pointer-events:none}
+#mini-objective .ocean-title-row{display:flex;flex-wrap:nowrap;align-items:center;gap:2cqw;height:9cqw;margin-bottom:1.5cqw}
+#mini-objective h1{display:flex;align-items:center;gap:1cqw;margin:0;flex:1;font-size:5.6cqw;line-height:1;white-space:nowrap;font-weight:700;text-shadow:0 2px 0 #073967,0 0 5px #00376d,2px 0 #073967,-2px 0 #073967}
+#mini-objective h1 em{font-style:normal;color:#55e9ff;text-shadow:0 2px 0 #003e75,0 0 3px #01273f}
+#mini-objective .ocean-mark{display:block;width:9cqw;height:9cqw;flex:none}
+#mini-objective .ocean-mark svg{filter:drop-shadow(0 2px 2px #003772)}
+#mini-objective #mini-back,#mini-objective #mini-sound{position:static;flex:none;width:8cqw;height:8cqw;min-width:0;min-height:0;margin:0;border:1px solid #9de6ff;border-radius:3cqw;background:linear-gradient(145deg,#208cdb,#07346e 70%);box-shadow:inset 0 1px 4px #84daff,0 2px 5px #003c7777;color:white;pointer-events:auto;font-size:6cqw;line-height:1;padding:0}
+#mini-objective #mini-sound{font-size:5cqw}
+#mini-objective .ocean-reward{position:relative;display:grid;grid-template-columns:13% 56% 31%;gap:0;align-items:center;min-height:13.8cqw;padding:1.8cqw 1.3cqw;border:1px solid #8ce7ff;border-radius:3.6cqw;background:radial-gradient(ellipse at 15% 120%,#36b9edaa,transparent 55%),linear-gradient(120deg,#086ac5ef,#06488eef 55%,#0864b8ef);box-shadow:inset 0 1px 8px #93dcff60,0 3px 10px #00427a77;overflow:hidden}
+#mini-objective .ocean-reward::after{content:'';position:absolute;left:-3%;right:-3%;bottom:-2cqw;height:4cqw;border-top:1px solid #58e8ff88;border-radius:50%;background:#24bcf833;pointer-events:none}
+#mini-objective .reward-gift{width:100%;height:11cqw;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 1px 2px #00306e)}
+#mini-objective .reward-copy{display:block;z-index:1;padding-left:.7cqw}
+#mini-objective .reward-copy b{font-size:3.4cqw;white-space:nowrap;text-shadow:0 2px 1px #00325c;line-height:1.25}
+#mini-objective .reward-copy b em{font-style:normal;font-size:4.5cqw;color:#ffdc46;text-shadow:0 2px 0 #a45713,0 0 3px #09295e}
+#mini-objective .reward-copy p{display:flex;align-items:center;gap:.7cqw;margin:.7cqw 0 0;font-size:2.7cqw;white-space:nowrap;font-weight:700;line-height:1.2}
+#mini-objective .reward-copy strong{display:inline-flex;align-items:center;gap:.3cqw;color:#ffe655;font-size:4cqw;letter-spacing:-.15cqw;text-shadow:0 2px 1px #70511e}
+#mini-objective .reward-copy strong img{width:3.5cqw;height:3.5cqw;object-fit:contain}
+#mini-objective .catch-progress{display:flex;flex-direction:column;justify-content:center;gap:.6cqw;border-left:1px solid #91d9ff88;padding-left:2cqw;z-index:1}
+#mini-objective .catch-fish{display:flex;align-items:center;justify-content:space-evenly;width:100%;padding:.5cqw .6cqw;border-radius:8cqw;background:#032e66bb;box-shadow:inset 0 1px 3px #001c51}
+#mini-objective .catch-fish span{width:6.8cqw;height:4.6cqw;color:#5c7fa3;opacity:.65}
+#mini-objective .catch-fish svg{filter:none}
+#mini-objective .catch-fish .caught{color:#6ce9ff;opacity:1;filter:drop-shadow(0 0 3px #63ddff88)}
+#mini-objective #mini-count{font-size:3.8cqw;font-weight:700;color:#fff;line-height:1.1;white-space:nowrap;text-shadow:0 2px 1px #003569}
+
+/* Krill bait uses the same manual attachment and inventory slot. */
+#game #worm-equip{background-image:url('assets/krill-button-v1/krill-equip-256.webp')}
+#game .bait-thumb.bait-worm{background:transparent url('assets/krill-button-v1/krill-equip-256.webp') center/contain no-repeat!important}
+
+/* Unified blue fishing notices, with a clean edge and no decorative wave. */
+#game #mini-objective .ocean-reward::after{content:none;display:none}
+#game #mini-objective .ocean-reward{border-width:2px;background:linear-gradient(120deg,#086ac5ef,#06488eef 55%,#0864b8ef);box-shadow:inset 0 1px 6px #93dcff55,0 3px 10px #00427a77}
+#game .dialogue,#game:not(.guided-tutorial) .dialogue,#game .mentor-speech,#game #startInvitation,#game #toast,#game #mini-save-status{border:2px solid #8ce7ff;border-radius:14px;background:linear-gradient(120deg,#086ac5ef,#06488eef 55%,#0864b8ef);color:#fff;box-shadow:inset 0 1px 6px #93dcff55,0 3px 10px #00427a77;text-shadow:0 1px 1px #003569}
+#game .mentor-speech::before{content:none;display:none}
+#game .mentor-speech::after{color:#ffe655}
+#game #fightHud,#game #fightHud.hook-sparkle,#game #chargePanel{border:2px solid #8ce7ff;background:linear-gradient(120deg,#086ac5ef,#06488eef 55%,#0864b8ef)!important;box-shadow:inset 0 1px 6px #93dcff55,0 3px 10px #00427a77}
+#game #fightHud[data-tension="high"]{border-color:#ffb37c}
+
+/* Larger krill control; round reel feedback kept safely inside the viewport. */
+#game #worm-equip{width:23.04%}
+#game #cast,#game:not(.guided-tutorial) #cast{right:max(5%,18px);bottom:max(3%,18px);border-radius:50%;overflow:visible;isolation:isolate}
+#game #cast.bite-ready{outline:none!important;box-shadow:none!important;animation:none!important}
+#game #cast.reel-glowing::before{inset:4% 5% 6%;border-width:2px;box-shadow:0 0 6px #4cffe4,0 0 12px #00d9ff,inset 0 0 7px #fff4a2;animation:reelHaloPulse .8s ease-in-out infinite}
+#game #cast.reel-glowing::after{inset:4% 5% 6%;box-shadow:0 0 8px #35eaff88}
+@keyframes reelHaloPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.025);box-shadow:0 0 8px #81ffcb,0 0 12px #00dfff,inset 0 0 9px #fff4a2}}
+@media(prefers-reduced-motion:reduce){#game #cast.reel-glowing::before,#game #cast.reel-glowing::after{animation:none!important}}
+
+/* Six catches, larger reward instructions and numeric progress. */
+#mini-objective .ocean-reward{grid-template-columns:13% 60% 27%}
+#mini-objective .reward-copy p{display:block;font-size:3.4cqw;line-height:1.3;margin-top:1cqw}
+#mini-objective .reward-copy strong{display:flex;margin-top:.5cqw;font-size:4cqw}
+#mini-objective .catch-progress{align-self:stretch;align-items:center;padding-left:1cqw}
+#mini-objective #mini-count{font-size:5.2cqw;letter-spacing:-.15cqw}
+
+/* Compact two-line reward text; large coin beside the catch instruction. */
+#mini-objective .ocean-reward{grid-template-columns:12% 65% 23%;padding:1.2cqw 1.1cqw;min-height:0}
+#mini-objective .reward-gift{height:10cqw}
+#mini-objective .reward-copy p{display:flex;gap:.5cqw;align-items:center;font-size:3.4cqw;margin-top:.5cqw;line-height:1.15}
+#mini-objective .reward-copy strong{display:inline-flex;gap:.3cqw;margin-top:0;font-size:3.8cqw;letter-spacing:-.18cqw}
+#mini-objective .reward-copy strong img{width:4.6cqw;height:4.6cqw;flex:none}
+#mini-objective .catch-progress{padding-left:.5cqw}
+#mini-objective #mini-count{font-size:4.5cqw;letter-spacing:-.18cqw}
+
+/* Keep ordinary and fight guidance directly above the krill control. */
+#game:not(.guided-tutorial) .dialogue,#game.reel-fighting:not(.guided-tutorial) .dialogue{left:3%;right:auto;width:47%;max-width:47%;top:auto;bottom:calc(3% + 23.04cqw + 4px)!important;margin:0;padding:2cqw 2.5cqw;max-height:none;overflow:visible}
+
+/* Shallow two-column fight panel matching the ocean HUD reference. */
+#game #fightHud{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto 14px auto;column-gap:5cqw;row-gap:4px;left:3%!important;right:3%!important;padding:7px 10px 5px!important;border-radius:15px}
+#game #fightHud::before{content:'';position:absolute;left:50%;top:7px;bottom:7px;width:1px;background:#8ddcff66;pointer-events:none}
+#game #fightHud .meter-label{grid-column:1;grid-row:1;margin:0;position:relative;padding-left:4.2cqw}
+#game #fightHud .meter-label>span{color:#fff;font-size:clamp(11px,3.2cqw,17px);letter-spacing:0}
+#game #fightHud .meter-label::before{content:'♩';position:absolute;left:.4cqw;top:-2px;color:#61d5ff;font-size:4.5cqw;transform:rotate(20deg)}
+#game #fightHud #tensionNumber{font-size:clamp(12px,3.5cqw,19px);color:#fff}
+#game #fightHud #tensionMeter{grid-column:1;grid-row:2;height:14px;min-height:14px;margin:0;background:linear-gradient(90deg,#16bed0 0%,#6fdd79 45%,#f5db54 calc(var(--safe-end,85%) - 8%),#ffba4f var(--safe-end,85%),#ed6749 var(--safe-end,85%),#c94d3b 100%);border:1px solid #a4eaff;box-shadow:inset 0 2px 3px #00233d66,0 0 5px #25dbff66}
+#game #fightHud .tension-zones{grid-column:1;grid-row:3;justify-content:flex-start;gap:1cqw;white-space:nowrap;margin:0;font-size:clamp(8px,2.2cqw,12px);line-height:1.1}
+#game #fightHud .tension-zones span+span{color:#ffa695}
+#game #fightHud .hp-label{grid-column:2;grid-row:1;position:relative;display:flex;justify-content:space-between;align-items:center;border:0;padding:0 0 0 4.8cqw;margin:0;font-size:clamp(10px,2.8cqw,15px);color:#e4f4ff;white-space:nowrap}
+#game #fightHud .hp-label::before{content:'🐟';position:absolute;left:0;top:0;font-size:3.8cqw;line-height:1}
+#game #fightHud #hpNumber{font-size:clamp(12px,3.5cqw,19px);font-weight:700;color:#fff}
+#game #fightHud .hp-track{grid-column:2;grid-row:2;height:14px;margin:0;border:1px solid #23c8f4;border-radius:8px;background:#03243c;box-shadow:inset 0 2px 4px #001526,0 0 5px #16bbf866}
+#game #fightHud .hp-track i{height:100%;background:repeating-linear-gradient(120deg,#ffffff18 0 5px,transparent 5px 10px),linear-gradient(#54e9ff,#05a7de);box-shadow:inset 0 1px 2px #b7ffff,0 0 6px #25e8ff;border-radius:7px}
+
+@font-face{font-family:'Paperlogy Fishing';src:url('assets/fonts/Paperlogy-8ExtraBold.ttf') format('truetype');font-style:normal;font-weight:800;font-display:swap}
+html,body,#game,#game *{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important;font-synthesis:none}
+
+/* The artwork includes ribbon tails outside the round medallion. Only glow layers are circular. */
+#game #cast,#game:not(.guided-tutorial) #cast{border-radius:0}
+
+/* Lift both circular light layers toward the reel, clear of the wooden ribbon. */
+#game #cast.reel-glowing::before,#game #cast.reel-glowing::after{inset:-3% 5% 13%}
+
+/* Alpha-shaped light beneath the complete reel artwork, including ribbon tails. */
+#game #cast.reel-glowing::before,#game #cast.reel-glowing::after{display:none!important;animation:none!important}
+#game #cast,#game:not(.guided-tutorial) #cast{z-index:7;right:max(6%,22px)}
+#game #reel-aura{display:none;position:absolute;right:max(6%,22px);bottom:max(3%,18px);width:39%;aspect-ratio:1;z-index:6;pointer-events:none}
+#game:has(#cast.reel-glowing) #reel-aura{display:block}
+#game #reel-aura::before{content:'';position:absolute;inset:0;background:url('assets/reel-buttons-v1/reel-256.webp') center/contain no-repeat;filter:drop-shadow(0 0 4px #b1fff0) drop-shadow(0 0 8px #00dfff);animation:reelOutlinePulse .8s ease-in-out infinite;z-index:1}
+#game #reel-aura::after{content:'';position:absolute;inset:-12%;background:repeating-conic-gradient(from 0deg,#65ffe600 0deg 8deg,#b3fff0aa 10deg,#26eaff00 14deg 22deg);mask-image:radial-gradient(ellipse,#0000 35%,#000b 49%,#0008 60%,#0000 72%);animation:reelRayPulse .9s ease-in-out infinite;z-index:0}
+@keyframes reelOutlinePulse{0%,100%{opacity:.65;filter:drop-shadow(0 0 3px #b1fff0) drop-shadow(0 0 6px #00dfff)}50%{opacity:1;filter:drop-shadow(0 0 5px #c5fff1) drop-shadow(0 0 10px #00dfff)}}
+@keyframes reelRayPulse{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:1;transform:scale(1.02)}}
+@media(prefers-reduced-motion:reduce){#game #reel-aura::before,#game #reel-aura::after{animation:none!important}}
+
+/* Final illustrated title and pre-play guide. */
+#mini-objective .ocean-title-row{height:18cqw;margin-bottom:1cqw}
+#mini-objective h1{height:100%;min-width:0;justify-content:center}
+#mini-objective .ocean-title-art{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 2px 2px #00396d55)}
+#game #fishing-intro{position:absolute;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5cqw;padding:1.5cqw 2cqw max(2cqw,env(safe-area-inset-bottom));background:#06355a url('assets/seaside-background-v1/seaside-background-1080x1920.webp') center/cover no-repeat}
+#game #fishing-intro>img{display:block;min-height:0;flex:1;width:100%;object-fit:contain;filter:drop-shadow(0 3px 8px #00234866)}
+#game #fishing-intro-start{flex:none;width:88%;min-height:52px;padding:2cqw;border:3px solid #ffe996;border-radius:9cqw;background:linear-gradient(#fff28b,#ffcb27 50%,#f9a807);box-shadow:inset 0 0 0 2px #b77318,0 4px 10px #00274288;color:#4b2700;font-size:6cqw;line-height:1.2;touch-action:manipulation}
+#game #fishing-intro-start:disabled{opacity:1;color:#7b622a}
+#game.intro-open #mini-objective,#game.intro-open #cast,#game.intro-open #worm-equip,#game.intro-open .dialogue{visibility:hidden}
+/* Krill: tactile press, one gold burst, then three brief sparkles. */
+#game #worm-equip{transition:scale .1s ease;isolation:isolate}
+#game #worm-equip:active:not(:disabled){scale:.94}
+#game #worm-equip.equipped-burst{animation:krillEquipPop .36s ease}
+#game #worm-equip.equipped-burst::before{content:'';position:absolute;inset:0;z-index:-1;background:inherit;pointer-events:none;filter:drop-shadow(0 0 5px #ffe78b) drop-shadow(0 0 8px #ffcf33);animation:krillGoldBurst .7s ease-out both}
+.krill-sparkles{position:absolute;inset:0;pointer-events:none;opacity:0}
+.krill-sparkles i{position:absolute;color:#fff3a0;font-size:5cqw;font-style:normal;text-shadow:0 0 5px #ffd33d}
+.krill-sparkles i:nth-child(1){top:4%;left:4%}.krill-sparkles i:nth-child(2){top:16%;right:0}.krill-sparkles i:nth-child(3){top:43%;left:-3%}
+.equipped-burst .krill-sparkles{animation:krillSparkles .9s ease-out both}
+@keyframes krillEquipPop{0%{scale:.94}55%{scale:1.06}100%{scale:1}}
+@keyframes krillGoldBurst{0%{opacity:1;scale:1}100%{opacity:0;scale:1.22}}
+@keyframes krillSparkles{0%,15%{opacity:0;scale:.7}40%,65%{opacity:1;scale:1.05}100%{opacity:0;scale:1.15}}
+/* Reel: depressed artwork, faster rays, smooth release, orange danger feedback. */
+#game #cast{transition:scale .1s ease}
+#game #cast.reel-glowing{scale:.97}
+#game #reel-aura{display:block;opacity:0;transition:opacity .22s ease;--aura-light:#b1fff0;--aura-color:#00dfff;--aura-ray:#b3fff0aa}
+#game:has(#cast.reel-glowing) #reel-aura{opacity:1}
+#game:has(#fightHud[data-tension="high"]) #reel-aura{--aura-light:#ffe4a2;--aura-color:#ff8b24;--aura-ray:#ffb15dcc}
+#game #reel-aura::before{filter:drop-shadow(0 0 4px var(--aura-light)) drop-shadow(0 0 8px var(--aura-color));animation:reelColorPulse .45s ease-in-out infinite}
+#game #reel-aura::after{background:repeating-conic-gradient(from 0deg,#65ffe600 0deg 8deg,var(--aura-ray) 10deg,#26eaff00 14deg 22deg);animation:reelRayPulse .5s ease-in-out infinite}
+@keyframes reelColorPulse{0%,100%{opacity:.65;filter:drop-shadow(0 0 3px var(--aura-light)) drop-shadow(0 0 6px var(--aura-color))}50%{opacity:1;filter:drop-shadow(0 0 5px var(--aura-light)) drop-shadow(0 0 10px var(--aura-color))}}
+@media(prefers-reduced-motion:reduce){#game #worm-equip.equipped-burst,#game #worm-equip.equipped-burst::before,.equipped-burst .krill-sparkles,#game #reel-aura::before,#game #reel-aura::after{animation:none!important}#game #worm-equip,#game #cast,#game #reel-aura{transition:none}}
+
+/* Use the approved full guide artwork; the start area is a real keyboard/touch button. */
+#game #fishing-intro{padding:6px;gap:0}
+#game .intro-guide-frame{position:relative;width:min(100%,calc((100dvh - 12px)*.5625));aspect-ratio:9/16;flex:none}
+#game .intro-guide-frame>img{display:block;width:100%;height:100%;object-fit:contain}
+#game #fishing-intro-start{position:absolute;left:13%;bottom:3.2%;width:74%;height:8.5%;min-height:0;padding:0;border:0;background:transparent;border-radius:8cqw;box-shadow:none;color:transparent;font-size:0}
+#game #fishing-intro-start:disabled{background:#07385caa;color:#fff;font-size:3.5cqw}
+#game #fishing-intro-start:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* A small species tally in the open space between bait and reel controls. */
+#game #mini-catch-summary{position:absolute;left:28%;width:24%;bottom:3%;z-index:8;display:flex;flex-direction:column;gap:3px;pointer-events:none}
+#game .caught-species-row{display:flex;align-items:center;gap:1cqw;min-height:7cqw;padding:1px .7cqw;border:1px solid #96dcf05c;border-radius:7px;background:#064274aa;box-shadow:0 1px 3px #001a3d44;color:#fff}
+#game .caught-species-row img{display:block;flex:none;width:7.5cqw;height:6cqw;object-fit:contain;filter:drop-shadow(0 1px 1px #001c3e)}
+#game .caught-species-row span{font-size:clamp(9px,2.3cqw,12px);line-height:1.2;white-space:nowrap;letter-spacing:-.08cqw;text-shadow:0 1px 2px #00243a}
+#game.intro-open #mini-catch-summary{visibility:hidden}
+
+@font-face{font-family:'User Paperlogy Bold';src:url('../assets/user-fonts-paperlogy/Paperlogy-7Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+:root,body,body *,body *::before,body *::after,:host,:host *{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important}

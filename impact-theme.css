@@ -1,7 +1,7 @@
 @font-face{font-family:'ArrowTok Basic';src:url('assets/fonts/bithumb-basic.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
 @font-face{font-family:'ArrowTok Original';src:url('assets/fonts/bithumb-original.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
-body,button,input,summary{font-family:'ArrowTok Basic',system-ui,sans-serif;font-weight:700;font-synthesis:none}
-h1,h2,#celebrate strong,#combo{font-family:'ArrowTok Original','ArrowTok Basic',system-ui,sans-serif;font-weight:700;font-synthesis:none}
+body,button,input,summary{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-synthesis:none}
+h1,h2,#celebrate strong,#combo{font-family:'User Paperlogy Bold',sans-serif;font-weight:700;font-synthesis:none}
 .rock.stone-push{animation:stone-push 170ms ease-out!important}@keyframes stone-push{30%{translate:var(--hit-x) var(--hit-y)}65%{translate:calc(var(--hit-x)*-.35) calc(var(--hit-y)*-.35)}100%{translate:0 0}}
 .feedback-particle.shard{background-size:contain;z-index:4;transform-origin:center}
 @keyframes shard-flight{0%{opacity:1;transform:translate(-50%,-50%) rotate(0deg)}25%{opacity:.99;transform:translate(calc(-50% + var(--x25)),calc(-50% + var(--y25))) rotate(var(--r25))}50%{opacity:.875;transform:translate(calc(-50% + var(--x50)),calc(-50% + var(--y50))) rotate(var(--r50))}75%{opacity:.58;transform:translate(calc(-50% + var(--x75)),calc(-50% + var(--y75))) rotate(var(--r75))}100%{opacity:0;transform:translate(calc(-50% + var(--x100)),calc(-50% + var(--y100))) rotate(var(--r100))}}

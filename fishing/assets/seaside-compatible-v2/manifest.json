@@ -1,0 +1,76 @@
+{
+  "fish": {
+    "width": 1536,
+    "height": 1024,
+    "poses": [
+      [
+        0,
+        0,
+        535,
+        520,
+        526,
+        328.23
+      ],
+      [
+        535,
+        0,
+        517,
+        520,
+        506,
+        358.55
+      ],
+      [
+        1052,
+        0,
+        484,
+        520,
+        471,
+        358.75
+      ],
+      [
+        0,
+        540,
+        535,
+        484,
+        529,
+        219.33
+      ],
+      [
+        535,
+        540,
+        517,
+        484,
+        512,
+        237.14
+      ],
+      [
+        1052,
+        540,
+        484,
+        484,
+        472,
+        237.16
+      ]
+    ],
+    "mouthAnchors": "Aligned to existing CRUCIAN_POSES, approximate visual measurement"
+  },
+  "float": {
+    "atlas": [
+      1548,
+      1016
+    ],
+    "rect": [
+      612,
+      622,
+      30,
+      326
+    ],
+    "usesExistingClip": true
+  },
+  "replacementFiles": {
+    "large-crucian-carp-atlas.webp": "black-sea-bream-atlas.webp",
+    "large-crucian-carp-static.webp": "black-sea-bream-static.webp",
+    "fishing-ui-atlas.webp": "fishing-ui-atlas-sea.webp"
+  },
+  "runtimeModified": false
+}

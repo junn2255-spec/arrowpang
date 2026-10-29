@@ -1,0 +1,5 @@
+/* Three fixed header labels are baked into the chosen relic panel; values stay live. */
+#game:has(#next[hidden]) .stats{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;height:auto;min-height:0;aspect-ratio:1640/446;padding:0 8%;gap:0;border:0;border-image:none;border-radius:0;box-shadow:none;background:url('assets/stats/ancient-relic-labels.webp') center/100% 100% no-repeat;overflow:visible}
+#game:has(#next[hidden]) .stats div{position:relative;height:100%;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible}
+#game:has(#next[hidden]) .stats span{position:absolute;width:1px;height:1px;margin:-1px;padding:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+#game:has(#next[hidden]) .stats strong{position:absolute;left:50%;top:53%;transform:translateX(-50%);font-size:clamp(23px,6.4vw,30px);line-height:1.05;color:#4b260e;text-shadow:0 1px #fff4d5;white-space:nowrap}

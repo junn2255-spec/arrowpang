@@ -1,0 +1,1 @@
+Built-in image_gen edit. Replace only the reel and hand in step 3 of the approved fishing tutorial with the actual reel-512.png game button, preserving its gold circle, turquoise water and full wooden 릴감기 ribbon. Preserve steps 1 and 2, all Korean guidance, tension gauge, seaside background and start button.

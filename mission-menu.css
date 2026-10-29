@@ -2,29 +2,29 @@
 main:has(.menu-screen:not([hidden])){padding:0;background:none;height:100dvh;min-height:0}
 .menu-screen[hidden]{display:none!important}
 #welcome.menu-screen,#mission-screen{box-sizing:border-box;width:100%;height:100dvh;min-height:0;max-height:100dvh;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));margin:0;position:relative;inset:auto;overflow:hidden;background:url('assets/ui/title-bg.webp') center/cover no-repeat;color:#fff9d7;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
-.menu-screen button{font-family:inherit;border:0;box-shadow:none;background:transparent;border-radius:0;padding:0;margin:0;min-width:44px;min-height:44px;color:inherit;cursor:pointer}
+.menu-screen button{font-family:'User Paperlogy Bold',sans-serif;border:0;box-shadow:none;background:transparent;border-radius:0;padding:0;margin:0;min-width:44px;min-height:44px;color:inherit;cursor:pointer}
 .menu-screen button:focus-visible{outline:3px solid #fff;outline-offset:1px}
 #welcome h1{width:100%;margin:8px 0 0;height:auto;flex:none}
 #welcome .logo{width:100%;height:auto;max-height:150px;object-fit:contain}
-.menu-intro{width:100%;font-size:clamp(18px,5.05vw,22px);line-height:1.4;font-weight:900;text-shadow:0 3px 3px #10240b;-webkit-text-stroke:3px #17330d;paint-order:stroke fill}
+.menu-intro{width:100%;font-size:clamp(18px,5.05vw,22px);line-height:1.4;font-weight:700;text-shadow:0 3px 3px #10240b;-webkit-text-stroke:3px #17330d;paint-order:stroke fill}
 .menu-intro p{margin:0}.menu-intro p+ p{color:#ffe367}
 #welcome .mascot{position:static;transform:none;flex:1;min-height:0;max-height:260px;width:50%;max-width:220px;object-fit:contain;margin:auto 0;animation:none}
 .menu-actions{display:flex;align-items:flex-end;width:100%;gap:3px;flex:none}
-.menu-actions button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(19px,5.5vw,24px);font-weight:900;text-shadow:0 3px 2px #112207;-webkit-text-stroke:3px #112207;paint-order:stroke fill;white-space:nowrap}
+.menu-actions button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(19px,5.5vw,24px);font-weight:700;text-shadow:0 3px 2px #112207;-webkit-text-stroke:3px #112207;paint-order:stroke fill;white-space:nowrap}
 .menu-actions button img{width:92%;height:auto;max-height:112px;object-fit:contain}.menu-actions #start{flex:1.2}.menu-actions #start img{max-height:140px}
-.menu-footer{box-sizing:border-box;margin:0;width:100%;padding:12px 20px;background:url('assets/mission-menu/13-footer-plaque-blank.webp') center/100% 100% no-repeat;font-size:clamp(20px,5.5vw,24px);font-weight:900;line-height:1.2;text-shadow:0 2px 2px #12300e}.menu-footer em{font-style:normal;color:#ffe369}
+.menu-footer{box-sizing:border-box;margin:0;width:100%;padding:12px 20px;background:url('assets/mission-menu/13-footer-plaque-blank.webp') center/100% 100% no-repeat;font-size:clamp(20px,5.5vw,24px);font-weight:700;line-height:1.2;text-shadow:0 2px 2px #12300e}.menu-footer em{font-style:normal;color:#ffe369}
 .mission-heading{width:100%;height:72px;display:flex;align-items:center;gap:4px;flex:none}.mission-heading h2{margin:0;flex:1;min-width:0}.mission-heading h2 img{width:100%;max-height:72px;object-fit:contain}#mission-back{width:52px;flex:none}#mission-back img{width:100%;display:block}
-#mission-progress{margin:0;padding:7px 18px;background:url('assets/mission-menu/14-progress-plaque-blank.webp') center/100% 100% no-repeat;width:80%;color:#53220b;font-size:clamp(23px,6.2vw,28px);font-weight:900;line-height:1.2;flex:none}
-.mission-instruction{font-size:clamp(20px,5.6vw,25px);line-height:1.25;font-weight:900;-webkit-text-stroke:3px #16320d;paint-order:stroke fill;text-shadow:0 3px 2px #142408;margin:0;flex:none}
+#mission-progress{margin:0;padding:7px 18px;background:url('assets/mission-menu/14-progress-plaque-blank.webp') center/100% 100% no-repeat;width:80%;color:#53220b;font-size:clamp(23px,6.2vw,28px);font-weight:700;line-height:1.2;flex:none}
+.mission-instruction{font-size:clamp(20px,5.6vw,25px);line-height:1.25;font-weight:700;-webkit-text-stroke:3px #16320d;paint-order:stroke fill;text-shadow:0 3px 2px #142408;margin:0;flex:none}
 .mission-list{box-sizing:border-box;width:100%;min-height:100px;flex:1;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;border-radius:18px;background:#fff3d4 url('assets/mission-menu/11-mission-panel-blank.webp') center/100% 100% no-repeat;padding:16px 17px}
 #mission-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px}
-#mission-grid .mission-tile{position:relative;width:100%;aspect-ratio:1;min-width:44px;min-height:44px;background:url('assets/mission-menu/04-tile-cleared.webp') center/contain no-repeat;font-size:clamp(24px,7vw,30px);font-weight:900;line-height:1;color:white;text-shadow:0 2px 2px #17315a;-webkit-text-stroke:1px #283125;paint-order:stroke fill}
+#mission-grid .mission-tile{position:relative;width:100%;aspect-ratio:1;min-width:44px;min-height:44px;background:url('assets/mission-menu/04-tile-cleared.webp') center/contain no-repeat;font-size:clamp(24px,7vw,30px);font-weight:700;line-height:1;color:white;text-shadow:0 2px 2px #17315a;-webkit-text-stroke:1px #283125;paint-order:stroke fill}
 #mission-grid .mission-tile[data-state=current]{background-image:url('assets/mission-menu/05-tile-current.webp');color:#55330a;text-shadow:0 1px #fff}
 #mission-grid .mission-tile[data-state=locked]{background-image:url('assets/mission-menu/06-tile-locked.webp');color:#342d24;opacity:1;text-shadow:0 1px #fff;cursor:default}
 #mission-grid .mission-tile[aria-pressed=true]{filter:drop-shadow(0 0 3px #ffbd00);outline:3px solid #ffce24;outline-offset:-3px;border-radius:14px}
 .mission-tile img{position:absolute;right:-1px;top:-2px;width:30%;height:auto;pointer-events:none}
-#mission-start{flex:none;width:98%;min-height:62px;background:url('assets/mission-menu/12-mission-start-blank.webp') center/100% 100% no-repeat;padding:12px 10px 12px 38px;font-size:clamp(23px,6.4vw,28px);font-weight:900;color:#fff9db;-webkit-text-stroke:3px #452509;paint-order:stroke fill;text-shadow:0 3px 2px #43220a}
-.mission-footer{flex:none;font-size:clamp(18px,4.9vw,21px);line-height:1.3;font-weight:900;margin:0;-webkit-text-stroke:3px #1b330e;paint-order:stroke fill;text-shadow:0 2px 2px #18300e}
+#mission-start{flex:none;width:98%;min-height:62px;background:url('assets/mission-menu/12-mission-start-blank.webp') center/100% 100% no-repeat;padding:12px 10px 12px 38px;font-size:clamp(23px,6.4vw,28px);font-weight:700;color:#fff9db;-webkit-text-stroke:3px #452509;paint-order:stroke fill;text-shadow:0 3px 2px #43220a}
+.mission-footer{flex:none;font-size:clamp(18px,4.9vw,21px);line-height:1.3;font-weight:700;margin:0;-webkit-text-stroke:3px #1b330e;paint-order:stroke fill;text-shadow:0 2px 2px #18300e}
 #mission-error{position:absolute;inset:20% 8% auto;background:#fff5d5;color:#53250b;padding:16px;font-size:20px;border-radius:12px;z-index:5}
 @media(max-height:700px){#welcome.menu-screen,#mission-screen{gap:5px;padding-top:8px;padding-bottom:8px}#welcome .logo{max-height:110px}.menu-actions button img{max-height:95px}.menu-actions #start img{max-height:112px}.mission-heading{height:56px}.mission-heading h2 img{max-height:56px}.mission-footer{font-size:18px}#mission-start{min-height:54px}.menu-footer{padding:9px 20px}}
 /* Preserve every supplied plaque's original proportions; only the list scrolls. */

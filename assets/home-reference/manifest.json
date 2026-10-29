@@ -1,0 +1,107 @@
+[
+  {
+    "name": "bonus",
+    "width": 512,
+    "height": 512,
+    "bytes": 70840,
+    "alpha": true
+  },
+  {
+    "name": "upgrade",
+    "width": 512,
+    "height": 512,
+    "bytes": 81362,
+    "alpha": true
+  },
+  {
+    "name": "reward",
+    "width": 512,
+    "height": 512,
+    "bytes": 47528,
+    "alpha": true
+  },
+  {
+    "name": "flower",
+    "width": 384,
+    "height": 216,
+    "bytes": 43466,
+    "alpha": true
+  },
+  {
+    "name": "wallet",
+    "width": 512,
+    "height": 512,
+    "bytes": 65062,
+    "alpha": true
+  },
+  {
+    "name": "back",
+    "width": 512,
+    "height": 512,
+    "bytes": 59662,
+    "alpha": true
+  },
+  {
+    "name": "background",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 903548,
+    "alpha": false
+  },
+  {
+    "name": "reward-collect-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 53578,
+    "alpha": true
+  },
+  {
+    "name": "reward-build-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 57968,
+    "alpha": true
+  },
+  {
+    "name": "reward-dog-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 52750,
+    "alpha": true
+  },
+  {
+    "name": "bonus-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 77520,
+    "alpha": true
+  },
+  {
+    "name": "upgrade-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 87504,
+    "alpha": true
+  },
+  {
+    "name": "back-v2",
+    "width": 512,
+    "height": 512,
+    "bytes": 75388,
+    "alpha": true
+  },
+  {
+    "name": "title-v2",
+    "width": 1024,
+    "height": 408,
+    "bytes": 126154,
+    "alpha": true
+  },
+  {
+    "name": "coin-label-v2",
+    "width": 384,
+    "height": 182,
+    "bytes": 26770,
+    "alpha": true
+  }
+]
