@@ -2,3 +2,11 @@ body.garden-theme #welcome #fullscreen-start{display:block;flex:none;width:72%;m
 body.garden-theme #welcome:has(#fullscreen-start) .menu-actions{margin-top:0}
 body.garden-theme #welcome #fullscreen-start:active{transform:translateY(2px)}
 @media(max-height:700px){body.garden-theme #welcome #fullscreen-start{min-height:42px;padding:8px;font-size:17px;margin-bottom:5px}}
+/* Rotation must never hide or block the game when portrait lock is unavailable. */
+@media(orientation:landscape) and (max-height:600px){
+ body.garden-theme main{display:block!important;height:auto!important;min-height:760px!important;max-width:430px!important;width:min(100%,430px)!important;overflow:visible!important}
+ body.garden-theme #rotate-note{display:none!important}
+ body.garden-theme #game:not([hidden]){height:760px!important;min-height:760px!important}
+ body.garden-theme #welcome:not([hidden]),body.garden-theme #mission-screen:not([hidden]){height:760px!important;min-height:760px!important}
+ body.garden-theme{overflow-y:auto!important}
+}
