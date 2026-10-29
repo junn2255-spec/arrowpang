@@ -527,3 +527,16 @@ body.garden-theme #game#game:not(.clear-screen) nav #restart{display:none!import
 #game-over-popup>button{position:absolute;left:15%;top:66%;width:70%;height:27%;border:0;border-radius:24px;background:transparent;cursor:pointer;box-shadow:none}
 #game-over-popup>button:focus-visible{outline:3px solid white;outline-offset:-6px}
 #game-over-popup>button:active{background:#ffffff20}
+/* Reference v160: larger, left-aligned logo and edge-to-edge puzzle layout. */
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{width:100%;max-width:min(520px,calc((100dvh - 8px)/2.15));height:100dvh;padding:4px 0 max(12px,env(safe-area-inset-bottom));overflow:hidden}
+body.garden-theme #game#game:not(.clear-screen){width:96%;margin:0 auto;height:100%;grid-template-rows:28.5cqw 46.34cqw minmax(0,1fr) 24cqw;gap:0;align-content:stretch}
+body.garden-theme #game#game:not(.clear-screen) header h1{left:-2%;top:0;width:55%;height:26cqw}
+body.garden-theme #game#game:not(.clear-screen) #settings,body.garden-theme #game#game:not(.clear-screen) #garden-help{width:14cqw;height:14cqw;min-width:44px;min-height:44px;top:1cqw}
+body.garden-theme #game#game:not(.clear-screen) #settings{right:15cqw}
+body.garden-theme #game#game:not(.clear-screen) #garden-help{right:0}
+body.garden-theme #game#game:not(.clear-screen) nav{width:100%;gap:3%;align-self:center}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,#hint,#home) img{transform:scale(1)}
+body.garden-theme #game#game:not(.clear-screen){width:100%;padding:0}
+body.garden-theme #game#game:not(.clear-screen) nav{width:96%}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{padding:4px 0 max(12px,env(safe-area-inset-bottom))!important}
+body.garden-theme #game#game:not(.clear-screen) header h1{left:-1%;width:60%;height:28cqw}
