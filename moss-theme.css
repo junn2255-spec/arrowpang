@@ -69,3 +69,30 @@ body.garden-theme #game#game:not(.clear-screen) .blue-wallet{width:50.5%}
 body.garden-theme #game#game:not(.clear-screen) .blue-stage{left:-1%}
 body.garden-theme #game#game:not(.clear-screen) .blue-wallet{right:-1%}
 body.garden-theme #game#game:not(.clear-screen) .stats #remaining{left:86%}
+
+/* Bring both summary panels and their numbers closer to the upgrade panel. */
+body.garden-theme #game#game:not(.clear-screen) .blue-stage,
+body.garden-theme #game#game:not(.clear-screen) .blue-wallet{top:4%}
+body.garden-theme #game#game:not(.clear-screen) .stats #stage,
+body.garden-theme #game#game:not(.clear-screen) .stats #remaining{top:23.5%}
+/* Align the shortage number and live fill with the supplied panel artwork. */
+body.garden-theme #game#game:not(.clear-screen) .stats #moves{left:66.6%;top:58.5%}
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:26%;top:81.6%;width:68%;height:8.3%}
+
+/* Preserve the source panel proportions: resize with one scale on both axes. */
+body.garden-theme #game#game:not(.clear-screen) .blue-upgrade,
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{aspect-ratio:1344/299}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{content:url('assets/upgrade-panel-v217/upgrade-ready.webp')}
+body.garden-theme #game#game:not(.clear-screen) .stats #moves{top:57.8%}
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:26.1%;top:81%;width:68%;height:8.6%}
+
+/* One mobile portrait layout at every window shape; never compress the board row. */
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{max-width:min(520px,calc(100dvh / 2.17))!important}
+body.garden-theme #game#game:not(.clear-screen){grid-template-rows:36.5cqw 44cqw minmax(103cqw,1fr) 24cqw}
+body.garden-theme #game#game:not(.clear-screen) header h1{top:7.5cqw;height:27cqw}
+body.garden-theme #game#game:not(.clear-screen) #settings,
+body.garden-theme #game#game:not(.clear-screen) #garden-help{top:12cqw}
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{top:27cqw!important}
+/* Measured inner track in the 1344 x 299 panel: x330..1265, y175..230.
+   Anchor to the bottom of that image, independent of the stats row height. */
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:24.553571%;top:calc(100% - 9.22619cqw);width:69.568452%;height:4.092262cqw}
