@@ -3,19 +3,21 @@ body.garden-theme:has(#game:not([hidden]):not(.clear-screen)){
  background:#123b2d url('assets/moss-ui-v1/forest-background.jpg') center/cover fixed no-repeat;
 }
 body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{
- width:100%;max-width:min(96vw,calc((100dvh - 24px)/2.02),560px)!important;
- height:100dvh;min-height:0;padding:8px 0 max(8px,env(safe-area-inset-bottom))!important;overflow:hidden;
+ width:100%;max-width:min(520px,calc((100dvh - 8px)/2.15))!important;
+ height:100dvh;min-height:0;padding:4px 0 max(12px,env(safe-area-inset-bottom))!important;overflow:hidden;
 }
 body.garden-theme #game#game:not(.clear-screen){
- width:100%;height:100%;min-height:0;grid-template-rows:25cqw 46.34cqw 100cqw 22cqw;
+ width:100%;height:100%;min-height:0;grid-template-rows:28.5cqw 46.34cqw minmax(0,1fr) 24cqw;
  gap:0;align-content:space-between;
 }
-body.garden-theme #game#game:not(.clear-screen) header h1{left:0;top:0;width:60%;height:25cqw}
-body.garden-theme #game#game:not(.clear-screen) .board-slot{width:100%;max-width:100%;height:auto;aspect-ratio:1;margin:0;justify-self:center;overflow:visible}
+body.garden-theme #game#game:not(.clear-screen) header h1{left:-1%;top:0;width:60%;height:28cqw}
+body.garden-theme #game#game:not(.clear-screen) .board-slot{width:104.956268%;max-width:none;height:auto;aspect-ratio:1;margin:0;justify-self:center;overflow:visible}
 body.garden-theme #game#game:not(.clear-screen) .board-slot::before{
- background:url('assets/moss-ui-v1/stone-board.webp') center/contain no-repeat;inset:0;
+ background:none;inset:2.36032%;border:0 solid transparent;
+ border-image-source:url('assets/moss-ui-v1/stone-board.webp');border-image-slice:81 fill;
+ border-image-width:4.52cqw;border-image-repeat:stretch;
 }
-body.garden-theme #game#game:not(.clear-screen) #board{left:7.5%;top:7.5%;width:85%;height:85%}
+body.garden-theme #game#game:not(.clear-screen) #board{left:6.6666666667%;top:6.6666666667%;width:86.6666666666%;height:86.6666666666%}
 body.garden-theme #game#game:not(.clear-screen) .blue-status-art{opacity:1}
 body.garden-theme #game#game:not(.clear-screen) .blue-status-art img{clip-path:none;border-radius:0;object-fit:contain}
 body.garden-theme #game#game:not(.clear-screen) .blue-stage,
@@ -37,3 +39,14 @@ body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data
 body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='L'] span{background-image:url('assets/moss-ui-v1/rainbow-left.webp')!important}
 body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='R'] span{background-image:url('assets/moss-ui-v1/rainbow-right.webp')!important}
 body.garden-theme #game#game:not(.clear-screen) .rotation-zone img{content:url('assets/moss-ui-v1/rotation-90.webp')}
+
+/* Phones use the complete screen width. Tablets retain the original portrait column. */
+@media(max-width:600px) and (orientation:portrait){
+ body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{max-width:100%!important}
+}
+
+/* Keep the full-width board clear of the controls on short portrait phones. */
+@media(max-width:600px) and (max-height:700px) and (orientation:portrait){
+ body.garden-theme #game#game:not(.clear-screen){grid-template-rows:20cqw 42.5cqw minmax(0,1fr) 24cqw}
+ body.garden-theme #game#game:not(.clear-screen) header h1{height:20cqw}
+}
