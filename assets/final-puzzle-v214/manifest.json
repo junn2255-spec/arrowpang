@@ -1,0 +1,124 @@
+{
+  "status": "local-only",
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "arrow-up",
+      "size": [
+        384,
+        384
+      ],
+      "visibleBounds": [
+        12,
+        13,
+        372,
+        371
+      ]
+    },
+    {
+      "id": "arrow-down",
+      "size": [
+        384,
+        384
+      ],
+      "visibleBounds": [
+        12,
+        14,
+        372,
+        369
+      ]
+    },
+    {
+      "id": "arrow-left",
+      "size": [
+        384,
+        384
+      ],
+      "visibleBounds": [
+        12,
+        14,
+        372,
+        369
+      ]
+    },
+    {
+      "id": "arrow-right",
+      "size": [
+        384,
+        384
+      ],
+      "visibleBounds": [
+        12,
+        12,
+        372,
+        372
+      ]
+    },
+    {
+      "id": "rotation-90",
+      "size": [
+        384,
+        384
+      ],
+      "visibleBounds": [
+        12,
+        14,
+        372,
+        369
+      ]
+    },
+    {
+      "id": "stage",
+      "size": [
+        672,
+        288
+      ],
+      "visibleBounds": [
+        12,
+        13,
+        660,
+        274
+      ]
+    },
+    {
+      "id": "wallet",
+      "size": [
+        672,
+        288
+      ],
+      "visibleBounds": [
+        12,
+        14,
+        660,
+        274
+      ]
+    },
+    {
+      "id": "upgrade",
+      "size": [
+        1344,
+        288
+      ],
+      "visibleBounds": [
+        12,
+        12,
+        1332,
+        276
+      ]
+    },
+    {
+      "id": "upgrade-ready",
+      "size": [
+        1344,
+        288
+      ],
+      "visibleBounds": [
+        12,
+        12,
+        1332,
+        276
+      ]
+    }
+  ],
+  "unchanged": "Existing four bottom buttons, board, effects and audio retained."
+}

@@ -1,0 +1,18 @@
+{
+  "imageSize": [
+    1080,
+    1080
+  ],
+  "origin": [
+    81,
+    81
+  ],
+  "cellSize": [
+    153,
+    153
+  ],
+  "columns": 6,
+  "rows": 6,
+  "source": "moss-ui-v1/stone-board.png",
+  "note": "Original rim and all 36 original tile textures repacked to a mathematically uniform grid."
+}

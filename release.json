@@ -1,6 +1,6 @@
 {
-  "version": 213,
-  "date": "2026-11-02",
+  "version": 215,
+  "date": "2026-11-03",
   "guideFirstPage": "assets/help-guide-v177/01-v202.jpg",
   "rewards": "same-color-3-15-4-20-special-5",
   "economy": "separate-fishing-coins-sales-daily-v1",
@@ -12,5 +12,8 @@
   "rareFishSpecies": 6,
   "rareFishFrames": 8,
   "puzzleTheme": "moss-stone-v1",
-  "puzzleLayout": "original-edge-to-edge-portrait"
+  "puzzleLayout": "final-reference-local",
+  "puzzleButtons": "cream-gloss-v214",
+  "puzzleRotation": "beige-stone-v215",
+  "boardAlignment": "uniform-6x6-source-grid"
 }

@@ -1,0 +1,19 @@
+{
+  "size": [
+    384,
+    384
+  ],
+  "transparent": true,
+  "generator": "built-in image_gen",
+  "prompt": "Warm beige-gray limestone tile with pale peach clockwise circular arrow and embossed 90\u00b0, matching user reference.",
+  "boardSourceGrid": {
+    "x": 78,
+    "y": 89,
+    "width": 921,
+    "height": 915,
+    "imageSize": [
+      1080,
+      1080
+    ]
+  }
+}
