@@ -1,0 +1,272 @@
+{
+  "background": "seaside-background-calm.png",
+  "groups": [
+    {
+      "name": "stages-01-05",
+      "sheet": "stages-01-05-sheet.png",
+      "columns": 3,
+      "rows": 2,
+      "cellWidth": 800,
+      "cellHeight": 800,
+      "items": [
+        {
+          "id": "stage-01",
+          "png": "stage-01.png",
+          "webp": "stage-01.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-02",
+          "png": "stage-02.png",
+          "webp": "stage-02.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-03",
+          "png": "stage-03.png",
+          "webp": "stage-03.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-04",
+          "png": "stage-04.png",
+          "webp": "stage-04.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-05",
+          "png": "stage-05.png",
+          "webp": "stage-05.webp",
+          "width": 800,
+          "height": 800
+        }
+      ]
+    },
+    {
+      "name": "stages-06-10",
+      "sheet": "stages-06-10-sheet.png",
+      "columns": 3,
+      "rows": 2,
+      "cellWidth": 800,
+      "cellHeight": 800,
+      "items": [
+        {
+          "id": "stage-06",
+          "png": "stage-06.png",
+          "webp": "stage-06.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-07",
+          "png": "stage-07.png",
+          "webp": "stage-07.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-08",
+          "png": "stage-08.png",
+          "webp": "stage-08.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-09",
+          "png": "stage-09.png",
+          "webp": "stage-09.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "stage-10",
+          "png": "stage-10.png",
+          "webp": "stage-10.webp",
+          "width": 800,
+          "height": 800
+        }
+      ]
+    },
+    {
+      "name": "main-ui",
+      "sheet": "main-ui-sheet.png",
+      "columns": 2,
+      "rows": 3,
+      "cellWidth": 1200,
+      "cellHeight": 650,
+      "items": [
+        {
+          "id": "villa-logo",
+          "png": "villa-logo.png",
+          "webp": "villa-logo.webp",
+          "width": 1200,
+          "height": 650
+        },
+        {
+          "id": "coin-wallet",
+          "png": "coin-wallet.png",
+          "webp": "coin-wallet.webp",
+          "width": 1200,
+          "height": 650
+        },
+        {
+          "id": "return-game",
+          "png": "return-game.png",
+          "webp": "return-game.webp",
+          "width": 1200,
+          "height": 650
+        },
+        {
+          "id": "bonus-button",
+          "png": "bonus-button.png",
+          "webp": "bonus-button.webp",
+          "width": 1200,
+          "height": 650
+        },
+        {
+          "id": "upgrade-button",
+          "png": "upgrade-button.png",
+          "webp": "upgrade-button.webp",
+          "width": 1200,
+          "height": 650
+        },
+        {
+          "id": "next-upgrade-panel",
+          "png": "next-upgrade-panel.png",
+          "webp": "next-upgrade-panel.webp",
+          "width": 1200,
+          "height": 650
+        }
+      ]
+    },
+    {
+      "name": "decorations",
+      "sheet": "decorations-sheet.png",
+      "columns": 3,
+      "rows": 3,
+      "cellWidth": 600,
+      "cellHeight": 600,
+      "items": [
+        {
+          "id": "shells-starfish",
+          "png": "shells-starfish.png",
+          "webp": "shells-starfish.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "parasol-chairs",
+          "png": "parasol-chairs.png",
+          "webp": "parasol-chairs.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "surfboards",
+          "png": "surfboards.png",
+          "webp": "surfboards.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "beach-sign",
+          "png": "beach-sign.png",
+          "webp": "beach-sign.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "ring-ball",
+          "png": "ring-ball.png",
+          "webp": "ring-ball.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "sandcastle",
+          "png": "sandcastle.png",
+          "webp": "sandcastle.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "sailboat",
+          "png": "sailboat.png",
+          "webp": "sailboat.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "seagull",
+          "png": "seagull.png",
+          "webp": "seagull.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "id": "hibiscus",
+          "png": "hibiscus.png",
+          "webp": "hibiscus.webp",
+          "width": 600,
+          "height": 600
+        }
+      ]
+    },
+    {
+      "name": "extra-ui",
+      "sheet": "extra-ui-sheet.png",
+      "columns": 2,
+      "rows": 3,
+      "cellWidth": 1000,
+      "cellHeight": 700,
+      "items": [
+        {
+          "id": "villa-open-panel",
+          "png": "villa-open-panel.png",
+          "webp": "villa-open-panel.webp",
+          "width": 1000,
+          "height": 700
+        },
+        {
+          "id": "villa-complete-panel",
+          "png": "villa-complete-panel.png",
+          "webp": "villa-complete-panel.webp",
+          "width": 1000,
+          "height": 700
+        },
+        {
+          "id": "forest-tab",
+          "png": "forest-tab.png",
+          "webp": "forest-tab.webp",
+          "width": 1000,
+          "height": 700
+        },
+        {
+          "id": "seaside-tab",
+          "png": "seaside-tab.png",
+          "webp": "seaside-tab.webp",
+          "width": 1000,
+          "height": 700
+        },
+        {
+          "id": "build-villa",
+          "png": "build-villa.png",
+          "webp": "build-villa.webp",
+          "width": 1000,
+          "height": 700
+        },
+        {
+          "id": "close-button",
+          "png": "close-button.png",
+          "webp": "close-button.webp",
+          "width": 1000,
+          "height": 700
+        }
+      ]
+    }
+  ]
+}

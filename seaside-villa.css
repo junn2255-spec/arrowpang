@@ -1,0 +1,77 @@
+#seaside-villa[hidden]{display:none!important}
+#seaside-villa{position:fixed;inset:0;z-index:5000;overflow:hidden;background:#19b7d9;color:#4a260f;font-family:'User Paperlogy Bold',sans-serif}
+#seaside-villa *,dialog.villa-dialog *{box-sizing:border-box}
+#seaside-villa .villa-scenery{position:absolute;inset:0;width:100%;height:100%;background-size:100% 100%}
+#seaside-villa .villa-content{position:relative;height:100dvh;width:min(100%,560px);margin:auto;container-type:inline-size}
+#seaside-villa button,dialog.villa-dialog button,#villa-entry{padding:0;margin:0;min-width:0;min-height:0;border:0;background:none;box-shadow:none;cursor:pointer;touch-action:manipulation;opacity:1;transform:none}
+#seaside-villa button img,dialog.villa-dialog button img,#villa-entry img{display:block;width:100%;height:100%;object-fit:contain}
+#seaside-villa button:active:not(:disabled),#villa-entry:active:not(:disabled){transform:scale(.96)}
+#seaside-villa button:focus-visible,dialog.villa-dialog button:focus-visible,#villa-entry:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:18px}
+#seaside-villa header{position:absolute;inset:0;z-index:8;pointer-events:none}
+#seaside-villa header button{pointer-events:auto}
+#seaside-villa .villa-title{position:absolute;left:1%;top:calc(1% + env(safe-area-inset-top));width:52%;height:13%;object-fit:contain;filter:drop-shadow(0 3px 2px #27454855)}
+#seaside-villa .villa-wallet{position:absolute;right:2%;top:calc(2.4% + env(safe-area-inset-top));width:44%;aspect-ratio:3.2}
+#seaside-villa .villa-wallet img{width:100%;height:100%;object-fit:fill}
+#seaside-villa .villa-wallet strong{position:absolute;left:58%;right:6%;top:26%;height:47%;display:flex;align-items:center;justify-content:center;color:#fff5ae;font:800 clamp(18px,5.7cqw,34px)/1 'User Paperlogy ExtraBold',sans-serif;-webkit-text-stroke:1.4px #5c2a0d;paint-order:stroke fill;text-shadow:0 2px 1px #422109}
+#seaside-villa .villa-game{position:absolute;right:2%;top:calc(10% + env(safe-area-inset-top));width:44%;height:7%}
+#seaside-villa .villa-forest{position:absolute;left:3%;top:16%;width:30%;height:6%}
+#seaside-villa .villa-stage{position:absolute;left:34%;right:2%;top:18%;margin:0;text-align:right;font-size:clamp(12px,3.2cqw,18px);color:#fff;text-shadow:0 2px 2px #134b6d,1px 0 #134b6d;z-index:5}
+#seaside-villa .villa-house{position:absolute;left:50%;width:100%;height:auto;aspect-ratio:1;bottom:calc(36% - 10cqw);transform:translateX(-50%);object-fit:contain;z-index:2;filter:drop-shadow(0 7px 5px #6d4f3733);pointer-events:none}
+#seaside-villa .villa-decor{position:absolute;inset:0;pointer-events:none;z-index:3}
+#seaside-villa .villa-decoration{position:absolute;object-fit:contain;filter:drop-shadow(0 3px 2px #6b461e44)}
+#seaside-villa .decor-shells{left:3%;bottom:31%;width:16%}
+#seaside-villa .decor-flowers{left:2%;bottom:40%;width:22%}
+#seaside-villa .decor-sign{right:2%;bottom:35%;width:20%}
+#seaside-villa .decor-surfboards{right:2%;bottom:43%;width:17%}
+#seaside-villa .decor-ring{right:5%;bottom:25%;width:17%}
+#seaside-villa .decor-chairs{right:0%;bottom:29%;width:26%}
+#seaside-villa .decor-castle{left:1%;bottom:23%;width:20%}
+#seaside-villa .villa-actors{position:absolute;left:0;right:0;bottom:24%;height:18cqw;z-index:5}
+#seaside-villa .life-actor{position:absolute;padding:0;border:0;background-color:transparent;background-repeat:no-repeat;border-radius:0;filter:drop-shadow(0 2px 1px #463a2044)}
+#seaside-villa .hero-actor{left:29%;bottom:0;width:22%;aspect-ratio:192/224;background-image:url('assets/home10/09-hero-new-3x3.webp');background-size:300% 300%}
+#seaside-villa .dog-actor{left:52%;bottom:0;width:22%;aspect-ratio:1;background-image:url('assets/home10/10-puppy-4x3.webp');background-size:400% 300%}
+#seaside-villa .villa-actions{position:absolute;left:4%;right:4%;bottom:15%;height:8%;display:flex;gap:6%;z-index:8}
+#seaside-villa .villa-actions button{width:47%;height:100%;filter:drop-shadow(0 3px 2px #57341d66)}
+#seaside-villa .villa-upgrade:disabled{filter:brightness(.76) drop-shadow(0 3px 2px #57341d66);cursor:default}
+#seaside-villa .villa-next{position:absolute;left:3%;right:3%;bottom:calc(2% + env(safe-area-inset-bottom));height:11.5%;z-index:7}
+#seaside-villa .villa-next-bg{width:100%;height:100%;object-fit:fill}
+#seaside-villa .villa-next-icon{position:absolute;left:3%;top:12%;width:21%;height:77%;object-fit:contain}
+#seaside-villa .villa-next-name{position:absolute;left:66%;right:5%;top:16%;font-size:clamp(11px,3cqw,18px);line-height:1.1;text-align:center;white-space:nowrap}
+#seaside-villa .villa-needed{position:absolute;left:27%;width:31%;top:52%;text-align:center;font-size:clamp(19px,6cqw,35px);line-height:1;color:#dc6500}
+#seaside-villa .villa-next.affordable .villa-needed{color:#31890b}
+#seaside-villa .villa-next.complete .villa-needed{font-size:4.8cqw}
+#seaside-villa .villa-toast{position:absolute;left:2%;right:2%;top:26%;margin:0;z-index:12;text-align:center;white-space:pre-line;pointer-events:none;font:800 clamp(22px,6.5cqw,38px)/1.25 'User Paperlogy ExtraBold',sans-serif;color:#fff6db;-webkit-text-stroke:2px #07564b;paint-order:stroke fill;text-shadow:0 3px 2px #064a3e}
+#seaside-villa .villa-ready{animation:villaHalo 1.5s ease-in-out infinite}
+@keyframes villaHalo{0%,100%{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #ffffff77)}50%{filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #ffffffcc)}}
+#seaside-villa .villa-building{animation:villaBuild .16s linear infinite}
+@keyframes villaBuild{0%,100%{margin-left:-1px}50%{margin-left:1px;filter:brightness(1.2)}}
+#villa-entry{position:absolute;z-index:22;left:3%;top:17%;width:34%;height:7%;filter:drop-shadow(0 2px 2px #173e3455)}
+#villa-entry:disabled{cursor:default;filter:brightness(.75)}
+#villa-entry small{display:block;position:absolute;top:100%;width:100%;color:#fff;font-size:clamp(10px,2.7vw,15px);white-space:nowrap;text-shadow:0 1px 2px #203e2e}
+dialog.villa-dialog{width:min(94vw,540px);max-height:90dvh;padding:0;border:0;background:none;overflow:auto;color:#542b10;font-family:'User Paperlogy Bold',sans-serif;box-shadow:none}
+dialog.villa-dialog::backdrop{background:#052d4399;backdrop-filter:blur(2px)}
+dialog.villa-announcement{position:fixed;overflow:visible}
+dialog.villa-announcement>img{display:block;width:100%;height:auto}
+dialog.villa-announcement>p{position:absolute;top:48%;left:10%;right:10%;margin:0;text-align:center;white-space:pre-line;font-size:clamp(15px,4vw,22px);line-height:1.5}
+dialog.villa-dialog .villa-dialog-actions{display:flex;justify-content:center;gap:12px;margin:8px auto 0;width:80%;height:64px}
+dialog.villa-dialog .villa-dialog-actions button{width:70%;height:100%}
+dialog.villa-inventory{border:3px solid #f7bc42;background:linear-gradient(#fff9e7,#f7e6bd);border-radius:24px;padding:12px;box-shadow:0 8px 30px #04344777}
+dialog.villa-dialog .villa-inventory-title{display:block;width:70%;height:64px;object-fit:contain;margin:0 auto 8px}
+dialog.villa-dialog .villa-decor-list{max-height:58dvh;overflow:auto;overscroll-behavior:contain}
+dialog.villa-dialog .villa-decor-row{display:grid;grid-template-columns:24% 1fr 30%;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #daa85055}
+dialog.villa-dialog .villa-decor-row>img{width:100%;height:65px;object-fit:contain}
+dialog.villa-dialog .villa-decor-row>span{font-size:clamp(14px,3.8vw,20px);word-break:keep-all}
+dialog.villa-dialog .villa-decor-row button{min-height:40px;border:2px solid #dfad27;background:linear-gradient(#7de622,#20a417);border-radius:12px;color:#fff;font:inherit;font-size:14px;padding:4px;text-shadow:0 1px 1px #165a09}
+dialog.villa-dialog .villa-decor-row button:disabled{background:#e3dcc7;color:#776c52;text-shadow:none;border-color:#bfb08a;cursor:default}
+dialog.villa-dialog .villa-dialog-close{display:block;width:40%;height:56px;margin:12px auto 0}
+@media(max-height:620px){#seaside-villa .villa-title{height:15%}#seaside-villa .villa-wallet{width:35%;top:2%;height:8%}#seaside-villa .villa-game{height:8%}#seaside-villa .villa-forest{height:7%}#seaside-villa .villa-house{width:73%;bottom:calc(31% - 7cqw)}#seaside-villa .villa-actors{height:13cqw;bottom:21%}#seaside-villa .hero-actor,#seaside-villa .dog-actor{width:17%}#seaside-villa .villa-actions{height:10%;bottom:13%}#seaside-villa .villa-next{height:11%}}
+@media(prefers-reduced-motion:reduce){#seaside-villa .villa-ready,#seaside-villa .villa-building{animation:none!important}}
+
+#seaside-villa header{background:none;border:0;border-radius:0;box-shadow:none;padding:0;margin:0;width:auto;height:auto;display:block;transform:none}
+#seaside-villa .villa-wallet strong{font-size:clamp(14px,var(--villa-wallet-size,5.4cqw),32px)}
+
+#seaside-villa .villa-next.complete::before{content:'';position:absolute;z-index:1;left:24%;right:5%;top:12%;bottom:12%;border-radius:12px;background:linear-gradient(#fff7e3,#ffedc3)}
+#seaside-villa .villa-next.complete .villa-next-name{z-index:2;left:25%;right:5%;top:20%;font-size:4.4cqw}
+#seaside-villa .villa-next.complete .villa-needed{z-index:2;left:25%;width:70%;top:55%;font-size:5.4cqw}
+#seaside-villa .villa-wallet{aspect-ratio:624/190;height:auto}
+#seaside-villa .villa-wallet img{object-fit:contain}

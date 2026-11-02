@@ -1,0 +1,34 @@
+@font-face{font-family:KeepnetPaper;src:url('../assets/user-fonts-paperlogy/Paperlogy-6SemiBold.ttf');font-weight:600;font-display:swap}
+#game #mini-catch-summary{display:none!important}
+#game #keepnet-open{position:absolute;left:41%;bottom:3%;width:18%;aspect-ratio:1;border:0;padding:0;background:none;z-index:8;cursor:pointer;touch-action:manipulation;filter:drop-shadow(0 3px 3px #002b38aa)}
+#keepnet-open img{display:block;width:100%;height:100%;object-fit:contain}
+#keepnet-open:active{transform:scale(.95)}
+#game.intro-open #keepnet-open,#game.fishing-active #keepnet-open{visibility:hidden;pointer-events:none}
+#keepnet-window[hidden]{display:none!important}
+#keepnet-window{position:absolute;inset:0;z-index:120;display:grid;place-items:center;padding:6px;box-sizing:border-box;background:#00152fbd;color:white;font-family:KeepnetPaper,sans-serif;font-weight:600}
+#keepnet-window *{box-sizing:border-box;font-family:KeepnetPaper,sans-serif;font-weight:600}
+#keepnet-window .keepnet-sheet{position:relative;width:min(100%,calc(96dvh * 551 / 680),550px);aspect-ratio:551/680;container-type:inline-size;background:url('assets/keepnet-v1/window.webp') center/100% 100% no-repeat}
+#keepnet-window .keepnet-title{position:absolute;top:1%;left:31%;width:38%;height:16%;object-fit:contain}
+#keepnet-window button{padding:0;border:0;background:none;cursor:pointer;touch-action:manipulation;min-height:0;min-width:0}
+#keepnet-window button img{display:block;width:100%;height:100%;object-fit:contain}
+#keepnet-window .keepnet-x{position:absolute;right:5%;top:6%;width:9%;aspect-ratio:1}
+#keepnet-window .keepnet-count{position:absolute;top:18%;width:100%;text-align:center;font-size:4.4cqw}
+#keepnet-window .keepnet-list{position:absolute;left:6%;right:6%;top:26%;bottom:15%;overflow-y:auto;padding-right:9px;scrollbar-width:thin;scrollbar-color:#7cf6ff #0077b7;overscroll-behavior:contain;touch-action:pan-y}
+#keepnet-window .keepnet-list::-webkit-scrollbar{width:8px}
+#keepnet-window .keepnet-list::-webkit-scrollbar-track{background:#0077b7;border-radius:9px}
+#keepnet-window .keepnet-list::-webkit-scrollbar-thumb{background:#7cf6ff;border-radius:9px}
+#keepnet-window .keepnet-row{height:19cqw;display:grid;grid-template-columns:40% 28% 32%;align-items:center;background:url('assets/keepnet-v1/fish-row.webp') center/100% 100% no-repeat;margin-bottom:1.5cqw;padding:3cqw 4cqw}
+#keepnet-window .keepnet-row>img{width:100%;height:12cqw;object-fit:contain}
+#keepnet-window .keepnet-row>div{padding-left:2cqw;font-size:4.1cqw;line-height:1.3;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1.2cqw;white-space:nowrap}
+#keepnet-window .keepnet-row b{color:#ffdf54}
+#keepnet-window .keepnet-row .largest{font-size:3.3cqw}
+#keepnet-window .largest strong{font-size:3.8cqw;color:#fff}
+#keepnet-window .largest>span{color:#ceeaff}
+#keepnet-window .keepnet-close{position:absolute;bottom:3%;left:25%;width:50%;height:10%}
+#keepnet-window .keepnet-empty{padding:5cqw 3cqw;font-size:4cqw;line-height:1.6;text-align:center;word-break:keep-all}
+#keepnet-window :focus-visible,#keepnet-open:focus-visible{outline:3px solid #fff581;outline-offset:2px}
+
+#game #keepnet-window,#game #keepnet-window *{font-family:KeepnetPaper,sans-serif!important;font-weight:600!important}
+
+/* Soft white edging follows each fish's transparent outline. */
+#keepnet-window .keepnet-row>img{background:none;border-radius:0;filter:drop-shadow(0 0 1px rgba(255,255,255,.9)) drop-shadow(0 0 3px rgba(255,255,255,.45))}

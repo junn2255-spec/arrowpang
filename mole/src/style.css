@@ -193,3 +193,6 @@ html body,html body *,html body *::before,html body *::after{font-family:'Mole P
 .reward-label>div>span{font-size:15px}
 .reward-label small{font-size:16px}
 @media(max-height:680px){.result-card p,.pause-card p,.plain-modal p,.modal>p{font-size:17px!important}.result-score>span{font-size:20px}.result-score strong{font-size:58px}.result-score small{font-size:23px}.result-card .primary,.pause-card .primary{font-size:30px}.modal>.secondary{font-size:16px;margin-top:12px}}
+
+/* HD instruction artwork: keep the live start area aligned to the yellow button. */
+.instructions-only .panel-button{left:20%;top:69%;width:60%;height:24%}

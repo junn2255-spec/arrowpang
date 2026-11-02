@@ -1,0 +1,58 @@
+[
+  {
+    "name": "망둥어",
+    "frames": 8,
+    "headHorizontalDrift": 5,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "노래미",
+    "frames": 8,
+    "headHorizontalDrift": 2,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "볼락",
+    "frames": 8,
+    "headHorizontalDrift": 2,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "감성돔",
+    "frames": 8,
+    "headHorizontalDrift": 2,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "돌돔",
+    "frames": 8,
+    "headHorizontalDrift": 1,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "농어",
+    "frames": 8,
+    "headHorizontalDrift": 1,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "참돔",
+    "frames": 8,
+    "headHorizontalDrift": 2,
+    "transparent": true,
+    "padding": "PASS"
+  },
+  {
+    "name": "능성어",
+    "frames": 8,
+    "headHorizontalDrift": 1,
+    "transparent": true,
+    "padding": "PASS"
+  }
+]

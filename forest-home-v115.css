@@ -116,3 +116,7 @@ dialog.bonus-inventory .bonus-inventory-row span{font-size:clamp(14px,3.8cqw,20p
 dialog.bonus-inventory .bonus-inventory-row button{min-height:36px;min-width:52px;padding:4px 8px;font-size:14px}
 dialog.bonus-inventory>button{position:absolute;left:33%;top:67%;width:34%;height:21%;min-height:0;padding:0;margin:0;border:0;background:transparent;box-shadow:none;color:transparent;font-size:0;cursor:pointer}
 dialog.bonus-inventory>button:focus-visible{outline:3px solid #7531bf;outline-offset:-3px}
+
+/* Lower the home header controls and give them more breathing room. */
+#home-panel.home10-panel .home-top .coin-wallet{top:3cqw!important}
+#home-panel.home10-panel .home-top #home-back{top:18cqw!important}

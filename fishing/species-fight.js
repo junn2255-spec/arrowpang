@@ -3,6 +3,11 @@ import {FISH_HOLD_DURATION} from './pole-physics.js';
 import {SubtleDistanceCastController} from './cast-distance.js';
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 export const COASTAL_DIFFICULTY=Object.freeze({
+ goby:Object.freeze({tensionGain:.65,endurance:.75,rodForce:.6,pulse:3,surgeEvery:8,surgeDuration:.4,firstSurge:5,edgeDuration:.6}),
+ greenling:Object.freeze({tensionGain:.8,endurance:.9,rodForce:.8,pulse:4,surgeEvery:7,surgeDuration:.45,firstSurge:4,edgeDuration:.8}),
+ rockfish:Object.freeze({tensionGain:1,endurance:1.1,rodForce:1,pulse:6,surgeEvery:6,surgeDuration:.5,firstSurge:3.5,edgeDuration:1}),
+ 'red-seabream':Object.freeze({tensionGain:1.9,endurance:2.5,rodForce:1.8,pulse:18,surgeEvery:3.5,surgeDuration:1,firstSurge:2,edgeDuration:2.2}),
+ grouper:Object.freeze({tensionGain:2.1,endurance:2.8,rodForce:2,pulse:20,surgeEvery:3.2,surgeDuration:1,firstSurge:2,edgeDuration:2.5}),
  'striped-beakfish':Object.freeze({tensionGain:1.22,endurance:1.56,rodForce:1.15,pulse:8,surgeEvery:5.5,surgeDuration:.65,firstSurge:3,edgeDuration:1.2}),
  crucian:Object.freeze({tensionGain:1.48,endurance:1.885,rodForce:1.35,pulse:12,surgeEvery:4.5,surgeDuration:.85,firstSurge:2.5,edgeDuration:1.6}),
  'sea-bass':Object.freeze({tensionGain:1.78,endurance:2.275,rodForce:1.6,pulse:16,surgeEvery:3.6,surgeDuration:1,firstSurge:2,edgeDuration:2.1})
@@ -67,7 +72,7 @@ export class SpeciesFishingGame extends FishingGame {
   const pullRate=pull*size*easing/line.strength;
   const releaseRate=Math.max(1,25*line.recovery-pullRate);
   const holdShare=releaseRate/(releaseRate+rise+pullRate);
-  const targetSeconds=clamp((6.15+(size-.8)*1.7-(rod.power-1)*2)*Math.pow(1.19/(STAMINA_DRAIN[s.fish.id]||1.19),.15),6.2,7.6)*(coastal?.endurance||1);
+  const targetSeconds=clamp((6.15+(size-.8)*1.7-(rod.power-1)*2)*Math.pow(1.19/(STAMINA_DRAIN[s.fish.id]||1.19),.15),6.2,7.6)*(coastal?.endurance||1)/(1+(this.gearLevels?.rod-1||0)*.22);
   s.progress=clamp(s.progress+(s.holding?100/targetSeconds/holdShare*efficiency:-1.1)*dt,0,100);
   if(s.fightElapsed<6)s.progress=Math.min(s.progress,99.999);
   if(s.progress>=100){this._transition('caught',`${s.fish.name} 잡았어요!`);s.holding=false;s.surge=false;s.pull=false;this._emit('catch',{fish:{...s.fish},id:s.fish.id,catchId:s.fish.catchId,length:s.fish.length,weight:s.fish.weight});}

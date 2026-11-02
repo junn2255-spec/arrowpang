@@ -46,3 +46,5 @@ new MutationObserver(syncUpgradeHit).observe(topStats,{attributes:true,attribute
 document.querySelector("#next")?.setAttribute("aria-label","다음게임");document.querySelector("#next img")?.setAttribute("alt","다음게임");
 
 const miniPreview=document.createElement('button');miniPreview.id='minigame-preview';miniPreview.type='button';miniPreview.className='complete-button';miniPreview.setAttribute('aria-label','미니게임');miniPreview.innerHTML='<img src="assets/minigame-button-v152/button.webp" alt="미니게임">';nav.prepend(miniPreview);
+// User supplied blue status panels; preserve baked labels and icons.
+const blueStatusArt=document.createElement('div');blueStatusArt.className='blue-status-art';blueStatusArt.setAttribute('aria-hidden','true');blueStatusArt.innerHTML='<img class="blue-stage" src="assets/blue-status-v162/stage.webp" alt=""><img class="blue-wallet" src="assets/blue-status-v162/wallet.webp" alt=""><img class="blue-upgrade" src="assets/blue-status-v162/upgrade.webp" alt="">';topStats.append(blueStatusArt);

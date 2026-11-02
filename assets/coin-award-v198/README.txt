@@ -1,0 +1,1 @@
+보상 코인 팝업 v198. Built-in image_gen. Prompt: reference gold rays +4 five-point-star coins, remove text/background, transparent. Dynamic reward text is drawn separately in Paperlogy ExtraBold with yellow-orange gradient, dark brown outline and extrusion. Source preserved; runtime WebP960px with padded edges.

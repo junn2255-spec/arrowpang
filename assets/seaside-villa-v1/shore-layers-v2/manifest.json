@@ -1,0 +1,35 @@
+{
+  "base": "beach-base.webp",
+  "palm": "palm-foreground.webp",
+  "registration": {
+    "width": 1024,
+    "height": 1536
+  },
+  "swash": {
+    "sheet": "swash-atlas.webp",
+    "columns": 4,
+    "rows": 2,
+    "frames": 8,
+    "frameWidth": 768,
+    "frameHeight": 256,
+    "cycleSeconds": 8
+  },
+  "layerOrder": [
+    "base",
+    "animated-water",
+    "ripples",
+    "sunlight",
+    "shore-swash",
+    "seagulls",
+    "palm"
+  ],
+  "sunlight": {
+    "sheet": "sunlight-atlas.webp",
+    "frameWidth": 128,
+    "frameHeight": 128,
+    "frames": 8,
+    "columns": 4,
+    "rows": 2,
+    "cycleSeconds": "2.4–5.5 staggered"
+  }
+}

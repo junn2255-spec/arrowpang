@@ -1,0 +1,54 @@
+{
+  "assets": [
+    {
+      "id": "keepnet-button",
+      "png": "keepnet-button.png",
+      "webp": "keepnet-button.webp",
+      "width": 536,
+      "height": 482
+    },
+    {
+      "id": "keepnet-title",
+      "png": "keepnet-title.png",
+      "webp": "keepnet-title.webp",
+      "width": 664,
+      "height": 265
+    },
+    {
+      "id": "fish-row",
+      "png": "fish-row.png",
+      "webp": "fish-row.webp",
+      "width": 984,
+      "height": 189
+    },
+    {
+      "id": "window",
+      "png": "window.png",
+      "webp": "window.webp",
+      "width": 792,
+      "height": 1060
+    },
+    {
+      "id": "close-button",
+      "png": "close-button.png",
+      "webp": "close-button.webp",
+      "width": 427,
+      "height": 139
+    },
+    {
+      "id": "close-icon",
+      "png": "close-icon.png",
+      "webp": "close-icon.webp",
+      "width": 152,
+      "height": 152
+    }
+  ],
+  "fishImages": "../fish-summary-v186/",
+  "scroll": "Native vertical scroll; no raster scrollbar required",
+  "dynamicText": [
+    "어종 이름",
+    "마릿수",
+    "최대 길이",
+    "총 마릿수"
+  ]
+}

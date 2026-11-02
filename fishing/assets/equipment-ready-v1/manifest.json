@@ -1,0 +1,139 @@
+{
+  "assets": [
+    {
+      "id": "window",
+      "file": "window.png",
+      "width": 345,
+      "height": 410
+    },
+    {
+      "id": "wallet",
+      "file": "wallet.png",
+      "width": 514,
+      "height": 185
+    },
+    {
+      "id": "close-icon",
+      "file": "close-icon.png",
+      "width": 268,
+      "height": 268
+    },
+    {
+      "id": "card",
+      "file": "card.png",
+      "width": 471,
+      "height": 236
+    },
+    {
+      "id": "rod-icon",
+      "file": "rod-icon.png",
+      "width": 335,
+      "height": 331
+    },
+    {
+      "id": "line-icon",
+      "file": "line-icon.png",
+      "width": 335,
+      "height": 331
+    },
+    {
+      "id": "upgrade-button",
+      "file": "upgrade-button.png",
+      "width": 404,
+      "height": 325
+    },
+    {
+      "id": "close-button",
+      "file": "close-button.png",
+      "width": 467,
+      "height": 216
+    },
+    {
+      "id": "arrow",
+      "file": "arrow.png",
+      "width": 277,
+      "height": 278
+    },
+    {
+      "id": "lock",
+      "file": "lock.png",
+      "width": 257,
+      "height": 309
+    },
+    {
+      "id": "star-coin",
+      "file": "star-coin.png",
+      "width": 287,
+      "height": 289
+    },
+    {
+      "id": "title",
+      "file": "title.png",
+      "width": 688,
+      "height": 353
+    },
+    {
+      "id": "equipment-button",
+      "file": "equipment-button.png",
+      "width": 688,
+      "height": 641
+    },
+    {
+      "id": "bait-ragworm",
+      "file": "bait-ragworm.png",
+      "width": 560,
+      "height": 544
+    },
+    {
+      "id": "bait-krill",
+      "file": "bait-krill.png",
+      "width": 560,
+      "height": 545
+    },
+    {
+      "id": "bait-live-shrimp",
+      "file": "bait-live-shrimp.png",
+      "width": 560,
+      "height": 549
+    },
+    {
+      "id": "bait-golden-shrimp",
+      "file": "bait-golden-shrimp.png",
+      "width": 560,
+      "height": 550
+    },
+    {
+      "id": "badge-equipped",
+      "file": "badge-equipped.png",
+      "width": 560,
+      "height": 272
+    },
+    {
+      "id": "badge-max",
+      "file": "badge-max.png",
+      "width": 560,
+      "height": 272
+    },
+    {
+      "id": "badge-upgraded",
+      "file": "badge-upgraded.png",
+      "width": 560,
+      "height": 270
+    },
+    {
+      "id": "badge-locked",
+      "file": "badge-locked.png",
+      "width": 560,
+      "height": 272
+    }
+  ],
+  "effect": {
+    "sheet": "upgrade-fx-sheet.png",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 384,
+    "frameHeight": 384,
+    "count": 8,
+    "fps": 12
+  }
+}

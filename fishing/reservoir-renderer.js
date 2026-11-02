@@ -46,6 +46,15 @@ function imageCover(im) {
     sw: W / scale, sh: H / scale, scale };
 }
 
+// Level the photographed offshore horizon without tilting the fishing rig.
+// The source falls approximately 0.7% toward the right; overscan hides edges.
+export function drawLevelCoastalScene(ctx, scene, cover) {
+ ctx.save();
+ ctx.transform(1, -.007, 0, 1, 0, W * .007 / 2);
+ ctx.drawImage(scene, cover.sx, cover.sy, cover.sw, cover.sh, -2, -4, W + 4, H + 8);
+ ctx.restore();
+}
+
 function ellipse(ctx, x, y, rx, ry, stroke, width = 1) {
   ctx.beginPath(); ctx.ellipse(x, y, Math.max(.1, rx), Math.max(.1, ry), 0, 0, TAU);
   ctx.lineWidth = width; ctx.strokeStyle = stroke; ctx.stroke();
@@ -704,6 +713,11 @@ function paintCrucianAtlas(ctx, atlas, fish, length, flex, reducedMotion) {
   return true;
 }
 
+function paintAnimatedSpecies(ctx,image,length,t){
+ if(!usableFishAtlas(image))return false;
+ const i=Math.floor(t*8)%8,sw=image.naturalWidth/4,sh=image.naturalHeight/2,k=length/300;
+ ctx.save();ctx.scale(-1,1);ctx.drawImage(image,(i%4)*sw,Math.floor(i/4)*sh,sw,sh,-104*k,-192*k,512*k,384*k);ctx.restore();return true;
+}
 export function paintSpeciesFish(ctx,image,fish,length,flex,reducedMotion){
   if(!usableFishAtlas(image))return false;
   const anchors={'striped-beakfish':[1507/1536,572/1024],'sea-bass':[1505/1536,526/1024],sogari:[1481/1511,491/978],carp:[1508/1536,543/993],catfish:[1424/1544,549/1011],eel:[1521/1543,404/863]};
@@ -871,7 +885,8 @@ function paintFish(ctx, cast, t, atlas, reducedMotion, crucianAtlas, speciesImag
   // rises out of this water tint; hook/fight can never use an airborne sprite.
   ctx.globalAlpha=presentation.underwater?.42:clamp(finite(fish.opacity,1),0,1);
   ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-  const crucian=['crucian','golden-carp'].includes(fish.fish?.id)&&paintCrucianAtlas(ctx,crucianAtlas,fish,length,flex,reducedMotion);
+  const animated=paintAnimatedSpecies(ctx,speciesImages[fish.fish?.id+'Swim'],length,reducedMotion?0:t);
+  const crucian=animated||['crucian','golden-carp'].includes(fish.fish?.id)&&paintCrucianAtlas(ctx,crucianAtlas,fish,length,flex,reducedMotion);
   const species=!crucian&&paintSpeciesFish(ctx,speciesImages[`${fish.fish?.id}Fish`],fish,length,flex,reducedMotion);
   if(!crucian&&!species&&!paintFishAtlas(ctx,atlas,fish,length,flex,reducedMotion))paintProceduralFish(ctx,fish,length,flex,reducedMotion);
   if(presentation.underwater){
@@ -1057,7 +1072,27 @@ function paintCoastalWater(ctx,scene,t,reduced){
  ctx.restore();
 }
 
-function paintSeaBirds(ctx,atlas,t,reduced){if(!atlas?.complete||!atlas.naturalWidth)return;const seq=[0,1,2,4,2,1];for(let i=0;i<3;i++){const f=seq[Math.floor((reduced?0:t)*7+i*2)%6],w=(48-i*9)*1.25,x=reduced?120+i*120:((t*(12+i*2)+i*210)%650)-65,y=245+i*24;ctx.drawImage(atlas,(f%4)*192,Math.floor(f/4)*192,192,192,x,y,w,w);}}
+// Independent fly-bys: each pass has a different direction, height and glide rhythm.
+export function seaBirdFlight(t,i,reduced=false){
+ if(reduced)return {x:105+i*145,y:252+i*23,w:49-i*8,frame:2,angle:0,direction:1};
+ const period=47+i*13.7,clock=Math.max(0,t)+[9,26,4][i],cycle=Math.floor(clock/period),local=clock-cycle*period;
+ const seed=cycle*19.31+i*71.7,r=n=>rand(seed+n),duration=24+r(1)*17;
+ if(local>duration)return null;
+ const u=local/duration,direction=r(2)>.45?1:-1,w=31+r(3)*30;
+ const x=direction===1?lerp(-w-16,W+16,u):lerp(W+16,-w-16,u);
+ const phase=r(4)*TAU,bend=(r(5)-.5)*26;
+ const y=240+r(6)*48+Math.sin(u*Math.PI)*bend+Math.sin(local*.57+phase)*3.2;
+ const glide=Math.sin(local*(.41+r(7)*.17)+phase)>.05;
+ const seq=[0,1,2,4,2,1],frame=glide?2:seq[Math.floor(local*(5.1+r(8)*2.3)+r(9)*6)%seq.length];
+ const angle=Math.sin(local*.38+phase)*.045+Math.cos(u*Math.PI)*bend/duration/24;
+ return {x,y,w,frame,angle,direction};
+}
+function paintSeaBirds(ctx,atlas,t,reduced){
+ if(!atlas?.complete||!atlas.naturalWidth)return;
+ for(let i=0;i<3;i++){const bird=seaBirdFlight(t,i,reduced);if(!bird)continue;const{x,y,w,frame,angle,direction}=bird;
+ ctx.save();ctx.translate(x+w/2,y+w/2);ctx.rotate(angle);ctx.scale(direction,1);
+ ctx.drawImage(atlas,(frame%4)*192,Math.floor(frame/4)*192,192,192,-w/2,-w/2,w,w);ctx.restore();}
+}
 
 export function createReservoirRenderer(images = {}) {
   const waterline = clamp(finite(images.waterline, RESERVOIR_LAYOUT.waterline), 260, 410);
@@ -1083,15 +1118,17 @@ export function createReservoirRenderer(images = {}) {
     const scene=images.scene,cover = imageCover(scene);
     // A stationary underpaint keeps the sub-pixel camera accent from revealing
     // transparent edges at the top or sides of the portrait canvas.
-    if (cover) ctx.drawImage(scene, cover.sx, cover.sy, cover.sw, cover.sh, 0, 0, W, H);
+    if (cover) drawLevelCoastalScene(ctx, scene, cover);
     else fallbackScene(ctx, waterline);
     const camera = reducedMotion ? {} : (cast.camera || {});
     const zoom = clamp(finite(camera.zoom, 1), 1, 1.008);
     const cx = clamp(finite(camera.x), -3, 3), cy = clamp(finite(camera.y), -3, 3);
     ctx.translate(W / 2 + cx, H / 2 + cy); ctx.scale(zoom, zoom); ctx.translate(-W / 2, -H / 2);
-    if (cover) ctx.drawImage(scene, cover.sx, cover.sy, cover.sw, cover.sh, 0, 0, W, H);
+    if (cover) drawLevelCoastalScene(ctx, scene, cover);
     else fallbackScene(ctx, waterline);
+    ctx.save();ctx.transform(1,-.007,0,1,0,W*.007/2);
     paintCoastalWater(ctx,scene,t,reducedMotion);
+    ctx.restore();
     paintForegroundFish(ctx,t,reducedMotion);
     paintSeaBirds(ctx,images.seaBirds,t,reducedMotion);
     paintNightFloatShade(ctx,cast,environment,waterline);

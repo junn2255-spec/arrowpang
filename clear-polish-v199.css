@@ -1,0 +1,8 @@
+/* Only the completed-stage presentation is 7% smaller. Shared game/home art is unchanged. */
+#game.clear-screen #celebrate,
+#game.clear-screen #reward-panel,
+#game.clear-screen #next,
+#game.clear-screen nav>button,
+#game.clear-screen #all-complete,
+#game.clear-screen .wallet-row,
+#game.clear-screen>footer{scale:.93!important;transform-origin:center center}

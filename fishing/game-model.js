@@ -54,6 +54,11 @@ export const FISH_WEIGHTS = Object.freeze({
   rainyDay: Object.freeze([30,20,20,20,10]),
 });
 export const COASTAL_FISH=freezeOptions([
+{id:'goby',name:'망둥어',strength:.65,speed:1,sizes:Object.freeze([9,14,20]),weightFactor:.000012,rarity:'common',rarityLabel:'일반',color:'#987644'},
+{id:'greenling',name:'노래미',strength:.8,speed:1,sizes:Object.freeze([12,22,34]),weightFactor:.000012,rarity:'common',rarityLabel:'일반',color:'#a98c44'},
+{id:'rockfish',name:'볼락',strength:.95,speed:1,sizes:Object.freeze([12,20,30]),weightFactor:.000016,rarity:'common',rarityLabel:'일반',color:'#aa5f44'},
+{id:'red-seabream',name:'참돔',strength:1.4,speed:1,sizes:Object.freeze([20,40,65]),weightFactor:.000016,rarity:'rare',rarityLabel:'희귀',color:'#e67577'},
+{id:'grouper',name:'능성어',strength:1.6,speed:1,sizes:Object.freeze([24,48,75]),weightFactor:.000019,rarity:'rare',rarityLabel:'희귀',color:'#88674e'},
 {id:'striped-beakfish',name:'돌돔',commonName:'Striped beakfish',art:'striped-beakfish-v1',rarity:'common',rarityLabel:'일반',icon:'🐟',color:'#a4a7ab',strength:1.10,speed:1,sizes:Object.freeze([18,28,40]),minLength:16,maxLength:44,weightFactor:.000016},
 {id:'sea-bass',name:'농어',commonName:'Japanese sea bass',art:'sea-bass-v1',rarity:'uncommon',rarityLabel:'희귀',icon:'🐟',color:'#91a4ac',strength:1.10,speed:1,sizes:Object.freeze([30,45,60]),minLength:27,maxLength:66,weightFactor:.000009}
 ]);

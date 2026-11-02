@@ -1,0 +1,1 @@
+Approved large-ribbon bait buttons, v194. Built-in image generation; transparent 2x2 source sheet sliced to 512x512. Prompt: preserve approved bait art and gold/blue circles, enlarge wooden ribbon about 45% and white Korean labels about 35%; two lines name / 끼우기; no hooks; transparent background. Names: 갯지렁이, 크릴, 활새우, 황금새우.

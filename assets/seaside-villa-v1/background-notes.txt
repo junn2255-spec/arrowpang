@@ -1,0 +1,1 @@
+Built-in image generation edit. Preserve approved seaside background composition and palette; replace tall rolling surf with flat calm turquoise ripples and one thin shoreline wash. No UI, buildings or characters. Source reference: seaside villa mockup. Asset only; not applied to live game.

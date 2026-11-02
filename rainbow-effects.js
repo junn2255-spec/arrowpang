@@ -24,6 +24,6 @@ export class RainbowEffects{
  },i*65);
  if(!preferences.reduced)preferences.vibrate([18,35,24]);
  }
- reward(board,e){const p=this.point(board,e),el=this.node('rainbow-reward',Math.max(8,Math.min(innerWidth-150,p.x-75)),p.y-30,150);el.textContent='+15 코인';el.setAttribute('role','status');el.animate(preferences.reduced?[{opacity:1},{opacity:0}]:[{opacity:0,transform:'translateY(5px) scale(.6)'},{opacity:1,transform:'translateY(-20px) scale(1.15)',offset:.2},{opacity:1,transform:'translateY(-34px) scale(1)',offset:.7},{opacity:0,transform:'translateY(-60px) scale(.9)'}],{duration:1200,fill:'forwards'});this.later(()=>this.remove(el),1200);}
+ reward(board,e){const p=this.point(board,e),el=this.node('rainbow-reward',Math.max(8,Math.min(innerWidth-150,p.x-75)),p.y-30,150);el.textContent='+5 코인';el.setAttribute('role','status');el.animate(preferences.reduced?[{opacity:1},{opacity:0}]:[{opacity:0,transform:'translateY(5px) scale(.6)'},{opacity:1,transform:'translateY(-20px) scale(1.15)',offset:.2},{opacity:1,transform:'translateY(-34px) scale(1)',offset:.7},{opacity:0,transform:'translateY(-60px) scale(.9)'}],{duration:1200,fill:'forwards'});this.later(()=>this.remove(el),1200);}
  clear(){for(const t of this.timers)clearTimeout(t);this.timers.clear();for(const el of [...this.nodes])this.remove(el);this.stopAudio();}
 }

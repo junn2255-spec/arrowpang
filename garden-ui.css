@@ -540,3 +540,36 @@ body.garden-theme #game#game:not(.clear-screen){width:100%;padding:0}
 body.garden-theme #game#game:not(.clear-screen) nav{width:96%}
 body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{padding:4px 0 max(12px,env(safe-area-inset-bottom))!important}
 body.garden-theme #game#game:not(.clear-screen) header h1{left:-1%;width:60%;height:28cqw}
+/* Supplied blue-and-white status artwork, local v162. */
+body.garden-theme #game#game:not(.clear-screen) .stats::before,body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready="true"]::before{background:none!important}
+body.garden-theme #game#game .stats .blue-status-art{position:absolute;inset:0;pointer-events:none;z-index:-1;filter:drop-shadow(0 4px 3px #102e4266)}
+.blue-status-art img{position:absolute;display:block;object-fit:fill}
+.blue-status-art .blue-stage,.blue-status-art .blue-wallet{top:0;width:48%;height:43.8%;border-radius:13% / 30%}
+.blue-status-art .blue-stage{left:0}.blue-status-art .blue-wallet{right:0}
+.blue-status-art .blue-upgrade{left:0;bottom:0;width:100%;height:49.7%;border-radius:7% / 30%}
+body.garden-theme #game#game .stats #stage{left:31.5%;top:20%;width:31%;height:23%}
+body.garden-theme #game#game .stats #remaining{left:82%;top:20%;width:29%;height:23%}
+body.garden-theme #game#game .stats #moves{left:69.8%;top:57%;width:17%;height:23%}
+body.garden-theme #game#game .top-upgrade-gauge{left:24.5%;top:80.5%;width:69.4%;height:10.3%;border-radius:999px}
+body.garden-theme #game#game #top-upgrade-home{left:24%;top:58%;width:72%;height:37%}
+
+/* Clean outer silhouettes and 10% transparency on artwork only. */
+body.garden-theme #game#game .stats .blue-status-art{opacity:.9}
+.blue-status-art .blue-stage,.blue-status-art .blue-wallet{border-radius:0;clip-path:inset(1% round 13% / 30%)}
+.blue-status-art .blue-upgrade{border-radius:0;clip-path:inset(1% .3% round 7% / 30%)}
+
+/* Match the upgrade button's soft white contour glow. */
+body.garden-theme #game#game nav #home.upgrade-glowing::before,body.garden-theme #game#game nav #home.upgrade-glowing::after{display:none!important;content:none!important;animation:none!important}
+body.garden-theme #game#game nav #home.upgrade-glowing img{animation:homeGoldHalo 1.35s ease-in-out infinite!important}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game nav #home.upgrade-glowing img{animation:none!important;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px #ffffffbb)!important}}
+
+/* Home button glow at half intensity; other upgrade controls unchanged. */
+body.garden-theme #game#game nav #home.upgrade-glowing img{animation-name:homeButtonHalfHalo!important}
+@keyframes homeButtonHalfHalo{0%,100%{filter:drop-shadow(0 0 2px #ffffff80) drop-shadow(0 0 4px #ffffff6e) drop-shadow(0 0 7px #ffffff44)}45%,55%{filter:drop-shadow(0 0 3px #ffffff80) drop-shadow(0 0 6px #ffffff80) drop-shadow(0 0 12px #ffffff77) drop-shadow(0 0 17px #ffffff4d)}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game nav #home.upgrade-glowing img{animation:none!important;filter:drop-shadow(0 0 3px #ffffff80) drop-shadow(0 0 10px #ffffff5e)!important}}
+
+/* Approved ready-to-upgrade banner. */
+body.garden-theme #game#game .stats[data-upgrade-ready='true'] .blue-upgrade{content:url('assets/upgrade-ready-v175/ready.webp')}
+body.garden-theme #game#game .stats[data-upgrade-ready='true'] #moves{visibility:hidden!important}
+body.garden-theme #game#game .stats[data-upgrade-ready='true'] .top-upgrade-gauge{display:none!important}
+body.garden-theme #game#game #top-upgrade-home{left:0;top:50.3%;width:100%;height:49.7%}

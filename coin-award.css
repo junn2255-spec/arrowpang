@@ -1,0 +1,8 @@
+.special-fx.special-coin.coin-award{height:var(--coin-award-height)!important;background:none;padding:0;border:0;box-shadow:none;isolation:isolate;overflow:visible;pointer-events:none;z-index:115}
+.coin-award .coin-award-glow{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;animation:coin-award-rays 1.35s ease-out both}
+.coin-award .coin-award-lettering{position:absolute;left:3%;top:23%;width:94%;height:58%;overflow:visible;filter:drop-shadow(0 3px 1px #7a350088);pointer-events:none;animation:coin-award-type .48s cubic-bezier(.17,.86,.28,1.15) both}
+@keyframes coin-award-rays{0%{opacity:0;transform:scale(.5) rotate(-5deg)}15%{opacity:1;transform:scale(1.06) rotate(0deg)}65%{opacity:.95;transform:scale(1.03) rotate(2deg)}100%{opacity:0;transform:scale(1.12) rotate(4deg)}}
+@keyframes coin-award-type{0%{opacity:0;transform:translateY(10px) scale(.65)}45%{opacity:1;transform:translateY(-3px) scale(1.1)}75%{transform:scale(.98)}100%{opacity:1;transform:scale(1)}}
+html[data-reduce-effects="true"] .coin-award-glow,html[data-reduce-effects="true"] .coin-award-lettering{animation:none}
+html[data-reduce-effects="true"] .coin-award-glow{opacity:.6}
+@media(prefers-reduced-motion:reduce){.coin-award .coin-award-glow,.coin-award .coin-award-lettering{animation:none}.coin-award .coin-award-glow{opacity:.6}}

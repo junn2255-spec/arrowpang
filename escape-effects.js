@@ -7,7 +7,7 @@ export function escapePlan({from,d,n,cell,margin=cell}){
  const edge=d==='R'||d==='D'?n*cell:0;
  const axis=dx?start.x:start.y,sign=dx||dy,room=Math.max(2,margin);
  const distance=(edge-axis)*sign+room*.5;
- const flight=clamp(220+distance/cell*17,230,270);
+ const flight=clamp(220+distance/cell*17,230,270)*.8;
  // First visible edge crossing: before any adaptive compact-screen scaling.
  const crossing=flight*Math.sqrt(Math.max(0,((edge-axis)*sign-(cell-6)*.5)/distance));
  const fade=70,actionEnd=flight+fade,total=flight+300;

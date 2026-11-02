@@ -1,0 +1,28 @@
+{
+  "assets": [
+    {
+      "name": "bait-ragworm",
+      "file": "bait-ragworm.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "name": "bait-krill",
+      "file": "bait-krill.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "name": "bait-live-shrimp",
+      "file": "bait-live-shrimp.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "name": "bait-golden-shrimp",
+      "file": "bait-golden-shrimp.png",
+      "width": 512,
+      "height": 512
+    }
+  ]
+}

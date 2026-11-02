@@ -1,0 +1,178 @@
+[
+  {
+    "id": "goby",
+    "name": "망둥어",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "goby/sheet.png",
+    "frames": [
+      "goby/frame-01.png",
+      "goby/frame-02.png",
+      "goby/frame-03.png",
+      "goby/frame-04.png",
+      "goby/frame-05.png",
+      "goby/frame-06.png",
+      "goby/frame-07.png",
+      "goby/frame-08.png"
+    ]
+  },
+  {
+    "id": "greenling",
+    "name": "노래미",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "greenling/sheet.png",
+    "frames": [
+      "greenling/frame-01.png",
+      "greenling/frame-02.png",
+      "greenling/frame-03.png",
+      "greenling/frame-04.png",
+      "greenling/frame-05.png",
+      "greenling/frame-06.png",
+      "greenling/frame-07.png",
+      "greenling/frame-08.png"
+    ]
+  },
+  {
+    "id": "rockfish",
+    "name": "볼락",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "rockfish/sheet.png",
+    "frames": [
+      "rockfish/frame-01.png",
+      "rockfish/frame-02.png",
+      "rockfish/frame-03.png",
+      "rockfish/frame-04.png",
+      "rockfish/frame-05.png",
+      "rockfish/frame-06.png",
+      "rockfish/frame-07.png",
+      "rockfish/frame-08.png"
+    ]
+  },
+  {
+    "id": "black-seabream",
+    "name": "감성돔",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "black-seabream/sheet.png",
+    "frames": [
+      "black-seabream/frame-01.png",
+      "black-seabream/frame-02.png",
+      "black-seabream/frame-03.png",
+      "black-seabream/frame-04.png",
+      "black-seabream/frame-05.png",
+      "black-seabream/frame-06.png",
+      "black-seabream/frame-07.png",
+      "black-seabream/frame-08.png"
+    ]
+  },
+  {
+    "id": "striped-beakfish",
+    "name": "돌돔",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "striped-beakfish/sheet.png",
+    "frames": [
+      "striped-beakfish/frame-01.png",
+      "striped-beakfish/frame-02.png",
+      "striped-beakfish/frame-03.png",
+      "striped-beakfish/frame-04.png",
+      "striped-beakfish/frame-05.png",
+      "striped-beakfish/frame-06.png",
+      "striped-beakfish/frame-07.png",
+      "striped-beakfish/frame-08.png"
+    ]
+  },
+  {
+    "id": "sea-bass",
+    "name": "농어",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "sea-bass/sheet.png",
+    "frames": [
+      "sea-bass/frame-01.png",
+      "sea-bass/frame-02.png",
+      "sea-bass/frame-03.png",
+      "sea-bass/frame-04.png",
+      "sea-bass/frame-05.png",
+      "sea-bass/frame-06.png",
+      "sea-bass/frame-07.png",
+      "sea-bass/frame-08.png"
+    ]
+  },
+  {
+    "id": "red-seabream",
+    "name": "참돔",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "red-seabream/sheet.png",
+    "frames": [
+      "red-seabream/frame-01.png",
+      "red-seabream/frame-02.png",
+      "red-seabream/frame-03.png",
+      "red-seabream/frame-04.png",
+      "red-seabream/frame-05.png",
+      "red-seabream/frame-06.png",
+      "red-seabream/frame-07.png",
+      "red-seabream/frame-08.png"
+    ]
+  },
+  {
+    "id": "grouper",
+    "name": "능성어",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "loop": true,
+    "sheet": "grouper/sheet.png",
+    "frames": [
+      "grouper/frame-01.png",
+      "grouper/frame-02.png",
+      "grouper/frame-03.png",
+      "grouper/frame-04.png",
+      "grouper/frame-05.png",
+      "grouper/frame-06.png",
+      "grouper/frame-07.png",
+      "grouper/frame-08.png"
+    ]
+  }
+]
