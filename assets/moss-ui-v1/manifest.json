@@ -1,0 +1,142 @@
+{
+  "status": "applied-v212",
+  "count": 15,
+  "generator": "built-in image_gen",
+  "tablet": "Preserve intrinsic aspect ratios, square board, centered gameplay area, cover background only.",
+  "assets": [
+    {
+      "id": "forest-background",
+      "name": "숲 배경",
+      "width": 1080,
+      "height": 1920,
+      "file": "forest-background.jpg",
+      "transparent": false
+    },
+    {
+      "id": "stone-board",
+      "name": "이끼 돌판 6×6",
+      "width": 1080,
+      "height": 1080,
+      "png": "stone-board.png",
+      "webp": "stone-board.webp",
+      "transparent": true
+    },
+    {
+      "id": "stage",
+      "name": "스테이지",
+      "width": 672,
+      "height": 288,
+      "png": "stage.png",
+      "webp": "stage.webp",
+      "transparent": true
+    },
+    {
+      "id": "wallet",
+      "name": "보유 코인",
+      "width": 672,
+      "height": 288,
+      "png": "wallet.png",
+      "webp": "wallet.webp",
+      "transparent": true
+    },
+    {
+      "id": "upgrade",
+      "name": "집 업그레이드까지",
+      "width": 1344,
+      "height": 288,
+      "png": "upgrade.png",
+      "webp": "upgrade.webp",
+      "transparent": true
+    },
+    {
+      "id": "upgrade-ready",
+      "name": "집 업그레이드 가능",
+      "width": 1344,
+      "height": 224,
+      "png": "upgrade-ready.png",
+      "webp": "upgrade-ready.webp",
+      "transparent": true
+    },
+    {
+      "id": "arrow-up",
+      "name": "위 화살표",
+      "width": 384,
+      "height": 384,
+      "png": "arrow-up.png",
+      "webp": "arrow-up.webp",
+      "transparent": true
+    },
+    {
+      "id": "arrow-down",
+      "name": "아래 화살표",
+      "width": 384,
+      "height": 384,
+      "png": "arrow-down.png",
+      "webp": "arrow-down.webp",
+      "transparent": true
+    },
+    {
+      "id": "arrow-left",
+      "name": "왼쪽 화살표",
+      "width": 384,
+      "height": 384,
+      "png": "arrow-left.png",
+      "webp": "arrow-left.webp",
+      "transparent": true
+    },
+    {
+      "id": "arrow-right",
+      "name": "오른쪽 화살표",
+      "width": 384,
+      "height": 384,
+      "png": "arrow-right.png",
+      "webp": "arrow-right.webp",
+      "transparent": true
+    },
+    {
+      "id": "rotation-90",
+      "name": "90도 회전",
+      "width": 384,
+      "height": 384,
+      "png": "rotation-90.png",
+      "webp": "rotation-90.webp",
+      "transparent": true
+    },
+    {
+      "id": "rainbow-up",
+      "name": "무지개 위",
+      "width": 384,
+      "height": 384,
+      "png": "rainbow-up.png",
+      "webp": "rainbow-up.webp",
+      "transparent": true
+    },
+    {
+      "id": "rainbow-down",
+      "name": "무지개 아래",
+      "width": 384,
+      "height": 384,
+      "png": "rainbow-down.png",
+      "webp": "rainbow-down.webp",
+      "transparent": true
+    },
+    {
+      "id": "rainbow-left",
+      "name": "무지개 왼쪽",
+      "width": 384,
+      "height": 384,
+      "png": "rainbow-left.png",
+      "webp": "rainbow-left.webp",
+      "transparent": true
+    },
+    {
+      "id": "rainbow-right",
+      "name": "무지개 오른쪽",
+      "width": 384,
+      "height": 384,
+      "png": "rainbow-right.png",
+      "webp": "rainbow-right.webp",
+      "transparent": true
+    }
+  ]
+}

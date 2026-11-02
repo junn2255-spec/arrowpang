@@ -1,0 +1,10 @@
+import {VILLA_INTERIOR_COSTS,VILLA_INTERIOR_NAMES} from './villa-store.js';
+const A='assets/economy-v204/';
+export function installVillaInterior({store,audio,onClose}){
+ let opened=false,busy=false,prior;const page=document.createElement('section');page.className='villa-interior-panel';page.hidden=true;page.setAttribute('aria-label','나의 바닷가 별장 실내');page.innerHTML=`<div class="villa-room-view"><img class="villa-room-bg" alt="넓은 바닷가 별장 실내"></div><div class="villa-room-controls"><h2>나의 바닷가 별장 · 실내</h2><p class="room-status" role="status"></p><button class="room-upgrade"></button><button class="room-back">별장 마당으로 돌아가기</button></div>`;document.body.append(page);
+ function draw(){const s=store.read(),n=s.interior;page.querySelector('.villa-room-bg').src=A+'villa-interior-'+n+'.webp';const cost=VILLA_INTERIOR_COSTS[n],label=page.querySelector('.room-status');label.textContent=`실내 ${n} / 5 · 현재 ${s.coins.toLocaleString()}코인\n`+(n?VILLA_INTERIOR_NAMES[n-1]:'바다가 보이는 넓은 빈 방');const b=page.querySelector('.room-upgrade');b.disabled=busy||cost===undefined||s.coins<cost;b.textContent=cost===undefined?'실내 꾸미기 완성!':VILLA_INTERIOR_NAMES[n]+' · '+cost+'코인';}
+ page.querySelector('.room-upgrade').onclick=async()=>{if(busy)return;busy=true;draw();try{const result=await store.upgradeInterior(store.read().interior);audio.play('build');draw();page.querySelector('.room-status').textContent=result.name+'\n업그레이드됐어요!';audio.play('complete');}catch(e){page.querySelector('.room-status').textContent=e.message;}finally{busy=false;draw();}};
+ function close({silent=false}={}){if(!opened||busy)return;opened=false;page.hidden=true;if(!silent){onClose();prior?.focus?.({preventScroll:true})}}
+ page.querySelector('.room-back').onclick=()=>close();page.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ return {get opened(){return opened},open(){if(store.read().level<10)return;prior=document.activeElement;opened=true;page.hidden=false;draw();page.querySelector('.room-back').focus({preventScroll:true});},close};
+}

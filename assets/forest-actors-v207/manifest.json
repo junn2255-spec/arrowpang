@@ -1,0 +1,29 @@
+{
+  "hero-wave": {
+    "columns": 4,
+    "rows": 2,
+    "frames": 8,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "baseline": 352,
+    "source": "exec-5c64590d-6323-40ac-851b-d91ec871ee1a.png"
+  },
+  "dog-tail": {
+    "columns": 4,
+    "rows": 2,
+    "frames": 8,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "baseline": 232,
+    "source": "exec-aa959dda-1aca-45bd-b660-2b2f74887e6f.png"
+  },
+  "dog-walk": {
+    "columns": 4,
+    "rows": 2,
+    "frames": 8,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "baseline": 232,
+    "source": "exec-7c65d2ac-a574-45e9-a4a3-4bf67dea84c3.png"
+  }
+}

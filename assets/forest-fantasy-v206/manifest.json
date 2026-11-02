@@ -1,0 +1,72 @@
+[
+  {
+    "stage": 1,
+    "file": "stage-00.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 270372
+  },
+  {
+    "stage": 2,
+    "file": "stage-01.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 278257
+  },
+  {
+    "stage": 3,
+    "file": "stage-02.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 292920
+  },
+  {
+    "stage": 4,
+    "file": "stage-03.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 289805
+  },
+  {
+    "stage": 5,
+    "file": "stage-04.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 316982
+  },
+  {
+    "stage": 6,
+    "file": "stage-05.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 304449
+  },
+  {
+    "stage": 7,
+    "file": "stage-06.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 305442
+  },
+  {
+    "stage": 8,
+    "file": "stage-07.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 312131
+  },
+  {
+    "stage": 9,
+    "file": "stage-08.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 327392
+  },
+  {
+    "stage": 10,
+    "file": "stage-09.jpg",
+    "width": 720,
+    "height": 1280,
+    "bytes": 355649
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "bangulmong",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "bangulmong/sheet.webp",
+    "portrait": "bangulmong/portrait.webp",
+    "frames": [
+      "bangulmong/frame-01.png",
+      "bangulmong/frame-02.png",
+      "bangulmong/frame-03.png",
+      "bangulmong/frame-04.png",
+      "bangulmong/frame-05.png",
+      "bangulmong/frame-06.png",
+      "bangulmong/frame-07.png",
+      "bangulmong/frame-08.png"
+    ]
+  },
+  {
+    "id": "lumiel",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "lumiel/sheet.webp",
+    "portrait": "lumiel/portrait.webp",
+    "frames": [
+      "lumiel/frame-01.png",
+      "lumiel/frame-02.png",
+      "lumiel/frame-03.png",
+      "lumiel/frame-04.png",
+      "lumiel/frame-05.png",
+      "lumiel/frame-06.png",
+      "lumiel/frame-07.png",
+      "lumiel/frame-08.png"
+    ]
+  },
+  {
+    "id": "crispern",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "crispern/sheet.webp",
+    "portrait": "crispern/portrait.webp",
+    "frames": [
+      "crispern/frame-01.png",
+      "crispern/frame-02.png",
+      "crispern/frame-03.png",
+      "crispern/frame-04.png",
+      "crispern/frame-05.png",
+      "crispern/frame-06.png",
+      "crispern/frame-07.png",
+      "crispern/frame-08.png"
+    ]
+  },
+  {
+    "id": "florea",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "florea/sheet.webp",
+    "portrait": "florea/portrait.webp",
+    "frames": [
+      "florea/frame-01.png",
+      "florea/frame-02.png",
+      "florea/frame-03.png",
+      "florea/frame-04.png",
+      "florea/frame-05.png",
+      "florea/frame-06.png",
+      "florea/frame-07.png",
+      "florea/frame-08.png"
+    ]
+  },
+  {
+    "id": "astraon",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "astraon/sheet.webp",
+    "portrait": "astraon/portrait.webp",
+    "frames": [
+      "astraon/frame-01.png",
+      "astraon/frame-02.png",
+      "astraon/frame-03.png",
+      "astraon/frame-04.png",
+      "astraon/frame-05.png",
+      "astraon/frame-06.png",
+      "astraon/frame-07.png",
+      "astraon/frame-08.png"
+    ]
+  },
+  {
+    "id": "noctilus",
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 512,
+    "frameHeight": 384,
+    "frameCount": 8,
+    "fps": 8,
+    "mouth": [
+      104,
+      192
+    ],
+    "sheet": "noctilus/sheet.webp",
+    "portrait": "noctilus/portrait.webp",
+    "frames": [
+      "noctilus/frame-01.png",
+      "noctilus/frame-02.png",
+      "noctilus/frame-03.png",
+      "noctilus/frame-04.png",
+      "noctilus/frame-05.png",
+      "noctilus/frame-06.png",
+      "noctilus/frame-07.png",
+      "noctilus/frame-08.png"
+    ]
+  }
+]

@@ -1,3 +1,4 @@
+import {RARE_SPECIES} from './rare-species.js';
 /**
  * Renderer-independent fishing simulation. Time is in seconds, fish length in cm,
  * weight in kg. Inject rng for deterministic tests/replays. A frame consumes at
@@ -54,6 +55,7 @@ export const FISH_WEIGHTS = Object.freeze({
   rainyDay: Object.freeze([30,20,20,20,10]),
 });
 export const COASTAL_FISH=freezeOptions([
+...RARE_SPECIES,
 {id:'goby',name:'망둥어',strength:.65,speed:1,sizes:Object.freeze([9,14,20]),weightFactor:.000012,rarity:'common',rarityLabel:'일반',color:'#987644'},
 {id:'greenling',name:'노래미',strength:.8,speed:1,sizes:Object.freeze([12,22,34]),weightFactor:.000012,rarity:'common',rarityLabel:'일반',color:'#a98c44'},
 {id:'rockfish',name:'볼락',strength:.95,speed:1,sizes:Object.freeze([12,20,30]),weightFactor:.000016,rarity:'common',rarityLabel:'일반',color:'#aa5f44'},

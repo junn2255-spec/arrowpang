@@ -19,14 +19,8 @@ export function claimRockBonus(v,{stage,stageNumber,rockId,run}){
   if(!Number.isSafeInteger(b.treats+1))throw Error('간식 수량을 저장할 수 없어요.');
   b.treats++;b.treatStages[stage]={run,rockId};awards.push('treat');
  }
- // Restarts, undo and reload never count a stage rock twice for decorations.
- if(!Object.hasOwn(b.broken,key)){
-  b.broken[key]={run};b.breakCount++;
-  if(b.breakCount%5===0){
-   const candidates=['pinwheels','appleTree','lamps'].filter(k=>!b.decor[k]);
-   if(candidates.length){const kind=candidates[b.drops%candidates.length];b.decor[kind]=true;b.drops++;b.broken[key].item=kind;awards.push(kind);}
-  }
- }
+ // Decoration drops are retired; retain saved ownership and puppy treats.
+ if(!Object.hasOwn(b.broken,key))b.broken[key]={run};
  return awards.length?{kind:awards[0],name:awards.map(k=>BONUS_NAMES[k]).join(' · '),items:awards}:null;
 }
 export function spendTreat(v){const b=bonusState(v);if(!hasHomeFeature(v,'dog')||b.treats<1)return false;b.treats--;return true;}

@@ -1,0 +1,39 @@
+/* Moss artwork replaces only the active puzzle. Existing effects and other scenes remain shared. */
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)){
+ background:#123b2d url('assets/moss-ui-v1/forest-background.jpg') center/cover fixed no-repeat;
+}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{
+ width:100%;max-width:min(96vw,calc((100dvh - 24px)/2.02),560px)!important;
+ height:100dvh;min-height:0;padding:8px 0 max(8px,env(safe-area-inset-bottom))!important;overflow:hidden;
+}
+body.garden-theme #game#game:not(.clear-screen){
+ width:100%;height:100%;min-height:0;grid-template-rows:25cqw 46.34cqw 100cqw 22cqw;
+ gap:0;align-content:space-between;
+}
+body.garden-theme #game#game:not(.clear-screen) header h1{left:0;top:0;width:60%;height:25cqw}
+body.garden-theme #game#game:not(.clear-screen) .board-slot{width:100%;max-width:100%;height:auto;aspect-ratio:1;margin:0;justify-self:center;overflow:visible}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{
+ background:url('assets/moss-ui-v1/stone-board.webp') center/contain no-repeat;inset:0;
+}
+body.garden-theme #game#game:not(.clear-screen) #board{left:7.5%;top:7.5%;width:85%;height:85%}
+body.garden-theme #game#game:not(.clear-screen) .blue-status-art{opacity:1}
+body.garden-theme #game#game:not(.clear-screen) .blue-status-art img{clip-path:none;border-radius:0;object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) .blue-stage,
+body.garden-theme #game#game:not(.clear-screen) .blue-wallet{height:auto;aspect-ratio:672/288}
+body.garden-theme #game#game:not(.clear-screen) .blue-upgrade{height:auto;aspect-ratio:1344/288}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{
+ content:url('assets/moss-ui-v1/upgrade-ready.webp');aspect-ratio:1344/224;
+}
+body.garden-theme #game#game:not(.clear-screen) .stats #stage{left:34%;top:19.5%;width:29%;height:23%;transform:translateX(-50%)}
+body.garden-theme #game#game:not(.clear-screen) .stats #remaining{left:84%;top:19.5%;width:27%;height:23%;transform:translateX(-50%)}
+body.garden-theme #game#game:not(.clear-screen) .stats #moves{left:68%;top:64%;width:20%;height:23%;transform:translateX(-50%)}
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:25.5%;top:80.9%;width:67.5%;height:7.2%}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='U']:not([data-rainbow='true']) span{background-image:url('assets/moss-ui-v1/arrow-up.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='D']:not([data-rainbow='true']) span{background-image:url('assets/moss-ui-v1/arrow-down.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='L']:not([data-rainbow='true']) span{background-image:url('assets/moss-ui-v1/arrow-left.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='R']:not([data-rainbow='true']) span{background-image:url('assets/moss-ui-v1/arrow-right.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='U'] span{background-image:url('assets/moss-ui-v1/rainbow-up.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='D'] span{background-image:url('assets/moss-ui-v1/rainbow-down.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='L'] span{background-image:url('assets/moss-ui-v1/rainbow-left.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='R'] span{background-image:url('assets/moss-ui-v1/rainbow-right.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .rotation-zone img{content:url('assets/moss-ui-v1/rotation-90.webp')}

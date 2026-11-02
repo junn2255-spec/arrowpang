@@ -1,8 +1,10 @@
+import {RARE_DIFFICULTY} from './rare-species.js';
 import {FishingGame} from './game-model.js';
 import {FISH_HOLD_DURATION} from './pole-physics.js';
 import {SubtleDistanceCastController} from './cast-distance.js';
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 export const COASTAL_DIFFICULTY=Object.freeze({
+ ...RARE_DIFFICULTY,
  goby:Object.freeze({tensionGain:.65,endurance:.75,rodForce:.6,pulse:3,surgeEvery:8,surgeDuration:.4,firstSurge:5,edgeDuration:.6}),
  greenling:Object.freeze({tensionGain:.8,endurance:.9,rodForce:.8,pulse:4,surgeEvery:7,surgeDuration:.45,firstSurge:4,edgeDuration:.8}),
  rockfish:Object.freeze({tensionGain:1,endurance:1.1,rodForce:1,pulse:6,surgeEvery:6,surgeDuration:.5,firstSurge:3.5,edgeDuration:1}),

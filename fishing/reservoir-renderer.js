@@ -1,3 +1,5 @@
+import {RARE_BY_ID} from './rare-species.js';
+import {RARE_ART_BOUNDS} from './rare-art-bounds.js';
 import {paintDistantFish} from './distant-fish.js';
 import {traceLakeWaterMask} from './lake-water-layer.js';
 import {paintEnvironmentLight,paintRain} from './environment-renderer.js';
@@ -50,6 +52,7 @@ function imageCover(im) {
 // The source falls approximately 0.7% toward the right; overscan hides edges.
 export function drawLevelCoastalScene(ctx, scene, cover) {
  ctx.save();
+ if(scene?.src?.includes('/fantasy-background-v210/')){ctx.drawImage(scene,cover.sx,cover.sy,cover.sw,cover.sh,0,0,W,H);ctx.restore();return;}
  ctx.transform(1, -.007, 0, 1, 0, W * .007 / 2);
  ctx.drawImage(scene, cover.sx, cover.sy, cover.sw, cover.sh, -2, -4, W + 4, H + 8);
  ctx.restore();
@@ -769,6 +772,7 @@ function paintProceduralFish(ctx, fish, length, flex, reducedMotion) {
 // Requested visual multipliers are relative to V6 at the same camera distance.
 // Never multiply 2 × 5, and never cap the resulting catch back down to phone width.
 export function fishPresentation(fish, reducedMotion = false) {
+  if(RARE_BY_ID[fish.fish?.id]){const caught=fish.phase==='catch',baseLength=finite(fish.baseBodyLength,finite(fish.bodyLength,42)),length=clamp(baseLength*4,170,330),heading=caught?1:(finite(fish.heading,1)<0?-1:1),p=smooth(clamp(finite(fish.catchProgress)/.32,0,1)),a=finite(fish.angle),target=-Math.PI/2+(reducedMotion?0:Math.sin(finite(fish.flexPhase)*.19)*.055);return{baseLength,length,multiplier:length/baseLength,heading,angle:caught?a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*p:a,underwater:!caught};}
   const extendedSpecies=['sogari','carp','catfish','eel','sea-bass'].includes(fish.fish?.id);
   const baseLength = clamp(finite(fish.baseBodyLength, finite(fish.bodyLength,42)),8,extendedSpecies?250:150);
   const caught = fish.phase === 'catch';
@@ -797,6 +801,7 @@ const CATCH_ART_PROFILES = Object.freeze({"striped-beakfish":[{"w":1024,"h":683,
 export function catchDisplayBounds(fish, reducedMotion = false) {
   const presentation = fishPresentation(fish, reducedMotion), length = presentation.length;
   const id = fish.fish?.id === 'golden-carp' ? 'crucian' : fish.fish?.id;
+  if(RARE_ART_BOUNDS[id]){const [l,t,r,b]=RARE_ART_BOUNDS[id],c=Math.cos(presentation.angle),s=Math.sin(presentation.angle),points=[[l,t],[l,b],[r,t],[r,b]].map(([x,y])=>({x:(x*c-y*s)*length,y:(x*s+y*c)*length}));return{left:Math.min(...points.map(p=>p.x))-2,top:Math.min(...points.map(p=>p.y))-2,right:Math.max(...points.map(p=>p.x))+2,bottom:Math.max(...points.map(p=>p.y))+2};}
   const profiles = CATCH_ART_PROFILES[id];
   const flex = reducedMotion ? 0 : finite(fish.flexPhase);
   const pose = id === 'crucian' ? (reducedMotion ? 0 : Math.floor(Math.abs(flex) * .54) % 6) : 0;
@@ -1126,7 +1131,7 @@ export function createReservoirRenderer(images = {}) {
     ctx.translate(W / 2 + cx, H / 2 + cy); ctx.scale(zoom, zoom); ctx.translate(-W / 2, -H / 2);
     if (cover) drawLevelCoastalScene(ctx, scene, cover);
     else fallbackScene(ctx, waterline);
-    ctx.save();ctx.transform(1,-.007,0,1,0,W*.007/2);
+    ctx.save();if(!scene?.src?.includes('/fantasy-background-v210/'))ctx.transform(1,-.007,0,1,0,W*.007/2);
     paintCoastalWater(ctx,scene,t,reducedMotion);
     ctx.restore();
     paintForegroundFish(ctx,t,reducedMotion);
@@ -1160,4 +1165,3 @@ export function createReservoirRenderer(images = {}) {
 }
 
 export default createReservoirRenderer;
-

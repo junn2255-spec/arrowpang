@@ -1,0 +1,20 @@
+import {economyState,claimAttendance,claimMission,missionStatus,dailyState,rewardDay,ATTENDANCE,FISH_COIN_ART,rockRewardPlan} from './rewards-economy.js';
+export function installRewardsUI(store,onChange=()=>{}){
+ const dialog=document.createElement('dialog');dialog.className='rewards-dialog';dialog.setAttribute('aria-label','출석과 오늘의 미션');dialog.innerHTML=`<header><h2>출석 · 오늘의 미션</h2><button class="rewards-close" aria-label="닫기">×</button></header><div class="rewards-scroll"></div><p class="rewards-status" role="status"></p>`;document.body.append(dialog);let busy=false,focus;
+ const open=async()=>{focus=document.activeElement;try{await store.transact(v=>economyState(v));draw();dialog.showModal();}catch(e){console.error(e)}};
+ for(const parent of [document.querySelector('#welcome'),document.querySelector('#game')]){const b=document.createElement('button');b.type='button';b.className='daily-rewards-open';b.textContent='출석 · 미션';b.onclick=open;parent.append(b);}
+ dialog.querySelector('.rewards-close').onclick=()=>{dialog.close();onChange();focus?.focus?.({preventScroll:true})};
+ async function receive(fn){if(busy)return;busy=true;draw();try{const r=await store.transact(fn);dialog.querySelector('.rewards-status').textContent=r?('받았어요! '+(r.coins?`${r.coins}코인 `:'')+(r.fishing?`낚시 코인 ${r.fishing}개`:'')):'이미 받은 보상이에요.';onChange();}catch(e){dialog.querySelector('.rewards-status').textContent=e.message;}finally{busy=false;draw();}}
+ function draw(){const v=store.read(),e=economyState(v),a=e.attendance,today=rewardDay(),received=a.last===today,slot=(a.total-(received?1:0))%7,d=dailyState(v),box=dialog.querySelector('.rewards-scroll');box.replaceChildren();
+ const wallet=document.createElement('div');wallet.className='rewards-wallet';wallet.innerHTML=`<span>★ ${v.coins.toLocaleString()} 코인</span><span><img src="${FISH_COIN_ART}" alt="">${e.fishingCoins.toLocaleString()} 낚시 코인</span>`;box.append(wallet);
+ const h=document.createElement('h3');h.textContent=`매일 출석 선물 · ${a.streak}일 연속 접속`;box.append(h);
+ const days=document.createElement('div');days.className='attendance-days';ATTENDANCE.forEach((amount,i)=>{const cell=document.createElement('div');cell.className=i===slot?'today':'';cell.textContent=`${i+1}일\n${amount}코인`+(i===2?'\n낚시 +50':i===6?'\n낚시 +150':'')+(received&&i===slot?'\n✓ 수령':'');days.append(cell)});box.append(days);
+ const attendance=document.createElement('button');attendance.className='reward-claim';attendance.disabled=busy||received;attendance.textContent=received?'오늘 출석 완료':'오늘 출석 보상 받기';attendance.onclick=()=>receive(v=>claimAttendance(v));box.append(attendance);
+ const note=document.createElement('p');note.className='reward-explainer';note.textContent='3일 연속 +50코인 · 7일 연속 +100코인, 낚시 코인 +50개\n하루 쉬어도 출석판은 유지돼요. 오전 6시에 새 날이 시작돼요.';box.append(note);
+ const title=document.createElement('h3');title.textContent='오늘의 미션';box.append(title);
+ for(const m of missionStatus(v)){if(m.id==='fishing'&&!v.cleared?.['arrowtok-stage-10'])continue;const row=document.createElement('article');row.className='reward-mission';const copy=document.createElement('span');copy.textContent=m.name+'\n'+(m.coins?m.coins+'코인':'낚시 코인 '+m.fishing+'개');const b=document.createElement('button');b.textContent=d.claimed[m.id]?'수령 완료':m.done?'받기':'도전 중';b.disabled=busy||!m.done||!!d.claimed[m.id];b.onclick=()=>receive(v=>claimMission(v,m.id));row.append(copy,b);box.append(row);}
+ }
+ const tally=document.createElement('aside');tally.className='rock-fishing-pending';tally.hidden=true;document.querySelector('#game').append(tally);
+ const refreshRock=()=>{const v=store.read(),s=v.progress,n=s?.index+1;if(!s?.game||document.querySelector('#game').hidden||s.game.won||v.cleared?.[s.stageKey]||n<11){tally.hidden=true;return;}const amount=rockRewardPlan(s.level).filter(r=>!s.game.rocks.some(q=>q.id===r.id&&q.hp>0)).reduce((sum,r)=>sum+r.amount,0);tally.hidden=!amount;tally.innerHTML=`<img src="${FISH_COIN_ART}" alt="낚시 코인">+${amount} · 클리어 시 지급`;};
+ new MutationObserver(refreshRock).observe(document.querySelector('#board'),{childList:true});document.addEventListener('click',()=>setTimeout(refreshRock,150));
+}

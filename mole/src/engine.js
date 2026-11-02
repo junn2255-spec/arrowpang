@@ -1,7 +1,7 @@
 const DIFFICULTY=Object.freeze({duration:50,target:20,maxMoles:3,minStay:2200,maxStay:3100,fastChance:.30,fastMin:850,fastMax:1350,spawnEvery:510});
 export const STAGES=Object.freeze({5:DIFFICULTY,15:DIFFICULTY,25:DIFFICULTY});
 export const shouldOpenMoleGame = stage => Object.hasOwn(STAGES, stage);
-export const REWARD = 50;
+export const REWARD = 60;
 export class MoleGame {
   constructor({stage=5, random=Math.random, onEvent=()=>{}}={}) {
     if (!shouldOpenMoleGame(stage)) throw new Error('미니게임은 5·15·25스테이지 뒤에 등장합니다.');

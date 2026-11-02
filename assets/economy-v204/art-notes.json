@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "sources": [
+    "exec-b2e40f34-c987-4d31-9b9e-8dbfded4c28c.png",
+    "exec-ce3533d1-1fc1-4c18-a2a4-53f8aba64d08.png",
+    "exec-eb4a80b9-caac-41be-a9a5-8ba6786eb1c8.png",
+    "exec-4f57eb24-d6a8-42b2-a7fe-a8b0f11cfe81.png",
+    "exec-07631061-96f0-42ed-bc01-93e9a326431b.png",
+    "exec-daab9148-0117-4273-a5c1-5d33fa08f6f1.png"
+  ],
+  "coinSource": "exec-95d17a16-e6f7-41f7-84ac-9fdc5c107334.png",
+  "design": "Spacious seaside room viewed from inside, no cutaway; five full composited backgrounds with consistent architecture, perspective, sunlight and subtle furniture contact shadows; no separate furniture sprites.",
+  "stages": [
+    "빈 방",
+    "거실",
+    "주방과 식탁",
+    "침실",
+    "책장과 조명",
+    "완성된 쉼터"
+  ]
+}

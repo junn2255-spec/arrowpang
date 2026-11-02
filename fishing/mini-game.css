@@ -172,7 +172,7 @@ html,body,#game,#game *{font-family:'User Paperlogy Bold',sans-serif!important;f
 #mini-objective .ocean-title-row{height:18cqw;margin-bottom:1cqw}
 #mini-objective h1{height:100%;min-width:0;justify-content:center}
 #mini-objective .ocean-title-art{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 2px 2px #00396d55)}
-#game #fishing-intro{position:absolute;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5cqw;padding:1.5cqw 2cqw max(2cqw,env(safe-area-inset-bottom));background:#06355a url('assets/seaside-background-v1/seaside-background-1080x1920.webp') center/cover no-repeat}
+#game #fishing-intro{position:absolute;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5cqw;padding:1.5cqw 2cqw max(2cqw,env(safe-area-inset-bottom));background:#06355a url('assets/fantasy-background-v210/seaside-user.jpg') center/cover no-repeat}
 #game #fishing-intro>img{display:block;min-height:0;flex:1;width:100%;object-fit:contain;filter:drop-shadow(0 3px 8px #00234866)}
 #game #fishing-intro-start{flex:none;width:88%;min-height:52px;padding:2cqw;border:3px solid #ffe996;border-radius:9cqw;background:linear-gradient(#fff28b,#ffcb27 50%,#f9a807);box-shadow:inset 0 0 0 2px #b77318,0 4px 10px #00274288;color:#4b2700;font-size:6cqw;line-height:1.2;touch-action:manipulation}
 #game #fishing-intro-start:disabled{opacity:1;color:#7b622a}

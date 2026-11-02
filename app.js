@@ -1,6 +1,8 @@
+import {rockRewardPlan} from './rewards-economy.js';
+import {installRewardsUI} from './rewards-ui.js';
 import {installMinigameMenu,openMenuMole} from './minigame-menu.js';
 import {initGameOver} from './game-over.js';
-import {nextYard} from './home-ownership.js';
+import {HOME_MAX,nextYard} from './home-ownership.js';
 import {interiorState} from './interior-progress.js';
 import{installFishingBonus,shouldOpenFishingGame}from'./fishing-bonus.js';
 import{FrogUI}from'./frog-ui.js';
@@ -24,6 +26,7 @@ const stageKey=i=>LEVELS[i].id;
 const gameOver=initGameOver(()=>$('restart').click());
 const tutorials=initTutorials();
 const home=initHome({capture:()=>({index,stageKey:stageKey(index),level:game.level,game:{...game.snapshot(),history:game.history}}),restore:p=>{if(p.level?.specialRules!==1||!Number.isInteger(p.index)||p.index<0||p.index>=LEVELS.length||p.stageKey!==stageKey(p.index)||!Array.isArray(p.game?.blocks)||!Array.isArray(p.game?.rocks)||!Array.isArray(p.game?.history))return false;index=p.index;game=new Game(missionSpecials(p.level??LEVELS[index],index+1));Object.assign(game,structuredClone(p.game));const rainbowIds=new Set(game.level.blocks.filter(b=>b.rainbow).map(b=>b.id));for(const list of [game.blocks,...game.history.map(h=>h.blocks)])for(const b of list)b.rainbow=rainbowIds.has(b.id);return true;},isBusy:()=>locked||assistBusy,cancelEffects:()=>cancel(),onHomeIntro:()=>tutorials.home()});
+installRewardsUI(home.store,()=>{updateStatusCounters();});
 const frogUI=new FrogUI({board:$('board'),sound,reduced:()=>preferences.reduced,isBusy:()=>locked||assistBusy||home.transitionPending||game.won,onRemove:id=>{game.frogs=game.frogs.filter(f=>f.id!==id);home.commit(false);}});
 let pendingAction=null;
 function cancel(){frogUI.clear();rainbowFX.clear();specialFX.clear();playUI.clear();if(pendingAction){Object.assign(game,pendingAction);pendingAction=null;}feedback.clear();clearTimeout(comboTimer);if($('combo')){$('combo').hidden=true;$('combo').getAnimations?.().forEach(a=>a.cancel());}escapeEffects.clear();epoch++;clearTimeout(timer);clearTimeout(starTimer);locked=false;sound.stopEffects();$('board').removeAttribute('aria-busy');}
@@ -36,7 +39,7 @@ function updateStatusCounters(){
  if(upgradeCount<statusUpgradeCount||statusUpgradeStage!==key)statusUpgradeStage=null;
  statusUpgradeCount=upgradeCount;
  const used=run?.stage===key?Number(run.undo)||0:0;$('remaining').textContent=v.coins.toLocaleString('ko-KR');
- const next=v.home<10?nextYard(v):inside.next,needed=next?Math.max(0,next.cost-v.coins):0;
+ const next=v.home<HOME_MAX?nextYard(v):inside.next,needed=next?Math.max(0,next.cost-v.coins):0;
  $('moves').textContent=needed.toLocaleString('ko-KR');
  const stats=$('stage').closest('.stats');stats.dataset.upgradeReady=String(!!next&&needed===0);stats.style.setProperty('--upgrade-progress',(next?Math.min(1,Math.max(0,v.coins/next.cost))*100:100)+'%');
 
@@ -47,7 +50,7 @@ function render(note=''){
  for(let y=0;y<level.n;y++)for(let x=0;x<level.n;x++){const el=document.createElement('div');el.className='floor';el.dataset.tile=String((x+y*3)%4);el.style.setProperty('--x',x);el.style.setProperty('--y',y);el.style.backgroundImage=`url('assets/ui/floor-${(x+y*3)%4}.webp')`;$('board').append(el);}
  for(const zone of level.zones??[]){const el=document.createElement('div');el.className='rotation-zone';el.dataset.zone=`${zone.x},${zone.y}`;el.dataset.occupied=String(game.blocks.some(b=>b.x===zone.x&&b.y===zone.y));el.style.setProperty('--x',zone.x);el.style.setProperty('--y',zone.y);el.setAttribute('role','img');el.setAttribute('aria-label',`${zone.y+1}행 ${zone.x+1}열, 모든 진입 방향에서 시계방향 90도 회전`);el.innerHTML=zoneMarkup(zoneEntries(game.blocks,game.rocks,level.n,level.zones??[],zone));$('board').append(el);}
  for(const pickup of level.specials??[]){if(game.used.includes(pickup.id))continue;const el=document.createElement('div');el.className='special-marker';el.dataset.special=pickup.id;el.style.setProperty('--x',pickup.x);el.style.setProperty('--y',pickup.y);el.setAttribute('role','img');el.setAttribute('aria-label',pickup.kind==='key'?'황금열쇠: 가까운 돌 최대 2개 제거':'폭탄: 발동 화살표 포함 최대 3개 제거');el.innerHTML='<img src="assets/special/'+(pickup.kind==='key'?'01-golden-key':'02-bomb')+'.webp" alt="">';$('board').append(el);}
- for(const rock of game.rocks){const el=document.createElement('div');el.className='rock';el.dataset.rock=rock.id;el.dataset.hp=rock.hp;el.style.setProperty('--x',rock.x);el.style.setProperty('--y',rock.y);el.setAttribute('role','img');el.setAttribute('aria-label',`돌 ${rock.id}, 내구도 ${rock.hp}, ${rock.y+1}행 ${rock.x+1}열`);el.innerHTML=`<span><b>${rock.hp}</b></span>`;$('board').append(el);}
+ for(const rock of game.rocks){const el=document.createElement('div');el.className='rock';el.dataset.rock=rock.id;el.dataset.hp=rock.hp;el.style.setProperty('--x',rock.x);el.style.setProperty('--y',rock.y);el.setAttribute('role','img');el.setAttribute('aria-label',`돌 ${rock.id}, 내구도 ${rock.hp}, ${rock.y+1}행 ${rock.x+1}열`);const prize=rockRewardPlan(level).find(q=>q.id===rock.id);el.classList.toggle('fishing-prize-rock',!!prize&&!home.store.read().cleared?.[stageKey(index)]);el.innerHTML=`<span><b>${rock.hp}</b></span>`+(prize&&!home.store.read().cleared?.[stageKey(index)]?'<img class="rock-fishing-coin" src="assets/economy-v204/fishing-coin.webp" alt="낚시 코인 '+prize.amount+'개 · 클리어 시 지급">':'');$('board').append(el);}
  for(const b of game.blocks){const el=document.createElement('button');el.className='block';el.dataset.id=b.id;el.dataset.dir=b.d;el.dataset.rainbow=String(!!b.rainbow);el.dataset.tutorial=String(index===0&&!game.history.length&&b.id===1);el.style.setProperty('--x',b.x);el.style.setProperty('--y',b.y);el.setAttribute('aria-label',`${b.rainbow?'무지개 화살표 · 탈출 시 주변 3개 제거 · 5코인 · ':''}블록 ${b.id}, ${b.y+1}행 ${b.x+1}열, ${names[b.d]}`);el.innerHTML=`<span aria-hidden="true"></span>`;el.addEventListener('click',()=>play(b.id,el));$('board').append(el);}
  frogUI.render(game);
  const warnings=new Set(facingPairs(game.blocks,game.rocks,level.zones??[]).flat());for(const el of $('board').querySelectorAll('.block')){if(warnings.has(Number(el.dataset.id))){el.classList.add('facing-warning');el.setAttribute('aria-label',el.getAttribute('aria-label')+', 서로 마주 보는 화살표');}}
@@ -62,7 +65,7 @@ function render(note=''){
 function play(id,el){if(locked||assistBusy||game.won||frogUI.departing)return;let before=game.blocks.find(b=>b.id===id);if(!before)return;playUI.clear();$('message').textContent='';feedback.settle();sound.unlock();sound.play('touch');
  // Preview keeps collision state intact until the final break frame finishes.
  const overall=move(game.blocks,id,game.level.n,game.rocks,game.level.zones??[],game.level.specials??[],game.used,game.frogs);if(overall.frog){frogUI.blocked(overall.frog);return;}let r=overall.steps?.[0]?.result??overall;const steps=overall.steps??[];let stepIndex=0;const rootId=id;
- if(!r.changed){game.play(id);home.commit(false);playUI.setBlocked(facingPairs(game.blocks,game.rocks,game.level.zones??[]).length>0);feedback.pulse(el,'pressing',75);el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');if(!r.loop){sound.play('blocked');feedback.impact($('board'),before,before.d,'spark');}feedback.later(()=>el.classList.remove('shake'),200);$('message').textContent=r.loop?'회전 경로가 반복되어 원래 자리로 돌아왔어요.':'바로 앞이 막혔어요. 다른 화살표를 움직여 보세요.';return;}
+ if(!r.changed){game.play(id);home.commit(false);playUI.setBlocked(solve(game.blocks,game.level.n,1200,game.rocks,game.level.zones??[],game.level.specials??[],game.used).status==='unsolvable'&&facingPairs(game.blocks,game.rocks,game.level.zones??[]).length>0);feedback.pulse(el,'pressing',75);el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');if(!r.loop){sound.play('blocked');feedback.impact($('board'),before,before.d,'spark');}feedback.later(()=>el.classList.remove('shake'),200);$('message').textContent=r.loop?'회전 경로가 반복되어 원래 자리로 돌아왔어요.':'바로 앞이 막혔어요. 다른 화살표를 움직여 보세요.';return;}
  locked=true;controls();$('board').setAttribute('aria-busy','true');pendingAction={...game.snapshot(),history:structuredClone(game.history)};const ticket=epoch,step=$('board').clientWidth/game.level.n;let plan=motionPlan(r);let pos=0,movingSound=false,cursor={x:before.x,y:before.y};
  function advance(){if(ticket!==epoch)return;if(pos>=plan.length){
    if(stepIndex+1<steps.length){stepIndex++;game.blocks=steps[stepIndex].before.map(b=>({...b}));game.rocks=steps[stepIndex].beforeRocks.map(r=>({...r}));game.used=steps[stepIndex].beforeUsed??pendingAction.used;game.combo=(pendingAction.combo+stepIndex)%5;render();if(stepIndex>=1){$('combo-count').textContent=(stepIndex+1)+'연쇄';showCombo(stepIndex+1);}id=steps[stepIndex].id;before=game.blocks.find(b=>b.id===id);el=document.querySelector('[data-id="'+id+'"]');r=steps[stepIndex].result;plan=motionPlan(r);pos=0;movingSound=false;cursor={x:before.x,y:before.y};advance();return;}

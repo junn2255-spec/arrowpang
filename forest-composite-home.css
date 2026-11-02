@@ -1,0 +1,43 @@
+/* A single painted background per upgrade; actors share its coordinates. */
+#home-panel.forest-composite-home{padding:0!important;overflow:hidden!important;background:#173b46!important;isolation:isolate}
+#home-panel.forest-composite-home::before{content:'';position:absolute;inset:-30px;background:var(--forest-scene) center/cover no-repeat;filter:blur(22px) brightness(.72);z-index:-1;pointer-events:none}
+#home-panel.forest-composite-home .home-wrap{position:relative;width:min(100%,560px);max-width:560px!important;height:100dvh!important;margin:auto!important;padding:8px 12px max(12px,env(safe-area-inset-bottom));box-sizing:border-box;z-index:1;pointer-events:none}
+#home-panel.forest-composite-home .home-title{top:max(8px,env(safe-area-inset-top));left:3%;width:49%;z-index:20;pointer-events:none}
+#home-panel.forest-composite-home .home-top{position:absolute;inset:0;z-index:20;height:auto;margin:0;pointer-events:none}
+#home-panel.forest-composite-home .home-top .coin-wallet{right:3%!important;top:calc(8px + env(safe-area-inset-top))!important;width:44%!important;pointer-events:auto}
+#home-panel.forest-composite-home .home-top #home-back{right:3%!important;top:calc(16cqw + env(safe-area-inset-top))!important;width:44%!important;pointer-events:auto}
+#home-panel.forest-composite-home #home-scene{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;min-height:0!important;max-height:none!important;margin:0!important;flex:none!important;overflow:visible!important;z-index:-1;transform:none!important;pointer-events:none}
+#home-panel.forest-composite-home .forest-scene-world{position:absolute;left:50%;top:50%;width:min(100vw,calc(100dvh * 9 / 16));aspect-ratio:9/16;transform:translate(-50%,-50%);isolation:isolate;pointer-events:none}
+#home-panel.forest-composite-home .forest-scene-background{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0;pointer-events:none}
+#home-panel.forest-composite-home .forest-scene-world .life-actor{position:absolute;right:auto;top:auto;margin:0;padding:0;min-width:0;min-height:0;border:0;box-shadow:none;background-color:transparent;background-repeat:no-repeat;z-index:3;cursor:pointer;pointer-events:auto;filter:drop-shadow(0 3px 2px #06202b80);touch-action:manipulation}
+#home-panel.forest-composite-home .forest-scene-world .hero-actor{left:12%;bottom:17%;width:18%;height:auto;aspect-ratio:192/224;background-size:300% 300%}
+#home-panel.forest-composite-home .forest-scene-world .dog-actor{left:32%;bottom:15%;width:15%;height:auto;aspect-ratio:1;background-size:400% 300%}
+#home-panel.forest-composite-home.forest-night .life-actor{filter:brightness(.9) drop-shadow(0 3px 2px #0008)}
+#home-panel.forest-composite-home #home-upgrade-actions{position:absolute;left:4%;right:4%;width:92%;bottom:calc(21.5cqw + 25px + env(safe-area-inset-bottom));height:13cqw;margin:0;padding:0;display:flex;justify-content:center;z-index:20;pointer-events:auto}
+#home-panel.forest-composite-home #home-upgrade-actions #upgrade{width:52%;height:100%;margin:0;pointer-events:auto}
+#home-panel.forest-composite-home #bonus-inventory-toggle{display:none!important}
+#home-panel.forest-composite-home #home-guidance{position:absolute;left:4%;right:4%;bottom:calc(10px + env(safe-area-inset-bottom));width:92%;height:21.5cqw;margin:0;z-index:20;pointer-events:none}
+#home-panel.forest-composite-home #home-guidance #home-stage{display:none!important}
+#home-panel.forest-composite-home .forest-scene-world #interior-enter{position:absolute;left:42%;top:60%;width:23%;height:7%;min-height:0;z-index:5;padding:0;margin:0;border:0;background:none;box-shadow:none;pointer-events:auto;cursor:pointer}
+#home-panel.forest-composite-home #interior-enter img{inset:0;width:100%;height:100%;object-fit:contain}
+#home-panel.forest-composite-home #bonus-feed{position:absolute;left:4%;bottom:calc(23cqw + 28px + env(safe-area-inset-bottom));width:12%;height:auto;aspect-ratio:1;min-width:0;min-height:0;margin:0;padding:0;border:0;z-index:25;pointer-events:auto;background:none}
+#home-panel.forest-composite-home #bonus-feed img{inset:0;width:100%;height:100%;object-fit:contain}
+#home-panel.forest-composite-home #villa-entry{z-index:25;pointer-events:auto}
+#home-panel.forest-composite-home #home-status.home-upgrade-toast{top:25%!important;left:4%!important;right:4%!important;width:92%!important;z-index:30;text-align:center;pointer-events:none}
+#home-panel.forest-composite-home .life-actor:focus-visible,#home-panel.forest-composite-home #interior-enter:focus-visible{outline:3px solid #b8f5ff;outline-offset:2px;border-radius:12px}
+@media(max-height:600px){#home-panel.forest-composite-home .home-wrap{max-width:390px!important}#home-panel.forest-composite-home #home-upgrade-actions{height:11cqw}#home-panel.forest-composite-home #home-status.home-upgrade-toast{top:23%!important}}
+
+/* Reference header: logo and three complete circular controls. */
+#home-panel.forest-composite-home.home10-panel .home-title{left:1.5%!important;top:calc(8px + env(safe-area-inset-top))!important;width:36.5%!important}
+#home-panel.forest-composite-home.home10-panel .home-top .coin-wallet{left:39%!important;right:auto!important;top:calc(8px + env(safe-area-inset-top))!important;width:19%!important;height:auto!important;min-height:0!important;aspect-ratio:1;background:url('assets/forest-header-v208/wallet.webp') center/contain no-repeat!important;filter:drop-shadow(0 4px 3px #0005)}
+#home-panel.forest-composite-home.home10-panel #home-wallet{left:15%!important;right:auto!important;top:61%!important;width:70%!important;height:24%!important;font-size:var(--forest-wallet-size,4.8cqw)!important;line-height:1;letter-spacing:0;color:#fff2a8!important;-webkit-text-fill-color:#fff2a8!important;-webkit-text-stroke:2px #5c2606!important;paint-order:stroke fill;text-shadow:0 2px 0 #341503!important;display:flex;align-items:center;justify-content:center}
+#home-panel.forest-composite-home.home10-panel .home-top #home-back,#home-panel.forest-composite-home.home10-panel #villa-entry{position:absolute!important;top:calc(8px + env(safe-area-inset-top))!important;right:auto!important;width:19%!important;height:auto!important;min-height:0!important;aspect-ratio:1;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;filter:drop-shadow(0 4px 3px #0005)!important;transform:none!important;opacity:1!important}
+#home-panel.forest-composite-home.home10-panel .home-top #home-back{left:79%!important}
+#home-panel.forest-composite-home.home10-panel #villa-entry{left:59%!important}
+#home-panel.forest-composite-home.home10-panel #villa-entry small{display:none!important}
+#home-panel.forest-composite-home.home10-panel #villa-entry img,#home-panel.forest-composite-home.home10-panel #home-back img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;filter:none!important;opacity:1!important}
+#home-panel.forest-composite-home.home10-panel #home-back img{content:url('assets/forest-header-v208/back.webp')!important}
+#home-panel.forest-composite-home .forest-scene-world .hero-actor{aspect-ratio:2/3;background-size:400% 200%}
+#home-panel.forest-composite-home .forest-scene-world .dog-actor{background-size:400% 200%}
+
+#home-panel.forest-composite-home .forest-scene-world .dog-actor{background-image:var(--forest-dog-image,url('assets/forest-actors-v207/dog-tail.webp'))!important}

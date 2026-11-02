@@ -10,7 +10,7 @@ export const INTERIOR_REWARDS=[
  {stage:40,key:'bird',name:'새장과 노란 새'}
 ];
 export function clearedThrough(v){let n=0;while(n<40&&v.cleared?.['arrowtok-stage-'+String(n+1).padStart(2,'0')])n++;return n;}
-export const INTERIOR_COSTS=[650,700,750,800,900,1000,1050,1100,1250];
+export const INTERIOR_COSTS=[150,200,250,300,350,350,400,450,550];
 export const FUTURE_DECOR_SLOTS=['garden','fence','doghouse'];
 export function interiorState(v){const cleared=clearedThrough(v),built=Math.max(0,Math.min(9,Number(v.interiorBuild?.level)||0)),unlocked=Object.fromEntries(INTERIOR_REWARDS.map((r,i)=>[r.key,i<built]));return{cleared,built,unlocked,earned:INTERIOR_REWARDS.slice(0,built),next:built<9?{...INTERIOR_REWARDS[built],cost:INTERIOR_COSTS[built]}:null};}
 export function interiorPreview(v){const s=interiorState(v);return s.next?'다음: '+s.next.name+' · '+s.next.cost+'코인':'집 안 완성! 요리와 휴식을 즐겨요';}

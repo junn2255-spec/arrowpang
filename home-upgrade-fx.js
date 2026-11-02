@@ -1,3 +1,4 @@
+import {HOME_MAX} from './home-ownership.js';
 import{UpgradeAudio}from'./home-upgrade-audio.js';
 export const houseFrame=stage=>stage>=7?4:stage>=6?3:stage>=3?2:stage>=2?1:0;
 const F='assets/home-upgrade-fx/';
@@ -9,7 +10,7 @@ export class HomeUpgradeFX{
  particles(count,row,kind){for(let i=0;i<count;i++){const n=this.node(F+`particle_${String(row*4+i%4).padStart(2,'0')}.webp`,'upgrade-'+kind);if(!n)break;n.style.left=(22+(i*31%57))+'%';n.style.top=(22+(i*17%43))+'%';n.style.setProperty('--dx',(-70+(i*37%141))+'px');n.style.setProperty('--dy',(40+(i*29%80))+'px');n.style.setProperty('--spin',(-100+i*47)+'deg');n.style.setProperty('--delay',(i%5*28)+'ms');}}
  clearVisuals(){for(const n of this.active){n.remove();n.onerror=null;if(this.pool.length<48)this.pool.push(n);}this.active=[];this.scene.classList.remove('upgrade-anticipate');this.scene.classList.remove('upgrade-build');this.scene.classList.remove('upgrade-reveal');this.scene.classList.remove('upgrade-reduced');this.scene.style.transform='';}
  cancel(){this.serial++;this.timers.forEach(clearTimeout);this.timers=[];this.audio.stop();this.clearVisuals();const done=this.done;this.done=null;this.running=false;done?.(true);}
- start({from,to,visualFrame,swap,onDone}){this.cancel();this.preload();this.running=true;this.done=onDone;const final=from<10&&to===10,reduced=this.reduced(),duration=reduced?500:2200,frame=visualFrame??houseFrame(to);this.audio.duck();
+ start({from,to,visualFrame,swap,onDone}){this.cancel();this.preload();this.running=true;this.done=onDone;const final=from<HOME_MAX&&to===HOME_MAX,reduced=this.reduced(),duration=reduced?500:2200,frame=visualFrame??houseFrame(to);this.audio.duck();
  const finish=()=>{this.timers.forEach(clearTimeout);this.timers=[];this.audio.stop();this.clearVisuals();this.running=false;const done=this.done;this.done=null;done?.(false);};
  if(reduced){this.scene.classList.add('upgrade-reduced');this.later(()=>{swap();this.audio.play(final?'final':'complete',250);},180);this.later(()=>this.audio.restore(),200);this.later(finish,duration);return;}
  this.scene.classList.add('upgrade-anticipate');this.particles(3,0,'spark');this.audio.play('magic');

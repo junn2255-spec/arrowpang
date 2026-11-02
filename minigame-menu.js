@@ -1,4 +1,5 @@
 import {afterStageClear} from './mole/src/integration.js';
+import {dailyState} from './rewards-economy.js';
 import {REWARD} from './mole/src/engine.js';
 export async function openMenuMole({home,sound,preferences}){
  if(!home.store.read().cleared?.['arrowtok-stage-05'])return;
@@ -7,8 +8,8 @@ export async function openMenuMole({home,sound,preferences}){
  try{return await afterStageClear(5,{runId,musicEnabled:sound.music,sfxEnabled:sound.sfx,reduceEffects:preferences.reduced,haptic:p=>preferences.vibrate(p),credit:request=>home.store.transact(v=>{
   if(!v.cleared?.['arrowtok-stage-05']||request.transactionId!==transactionId||request.coins!==REWARD||request.source!=='whack-a-mole'||request.stage!==5||request.score<20)throw Error('두더지 게임 보상을 확인해 주세요.');
   v.moleBonus??={version:1,paid:{},completed:{}};v.moleBonus.paid??={};
-  if(!v.moleBonus.paid[transactionId]){if(!Number.isSafeInteger(v.coins+REWARD))throw Error('코인 저장 범위를 확인해 주세요.');v.coins+=REWARD;v.moleBonus.paid[transactionId]={stage:5,amount:REWARD};}
-  return {ok:true,balance:v.coins};
+  if(!v.moleBonus.paid[transactionId]){if(!Number.isSafeInteger(v.coins+REWARD))throw Error('코인 저장 범위를 확인해 주세요.');const d=dailyState(v),amount=REWARD+(d.moleFirst?0:50);d.moleFirst=true;d.mole++;v.coins+=amount;v.moleBonus.paid[transactionId]={stage:5,amount};}
+  return {ok:true,balance:v.coins,amount:v.moleBonus.paid[transactionId].amount};
  })});}finally{sound.visibility(document.hidden);}
 }
 export function installMinigameMenu({read,isBusy,onBefore,onReturn,playMole,playFishing}){
