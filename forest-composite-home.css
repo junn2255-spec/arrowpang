@@ -59,3 +59,10 @@
 body.garden-theme #game.clear-screen #next.upgrade-next-ready{animation:return-white-glow 1.5s ease-in-out infinite!important}
 @keyframes return-white-glow{0%,100%{filter:drop-shadow(0 0 3px #ffffff55)}50%{filter:drop-shadow(0 0 8px #fff) drop-shadow(0 0 16px #ffffffbb)}}
 @media(prefers-reduced-motion:reduce){#home-panel.forest-composite-home.home10-panel .home-top #home-back.home-return-ready,body.garden-theme #game.clear-screen #next.upgrade-next-ready{animation:none!important;filter:drop-shadow(0 0 8px #fff)!important}}
+
+/* v278: foreground companions beside the upgrade button, clear of the pond. */
+#home-panel.forest-composite-home .forest-scene-world .hero-actor{left:3%;bottom:calc(21.5cqw + 52px + env(safe-area-inset-bottom));width:28.8%;max-width:162px}
+#home-panel.forest-composite-home .forest-scene-world .dog-actor{left:25%;bottom:calc(21.5cqw + 50px + env(safe-area-inset-bottom));width:27.6%;max-width:154.8px}
+#home-panel.forest-composite-home #home-upgrade-actions{pointer-events:none}
+#home-panel.forest-composite-home #home-upgrade-actions #upgrade{pointer-events:auto}
+#home-panel.forest-composite-home #bonus-feed{left:5%;bottom:calc(21.5cqw + 10px + env(safe-area-inset-bottom));width:11%;z-index:35}
