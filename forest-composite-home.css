@@ -41,3 +41,21 @@
 #home-panel.forest-composite-home .forest-scene-world .dog-actor{background-size:400% 200%}
 
 #home-panel.forest-composite-home .forest-scene-world .dog-actor{background-image:var(--forest-dog-image,url('assets/forest-actors-v207/dog-tail.webp'))!important}
+/* Mobile forest layout v236: full-height scene and larger foreground actors. */
+#home-panel.forest-composite-home .forest-scene-world{width:100vw;height:100dvh;aspect-ratio:auto}
+#home-panel.forest-composite-home .forest-scene-background{object-fit:cover;object-position:center}
+#home-panel.forest-composite-home .forest-scene-world .hero-actor{left:15%;bottom:25%;width:24%;max-width:135px}
+#home-panel.forest-composite-home .forest-scene-world .dog-actor{left:39%;bottom:24%;width:23%;max-width:129px}
+#home-panel.forest-composite-home.home10-panel .home-title{top:calc(6.5dvh + env(safe-area-inset-top))!important;width:37%!important;left:1%!important}
+#home-panel.forest-composite-home.home10-panel .home-top .coin-wallet,
+#home-panel.forest-composite-home.home10-panel .home-top #home-back,
+#home-panel.forest-composite-home.home10-panel #villa-entry{top:calc(6.5dvh + env(safe-area-inset-top))!important;width:20.5%!important}
+#home-panel.forest-composite-home.home10-panel .home-top .coin-wallet{left:38%!important}
+#home-panel.forest-composite-home.home10-panel #villa-entry{left:58.5%!important}
+#home-panel.forest-composite-home.home10-panel .home-top #home-back{left:79%!important}
+#home-panel.forest-composite-home #home-guidance{bottom:calc(28px + env(safe-area-inset-bottom))}
+#home-panel.forest-composite-home #home-upgrade-actions{bottom:calc(21.5cqw + 43px + env(safe-area-inset-bottom));justify-content:flex-end}
+#home-panel.forest-composite-home.home10-panel .home-top #home-back.home-return-ready{animation:return-white-glow 1.5s ease-in-out infinite!important}
+body.garden-theme #game.clear-screen #next.upgrade-next-ready{animation:return-white-glow 1.5s ease-in-out infinite!important}
+@keyframes return-white-glow{0%,100%{filter:drop-shadow(0 0 3px #ffffff55)}50%{filter:drop-shadow(0 0 8px #fff) drop-shadow(0 0 16px #ffffffbb)}}
+@media(prefers-reduced-motion:reduce){#home-panel.forest-composite-home.home10-panel .home-top #home-back.home-return-ready,body.garden-theme #game.clear-screen #next.upgrade-next-ready{animation:none!important;filter:drop-shadow(0 0 8px #fff)!important}}

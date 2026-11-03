@@ -1,0 +1,20 @@
+{
+  "image": "rare-fish-six-species.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "transparent": true,
+  "layout": "3 columns x 2 rows",
+  "order": [
+    "방울몽",
+    "루미엘",
+    "크리스펀",
+    "플로레아",
+    "아스트라온",
+    "녹티루스"
+  ],
+  "status": "asset-preview-not-integrated",
+  "generator": "built-in image_gen",
+  "prompt": "Six isolated fantasy fish facing left, transparent 3x2 sheet, distinct silhouettes: round pearly sky-blue; silver crescent tail; purple turquoise crystal armor; pink petal fins; indigo starlit flowing fins; navy gold rings and swept horns. No text or scenery."
+}

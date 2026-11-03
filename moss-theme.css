@@ -198,3 +198,50 @@ body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,
 body.garden-theme:has(#game:not([hidden]):not(.clear-screen)){
  background-image:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url('assets/moss-ui-v1/forest-background.jpg');
 }
+/* v259: teal enamel UI; puzzle board and tiles stay unchanged. */
+body.garden-theme #game#game header h1 img,body.garden-theme #welcome h1 img{content:url('assets/teal-ui-v259/logo.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #minigame-preview img{content:url('assets/teal-ui-v259/minigame.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #undo img{content:url('assets/teal-ui-v259/undo.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #hint img{content:url('assets/teal-ui-v259/hint.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #home img{content:url('assets/teal-ui-v259/home.webp')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='false'] img{content:url('assets/teal-ui-v259/on.webp')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='true'] img{content:url('assets/teal-ui-v259/off.webp')}
+body.garden-theme #game#game:not(.clear-screen) #garden-help img{content:url('assets/teal-ui-v259/help.webp')}
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{background:transparent url('assets/teal-ui-v259/daily.webp') center/100% 100% no-repeat!important;border:0!important;box-shadow:none!important;color:transparent!important;text-shadow:none!important;font-size:0!important}
+body.garden-theme #game#game:not(.clear-screen) .blue-stage{content:url('assets/teal-ui-v259/stage.webp');aspect-ratio:600/242}
+body.garden-theme #game#game:not(.clear-screen) .blue-wallet{content:url('assets/teal-ui-v259/wallet.webp');aspect-ratio:600/242}
+body.garden-theme #game#game:not(.clear-screen) .blue-upgrade{content:url('assets/teal-ui-v259/upgrade.webp');aspect-ratio:1200/218}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{content:url('assets/teal-ui-v259/ready.webp');aspect-ratio:1200/218;animation:teal-ready-glow 1.6s ease-in-out infinite!important}
+@keyframes teal-ready-glow{0%,100%{filter:brightness(1) drop-shadow(0 4px 5px #0005)}50%{filter:brightness(1.25) drop-shadow(0 4px 5px #0005)}}
+body.garden-theme #game#game:not(.clear-screen) .stats #stage{left:35%;top:22%;width:27%}
+body.garden-theme #game#game:not(.clear-screen) .stats #remaining{left:85%;top:22%;width:27%}
+body.garden-theme #game#game:not(.clear-screen) .stats #moves{left:69.5%;top:calc(100% - 16.9cqw);width:12%;height:9cqw}
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:26%;top:calc(100% - 7.65cqw);width:68%;height:3.25cqw;border-radius:3cqw;overflow:hidden}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:none!important}}
+/* v260: soft white halo around the available-upgrade banner. */
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:teal-ready-white-glow 1.8s ease-in-out infinite!important}
+@keyframes teal-ready-white-glow{
+ 0%,100%{filter:drop-shadow(0 0 3px #ffffff99) drop-shadow(0 0 9px #ffffff55) drop-shadow(0 4px 5px #0005)}
+ 50%{filter:drop-shadow(0 0 5px #ffffffdd) drop-shadow(0 0 15px #ffffff99) drop-shadow(0 0 24px #ffffff44) drop-shadow(0 4px 5px #0005)}
+}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:none!important;filter:drop-shadow(0 0 5px #ffffffaa) drop-shadow(0 0 14px #ffffff66)!important}}
+/* v261: common left/right rails for status panels and bottom controls. */
+body.garden-theme #game#game:not(.clear-screen) .stats{width:96%;justify-self:center}
+body.garden-theme #game#game:not(.clear-screen) .blue-stage{left:0;width:48.5%}
+body.garden-theme #game#game:not(.clear-screen) .blue-wallet{right:0;width:48.5%}
+body.garden-theme #game#game:not(.clear-screen) .blue-upgrade{left:0;width:100%}
+body.garden-theme #game#game:not(.clear-screen) nav{width:96%;justify-self:center}
+
+/* v262: approved orange attendance button. */
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{background-image:url('assets/daily-orange-v262/daily.webp')!important}
+
+/* v263: brighten surrounding UI only; preserve existing shadows and artwork. */
+body.garden-theme #game#game:not(.clear-screen) .stats,
+body.garden-theme #game#game:not(.clear-screen) nav,
+body.garden-theme #game#game:not(.clear-screen) #settings,
+body.garden-theme #game#game:not(.clear-screen) #garden-help{filter:brightness(1.1)}
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{filter:brightness(1.1) drop-shadow(0 4px 4px rgba(0,0,0,.267)) drop-shadow(0 9px 10px rgba(0,0,0,.3))}
+/* v264: ready banner sits one panel-gap below the summary cards. */
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{bottom:auto;top:calc(4% + 22.66cqw)}
+/* v265: larger shortage number aligned to the baked label baseline. */
+body.garden-theme #game#game:not(.clear-screen) .stats #moves{left:69.5%;top:calc(100% - 17.5cqw);width:14%;height:11cqw}

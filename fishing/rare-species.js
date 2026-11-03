@@ -10,8 +10,8 @@ export const RARE_SPECIES=Object.freeze([
 export const RARE_IDS=Object.freeze(RARE_SPECIES.map(f=>f.id));
 export const RARE_BY_ID=Object.freeze(Object.fromEntries(RARE_SPECIES.map(f=>[f.id,f])));
 export const rareArt=(id,file='sheet.webp')=>'assets/rare-fish-v211/'+id+'/'+file;
-export function chooseRareFish(tier,rng=Math.random){
- if(rng()>=.12)return null;
+export function chooseRareFish(tier,rng=Math.random,force=false){
+ if(!force&&rng()>=.25)return null;
  const current=RARE_SPECIES.filter(f=>f.tier===tier),earlier=RARE_SPECIES.filter(f=>f.tier<tier);
  const pool=earlier.length&&rng()<.25?earlier:current;
  return pool[Math.min(pool.length-1,Math.floor(rng()*pool.length))]?.id??null;

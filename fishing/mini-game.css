@@ -217,3 +217,32 @@ html,body,#game,#game *{font-family:'User Paperlogy Bold',sans-serif!important;f
 
 @font-face{font-family:'User Paperlogy Bold';src:url('../assets/user-fonts-paperlogy/Paperlogy-7Bold.ttf') format('truetype');font-weight:700;font-display:swap}
 :root,body,body *,body *::before,body *::after,:host,:host *{font-family:'User Paperlogy Bold',sans-serif!important;font-weight:700!important}
+
+/* Bait-specific equipped artwork replaces the temporary text notice. */
+#game #worm-equipped-notice{font-size:0;line-height:0;text-shadow:none;top:37%}
+#game #worm-equipped-notice img{display:block;width:76%;max-width:340px;height:auto;margin:0 auto;object-fit:contain;filter:drop-shadow(0 5px 6px #001e4855)}
+
+/* Equipped notice: 15% smaller and 15% transparent; animation timing is unchanged. */
+#game #worm-equipped-notice img{width:64.6%;max-width:289px;opacity:.85}
+
+/* Share one upper slot: notice while idle/waiting, gauges while casting/fighting. */
+#game[data-top-hud='casting'] #mini-objective .ocean-reward,
+#game[data-top-hud='fighting'] #mini-objective .ocean-reward{visibility:hidden;pointer-events:none}
+#game #chargePanel,#game #fightHud{top:var(--top-gauge-top,22cqw)!important;bottom:auto!important;left:3%!important;right:3%!important;width:auto!important;transform:none!important;z-index:65}
+#game #chargePanel{height:auto;max-width:none;margin:0}
+
+#game #chargePanel,#game #fightHud{margin:0!important;left:2%!important;right:2%!important}
+
+/* Compact cast gauge: tighten vertical spacing and enlarge both labels by 3pt. */
+#game #chargePanel{padding:8px 10px!important}
+#game #chargePanel>div:first-child{font-size:calc(3.1cqw + 3pt);line-height:1.25;margin-bottom:8px;align-items:center}
+#game #chargePanel .success-label{font-size:calc(2.7cqw + 3pt);line-height:1.15;margin-top:5px;padding:2px 0}
+
+/* Approved two-page fishing introduction, proportional artwork and wide backdrop. */
+#game #fishing-intro{position:fixed;inset:0;padding:0;z-index:10000;background:linear-gradient(#00152599,#00152599),url('assets/guide-v225/background.jpg') center/cover no-repeat}
+#game .intro-guide-frame{width:min(100vw,calc(100dvh * 853 / 1844));aspect-ratio:853/1844;max-height:100dvh}
+#game .intro-guide-frame>img{width:100%;height:100%;object-fit:contain}
+#game #fishing-intro-start{left:12%;width:76%;top:87.6%;bottom:auto;height:6.6%;border-radius:999px}
+
+/* Highlight live equipment values and fish count. */
+#game #mini-objective .hud-value{color:#fff38a}

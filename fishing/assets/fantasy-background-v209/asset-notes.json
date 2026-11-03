@@ -1,0 +1,10 @@
+{
+  "status": "preview-only-not-applied",
+  "tool": "built-in image_gen",
+  "size": [
+    900,
+    1600
+  ],
+  "prompt": "Fantasy seaside background only, pastel dusk sky, glowing islands, perfectly level horizontal horizon, calm blue sea, turquoise shallows and rocky foreground. No UI, text, fishing equipment or characters.",
+  "reference": "codex-clipboard-e619b661-5a64-4cb8-9a0e-e32bd9e12b68.png"
+}

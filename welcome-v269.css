@@ -1,0 +1,20 @@
+/* Approved portrait title artwork; existing controls retain their handlers. */
+body:has(#welcome:not([hidden])){background:#032a2d!important}
+main:has(#welcome:not([hidden])){width:100%!important;max-width:none!important;height:100dvh!important;padding:0!important;display:grid!important;place-items:center!important;background:none!important}
+#welcome.menu-screen{width:min(100vw,47.768595dvh)!important;height:auto!important;aspect-ratio:867/1815;max-height:none!important;flex:none!important;padding:0!important;margin:0!important;display:block!important;position:relative!important;background:url('assets/welcome-v269/welcome.webp') center/100% 100% no-repeat!important;overflow:hidden!important}
+#welcome>h1,#welcome>.menu-intro,#welcome>.mascot,#welcome>.menu-footer,#welcome>#reset-game{display:none!important}
+#welcome .menu-actions{display:contents!important}
+#welcome #start,#welcome #stage-select,#welcome #title-settings,#welcome #fullscreen-start,#welcome .daily-rewards-open{position:absolute!important;inset:auto!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:18px!important;background:transparent!important;box-shadow:none!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important;font-size:0!important;color:transparent!important;cursor:pointer;z-index:2!important}
+#welcome .menu-actions button>*{visibility:hidden!important}
+#welcome #fullscreen-start{left:13%!important;top:67.5%!important;width:74%!important;height:7%!important}
+#welcome #stage-select{left:10%!important;top:78%!important;width:22%!important;height:14%!important}
+#welcome #start{left:36%!important;top:76.5%!important;width:28%!important;height:15.5%!important}
+#welcome #title-settings{left:69%!important;top:78%!important;width:22%!important;height:14%!important}
+#welcome .daily-rewards-open{left:75%!important;top:1.5%!important;width:24%!important;height:5%!important}
+#welcome button::before,#welcome button::after{display:none!important}
+#welcome button:focus-visible{outline:3px solid #fff!important;outline-offset:-3px!important}
+/* Restore the existing reset action beneath the main title controls. */
+#welcome #reset-game{display:block!important;position:absolute;left:35%;bottom:1.6%;width:30%;min-height:34px;padding:5px 8px;border:1px solid #d8bd77;border-radius:20px;background:#003f43d9;color:#fff3cf;font-size:14px!important;line-height:1.2;text-decoration:none;text-shadow:0 1px 2px #002b30;z-index:3}
+#welcome #reset-status:not([hidden]){position:absolute;left:5%;bottom:6%;width:90%;box-sizing:border-box;z-index:4;padding:10px;background:#00373bf2;border:1px solid #e1c789;border-radius:12px}
+/* The title layout must never override the hidden screen state. */
+#welcome.menu-screen[hidden]{display:none!important}

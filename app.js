@@ -1,6 +1,6 @@
 import {rockRewardPlan} from './rewards-economy.js';
 import {installRewardsUI} from './rewards-ui.js';
-import {installMinigameMenu,openMenuMole} from './minigame-menu.js';
+import {installMinigameMenu,openMenuMole} from './minigame-menu.js?v=268';
 import {initGameOver} from './game-over.js';
 import {HOME_MAX,nextYard} from './home-ownership.js';
 import {interiorState} from './interior-progress.js';
@@ -11,7 +11,7 @@ import{SpecialEffects}from'./special-effects.js?v=199';
 import {initMissionMenu} from './mission-menu.js';
 import {initPlayUI} from './play-ui.js';
 import {initTutorials} from './tutorials.js';
-import {initHome} from './home.js';
+import {initHome} from './home.js?v=236';
 import {zoneEntries,zoneMarkup} from './zone-display.js';
 import {Feedback,preferences} from './feedback.js';
 import {EscapeEffects} from './escape-effects.js';
@@ -69,7 +69,7 @@ function play(id,el){if(locked||assistBusy||game.won||frogUI.departing)return;le
  locked=true;controls();$('board').setAttribute('aria-busy','true');pendingAction={...game.snapshot(),history:structuredClone(game.history)};const ticket=epoch,step=$('board').clientWidth/game.level.n;let plan=motionPlan(r);let pos=0,movingSound=false,cursor={x:before.x,y:before.y};
  function advance(){if(ticket!==epoch)return;if(pos>=plan.length){
    if(stepIndex+1<steps.length){stepIndex++;game.blocks=steps[stepIndex].before.map(b=>({...b}));game.rocks=steps[stepIndex].beforeRocks.map(r=>({...r}));game.used=steps[stepIndex].beforeUsed??pendingAction.used;game.combo=(pendingAction.combo+stepIndex)%5;render();if(stepIndex>=1){$('combo-count').textContent=(stepIndex+1)+'연쇄';showCombo(stepIndex+1);}id=steps[stepIndex].id;before=game.blocks.find(b=>b.id===id);el=document.querySelector('[data-id="'+id+'"]');r=steps[stepIndex].result;plan=motionPlan(r);pos=0;movingSound=false;cursor={x:before.x,y:before.y};advance();return;}
-   const rocksBefore=pendingAction.rocks.map(rock=>({...rock}));Object.assign(game,pendingAction);pendingAction=null;const committed=game.play(rootId);const rainbowEvents=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>e.kind==='rainbow'));if(rainbowEvents.length)home.rainbowReward(rainbowEvents).then(awards=>{if(ticket===epoch)for(const a of awards)specialFX.combo($('board'),0,a.amount??5);}).catch(()=>{$('message').textContent='무지개 보상을 저장하지 못했어요.';});const specialRewards=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>['bomb','key'].includes(e.kind)));home.specialReward(specialRewards).then(awards=>{if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),0,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='특수 보상을 저장하지 못했어요.';});home.comboReward(committed.comboEvents??[]).then(awards=>{if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),a.tier,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='콤보 보상을 저장하지 못했어요.';});for(const rock of rocksBefore)if(!game.rocks.some(q=>q.id===rock.id&&q.hp>0))home.rockBroken(rock);locked=false;$('board').removeAttribute('aria-busy');
+   const rocksBefore=pendingAction.rocks.map(rock=>({...rock}));Object.assign(game,pendingAction);pendingAction=null;const committed=game.play(rootId);const rainbowEvents=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>e.kind==='rainbow'));if(rainbowEvents.length)home.rainbowReward(rainbowEvents).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const a of awards)specialFX.combo($('board'),0,a.amount??5);}).catch(()=>{$('message').textContent='무지개 보상을 저장하지 못했어요.';});const specialRewards=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>['bomb','key'].includes(e.kind)));home.specialReward(specialRewards).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),0,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='특수 보상을 저장하지 못했어요.';});home.comboReward(committed.comboEvents??[]).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),a.tier,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='콤보 보상을 저장하지 못했어요.';});for(const rock of rocksBefore)if(!game.rocks.some(q=>q.id===rock.id&&q.hp>0))home.rockBroken(rock);locked=false;$('board').removeAttribute('aria-busy');
    if(!r.exit&&!r.bombRemoved&&r.moved&&!r.hit)sound.play('collision');
    render(r.bombRemoved?'폭탄으로 화살표를 제거했어요.':r.hit?(r.hit.broken?'돌이 깨졌어요! 다음 터치에 진행하세요.':`돌 내구도 ${r.hit.hp} · ${r.moved?'이동하며 충돌':'돌 타격'}`):r.exit?(game.combo>1?`${game.combo} 연속 탈출!`:'탈출 성공!'):'장애물 바로 앞에 멈췄어요.');
    if(!r.exit&&!r.bombRemoved&&!r.hit&&r.moved){const b=game.blocks.find(b=>b.id===id);feedback.impact($('board'),b,b.d);const dirs={U:[0,-1],R:[1,0],D:[0,1],L:[-1,0]},[dx,dy]=dirs[b.d];const target=game.blocks.find(q=>q.x===b.x+dx&&q.y===b.y+dy);feedback.pulse(document.querySelector(`[data-id="${target?.id}"]`),'bumped',180);}

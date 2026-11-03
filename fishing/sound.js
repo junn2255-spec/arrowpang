@@ -109,7 +109,7 @@ export function createSound({ enabled: initialEnabled = false, requireGesture = 
     active.delete('tension'); stop(track); return true;
   }
   function stopFightMusic(){const track=active.get('fightMusic');if(track){active.delete('fightMusic');stop(track)}if(ambientDuck){ambientDuck=false;applyAmbientVolumes(0,true)}return !!track}
-  function startFightMusic(){if(!enabled||!unlocked||paused||!ac||ac.state!=='running'||active.has('fightMusic'))return false;const buffer=buffers.get('fightMusic');if(!buffer)return false;stopTension();try{const source=ac.createBufferSource(),gain=ac.createGain();source.buffer=buffer;source.loop=true;gain.gain.setValueAtTime(.18,ac.currentTime);source.connect(gain).connect(ac.destination);trackSource('fightMusic',source,gain,'fightMusic','fightMusic');source.start();ambientDuck=true;applyAmbientVolumes(0,true);return true}catch{stopFightMusic();return false}}
+  function startFightMusic(){if(!enabled||!unlocked||paused||!ac||ac.state!=='running'||active.has('fightMusic'))return false;const buffer=buffers.get('fightMusic');if(!buffer)return false;stopTension();try{const source=ac.createBufferSource(),gain=ac.createGain();source.buffer=buffer;source.loop=true;gain.gain.setValueAtTime(0,ac.currentTime);gain.gain.linearRampToValueAtTime(.42,ac.currentTime+.45);source.connect(gain).connect(ac.destination);trackSource('fightMusic',source,gain,'fightMusic','fightMusic');source.start();ambientDuck=true;applyAmbientVolumes(0,true);return true}catch{stopFightMusic();return false}}
   function stopFightFeedback() { edgeFeedbackKey=null; stopTension(); stopFightMusic(); stopLiftFeedback(); stopHaptics(true); hapticResumeAt=-Infinity; }
   function startTension(duration) {
     if (!enabled || !unlocked || paused || !ac || ac.state !== 'running') return false;
@@ -213,7 +213,7 @@ export function createSound({ enabled: initialEnabled = false, requireGesture = 
   }
   function ambientTarget(key) {
     if (!ambientDuck) return ambientMix[key] || 0;
-    return key === 'day' ? (ambientMix.day ? .22 : 0) : (ambientMix[key] || 0) * .55;
+    return key === 'day' ? (ambientMix.day ? .12 : 0) : (ambientMix[key] || 0) * .55;
   }
   function applyAmbientVolumes(dt = 0, instant = false) {
     for (const [key, layer] of ambientLayers) {

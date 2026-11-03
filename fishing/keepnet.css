@@ -35,3 +35,15 @@
 
 #keepnet-window .rare-fish-row .rare-fish-label{display:block;font-size:2.6cqw;color:#ffe783;line-height:1.3;margin-top:.5cqw}
 #keepnet-window .rare-fish-row>img{filter:drop-shadow(0 0 2px #fff9) drop-shadow(0 0 5px #96dfff77)}
+
+/* v232: readable centered keepnet text (+3pt). */
+#game #keepnet-window .keepnet-count{font-size:calc(4cqw + 3pt)!important;text-align:center}
+#game #keepnet-window .keepnet-row{height:24cqw;grid-template-columns:32% 34% 34%;padding:2cqw 3cqw}
+#game #keepnet-window .keepnet-row>div{padding-left:0;align-items:center;text-align:center;font-size:calc(4.1cqw + 3pt);gap:.8cqw}
+#game #keepnet-window .keepnet-row .largest{font-size:calc(3.3cqw + 3pt)}
+#game #keepnet-window .largest strong{font-size:calc(3.8cqw + 3pt)}
+#game #keepnet-window .largest small{font-size:calc(2.75cqw + 3pt)}
+#game #keepnet-window .rare-fish-row .rare-fish-label{font-size:calc(2.6cqw + 3pt)}
+#game #keepnet-window .keepnet-empty{font-size:calc(4cqw + 3pt);text-align:center}
+#game #keepnet-window .keepnet-sale-note{font-size:calc(3.2cqw + 3pt);text-align:center}
+#game #keepnet-window .keepnet-sale{font-size:calc(4.6cqw + 3pt);text-align:center}
