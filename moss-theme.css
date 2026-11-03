@@ -95,4 +95,106 @@ body.garden-theme #game#game:not(.clear-screen) #garden-help{top:12cqw}
 body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{top:27cqw!important}
 /* Measured inner track in the 1344 x 299 panel: x330..1265, y175..230.
    Anchor to the bottom of that image, independent of the stats row height. */
-body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:24.553571%;top:calc(100% - 9.22619cqw);width:69.568452%;height:4.092262cqw}
+body.garden-theme #game#game:not(.clear-screen) .top-upgrade-gauge{left:25.744048%;top:calc(100% - 8.779762cqw);width:68.154762%;height:3.27381cqw}
+/* v236: depth for gameplay only, with a quiet sound control. */
+/* Stronger soft silhouettes, scoped to the puzzle rather than other scenes. */
+body.garden-theme #game#game:not(.clear-screen) header h1 img{filter:drop-shadow(0 4px 3px rgba(0,0,0,.367)) drop-shadow(0 10px 9px rgba(0,0,0,.367)) drop-shadow(0 16px 18px rgba(0,0,0,.3))}
+body.garden-theme #game#game:not(.clear-screen) nav button img{filter:drop-shadow(0 4px 4px #0009) drop-shadow(0 9px 10px #0009)}
+body.garden-theme #game#game:not(.clear-screen) #settings img,
+body.garden-theme #game#game:not(.clear-screen) #garden-help img{filter:drop-shadow(0 4px 4px rgba(0,0,0,.3)) drop-shadow(0 9px 10px rgba(0,0,0,.3))}
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{filter:drop-shadow(0 4px 4px rgba(0,0,0,.267)) drop-shadow(0 9px 10px rgba(0,0,0,.3))}
+body.garden-theme #game#game:not(.clear-screen) .special-marker{filter:drop-shadow(0 3px 2px #000b) drop-shadow(0 6px 5px #0009)}
+body.garden-theme #game:not(.clear-screen) #settings,
+body.garden-theme #game:not(.clear-screen) #settings img,
+body.garden-theme #game:not(.clear-screen) #settings::before,
+body.garden-theme #game:not(.clear-screen) #settings::after{animation:none!important}
+body.garden-theme #game:not(.clear-screen) header h1 img,
+body.garden-theme #game:not(.clear-screen) .blue-stage,
+body.garden-theme #game:not(.clear-screen) .blue-wallet,
+body.garden-theme #game:not(.clear-screen) .blue-upgrade{filter:drop-shadow(0 4px 5px #0005) drop-shadow(0 9px 13px #0006)}
+body.garden-theme #game:not(.clear-screen) header h1 img{filter:drop-shadow(0 5px 5px #0006) drop-shadow(0 10px 15px #0008)}
+body.garden-theme #game#game:not(.clear-screen) .board-slot{filter:none}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{filter:drop-shadow(0 5px 9px #0005);clip-path:none}
+/* Retouch only the inner floor edge; preserve the original outer stone rim. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::after{content:none}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{overflow:visible;box-shadow:none}
+body.garden-theme #game:not(.clear-screen) nav button img,
+body.garden-theme #game:not(.clear-screen) #settings img,
+body.garden-theme #game:not(.clear-screen) #garden-help img{filter:drop-shadow(0 3px 4px #0006) drop-shadow(0 6px 8px #0007)}
+body.garden-theme #game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:upgrade-panel-white 1.6s ease-in-out infinite}
+@keyframes upgrade-panel-white{0%,100%{filter:drop-shadow(0 6px 4px #0008) drop-shadow(0 0 2px #ffffff60)}50%{filter:drop-shadow(0 6px 4px #0008) drop-shadow(0 0 10px #fff) drop-shadow(0 0 18px #ffffff90)}}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen))::after{content:'';position:fixed;inset:0;pointer-events:none;background:linear-gradient(transparent 65%,#0009 100%);z-index:0}
+body.garden-theme #game{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:none;filter:drop-shadow(0 0 7px #fff)}}
+/* v244: shared cell geometry, with four rounded floor corners in every cell. */
+body.garden-theme #game#game:not(.clear-screen) #board{background:#171c18;border-radius:0}
+body.garden-theme #game#game:not(.clear-screen) .floor{display:block!important;background:none!important;z-index:0}
+body.garden-theme #game#game:not(.clear-screen) .floor::before{content:'';position:absolute;inset:3%;border-radius:13%;background:url('assets/arrow-depth-v244/floor-0.webp') center/cover;box-shadow:inset 1px 1px 1px #f5eace88,inset -1px -2px 2px #0009}
+body.garden-theme #game#game:not(.clear-screen) .floor[data-tile='1']::before{background-image:url('assets/arrow-depth-v244/floor-1.webp')}
+body.garden-theme #game#game:not(.clear-screen) .floor[data-tile='2']::before{background-image:url('assets/arrow-depth-v244/floor-2.webp')}
+body.garden-theme #game#game:not(.clear-screen) .floor[data-tile='3']::before{background-image:url('assets/arrow-depth-v244/floor-3.webp')}
+body.garden-theme #game#game:not(.clear-screen) .block{padding:0}
+body.garden-theme #game#game:not(.clear-screen) .block>span{position:absolute;inset:3%;width:94%;height:94%;border-radius:13%;filter:drop-shadow(0 2px 2px #0009)}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='R']:not([data-rainbow='true'])>span{background-image:url('assets/arrow-depth-v244/arrow-right.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='L']:not([data-rainbow='true'])>span{background-image:url('assets/arrow-depth-v244/arrow-left.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='U']:not([data-rainbow='true'])>span{background-image:url('assets/arrow-depth-v244/arrow-up.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='D']:not([data-rainbow='true'])>span{background-image:url('assets/arrow-depth-v244/arrow-down.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .rotation-zone img{position:absolute;left:3%;top:3%;width:94%;height:94%;object-fit:contain}
+
+/* v245: square pieces and no CSS outline around the stone board. */
+body.garden-theme #game#game:not(.clear-screen) #board{border:0!important;outline:0!important;box-shadow:none!important}
+body.garden-theme #game#game:not(.clear-screen) .block>span{inset:3% auto auto 3%;width:94%;height:auto;aspect-ratio:1;background-size:100% 100%!important}
+body.garden-theme #game#game:not(.clear-screen) .rotation-zone img{content:url('assets/block-fit-v245/rotation.webp');left:3%;top:3%;width:94%;height:auto;aspect-ratio:1;object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='R']:not([data-rainbow='true'])>span{background-image:url('assets/block-fit-v245/arrow-right.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='L']:not([data-rainbow='true'])>span{background-image:url('assets/block-fit-v245/arrow-left.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='U']:not([data-rainbow='true'])>span{background-image:url('assets/block-fit-v245/arrow-up.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-dir='D']:not([data-rainbow='true'])>span{background-image:url('assets/block-fit-v245/arrow-down.webp')!important}
+@keyframes upgrade-panel-white{0%,100%{filter:drop-shadow(0 6px 4px #0008) drop-shadow(0 0 2px #ffffff30)}50%{filter:drop-shadow(0 6px 4px #0008) drop-shadow(0 0 10px #ffffff80) drop-shadow(0 0 18px #ffffff48)}}
+@keyframes homeGoldHalo{0%,100%{filter:drop-shadow(0 0 2px #ffffff80) drop-shadow(0 0 4px #ffffff6e) drop-shadow(0 0 7px #ffffff44)}45%,55%{filter:drop-shadow(0 0 3px #ffffff80) drop-shadow(0 0 6px #ffffff80) drop-shadow(0 0 12px #ffffff77) drop-shadow(0 0 17px #ffffff4c)}}
+@keyframes homeButtonHalfHalo{0%,100%{filter:drop-shadow(0 0 2px #ffffff40) drop-shadow(0 0 4px #ffffff37) drop-shadow(0 0 7px #ffffff22)}45%,55%{filter:drop-shadow(0 0 3px #ffffff40) drop-shadow(0 0 6px #ffffff40) drop-shadow(0 0 12px #ffffff3b) drop-shadow(0 0 17px #ffffff26)}}
+@keyframes return-white-glow{0%,100%{filter:drop-shadow(0 0 3px #ffffff2a)}50%{filter:drop-shadow(0 0 8px #ffffff80) drop-shadow(0 0 16px #ffffff5d)}}
+body.garden-theme #game#game:not(.clear-screen) .block>span{left:0;top:0;width:100%;height:auto;aspect-ratio:1}
+
+/* v246: one approved board image; tile centers measured from the 1254px artwork. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{inset:0;border:0;border-image:none;background:url('assets/unified-board-v246/board.webp') center/100% 100% no-repeat}
+body.garden-theme #game#game:not(.clear-screen) #board{left:7.18%;top:7.18%;width:86.12%;height:86.12%;background:transparent!important;border:0!important}
+body.garden-theme #game#game:not(.clear-screen) .floor{display:none!important}
+/* v247: keep sound control visually stable while moves temporarily lock input. */
+body.garden-theme #game#game:not(.clear-screen) #settings,
+body.garden-theme #game#game:not(.clear-screen) #settings:disabled{opacity:1!important;animation:none!important;transition:none!important}
+
+/* v248: emerald game navigation artwork. */
+body.garden-theme #game#game:not(.clear-screen) nav #minigame-preview img{content:url('assets/emerald-buttons-v248/minigame.webp');object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) nav #undo img{content:url('assets/emerald-buttons-v248/undo.webp');object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) nav #hint img{content:url('assets/emerald-buttons-v248/hint.webp');object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) nav #home img{content:url('assets/emerald-buttons-v248/home.webp');object-fit:contain}
+
+body.garden-theme #game#game:not(.clear-screen) nav #home img{content:url('assets/emerald-home-v250/home.webp');object-fit:contain}
+
+/* v251: steady banner; pulse only the lettering of the new artwork. */
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{content:url('assets/upgrade-blink-v253/ready.webp');animation:none!important;filter:drop-shadow(0 4px 5px #0005) drop-shadow(0 9px 13px #0006)!important}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-status-art::after{content:'';position:absolute;left:0;bottom:0;width:100%;aspect-ratio:1344/299;background:url('assets/upgrade-blink-v253/ready.webp') center/100% 100% no-repeat;clip-path:inset(28% 15% 30% 24%);pointer-events:none;animation:upgrade-text-blink 1.6s ease-in-out infinite}
+@keyframes upgrade-text-blink{0%,100%{filter:brightness(1);opacity:0}50%{filter:brightness(1.65) saturate(.5);opacity:1}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game:not(.clear-screen) .stats .blue-status-art::after{animation:none!important;opacity:0}}
+/* v252: alternate the original and lit banner images. */
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-status-art::after{display:none!important;animation:none!important}
+body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:upgrade-art-alternate 1.6s steps(1,end) infinite!important}
+@keyframes upgrade-art-alternate{0%,100%{content:url('assets/upgrade-panel-v217/upgrade-ready.webp')}50%{content:url('assets/upgrade-blink-v253/ready.webp')}}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{animation:none!important}}
+
+/* v254: supplied gold logo and subtle navigation transparency. */
+body.garden-theme #game#game header h1 img,body.garden-theme #welcome h1 img{content:url('assets/logo-v257/logo.webp');object-fit:contain}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,#hint,#home) img{opacity:.92}
+
+/* v256: larger logo and 10% transparent surrounding gameplay UI. */
+body.garden-theme #game#game:not(.clear-screen) header h1{width:66%;height:29.7cqw;left:-2%;top:6.15cqw}
+body.garden-theme #game#game:not(.clear-screen) header h1 img,
+body.garden-theme #game#game:not(.clear-screen) #settings img,
+body.garden-theme #game#game:not(.clear-screen) #garden-help img,
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open,
+body.garden-theme #game#game:not(.clear-screen) .stats,
+body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,#hint,#home) img{opacity:.9}
+/* v258: darken only the gameplay forest backdrop by 30%. */
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)){
+ background-image:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url('assets/moss-ui-v1/forest-background.jpg');
+}
