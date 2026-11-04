@@ -1,0 +1,20 @@
+.gift-dialog{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;overflow:auto;background:#66d7dd url('assets/daily-gift-v279/background.jpg') center/cover no-repeat;color:#042d24}.gift-dialog::backdrop{background:#073c40}.gift-layout{position:relative;width:min(100vw,45dvh);height:100dvh;min-height:600px;margin:auto;container-type:inline-size}.gift-layout img{display:block;width:100%;height:auto}.gift-layout button{padding:0;border:0;background:none;cursor:pointer}.gift-title{position:absolute;left:14%;top:15%;width:72%!important}.gift-close{position:absolute;right:2%;top:15%;width:9%}.gift-welcome{position:absolute;left:5%;top:27%;width:90%!important}.gift-chest{position:absolute;left:14%;top:32%;width:72%!important;height:23%!important;object-fit:contain}.gift-panel{position:absolute;left:3%;top:56%;width:94%}.gift-panel strong{position:absolute;top:53%;font:800 7.5cqw 'User Paperlogy Bold',sans-serif;color:#05241e;line-height:1}.gift-gold{left:26%}.gift-fish{left:75%}.gift-footer{position:absolute;left:6%;top:72%;width:88%!important}.gift-claim{position:absolute;left:17%;top:78%;width:66%}.gift-claim:disabled{opacity:.65;cursor:default}.gift-status{position:absolute;top:89%;width:100%;text-align:center;font:bold 3.5cqw sans-serif;color:#073f32;text-shadow:0 1px 2px white}
+body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open,body #welcome#welcome .daily-rewards-open{background:linear-gradient(#08735c,#003b32)!important;background-image:none!important;color:#fff4d3!important;font-size:clamp(10px,3.3cqw,18px)!important;border:2px solid #f4cf62!important;border-radius:30px!important;text-shadow:0 2px 2px #001d17!important;box-shadow:0 2px 4px #0005!important}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen)){background:#123b2d url('assets/daily-gift-v279/game-background.png') center/cover fixed no-repeat!important}
+body.garden-theme:has(#game:not([hidden]):not(.clear-screen))::before,body.garden-theme:has(#game:not([hidden]):not(.clear-screen))::after{background:none!important;opacity:0!important}
+/* Gift artwork finishing */
+.gift-title,.gift-panel,.gift-claim,.gift-close{filter:drop-shadow(0 4px 5px rgba(0,45,40,.35))}
+.gift-chest{filter:drop-shadow(0 10px 8px rgba(0,35,30,.6)) drop-shadow(0 3px 2px rgba(0,30,25,.3))}
+.gift-welcome,.gift-footer{filter:drop-shadow(0 2px 3px rgba(0,40,35,.3))}
+.gift-panel strong{top:53%;width:23%;text-align:center;font-size:8cqw;font-weight:900;paint-order:stroke fill;-webkit-text-stroke:1.3px #63360e;filter:drop-shadow(0 2px 1px #49250666);background:linear-gradient(#fffbc1 10%,#ffe456 48%,#ffab12 85%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.gift-panel .gift-gold{left:28%}
+.gift-panel .gift-fish{left:74%;background-image:linear-gradient(#f1ffff 10%,#83f1ff 48%,#12b9eb 85%);-webkit-text-stroke-color:#124e65}
+.gift-status{white-space:pre-line;font-size:calc(3.5cqw + 2pt);line-height:1.45;margin:0;top:89%}
+/* Reward values align with the right edges of the labels in panel-new.png. */
+.gift-panel strong{font-family:'Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;text-align:right;width:25%;letter-spacing:0}
+.gift-panel .gift-gold{left:auto;right:52.5%}
+.gift-panel .gift-fish{left:auto;right:13%}
+@font-face{font-family:'Gift Paperlogy ExtraBold';src:url('assets/fonts/Paperlogy-8ExtraBold.ttf') format('truetype');font-style:normal;font-weight:800;font-display:swap}
+.gift-panel strong{font-family:'Gift Paperlogy ExtraBold',sans-serif!important;font-weight:800!important;font-synthesis:none}
+@font-face{font-family:'Gift Paperlogy Black';src:url('assets/user-fonts-paperlogy/Paperlogy-9Black.ttf') format('truetype');font-style:normal;font-weight:900;font-display:swap}
+.gift-panel strong{font-family:'Gift Paperlogy Black',sans-serif!important;font-weight:900!important;font-synthesis:none}

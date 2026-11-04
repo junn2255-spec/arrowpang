@@ -20,8 +20,7 @@ export function addFishingCoins(v,amount){const e=economyState(v);if(!Number.isS
 export function claimAttendance(v,now=Date.now()){
  const e=economyState(v),a=e.attendance,day=rewardDay(now);if(a.last&&dayNumber(day)<=dayNumber(a.last))return {awarded:false};
  a.streak=a.last&&dayNumber(day)-dayNumber(a.last)===1?a.streak+1:1;a.total++;a.last=day;
- const slot=(a.total-1)%7,streakSlot=(a.streak-1)%7+1;let coins=ATTENDANCE[slot],fishing=slot===2?50:slot===6?150:0;
- if(streakSlot===3)coins+=50;if(streakSlot===7){coins+=100;fishing+=50;}v.coins+=coins;addFishingCoins(v,fishing);return {awarded:true,coins,fishing,slot};
+ const coins=100,fishing=20;v.coins+=coins;addFishingCoins(v,fishing);return {awarded:true,coins,fishing};
 }
 export function missionStatus(v,now=Date.now()){
  const d=dailyState(v,now),open=!!v.cleared?.['arrowtok-stage-05'];return [

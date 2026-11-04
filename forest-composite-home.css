@@ -66,3 +66,8 @@ body.garden-theme #game.clear-screen #next.upgrade-next-ready{animation:return-w
 #home-panel.forest-composite-home #home-upgrade-actions{pointer-events:none}
 #home-panel.forest-composite-home #home-upgrade-actions #upgrade{pointer-events:auto}
 #home-panel.forest-composite-home #bonus-feed{left:5%;bottom:calc(21.5cqw + 10px + env(safe-area-inset-bottom));width:11%;z-index:35}
+
+/* v289: keep artwork and controls on one portrait coordinate system. */
+#home-panel.forest-composite-home .home-wrap{width:min(100vw,560px,calc(100dvh * 9 / 16))!important;max-width:none!important;padding:0!important;container-type:inline-size}
+#home-panel.forest-composite-home #home-scene{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;overflow:hidden!important}
+#home-panel.forest-composite-home .forest-scene-world{width:100%;height:100%;container-type:inline-size}
