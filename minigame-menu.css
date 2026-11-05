@@ -29,3 +29,25 @@ body.minigame-menu-open main{visibility:hidden!important}
 #minigame-menu .menu-back-bottom{left:16%;top:83.7%;width:68%;height:7.5%}
 /* Keep the illustrated menu single; never repeat its controls as a backdrop. */
 #minigame-menu{background:#052f3c!important}
+
+.minigame-menu-art{container-type:inline-size}
+#minigame-menu .menu-lock{display:grid;place-items:center;text-align:center;color:#fff9d9;font:bold 3.5cqw/1.3 system-ui;background:#074b46;border:2px solid #ffcb5f;border-radius:2em;box-sizing:border-box;padding:0 1%}
+#minigame-menu .menu-lock.unlocked{background:transparent url("assets/minigame-moon-v268/play.webp") center/contain no-repeat;border:0}
+/* Meadow menu: positions follow the supplied artwork. */
+#minigame-menu{background:#92d88a!important}
+.minigame-menu-art{width:min(100vw,56.407186dvh);aspect-ratio:942/1670}
+#minigame-menu .menu-back-top{left:4.5%;top:6%;width:12%;height:6.5%}
+#minigame-menu .menu-mole{left:10.5%;top:22.7%;width:79%;height:23.8%}
+#minigame-menu .menu-fish{left:10.5%;top:49.5%;width:79%;height:24.2%}
+#minigame-menu .menu-back-bottom{left:13%;top:78.8%;width:74%;height:9.4%}
+#minigame-menu .menu-lock{left:54%;width:32%;height:5.1%;padding:0;border:0;box-shadow:none}
+#minigame-menu .mole-lock{top:40%}
+#minigame-menu .fish-lock{top:67.3%}
+#minigame-menu .menu-lock.unlocked{background:#00612d url('assets/minigame-meadow-v1/play.png') center/100% 100% no-repeat;border-radius:999px;clip-path:inset(4.5% 1% round 999px)}
+/* Preserve the supplied play artwork's 3:1 proportions. */
+#minigame-menu .menu-lock.unlocked {
+ height:auto;aspect-ratio:2172/724;
+ background-size:contain;
+}
+#minigame-menu .mole-lock.unlocked{top:39.5%}
+#minigame-menu .fish-lock.unlocked{top:66.8%}

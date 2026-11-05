@@ -23,7 +23,7 @@ export function claimAttendance(v,now=Date.now()){
  const coins=100,fishing=20;v.coins+=coins;addFishingCoins(v,fishing);return {awarded:true,coins,fishing};
 }
 export function missionStatus(v,now=Date.now()){
- const d=dailyState(v,now),open=!!v.cleared?.['arrowtok-stage-05'];return [
+ const d=dailyState(v,now),open=!!v.cleared?.['arrowtok-stage-02'];return [
   {id:'puzzle',name:'퍼즐 1회 클리어',done:d.puzzle>=1,coins:40},
   {id:'combo',name:'같은 색 화살표 3연속 탈출',done:d.combo>=1,coins:30},
   {id:'play',name:open?'두더지 클리어 또는 물고기 3마리':'퍼즐 2회 클리어',done:open?(d.mole>=1||d.fish>=3):d.puzzle>=2,coins:40},

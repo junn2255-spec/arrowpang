@@ -21,19 +21,6 @@ let pending=false;const observer=new MutationObserver(()=>{if(!pending){pending=
 document.addEventListener('garden-audio-change',sync);
 
 
-// Show the combined touch hint only when entering stage one.
-(()=>{
- const game=document.getElementById('game'),stage=document.getElementById('stage'),slot=game.querySelector('.board-slot');
- const hint=new Image();hint.id='stage-one-touch-hint';hint.alt='화살표를 터치해서 밖으로 빼내세요!';hint.src='assets/touch-bubble-v1/touch-bubble.webp';hint.draggable=false;
- let eligible=false,timer;
- function update(){
-  const active=!game.hidden&&!game.classList.contains('clear-screen')&&parseInt(stage.textContent,10)===1;
-  if(active===eligible)return;eligible=active;clearTimeout(timer);hint.remove();
-  if(active){slot.append(hint);timer=setTimeout(()=>hint.remove(),3000);}
- }
- new MutationObserver(update).observe(game,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['hidden','class']});update();
-})();
-
 // Upgrade readiness is derived from persisted coins and the next house purchase.
 const topStats=document.querySelector('#game .stats');
 topStats.children[1].querySelector('span').textContent='보유 코인';

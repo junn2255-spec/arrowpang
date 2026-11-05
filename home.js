@@ -1,6 +1,6 @@
 import{createHomeHandGuide}from'./home-hand-guide.js?v=290';
 import {installSeasideVilla} from './seaside-villa.js?v=197';
-import{rewardImpact,clearRewardImpact}from'./reward-impact.js';
+import{rewardImpact,clearRewardImpact,rewardTargetRect}from'./reward-impact.js';
 import{renderRewardGuidance}from'./reward-guidance.js';
 import{HOME_MAX,hasHomeFeature,nextYard,ownedHouseFrame}from'./home-ownership.js';
 import{HomeInterior}from'./home-interior.js';
@@ -22,9 +22,28 @@ export function initHome({capture,restore,isBusy,cancelEffects,onHomeIntro=()=>{
  async function feed(){if(feeding||busy||savingError||!viewOpen)return;feeding=true;syncTreat();const ticket=generation;try{const used=await store.feedTreat();if(used&&viewOpen&&ticket===generation){const flight=bonusFX.feed($('bonus-feed'),$('home-scene').querySelector('.dog-actor'));syncTreat();const arrived=await flight;if(!arrived||!viewOpen||ticket!==generation)return;life.feed?.();$('home-status').textContent='강아지가 간식을 맛있게 먹었어요!';}}catch(e){fail(e);}finally{if(ticket===generation){feeding=false;if(viewOpen)syncTreat();}}}
  let applyingDecor=false;
  const inventory=document.createElement('dialog');inventory.className='bonus-inventory';inventory.setAttribute('aria-label','보너스 장식');document.body.append(inventory);
- function syncAvailableEffects(){$('upgrade').classList.toggle('home-action-ready',!$('upgrade').disabled);}
+ let noticeTimer;
+ function hideUpgradeNotice(){
+  clearTimeout(noticeTimer);
+  const notice=$('home-upgrade-notice');
+  if(notice)notice.hidden=true;
+ }
+ function showUpgradeNotice(next,coins){
+  const notice=$('home-upgrade-notice');
+  notice.textContent='다음 업그레이드는 '+next.name+'입니다.\n'+'필요한 코인은 '+next.cost.toLocaleString('ko-KR')+'코인입니다.';
+  notice.hidden=false;
+  clearTimeout(noticeTimer);
+  noticeTimer=setTimeout(hideUpgradeNotice,4000);
+ }
  function ensureInventoryButton(){
-  $('bonus-inventory-toggle')?.remove();let actions=$('home-upgrade-actions');if(!actions){actions=document.createElement('div');actions.id='home-upgrade-actions';$('upgrade').before(actions);actions.append($('upgrade'));}
+  $('bonus-inventory-toggle')?.remove();
+  let actions=$('home-upgrade-actions');
+  if(!actions){actions=document.createElement('div');actions.id='home-upgrade-actions';$('upgrade').before(actions);}
+  if(!actions.contains($('home-back')))actions.append($('upgrade'),$('home-back'));
+  if(!$('home-upgrade-notice')){
+   const notice=document.createElement('p');notice.id='home-upgrade-notice';notice.hidden=true;
+   notice.setAttribute('role','status');actions.append(notice);
+  }
  }
  function rockBroken(rock){const s=snapshot(),ticket=generation;if(s.index<6)return;bonusFX.preload();store.rockBonus({stage:s.stageKey,stageNumber:s.index+1,rockId:rock.id,run:s.runId}).then(item=>{if(item&&ticket===generation&&!viewOpen&&!capture().game.won)bonusFX.show($('board'),rock,s.level.n,item);}).catch(fail);}
  const transition=value=>{transitionPending=value;$('next').disabled=value;};
@@ -32,11 +51,11 @@ export function initHome({capture,restore,isBusy,cancelEffects,onHomeIntro=()=>{
  function fail(e){savingError=true;const message='저장하지 못했어요: '+e.message;$('home-status').textContent=message;$('reward-note').textContent=message;}
  const later=(fn,ms)=>{const g=generation;timers.push(setTimeout(()=>{if(g===generation)fn();},ms));};
  const upgradeFX=new HomeUpgradeFX($('home-scene'),{reduced:()=>preferences.reduced});
- function clear(){handGuide.close();villa?.dismiss({silent:true});clearRewardImpact();interior.close({silent:true});bonusFX.clear();feeding=false;inventory?.close();$('home-scene').classList.add('bonus-paused');transition(false);upgradeFX.cancel();if(pendingIntro){store.settleHomeIntro(pendingIntro,false).catch(fail);pendingIntro=null;}birds.stop();life.stop();$('coin-stars')?.replaceChildren();generation++;timers.forEach(clearTimeout);timers=[];const wasBusy=busy;busy=false;$('coin-fly').hidden=true;$('coin-fly').classList.remove('arrived');$('reward-panel').hidden=true;homeAudio.stop();$('home-scene').classList.remove('repairing');try{$('wallet').textContent=store.read().coins;if(wasBusy&&viewOpen)paint();}catch(e){fail(e);}}
+ function clear(){hideUpgradeNotice();handGuide.close();villa?.dismiss({silent:true});clearRewardImpact();interior.close({silent:true});bonusFX.clear();feeding=false;inventory?.close();$('home-scene').classList.add('bonus-paused');transition(false);upgradeFX.cancel();if(pendingIntro){store.settleHomeIntro(pendingIntro,false).catch(fail);pendingIntro=null;}birds.stop();life.stop();$('coin-stars')?.replaceChildren();generation++;timers.forEach(clearTimeout);timers=[];const wasBusy=busy;busy=false;$('coin-fly').hidden=true;$('coin-fly').classList.remove('arrived');$('reward-panel').hidden=true;homeAudio.stop();$('home-scene').classList.remove('repairing');try{$('wallet').textContent=store.read().coins;if(wasBusy&&viewOpen)paint();}catch(e){fail(e);}}
  function persist(){const s=snapshot();return store.save(s).catch(fail);}
  function wallet(){const v=store.read();$('wallet').textContent=v.coins;$('home-wallet').textContent=v.coins;$('home-panel').style.setProperty('--forest-wallet-size',(String(v.coins).length>5?3.1:String(v.coins).length>4?3.8:4.8)+'cqw');const next=v.home<HOME_MAX?nextYard(v):interiorState(v).next;$('next-reward-preview')?.remove();renderRewardGuidance($('home-cost'),next,v.coins);return v;}
  function paint(){
-  const v=wallet();syncVillaEntry(v);const stage=v.home,nextCost=stage<HOME_MAX?nextYard(v)?.cost:interiorState(v).next?.cost;$('upgrade').disabled=busy||nextCost===undefined||v.coins<nextCost||savingError;$('upgrade').setAttribute('aria-label',stage<HOME_MAX?'다음 집 건설':interiorState(v).next?'실내 건설: '+interiorState(v).next.name:'집 건설 완료');
+  const v=wallet();syncVillaEntry(v);const stage=v.home,nextCost=stage<HOME_MAX?nextYard(v)?.cost:interiorState(v).next?.cost;$('upgrade').disabled=busy||nextCost===undefined||savingError;$('upgrade').classList.toggle('home-action-ready',!$('upgrade').disabled&&v.coins>=nextCost);hideUpgradeNotice();$('upgrade').setAttribute('aria-label',stage<HOME_MAX?'다음 집 건설':interiorState(v).next?'실내 건설: '+interiorState(v).next.name:'집 건설 완료');
   $('home-panel').classList.add('home10-panel');let label=$('home-stage');if(!label){label=document.createElement('p');label.id='home-stage';label.className='home-stage';$('home-scene').before(label);}label.innerHTML='<span class="home-progress-badge">나의 집 <b>'+stage+'</b><small>/10</small></span>'+(stage===HOME_MAX?'<span class="interior-progress-badge">실내 '+interiorState(v).built+'/8</span>':'');
   const A='assets/home10/',sceneFile='assets/forest-fantasy-v206/stage-'+String(stage-1).padStart(2,'0')+'.jpg';
   $('home-panel').classList.add('forest-composite-home');$('home-panel').classList.toggle('forest-night',stage===HOME_MAX);$('home-panel').style.setProperty('--forest-scene',`url('${sceneFile}')`);
@@ -44,13 +63,13 @@ export function initHome({capture,restore,isBusy,cancelEffects,onHomeIntro=()=>{
   const inside=interiorState(v);parts.push(inside.unlocked.entry?'<button id="interior-enter" type="button" aria-label="집안으로"><img src="assets/interior/ui-enter-interior.webp" alt="집안으로"></button>':'');
   parts.push('</div>');
   $('bonus-feed')?.remove();const treat=document.createElement('button');treat.id='bonus-feed';treat.className='bonus-treat-control';treat.type='button';treat.innerHTML='<img src="assets/bonus/treat.webp" alt="간식 주기">';$('home-panel').querySelector('.home-wrap').append(treat);
-  birds.stop();life.stop();$('home-scene').classList.toggle('bonus-paused',!viewOpen||document.hidden);$('home-scene').classList.remove('repairing');$('home-scene').innerHTML=parts.join('');if(viewOpen&&!document.hidden){life.start($('home-scene').querySelector('.forest-scene-world'),stage);birds.start($('home-scene'),preferences.reduced);}$('home-finished').hidden=true;$('home-back').disabled=false;ensureInventoryButton();syncAvailableEffects();if($('bonus-feed')){$('bonus-feed').onclick=feed;syncTreat();}if($('interior-enter'))$('interior-enter').onclick=()=>{if(!busy&&!feeding)interior.show();};
+  birds.stop();life.stop();$('home-scene').classList.toggle('bonus-paused',!viewOpen||document.hidden);$('home-scene').classList.remove('repairing');$('home-scene').innerHTML=parts.join('');if(viewOpen&&!document.hidden){life.start($('home-scene').querySelector('.forest-scene-world'),stage);birds.start($('home-scene'),preferences.reduced);}$('home-finished').hidden=true;$('home-back').disabled=false;ensureInventoryButton();if($('bonus-feed')){$('bonus-feed').onclick=feed;syncTreat();}if($('interior-enter'))$('interior-enter').onclick=()=>{if(!busy&&!feeding)interior.show();};
  }
  function reward(r,run){
   if(!r.amount){transition(false);wallet();return;}clear();$('reward-panel').hidden=false;$('reward-amount').textContent='획득 +'+r.amount+' 코인';$('reward-total').textContent='총 '+r.total+' 코인';const earned=null;$('reward-note').dataset.fishing=String(r.fishingAmount||0);$('reward-note').textContent=earned?'새 보상: '+earned.name+'! 나의집에서 확인해 보세요.':(r.fishingAmount?'낚시 코인 +'+r.fishingAmount+'개 · 장비를 업그레이드해 보세요.':r.milestone?'5단계 달성 보너스 500코인 포함!':'코인은 나의 집을 고치는 데 쓸 수 있어요.');$('wallet').textContent=r.total-r.amount;
   // Persisted reward precedes cosmetics. Cancellation always restores the saved wallet.
   later(()=>{
-   const w=globalThis.innerWidth||390,h=globalThis.innerHeight||844,size=Math.min(w*.20,100),x=w-size-20,y=Math.max(36,h*.10);const target=$('reward-panel').querySelector('.clear-amount strong')||$('reward-panel'),rect=target.getBoundingClientRect(),dx=rect.left+rect.width/2-size/2-x,dy=rect.top+rect.height/2-size/2-y;
+   const w=globalThis.innerWidth||390,h=globalThis.innerHeight||844,size=Math.min(w*.20,100),x=w-size-20,y=Math.max(36,h*.10);const rect=rewardTargetRect(),dx=rect.left+rect.width/2-size/2-x,dy=rect.top+rect.height/2-size/2-y;
    const coin=$('coin-fly');coin.src='assets/garden-ui-v1/03-coin-icon.webp';coin.style.left=x+'px';coin.style.top=y+'px';coin.style.width=size+'px';coin.style.height=size+'px';coin.style.setProperty('--coin-dx',dx+'px');coin.style.setProperty('--coin-dy',dy+'px');coin.hidden=false;coin.classList.remove('flying');void coin.offsetWidth;coin.classList.add('flying');homeAudio.play('coin-reward-impact');rewardImpact(preferences.reduced);
    const starLayer=$('coin-stars');if(starLayer&&!preferences.reduced){for(let i=0;i<12;i++){const star=document.createElement('img');star.src='assets/ui/sparkle-1.webp';star.className='coin-tail-star';star.style.left=(x+size/2)+'px';star.style.top=(y+size/2)+'px';star.style.setProperty('--coin-dx',dx+'px');star.style.setProperty('--coin-dy',dy+'px');star.style.setProperty('--star-delay',(180+i*35)+'ms');star.style.width=(i%2?13:22)+'px';starLayer.append(star);}}
   },350);
@@ -65,7 +84,7 @@ export function initHome({capture,restore,isBusy,cancelEffects,onHomeIntro=()=>{
  $('home').addEventListener('click',openHome);
  $('home-back').addEventListener('click',()=>{const upgraded=$('home-back').classList.contains('home-return-ready');$('home-back').classList.remove('home-return-ready');clear();viewOpen=false;homeAudio.leave();$('home-panel').hidden=true;$('game').hidden=false;if(upgraded&&capture().game.won)$('next').classList.add('upgrade-next-ready');sound.play('menu');});
  $('next').addEventListener('click',()=>{$('next').classList.remove('upgrade-next-ready');});
- $('upgrade').addEventListener('click',async()=>{if(busy||feeding||applyingDecor||savingError)return;handGuide.buying();busy=true;const ticket=generation;let expected,upgradeName;try{expected=store.read().home;upgradeName=(expected<HOME_MAX?nextYard(store.read()):interiorState(store.read()).next)?.name??'';paint();const r=await store.buy(expected,interiorState(store.read()).built);if(ticket!==generation){busy=false;if(viewOpen)paint();return;}if(!r.ok){busy=false;paint();return;}try{homeAudio.play('coin-spend');}catch{}wallet();if(r.kind==='interior'){upgradeFX.audio.play('hammer',700);upgradeFX.audio.later(()=>upgradeFX.audio.play('complete',1100),750);busy=false;paint();$('home-back').classList.add('home-return-ready');handGuide.completed();$('home-status').textContent=r.name+' 건설 완료!';return;}
+ $('upgrade').addEventListener('click',async()=>{if(busy||feeding||applyingDecor||savingError)return;const progress=store.read();const next=progress.home<HOME_MAX?nextYard(progress):interiorState(progress).next;if(!next)return;if(progress.coins<next.cost){showUpgradeNotice(next,progress.coins);return;}handGuide.buying();busy=true;const ticket=generation;let expected,upgradeName;try{expected=store.read().home;upgradeName=(expected<HOME_MAX?nextYard(store.read()):interiorState(store.read()).next)?.name??'';paint();const r=await store.buy(expected,interiorState(store.read()).built);if(ticket!==generation){busy=false;if(viewOpen)paint();return;}if(!r.ok){busy=false;paint();return;}try{homeAudio.play('coin-spend');}catch{}wallet();if(r.kind==='interior'){upgradeFX.audio.play('hammer',700);upgradeFX.audio.later(()=>upgradeFX.audio.play('complete',1100),750);busy=false;paint();$('home-back').classList.add('home-return-ready');handGuide.completed();$('home-status').textContent=r.name+' 건설 완료!';return;}
   upgradeFX.start({from:expected,to:r.state.home,visualFrame:ownedHouseFrame(r.state),swap:()=>{if(ticket===generation&&viewOpen){paint();life.celebrate?.();const stage=r.state.home;if(r.feature==='roof')life.audio.play('clothes',{cap:700});if(r.feature==='dog')life.audio.play('bark',{cap:850});const target=$('home-scene').querySelector('.forest-scene-background');target?.classList.add('new-part');}},onDone:cancelled=>{busy=false;if(viewOpen){paint();if(!cancelled){$('home-back').classList.add('home-return-ready');handGuide.completed();$('home-status').textContent=(upgradeName?upgradeName+'\n':'')+'업그레이드됐어요!';}}}});
  }catch(e){busy=false;fail(e);$('upgrade').disabled=true;$('home-back').disabled=false;}});
  try{const v=wallet();/* Interrupted introductions never force a later page into the house. */store.settleHomeIntro(null,false).catch(fail);persist();}catch(e){fail(e);}

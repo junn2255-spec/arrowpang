@@ -19,7 +19,7 @@ export class SpecialEffects{
  for(const q of e.removedRocks??[]){this.beam(x,y,r.left+(q.x+.5)*cell,r.top+(q.y+.5)*cell);this.vanish(board,q,'rock',200);}for(const q of e.removedBlocks??[]){this.beam(x,y,r.left+(q.x+.5)*cell,r.top+(q.y+.5)*cell);this.vanish(board,q,'arrow',180);}if(e.removedRocks?.length)this.later(()=>this.play('rock',.3),220);}
  combo(board,tier,amount=0,offset=0){
   if(!amount||document.getElementById('next')?.hidden===false||document.getElementById('game')?.hidden)return;if(this.coinActive){this.coinQueue.push({board,tier,amount,offset});return;}this.coinActive=true;
-  const r=board.getBoundingClientRect(),width=Math.min(innerWidth-16,Math.max(220,r.width*.98),500),height=width*.57,x=Math.max(8,Math.min(innerWidth-width-8,r.left+(r.width-width)/2)),y=Math.max(12,r.top-height*.62+offset);
+  const r=board.getBoundingClientRect(),width=Math.min(innerWidth-16,Math.max(220,r.width*.98),500)*.9,height=width*.57,x=Math.max(8,Math.min(innerWidth-width-8,r.left+(r.width-width)/2)),y=Math.max(12,r.top-height*.82+offset);
   this.play('coin-bonus-v2',.4);const n=this.node('special-coin coin-award',x,y,width);if(!n){this.coinActive=false;return;}
   n.style.setProperty('--coin-award-height',height+'px');n.setAttribute('role','status');n.setAttribute('aria-label',(tier?tier+'콤보 ':'')+amount+'코인 획득');coinAwardArt(n,amount);
   const animation=n.animate(preferences.reduced?[{opacity:1},{opacity:1,offset:.65},{opacity:0}]:[{opacity:0,transform:'translateY(9px) scale(.85)'},{opacity:1,transform:'translateY(0) scale(1)',offset:.12},{opacity:1,transform:'translateY(-4px) scale(1)',offset:.7},{opacity:0,transform:'translateY(-28px) scale(1.03)'}],{duration:preferences.reduced?500:1400,fill:'forwards',easing:'ease-out'});

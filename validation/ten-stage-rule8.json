@@ -1,0 +1,82 @@
+[
+  {
+    "stage": 1,
+    "arrows": 32,
+    "moves": 23,
+    "target": 2,
+    "specials": 2,
+    "removed": 41
+  },
+  {
+    "stage": 2,
+    "arrows": 33,
+    "moves": 4,
+    "target": 2,
+    "specials": 0,
+    "removed": 18
+  },
+  {
+    "stage": 3,
+    "arrows": 33,
+    "moves": 32,
+    "target": 3,
+    "specials": 5,
+    "removed": 73
+  },
+  {
+    "stage": 4,
+    "arrows": 35,
+    "moves": 27,
+    "target": 3,
+    "specials": 2,
+    "removed": 43
+  },
+  {
+    "stage": 5,
+    "arrows": 36,
+    "moves": 24,
+    "target": 3,
+    "specials": 3,
+    "removed": 44
+  },
+  {
+    "stage": 6,
+    "arrows": 37,
+    "moves": 35,
+    "target": 4,
+    "specials": 3,
+    "removed": 53
+  },
+  {
+    "stage": 7,
+    "arrows": 38,
+    "moves": 6,
+    "target": 3,
+    "specials": 2,
+    "removed": 22
+  },
+  {
+    "stage": 8,
+    "arrows": 39,
+    "moves": 72,
+    "target": 3,
+    "specials": 5,
+    "removed": 86
+  },
+  {
+    "stage": 9,
+    "arrows": 39,
+    "moves": 34,
+    "target": 4,
+    "specials": 4,
+    "removed": 55
+  },
+  {
+    "stage": 10,
+    "arrows": 41,
+    "moves": 66,
+    "target": 3,
+    "specials": 6,
+    "removed": 90
+  }
+]

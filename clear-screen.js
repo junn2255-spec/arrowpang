@@ -10,6 +10,35 @@ export function initClearScreen(){
  const home=$('home'),nav=home.parentElement,header=game.querySelector('header');
  let active=false;
 
+ const frame=document.createElement('iframe');
+ frame.id='mission-one-clear';
+ frame.title='1스테이지 미션 클리어';
+ frame.hidden=true;
+ Object.assign(frame.style,{position:'fixed',inset:'0',width:'100%',height:'100%',border:'0',zIndex:'78',background:'#161341'});
+ let showingStage=0;
+ document.body.append(frame);
+ function syncFrame(){
+  const stage=parseInt($('stage').textContent,10);
+  if(!active || game.hidden || !stage){
+   frame.hidden=true;
+   if(showingStage)frame.removeAttribute('src');
+   showingStage=0;
+   return;
+  }
+  if(stage!==showingStage){
+   showingStage=stage;
+   frame.title=stage+'스테이지 미션 클리어';
+   frame.src='clear-preview/index.html?'+new URLSearchParams({game:'1',stage,reward:rewardNumber($('reward-amount').textContent),total:$('wallet').textContent});
+  }
+  frame.hidden=false;
+  const doc=frame.contentDocument,amount=doc?.querySelector('.amount'),wallet=doc?.querySelector('.wallet');
+  if(amount)amount.textContent='+'+rewardNumber($('reward-amount').textContent);
+  if(wallet){wallet.textContent=$('wallet').textContent;wallet.setAttribute('aria-label','보유 코인 '+wallet.textContent);}
+ }
+ frame.addEventListener('load',syncFrame);
+ window.addEventListener('message',event=>{
+  if(event.source===frame.contentWindow && event.origin===location.origin && event.data==='clear-menu' && !frame.hidden)document.dispatchEvent(new Event('mission-clear-menu'));
+ });
  function gradientNumber(el,text,id,bottom,width,top='#fffbc3',middle='#ffe962'){
  el.replaceChildren();const measure=document.createElement('span');measure.className='reward-number-measure';measure.textContent=text;el.append(measure);
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','reward-gradient-number');svg.setAttribute('aria-hidden','true');
@@ -17,8 +46,8 @@ export function initClearScreen(){
  svg.querySelector('text').textContent=text;el.append(svg);
  }
  function numbers(){if(!active)return;const value=rewardNumber($('reward-amount').textContent),coins=$('wallet').textContent||'0';gradientNumber(amount.querySelector('strong'),'+'+value,'earned-fill','#ff9700',8);amount.style.setProperty('--number-size',numericSize(value,42)+'px');total.replaceChildren(document.createTextNode('현재 보유 '));const held=document.createElement('strong');gradientNumber(held,coins,'held-fill','#142653',5,'#c3f36b','#72bd88');total.append(held,document.createTextNode(' 코인'));total.style.setProperty('--number-size',numericSize(coins,23)+'px');$('wallet').style.setProperty('--clear-wallet-size',numericSize(coins,32,12)+'px');}
- function sync(){const on=!$('next').hidden;const parent=on?nav:header;if(home.parentElement!==parent)parent.append(home);$('hint').hidden=on;if(on!==active){active=on;game.classList.toggle('clear-screen',on);for(const r of replacements)r.el.setAttribute('src',on?r.clear:r.src);art.setAttribute('src',on?'assets/clear/03-reward-panel.webp':oldArt);$('hint').disabled=on;if(!on){amount.querySelector('strong').textContent='';total.textContent='';$('wallet').style.removeProperty('--clear-wallet-size');}}numbers();}
- const observer=new MutationObserver(sync);observer.observe($('next'),{attributes:true,attributeFilter:['hidden']});observer.observe($('wallet'),{childList:true,characterData:true,subtree:true});observer.observe($('reward-amount'),{childList:true,characterData:true,subtree:true});sync();
+ function sync(){const on=!$('next').hidden;const parent=on?nav:header;if(home.parentElement!==parent)parent.append(home);$('hint').hidden=on;if(on!==active){active=on;game.classList.toggle('clear-screen',on);for(const r of replacements)r.el.setAttribute('src',on?r.clear:r.src);art.setAttribute('src',on?'assets/clear/03-reward-panel.webp':oldArt);$('hint').disabled=on;if(!on){amount.querySelector('strong').textContent='';total.textContent='';$('wallet').style.removeProperty('--clear-wallet-size');}}numbers();syncFrame();}
+ const observer=new MutationObserver(sync);observer.observe(game,{attributes:true,attributeFilter:['hidden']});observer.observe($('next'),{attributes:true,attributeFilter:['hidden']});observer.observe($('wallet'),{childList:true,characterData:true,subtree:true});observer.observe($('reward-amount'),{childList:true,characterData:true,subtree:true});sync();
  return{sync,disconnect:()=>observer.disconnect()};
 }
 if(typeof document!=='undefined')initClearScreen();

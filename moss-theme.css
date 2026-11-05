@@ -35,10 +35,10 @@ body.garden-theme #game#game:not(.clear-screen) .block[data-dir='U']:not([data-r
 body.garden-theme #game#game:not(.clear-screen) .block[data-dir='D']:not([data-rainbow='true']) span{background-image:url('assets/final-puzzle-v214/arrow-down.webp')!important}
 body.garden-theme #game#game:not(.clear-screen) .block[data-dir='L']:not([data-rainbow='true']) span{background-image:url('assets/final-puzzle-v214/arrow-left.webp')!important}
 body.garden-theme #game#game:not(.clear-screen) .block[data-dir='R']:not([data-rainbow='true']) span{background-image:url('assets/final-puzzle-v214/arrow-right.webp')!important}
-body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='U'] span{background-image:url('assets/moss-ui-v1/rainbow-up.webp')!important}
-body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='D'] span{background-image:url('assets/moss-ui-v1/rainbow-down.webp')!important}
-body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='L'] span{background-image:url('assets/moss-ui-v1/rainbow-left.webp')!important}
-body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='R'] span{background-image:url('assets/moss-ui-v1/rainbow-right.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='U'] span{background-image:url('assets/block-fit-v245/rainbow-up.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='D'] span{background-image:url('assets/block-fit-v245/rainbow-down.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='L'] span{background-image:url('assets/block-fit-v245/rainbow-left.webp')!important}
+body.garden-theme #game#game:not(.clear-screen) .block[data-rainbow='true'][data-dir='R'] span{background-image:url('assets/block-fit-v245/rainbow-right.webp')!important}
 body.garden-theme #game#game:not(.clear-screen) .rotation-zone img{content:url('assets/rotation-beige-v215/rotation-90.webp')}
 
 /* Phones use the complete screen width. Tablets retain the original portrait column. */
@@ -114,7 +114,7 @@ body.garden-theme #game:not(.clear-screen) .blue-wallet,
 body.garden-theme #game:not(.clear-screen) .blue-upgrade{filter:drop-shadow(0 4px 5px #0005) drop-shadow(0 9px 13px #0006)}
 body.garden-theme #game:not(.clear-screen) header h1 img{filter:drop-shadow(0 5px 5px #0006) drop-shadow(0 10px 15px #0008)}
 body.garden-theme #game#game:not(.clear-screen) .board-slot{filter:none}
-body.garden-theme #game#game:not(.clear-screen) .board-slot::before{filter:drop-shadow(0 5px 9px #0005);clip-path:none}
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{filter:brightness(1.10) drop-shadow(0 5px 9px #0005);clip-path:none}
 /* Retouch only the inner floor edge; preserve the original outer stone rim. */
 body.garden-theme #game#game:not(.clear-screen) .board-slot::after{content:none}
 body.garden-theme:has(#game:not([hidden]):not(.clear-screen)) main{overflow:visible;box-shadow:none}
@@ -245,3 +245,7 @@ body.garden-theme #game#game:not(.clear-screen) .daily-rewards-open{filter:brigh
 body.garden-theme #game#game:not(.clear-screen) .stats[data-upgrade-ready='true'] .blue-upgrade{bottom:auto;top:calc(4% + 22.66cqw)}
 /* v265: larger shortage number aligned to the baked label baseline. */
 body.garden-theme #game#game:not(.clear-screen) .stats #moves{left:69.5%;top:calc(100% - 17.5cqw);width:14%;height:11cqw}
+
+/* Original game: 7 by 7 board. */
+body.garden-theme #game#game:not(.clear-screen) .board-slot::before{background-image:url('assets/board-7x7/board.webp')}
+body.garden-theme #game#game:not(.clear-screen) #board{left:7.05%;top:6.8%;width:86.5%;height:87.4%}

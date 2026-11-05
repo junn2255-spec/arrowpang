@@ -27,12 +27,12 @@ export function createHomeHandGuide(panel, upgrade, back) {
   new MutationObserver(() => { if (panel.hidden) { active = false; hide(); } }).observe(panel, {attributes:true, attributeFilter:['hidden']});
   return {
     open() {
-      if (upgrade.disabled) return;
+      if (!upgrade.classList.contains('home-action-ready')) return;
       try { if (localStorage.getItem(key)) return; localStorage.setItem(key, '1'); } catch {}
       active = true; show(upgrade);
     },
     buying() { hide(); },
-    completed() { if (active && !panel.hidden) show(upgrade.disabled ? back : upgrade); },
+    completed() { if (active && !panel.hidden) show(upgrade.classList.contains('home-action-ready') ? upgrade : back); },
     close() { active = false; hide(); }
   };
 }

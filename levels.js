@@ -1,3 +1,4 @@
+import {GEM_STAGES,makeWave} from './gem-game.js';
 export const LEVELS=[
   {
     "n": 6,
@@ -9181,3 +9182,28 @@ export const LEVELS=[
     "specials": []
   }
 ];
+
+// Expand the original puzzles without changing their internal routes.
+for (const level of LEVELS) {
+ level.n=7;
+ let id=Math.max(...level.blocks.map(b=>b.id))+1;
+ for(let y=0;y<6;y++) level.blocks.push({id:id++,x:6,y,d:'R'});
+ for(let x=0;x<7;x++) level.blocks.push({id:id++,x,y:6,d:'D'});
+ level.layoutVersion='original-7x7';
+ const occupied=new Set([...level.blocks,...(level.rocks??[]),...(level.zones??[])].map(q=>q.x+','+q.y));
+ const specials=[...(level.specials??[])];
+ for(const kind of ['bomb','key','bomb','key']) {
+  const desired=kind==='bomb'?2:2;
+  if(specials.filter(q=>q.kind===kind).length>=desired) continue;
+  const candidates=[];
+  for(let y=0;y<6;y++)for(let x=0;x<6;x++) if(!occupied.has(x+','+y)&&!specials.some(q=>q.x===x&&q.y===y)) {
+   const score=level.blocks.filter(b=>(b.d==='R'&&b.y===y&&b.x<x)||(b.d==='L'&&b.y===y&&b.x>x)||(b.d==='D'&&b.x===x&&b.y<y)||(b.d==='U'&&b.x===x&&b.y>y)).length;
+   candidates.push({x,y,score});
+  }
+  candidates.sort((a,b)=>b.score-a.score);
+  if(candidates.length) specials.push({id:'extra-'+kind+'-'+specials.length,kind,x:candidates[0].x,y:candidates[0].y});
+ }
+ level.specials=specials;
+}
+
+GEM_STAGES.forEach((config,i)=>Object.assign(LEVELS[i],makeWave(config),{n:8,gemMission:true,gemConfig:config}));

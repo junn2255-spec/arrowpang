@@ -1,10 +1,22 @@
 let layer=null,animations=[];
 export function clearRewardImpact(){for(const a of animations)a.cancel();animations=[];layer?.remove();layer=null;}
+export function rewardTargetRect(){
+ const frame=document.getElementById('mission-one-clear');
+ if(frame && !frame.hidden){
+  const marker=frame.contentDocument?.getElementById('chest-target');
+  const bounds=frame.getBoundingClientRect();
+  if(marker){const point=marker.getBoundingClientRect();return new DOMRect(bounds.left+point.left,bounds.top+point.top,1,1);}
+  const heroHeight=Math.min(bounds.height*.61,bounds.width*1.06);
+  return new DOMRect(bounds.left+bounds.width/2,bounds.top+bounds.height*.48+heroHeight*.21,1,1);
+ }
+ const panel=document.getElementById('reward-panel');
+ return (panel?.querySelector('.clear-amount strong')||panel)?.getBoundingClientRect();
+}
 export function rewardImpact(reduced=false){
  clearRewardImpact();if(reduced)return;
  const panel=document.querySelector('#reward-panel'),target=panel?.querySelector('.clear-amount strong')||panel;if(!target)return;
  layer=document.createElement('div');layer.id='reward-impact-layer';layer.setAttribute('aria-hidden','true');Object.assign(layer.style,{position:'fixed',inset:'0',pointerEvents:'none',zIndex:'250',overflow:'hidden'});document.body.append(layer);
- const r=target.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,w=innerWidth;
+ const r=rewardTargetRect(),x=r.left+r.width/2,y=r.top+r.height/2,w=innerWidth;
  const add=(src,size)=>{const e=document.createElement('img');e.src=src;Object.assign(e.style,{position:'absolute',width:size+'px',height:size+'px',objectFit:'contain',left:'0',top:'0',filter:'drop-shadow(0 2px 3px #8b4d0060)'});layer.append(e);return e};
  // Four separated coins follow a smooth arc, with no stacked waiting sprites.
  for(let i=0;i<4;i++){

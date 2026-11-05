@@ -1,3 +1,6 @@
+import {solveMission,canResolveFacing,stateKey} from './gem-solver.js';
+import {Game,gemMove} from './gem-game.js';
+import {installGemUI} from './gem-ui.js';
 import {rockRewardPlan} from './rewards-economy.js';
 import {installRewardsUI} from './rewards-ui.js';
 import {installMinigameMenu,openMenuMole} from './minigame-menu.js?v=268';
@@ -16,21 +19,21 @@ import {zoneEntries,zoneMarkup} from './zone-display.js';
 import {Feedback,preferences} from './feedback.js';
 import {EscapeEffects} from './escape-effects.js';
 import {motionPlan} from './motion.js';
-import {Game,solve,move,facingPairs,missionSpecials} from './special-engine.js';import {LEVELS} from './levels.js';import {sound} from './audio.js';
+import {solve,move,facingPairs,missionSpecials} from './special-engine.js';import {LEVELS} from './levels.js';import {sound} from './audio.js';
 const $=id=>document.getElementById(id),names={U:'위',D:'아래',L:'왼쪽',R:'오른쪽'};
 const playUI=initPlayUI({reduced:()=>preferences.reduced});
 const specialFX=new SpecialEffects();const rainbowFX=new RainbowEffects();
 const completed=new Set();const escapeEffects=new EscapeEffects();const feedback=new Feedback();let comboTimer;
-let index=0,game=new Game(LEVELS[0]),locked=false,assistBusy=false,epoch=0,timer,wasStuck=false,starTimer,moleOpening=false;
+let index=0,game=new Game(LEVELS[0]),locked=false,assistBusy=false,epoch=0,timer,wasStuck=false,starTimer;
 const stageKey=i=>LEVELS[i].id;
-const gameOver=initGameOver(()=>$('restart').click());
+const gameOver=initGameOver(retryCurrentBoard);
 const tutorials=initTutorials();
-const home=initHome({capture:()=>({index,stageKey:stageKey(index),level:game.level,game:{...game.snapshot(),history:game.history}}),restore:p=>{if(p.level?.specialRules!==1||!Number.isInteger(p.index)||p.index<0||p.index>=LEVELS.length||p.stageKey!==stageKey(p.index)||!Array.isArray(p.game?.blocks)||!Array.isArray(p.game?.rocks)||!Array.isArray(p.game?.history))return false;index=p.index;game=new Game(missionSpecials(p.level??LEVELS[index],index+1));Object.assign(game,structuredClone(p.game));const rainbowIds=new Set(game.level.blocks.filter(b=>b.rainbow).map(b=>b.id));for(const list of [game.blocks,...game.history.map(h=>h.blocks)])for(const b of list)b.rainbow=rainbowIds.has(b.id);return true;},isBusy:()=>locked||assistBusy,cancelEffects:()=>cancel(),onHomeIntro:()=>tutorials.home()});
+const home=initHome({capture:()=>({index,stageKey:stageKey(index),level:game.level,game:{...game.snapshot(),history:game.history}}),restore:p=>{if(((p.index<20&&p.level?.gemConfig?.target!==5)||(p.index<20&&p.game?.gemState?.rule!==14))||p.level?.layoutVersion!=='original-7x7'||p.level?.specialRules!==1||!Number.isInteger(p.index)||p.index<0||p.index>=LEVELS.length||p.stageKey!==stageKey(p.index)||!Array.isArray(p.game?.blocks)||!Array.isArray(p.game?.rocks)||!Array.isArray(p.game?.history))return false;index=p.index;game=new Game(missionSpecials(p.level??LEVELS[index],index+1));Object.assign(game,structuredClone(p.game));const rainbowIds=new Set(game.level.blocks.filter(b=>b.rainbow).map(b=>b.id));if(!game.level.gemMission)for(const list of [game.blocks,...game.history.map(h=>h.blocks)])for(const b of list)b.rainbow=rainbowIds.has(b.id);return true;},isBusy:()=>locked||assistBusy,cancelEffects:()=>cancel(),onHomeIntro:()=>tutorials.home()});
 installRewardsUI(home.store,()=>{updateStatusCounters();});
 const frogUI=new FrogUI({board:$('board'),sound,reduced:()=>preferences.reduced,isBusy:()=>locked||assistBusy||home.transitionPending||game.won,onRemove:id=>{game.frogs=game.frogs.filter(f=>f.id!==id);home.commit(false);}});
 let pendingAction=null;
 function cancel(){frogUI.clear();rainbowFX.clear();specialFX.clear();playUI.clear();if(pendingAction){Object.assign(game,pendingAction);pendingAction=null;}feedback.clear();clearTimeout(comboTimer);if($('combo')){$('combo').hidden=true;$('combo').getAnimations?.().forEach(a=>a.cancel());}escapeEffects.clear();epoch++;clearTimeout(timer);clearTimeout(starTimer);locked=false;sound.stopEffects();$('board').removeAttribute('aria-busy');}
-function controls(){for(const id of ['next','settings','home'])if($(id))$(id).disabled=locked||(['next','home'].includes(id)&&home.transitionPending);$('restart').disabled=moleOpening||(locked&&game.won);$('undo').disabled=moleOpening||(locked&&game.won);$('hint').disabled=moleOpening||(locked&&game.won);}
+function controls(){for(const id of ['next','settings','home'])if($(id))$(id).disabled=locked||(['next','home'].includes(id)&&home.transitionPending);$('restart').disabled=(locked&&game.won);$('undo').disabled=(locked&&game.won);$('hint').disabled=(locked&&game.won);}
 let statusUpgradeCount=null,statusUpgradeStage=null;
 function updateStatusCounters(){
  const v=home.store.read(),run=v.assistRun,key=stageKey(index),inside=interiorState(v);
@@ -38,49 +41,57 @@ function updateStatusCounters(){
  if(statusUpgradeCount!==null&&upgradeCount>statusUpgradeCount)statusUpgradeStage=key;
  if(upgradeCount<statusUpgradeCount||statusUpgradeStage!==key)statusUpgradeStage=null;
  statusUpgradeCount=upgradeCount;
- const used=run?.stage===key?Number(run.undo)||0:0;$('remaining').textContent=v.coins.toLocaleString('ko-KR');
+ for(const [kind,label] of [['undo','되돌리기'],['hint','힌트']]){
+  const used=run?.stage===key?Number(run[kind])||0:0;
+  const remaining=3-Math.max(0,Math.min(3,used));
+  $(kind+'-count').textContent=remaining;
+  $(kind).setAttribute('aria-label',label+' 남은 횟수 '+remaining+'회');
+ }
+ $('remaining').textContent=v.coins.toLocaleString('ko-KR');
  const next=v.home<HOME_MAX?nextYard(v):inside.next,needed=next?Math.max(0,next.cost-v.coins):0;
  $('moves').textContent=needed.toLocaleString('ko-KR');
  const stats=$('stage').closest('.stats');stats.dataset.upgradeReady=String(!!next&&needed===0);stats.style.setProperty('--upgrade-progress',(next?Math.min(1,Math.max(0,v.coins/next.cost))*100:100)+'%');
 
 }
+const gemUI=installGemUI({read:()=>game,sound,restart:()=>{cancel();game.restart();beginAssistRun(stageKey(index),true);home.newRun();render();}});
 function render(note=''){
  const level=game.level;$('stage').textContent=`${index+1} / ${LEVELS.length}`;updateStatusCounters();
  $('board').dataset.n=level.n;$('board').style.setProperty('--n',level.n);$('board').replaceChildren();
  for(let y=0;y<level.n;y++)for(let x=0;x<level.n;x++){const el=document.createElement('div');el.className='floor';el.dataset.tile=String((x+y*3)%4);el.style.setProperty('--x',x);el.style.setProperty('--y',y);el.style.backgroundImage=`url('assets/ui/floor-${(x+y*3)%4}.webp')`;$('board').append(el);}
  for(const zone of level.zones??[]){const el=document.createElement('div');el.className='rotation-zone';el.dataset.zone=`${zone.x},${zone.y}`;el.dataset.occupied=String(game.blocks.some(b=>b.x===zone.x&&b.y===zone.y));el.style.setProperty('--x',zone.x);el.style.setProperty('--y',zone.y);el.setAttribute('role','img');el.setAttribute('aria-label',`${zone.y+1}행 ${zone.x+1}열, 모든 진입 방향에서 시계방향 90도 회전`);el.innerHTML=zoneMarkup(zoneEntries(game.blocks,game.rocks,level.n,level.zones??[],zone));$('board').append(el);}
- for(const pickup of level.specials??[]){if(game.used.includes(pickup.id))continue;const el=document.createElement('div');el.className='special-marker';el.dataset.special=pickup.id;el.style.setProperty('--x',pickup.x);el.style.setProperty('--y',pickup.y);el.setAttribute('role','img');el.setAttribute('aria-label',pickup.kind==='key'?'황금열쇠: 가까운 돌 최대 2개 제거':'폭탄: 발동 화살표 포함 최대 3개 제거');el.innerHTML='<img src="assets/special/'+(pickup.kind==='key'?'01-golden-key':'02-bomb')+'.webp" alt="">';$('board').append(el);}
+ for(const pickup of level.specials??[]){if(game.used.includes(pickup.id))continue;const el=document.createElement('div');el.className='special-marker';el.dataset.special=pickup.id;el.style.setProperty('--x',pickup.x);el.style.setProperty('--y',pickup.y);el.setAttribute('role','img');el.setAttribute('aria-label',pickup.kind==='key'?'황금열쇠: 가까운 돌 최대 4개 제거':'폭탄: 발동 화살표 포함 최대 6개 제거');el.innerHTML='<img src="assets/special/'+(pickup.kind==='key'?'01-golden-key':'02-bomb')+'.webp" alt="">';$('board').append(el);}
  for(const rock of game.rocks){const el=document.createElement('div');el.className='rock';el.dataset.rock=rock.id;el.dataset.hp=rock.hp;el.style.setProperty('--x',rock.x);el.style.setProperty('--y',rock.y);el.setAttribute('role','img');el.setAttribute('aria-label',`돌 ${rock.id}, 내구도 ${rock.hp}, ${rock.y+1}행 ${rock.x+1}열`);const prize=rockRewardPlan(level).find(q=>q.id===rock.id);el.classList.toggle('fishing-prize-rock',!!prize&&!home.store.read().cleared?.[stageKey(index)]);el.innerHTML=`<span><b>${rock.hp}</b></span>`+(prize&&!home.store.read().cleared?.[stageKey(index)]?'<img class="rock-fishing-coin" src="assets/economy-v204/fishing-coin.webp" alt="낚시 코인 '+prize.amount+'개 · 클리어 시 지급">':'');$('board').append(el);}
- for(const b of game.blocks){const el=document.createElement('button');el.className='block';el.dataset.id=b.id;el.dataset.dir=b.d;el.dataset.rainbow=String(!!b.rainbow);el.dataset.tutorial=String(index===0&&!game.history.length&&b.id===1);el.style.setProperty('--x',b.x);el.style.setProperty('--y',b.y);el.setAttribute('aria-label',`${b.rainbow?'무지개 화살표 · 탈출 시 주변 3개 제거 · 5코인 · ':''}블록 ${b.id}, ${b.y+1}행 ${b.x+1}열, ${names[b.d]}`);el.innerHTML=`<span aria-hidden="true"></span>`;el.addEventListener('click',()=>play(b.id,el));$('board').append(el);}
+ for(const b of game.blocks){const el=document.createElement('button');el.className='block';el.dataset.id=b.id;el.dataset.dir=b.d;el.dataset.rainbow=String(!!b.rainbow);el.style.setProperty('--x',b.x);el.style.setProperty('--y',b.y);el.setAttribute('aria-label',`${b.rainbow?'무지개 화살표 · 탈출 시 주변 5개 제거 · 5코인 · ':''}블록 ${b.id}, ${b.y+1}행 ${b.x+1}열, ${names[b.d]}`);el.innerHTML=`<span aria-hidden="true"></span>`;el.addEventListener('click',()=>play(b.id,el));$('board').append(el);}
  frogUI.render(game);
- const warnings=new Set(facingPairs(game.blocks,game.rocks,level.zones??[]).flat());for(const el of $('board').querySelectorAll('.block')){if(warnings.has(Number(el.dataset.id))){el.classList.add('facing-warning');el.setAttribute('aria-label',el.getAttribute('aria-label')+', 서로 마주 보는 화살표');}}
+ const warnings=new Set(index===0?[]:facingPairs(game.blocks,game.rocks,level.zones??[]).flat());for(const el of $('board').querySelectorAll('.block')){if(warnings.has(Number(el.dataset.id))){el.classList.add('facing-warning');el.setAttribute('aria-label',el.getAttribute('aria-label')+', 서로 마주 보는 화살표');}}
  $('next').hidden=!game.won;if(game.won)specialFX.clearCoins();$('next').setAttribute('aria-label',index===LEVELS.length-1?`${LEVELS.length}단계 완료, 1단계 다시 시작`:'다음 스테이지');if($('all-complete'))$('all-complete').hidden=!(game.won&&index===LEVELS.length-1);
  if($('celebrate')){$('celebrate').hidden=!game.won;if(!game.won)$('celebrate').classList.remove('stars-in');}if($('combo')){$('combo').hidden=true;$('combo-count').textContent='×'+game.combo;}
- const impossible=!game.won&&(game.stuck||solve(game.blocks,level.n,1200,game.rocks,level.zones??[],level.specials??[],game.used).status==='unsolvable');
- playUI.setBlocked(impossible&&warnings.size>0);
- const assist=home.store.read().assistRun;gameOver.update(impossible&&assist?.stage===stageKey(index)&&Number(assist.undo)>=3);
+ const impossible=!game.level.gemMission&&!game.won&&(game.stuck||solve(game.blocks,level.n,1200,game.rocks,level.zones??[],level.specials??[],game.used).status==='unsolvable');
+ const facingBlocked=hasUnresolvedFacing();playUI.setBlocked(warnings.size>0&&(impossible||facingBlocked));
+ const assist=home.store.read().assistRun;gameOver.update((impossible||facingBlocked)&&assist?.stage===stageKey(index)&&Number(assist.undo)>=3);
  if(impossible&&!wasStuck)sound.play('stuck');wasStuck=impossible;
- $('message').textContent=game.won?'':impossible?'이 상태로는 탈출할 수 없어요. 되돌려 주세요.':note||'';controls();
+ $('message').textContent=game.won?'':impossible?'이 상태로는 탈출할 수 없어요. 되돌려 주세요.':note||'';controls();gemUI.render();
 }
-function play(id,el){if(locked||assistBusy||game.won||frogUI.departing)return;let before=game.blocks.find(b=>b.id===id);if(!before)return;playUI.clear();$('message').textContent='';feedback.settle();sound.unlock();sound.play('touch');
+function play(id,el){if(locked||assistBusy||game.won||game.gemState?.failed||frogUI.departing)return;let before=game.blocks.find(b=>b.id===id);if(!before)return;playUI.clear();$('message').textContent='';feedback.settle();sound.unlock();sound.play('touch');
  // Preview keeps collision state intact until the final break frame finishes.
- const overall=move(game.blocks,id,game.level.n,game.rocks,game.level.zones??[],game.level.specials??[],game.used,game.frogs);if(overall.frog){frogUI.blocked(overall.frog);return;}let r=overall.steps?.[0]?.result??overall;const steps=overall.steps??[];let stepIndex=0;const rootId=id;
- if(!r.changed){game.play(id);home.commit(false);playUI.setBlocked(solve(game.blocks,game.level.n,1200,game.rocks,game.level.zones??[],game.level.specials??[],game.used).status==='unsolvable'&&facingPairs(game.blocks,game.rocks,game.level.zones??[]).length>0);feedback.pulse(el,'pressing',75);el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');if(!r.loop){sound.play('blocked');feedback.impact($('board'),before,before.d,'spark');}feedback.later(()=>el.classList.remove('shake'),200);$('message').textContent=r.loop?'회전 경로가 반복되어 원래 자리로 돌아왔어요.':'바로 앞이 막혔어요. 다른 화살표를 움직여 보세요.';return;}
+ const overall=(game.level.gemMission?gemMove:move)(game.blocks,id,game.level.n,game.rocks,game.level.zones??[],game.level.specials??[],game.used,game.level.gemMission?game.activeGems:game.frogs);if(overall.frog){frogUI.blocked(overall.frog);return;}let r=overall.steps?.[0]?.result??overall;const steps=overall.steps??[];let stepIndex=0;const rootId=id;
+ if(!r.changed){game.play(id);gemUI.render();home.commit(false);playUI.setBlocked(facingPairs(game.blocks,game.rocks,game.level.zones??[]).length>0&&(game.level.gemMission?hasUnresolvedFacing():solve(game.blocks,game.level.n,1200,game.rocks,game.level.zones??[],game.level.specials??[],game.used).status==='unsolvable'));feedback.pulse(el,'pressing',75);el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');if(!r.loop){sound.play('blocked');feedback.impact($('board'),before,before.d,'spark');}feedback.later(()=>el.classList.remove('shake'),200);$('message').textContent=r.loop?'회전 경로가 반복되어 원래 자리로 돌아왔어요.':'바로 앞이 막혔어요. 다른 화살표를 움직여 보세요.';return;}
  locked=true;controls();$('board').setAttribute('aria-busy','true');pendingAction={...game.snapshot(),history:structuredClone(game.history)};const ticket=epoch,step=$('board').clientWidth/game.level.n;let plan=motionPlan(r);let pos=0,movingSound=false,cursor={x:before.x,y:before.y};
  function advance(){if(ticket!==epoch)return;if(pos>=plan.length){
    if(stepIndex+1<steps.length){stepIndex++;game.blocks=steps[stepIndex].before.map(b=>({...b}));game.rocks=steps[stepIndex].beforeRocks.map(r=>({...r}));game.used=steps[stepIndex].beforeUsed??pendingAction.used;game.combo=(pendingAction.combo+stepIndex)%5;render();if(stepIndex>=1){$('combo-count').textContent=(stepIndex+1)+'연쇄';showCombo(stepIndex+1);}id=steps[stepIndex].id;before=game.blocks.find(b=>b.id===id);el=document.querySelector('[data-id="'+id+'"]');r=steps[stepIndex].result;plan=motionPlan(r);pos=0;movingSound=false;cursor={x:before.x,y:before.y};advance();return;}
    const rocksBefore=pendingAction.rocks.map(rock=>({...rock}));Object.assign(game,pendingAction);pendingAction=null;const committed=game.play(rootId);const rainbowEvents=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>e.kind==='rainbow'));if(rainbowEvents.length)home.rainbowReward(rainbowEvents).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const a of awards)specialFX.combo($('board'),0,a.amount??5);}).catch(()=>{$('message').textContent='무지개 보상을 저장하지 못했어요.';});const specialRewards=(committed.steps??[{result:committed}]).flatMap(q=>(q.result.events??[]).filter(e=>['bomb','key'].includes(e.kind)));home.specialReward(specialRewards).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),0,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='특수 보상을 저장하지 못했어요.';});home.comboReward(committed.comboEvents??[]).then(awards=>{updateStatusCounters();if(ticket===epoch)for(const [j,a]of awards.entries())specialFX.later(()=>specialFX.combo($('board'),a.tier,a.amount,j*8),j*230);}).catch(()=>{$('message').textContent='콤보 보상을 저장하지 못했어요.';});for(const rock of rocksBefore)if(!game.rocks.some(q=>q.id===rock.id&&q.hp>0))home.rockBroken(rock);locked=false;$('board').removeAttribute('aria-busy');
-   if(!r.exit&&!r.bombRemoved&&r.moved&&!r.hit)sound.play('collision');
+   if(!r.exit&&!r.consumed&&!r.bombRemoved&&r.moved&&!r.hit)sound.play('collision');
    render(r.bombRemoved?'폭탄으로 화살표를 제거했어요.':r.hit?(r.hit.broken?'돌이 깨졌어요! 다음 터치에 진행하세요.':`돌 내구도 ${r.hit.hp} · ${r.moved?'이동하며 충돌':'돌 타격'}`):r.exit?(game.combo>1?`${game.combo} 연속 탈출!`:'탈출 성공!'):'장애물 바로 앞에 멈췄어요.');
-   if(!r.exit&&!r.bombRemoved&&!r.hit&&r.moved){const b=game.blocks.find(b=>b.id===id);feedback.impact($('board'),b,b.d);const dirs={U:[0,-1],R:[1,0],D:[0,1],L:[-1,0]},[dx,dy]=dirs[b.d];const target=game.blocks.find(q=>q.x===b.x+dx&&q.y===b.y+dy);feedback.pulse(document.querySelector(`[data-id="${target?.id}"]`),'bumped',180);}
+   if(!r.exit&&!r.consumed&&!r.bombRemoved&&!r.hit&&r.moved){const b=game.blocks.find(b=>b.id===id);feedback.impact($('board'),b,b.d);const dirs={U:[0,-1],R:[1,0],D:[0,1],L:[-1,0]},[dx,dy]=dirs[b.d];const target=game.blocks.find(q=>q.x===b.x+dx&&q.y===b.y+dy);feedback.pulse(document.querySelector(`[data-id="${target?.id}"]`),'bumped',180);}
    if(r.exit&&[3,4].includes(game.combo)&&!game.won){if(steps.length>1)$('combo-count').textContent=steps.length+'연쇄';showCombo();}
+   gemUI.render(committed);
    home.commit(game.won);
-   if(game.won){if(shouldOpenFishingGame(index+1)){locked=true;controls();setTimeout(()=>{if(ticket===epoch&&game.won){locked=false;launchClearMinigames();}},2100);}clearTimeout(comboTimer);if($('combo'))$('combo').hidden=true;feedback.shakeScreen();completed.add(index);sound.play('success');starTimer=setTimeout(()=>{if(ticket===epoch&&game.won){$('celebrate')?.classList.add('stars-in');sound.play('star');}},350);}return;
+   if(game.won){clearTimeout(comboTimer);if($('combo'))$('combo').hidden=true;feedback.shakeScreen();completed.add(index);sound.play('success');starTimer=setTimeout(()=>{if(ticket===epoch&&game.won){$('celebrate')?.classList.add('stars-in');sound.play('star');}},350);}return;
   }
-  const e=plan[pos++];if(e.type==='move'){const previousZone=document.querySelector(`[data-zone="${cursor.x},${cursor.y}"]`);if(previousZone)previousZone.dataset.occupied='false';}if(e.type==='move'&&e.exit){if(!movingSound){sound.play('move');movingSound=true;}escapeEffects.run({board:$('board'),element:el,from:cursor,d:e.d,n:game.level.n,onBoundary:()=>{if(before.rainbow)rainbowFX.escape($('board'),cursor,e.d);sound.play(game.combo>=1?'combo':'exit');},last:game.blocks.length===1,bright:game.combo>=1,reduced:preferences.reduced,onComplete:advance});return;}if(e.type==='move'){if(!movingSound){sound.play('move');movingSound=true;}el.style.transform=`translate(${(e.x-before.x)*step}px,${(e.y-before.y)*step}px)`;el.classList.remove('moving');void el.offsetWidth;el.classList.add('moving');cursor={x:e.x,y:e.y};
+  const e=plan[pos++];if(e.type==='move'){const previousZone=document.querySelector(`[data-zone="${cursor.x},${cursor.y}"]`);if(previousZone)previousZone.dataset.occupied='false';}if(e.type==='move'&&e.exit){if(!movingSound){sound.play('move');movingSound=true;}escapeEffects.run({board:$('board'),element:el,from:cursor,d:e.d,n:game.level.n,onBoundary:()=>{if(before.rainbow)rainbowFX.escape($('board'),cursor,e.d);sound.play(game.combo>=1?'combo':'exit');},last:game.blocks.length===1,bright:game.combo>=1,reduced:preferences.reduced,onComplete:advance});return;}if(e.type==='move'){if(!movingSound){sound.play('move');movingSound=true;}if(e.contact){e.duration=preferences.reduced?1:Math.max(55,(Math.abs(e.x-cursor.x)+Math.abs(e.y-cursor.y))*55);el.style.transition='transform '+e.duration+'ms linear';}else el.style.transition='';el.style.transform=`translate(${(e.x-before.x)*step}px,${(e.y-before.y)*step}px)`;el.classList.remove('moving');void el.offsetWidth;el.classList.add('moving');cursor={x:e.x,y:e.y};
 
   }
-  if(e.type==='special'){if(e.kind==='rainbow')rainbowFX.burst($('board'),e);else specialFX.burst($('board'),e);specialFX.later(()=>{if(ticket!==epoch)return;for(const q of e.removedRocks??[])document.querySelector(`[data-rock="${q.id}"]`)?.remove();for(const [i,q]of (e.removedBlocks??[]).entries()){if(e.kind==='rainbow')rainbowFX.later(()=>{if(ticket===epoch)document.querySelector(`[data-id="${q.id}"]`)?.remove();},65*i+40);else document.querySelector(`[data-id="${q.id}"]`)?.remove();}},preferences.reduced?0:200);document.querySelector(`[data-special="${e.id}"]`)?.remove();}
+  if(e.type==='special'){if(e.contactId!=null)document.querySelector('[data-id="'+e.contactId+'"]')?.remove();if(e.kind==='rainbow')rainbowFX.burst($('board'),e);else specialFX.burst($('board'),e);specialFX.later(()=>{if(ticket!==epoch)return;for(const q of e.removedRocks??[])document.querySelector(`[data-rock="${q.id}"]`)?.remove();for(const [i,q]of (e.removedBlocks??[]).entries()){if(e.kind==='rainbow')rainbowFX.later(()=>{if(ticket===epoch)document.querySelector(`[data-id="${q.id}"]`)?.remove();},65*i+40);else document.querySelector(`[data-id="${q.id}"]`)?.remove();}},preferences.reduced?0:200);document.querySelector(`[data-special="${e.id}"]`)?.remove();}
   if(e.type==='rotate'){const face=el.querySelector('span');face.style.transition='transform 200ms ease-in-out';face.style.transform='rotate(90deg)';}
   if(e.type==='hit'){sound.play('collision');const rockEl=document.querySelector(`[data-rock="${e.id}"]`);if(e.broken)rockEl?.classList.add('breaking');const rock=game.rocks.find(q=>q.id===e.id);if(rock)feedback.stone($('board'),rock,rockEl,el.dataset.dir,e.hp);if(e.broken){feedback.shakeScreen();if(rock&&!document.body.classList.contains('garden-theme'))specialFX.vanish($('board'),rock,'rock',80);}}
   timer=setTimeout(()=>{if(ticket!==epoch)return;if(e.type==='move'){const zone=document.querySelector(`[data-zone="${e.x},${e.y}"]`);if(zone){zone.dataset.occupied='true';feedback.pulse(zone,'zone-lit',300);zone.dataset.entry=e.d;zone.innerHTML=zoneMarkup([e.d]);}}if(e.type==='rotate'){const face=el.querySelector('span');face.style.transition='none';face.style.transform='none';el.dataset.dir=e.d;}advance();},e.duration);
@@ -94,7 +105,7 @@ async function useAssist(kind,action){
  assistBusy=true;
  try{const r=await home.store.consumeAssist(stageKey(index),kind);if(r.used)action();$('message').textContent=assistNotice(r.count);}
  catch(e){$('message').textContent='사용 횟수를 저장하지 못했어요. 다시 시도해 주세요.';}
- finally{assistBusy=false;controls();}
+ finally{assistBusy=false;updateStatusCounters();controls();}
 }
 $('undo').addEventListener('click',()=>{
  if(assistBusy||locked||home.transitionPending)return;
@@ -107,21 +118,36 @@ $('hint').addEventListener('click',()=>{
  if(assistBusy||locked||home.transitionPending)return;
  const exhausted=home.store.read().assistRun;if(exhausted?.stage===stageKey(index)&&exhausted.hint>=3){$('message').textContent=assistNotice(3);return;}
  if(game.won)return;
- const result=solve(game.blocks,game.level.n,150000,game.rocks,game.level.zones??[],game.level.specials??[],game.used);
+ const result=game.level.gemMission?solveMission(game,5000):solve(game.blocks,game.level.n,150000,game.rocks,game.level.zones??[],game.level.specials??[],game.used);
  const id=result.path?.[0],target=id==null?null:document.querySelector(`[data-id="${id}"]`);
  if(!target){$('message').textContent=result.status==='limit'?'해답 검색 한도에 도달했어요. 해답 없음으로 판정하지 않았어요.':'이 상태에서는 해답이 없어요. 되돌리기 또는 다시 시작하세요.';return;}
  const frogHint=id==null?null:move(game.blocks,id,game.level.n,game.rocks,game.level.zones??[],game.level.specials??[],game.used,game.frogs).frog;if(frogHint){frogUI.blocked(frogHint);return;}
  useAssist('hint',()=>{document.querySelectorAll('.hinted').forEach(e=>e.classList.remove('hinted'));target.classList.add('hinted');sound.play('hint');});
 });
 function advanceStage(){cancel();sound.play('next');index=(index+1)%LEVELS.length;game=new Game(LEVELS[index]);beginAssistRun(stageKey(index));home.newRun();wasStuck=false;render();}
-async function launchClearMinigames(){
- if(moleOpening||!game.won||!shouldOpenFishingGame(index+1))return false;
- moleOpening=true;locked=true;controls();
- try{await home.store.queue;const run=home.runId,key=stageKey(index),stage=index+1;if(home.store.read().paid[run]?.stage!==key)throw Error('클리어 보상을 먼저 저장해야 합니다.');if(shouldOpenFishingGame(stage)){const result=await fishingBonus.open({automatic:true,clearKey:run+':'+key});if(!result?.success)return false;}advanceStage();return true;}
- catch(e){$('message').textContent='미니게임을 준비하지 못했어요. 다음 버튼으로 다시 시도해 주세요.';console.error(e);return false;}
- finally{moleOpening=false;locked=false;controls();}
-}
-$('next').addEventListener('click',()=>{if(locked||assistBusy||home.transitionPending||!game.won)return;if(shouldOpenFishingGame(index+1)){launchClearMinigames();return;}advanceStage();});
+document.addEventListener('mission-clear-menu', async () => {
+ if (!game.won || locked || assistBusy) return;
+ const completedGame = game;
+ await home.store.queue;
+ if (game !== completedGame || home.transitionPending) return;
+ advanceStage();
+ showPostClearMenu();
+});
+$('next').addEventListener('click',async()=>{
+ if(locked||assistBusy||home.transitionPending||!game.won)return;
+ if(shouldOpenFishingGame(index+1)){
+  locked=true;controls();
+  try{
+   await home.store.queue;
+   const run=home.runId,key=stageKey(index);
+   if(home.store.read().paid[run]?.stage!==key)throw Error('클리어 보상을 먼저 저장해야 합니다.');
+   const result=await fishingBonus.open({automatic:true,clearKey:run+':'+key});
+   if(!result?.success)return;
+  }catch(error){console.error(error);return;}
+  finally{locked=false;controls();}
+ }
+ advanceStage();
+});
 const missionMenu=initMissionMenu({levels:LEVELS,read:()=>home.store.read(),sound,launch:i=>{
  if(locked||assistBusy||home.transitionPending)return false;
  cancel();tutorials.close();index=i;game=new Game(LEVELS[i]);beginAssistRun(stageKey(i));home.newRun();wasStuck=false;render();
@@ -154,11 +180,72 @@ function refreshEffects(){if(document.documentElement)document.documentElement.d
 for(const key of ['vibration','reduce'])$(key)?.addEventListener('click',()=>{preferences.toggle(key);sound.play('menu');refreshEffects();});refreshEffects();
 
 
-const fishingBonus=installFishingBonus({home,sound,isBusy:()=>locked||assistBusy||moleOpening||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>render()});
+const fishingBonus=installFishingBonus({home,sound,isBusy:()=>locked||assistBusy||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>render()});
+
+const postClearMenu = $('post-clear-menu');
+function showPostClearMenu() {
+ const cleared = home.store.read().cleared || {};
+ postClearMenu.querySelector('.post-clear-number').textContent = String(index + 1);
+ for (const [action, stage, label] of [['mole', 2, '두더지잡기'], ['fishing', 3, '낚시터']]) {
+  const button = postClearMenu.querySelector('[data-post-action="'+action+'"]');
+  button.disabled = !cleared[stageKey(stage - 1)];
+  button.title = button.disabled ? '스테이지 '+stage+' 클리어 시 열려요' : label;
+  button.dataset.unlockNote = stage+'스테이지 클리어 시 열림';
+  button.setAttribute('aria-label', button.disabled ? label+' · '+button.title : label);
+ }
+ document.querySelector('main').inert = true;
+ postClearMenu.hidden = false;
+ postClearMenu.querySelector('.post-clear-play').focus({preventScroll:true});
+}
+postClearMenu.addEventListener('click', async event => {
+ const button = event.target.closest('[data-post-action]');
+ if (!button || button.disabled || postClearMenu.hidden) return;
+ postClearMenu.hidden = true;
+ document.querySelector('main').inert = false;
+ const action = button.dataset.postAction;
+ if (action === 'home') { $('home').click(); return; }
+ if (action === 'play') { sound.play('menu'); return; }
+ try {
+  if (action === 'mole') await openMenuMole({home,sound,preferences});
+  else await fishingBonus.open();
+ } finally { render(); showPostClearMenu(); }
+});
+if (new URLSearchParams(location.search).get('previewPostClear') === '1') {
+ $('welcome').hidden = true;
+ $('game').hidden = false;
+ index = Math.min(index + 1, LEVELS.length - 1);
+ game = new Game(LEVELS[index]);
+ render();
+ showPostClearMenu();
+}
 
 document.addEventListener('garden-help',()=>{if(!locked) tutorials.play(true);});
+if (new URLSearchParams(location.search).get('previewHome') === '1') {
+ $('welcome').hidden = true;
+ $('home').click();
+}
 
 new MutationObserver(updateStatusCounters).observe($('wallet'),{childList:true,characterData:true,subtree:true});
 
-installMinigameMenu({read:()=>home.store.read(),isBusy:()=>locked||assistBusy||moleOpening||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>{const coins=home.store.read().coins;for(const id of ['wallet','home-wallet'])$(id).textContent=coins;render();},playMole:()=>openMenuMole({home,sound,preferences}),playFishing:()=>fishingBonus.open()});
+installMinigameMenu({read:()=>home.store.read(),isBusy:()=>locked||assistBusy||home.transitionPending,onBefore:()=>{cancel();tutorials.close();home.commit(false);},onReturn:()=>{const coins=home.store.read().coins;for(const id of ['wallet','home-wallet'])$(id).textContent=coins;render();},playMole:()=>openMenuMole({home,sound,preferences}),playFishing:()=>fishingBonus.open()});
 
+
+
+
+async function retryCurrentBoard(){
+ if(!game.level.gemMission){$('restart').click();return;}
+ const wave=game.gemState.wave;
+ const first=game.history.find(s=>s.gemState?.wave===wave)??game.snapshot();
+ cancel();sound.play('menu');Object.assign(game,structuredClone(first));game.history=[];
+ game.won=false;game.gemState.failed=false;
+ await home.store.startAssists(stageKey(index),true);
+ home.newRun();wasStuck=false;home.commit(false);render('현재 판을 다시 시작했어요.');
+}
+
+var facingCheckCache;
+function hasUnresolvedFacing(){
+ if(!game.level.gemMission||index<10||index>=20||game.won||game.gemState.failed||!facingPairs(game.blocks,game.rocks,game.level.zones??[]).length)return false;
+ const key=stateKey(game)+'#'+game.moves;
+ if(facingCheckCache?.key===key)return facingCheckCache.blocked;
+ const blocked=!canResolveFacing(game);facingCheckCache={key,blocked};return blocked;
+}

@@ -1,7 +1,7 @@
 export function statusParts(text){const m=text.match(/^(돌 내구도 \d+)(.*)$/);return m?[m[1],m[2]]:null;}
 export function walletFont(text){return Math.max(10,Math.min(36,180/Math.max(5,String(text).length)));}
 export function initPlayUI({doc=globalThis.document,reduced=()=>false,schedule=setTimeout,unschedule=clearTimeout,Observer=globalThis.MutationObserver}={}){
- const board=doc.getElementById('board'), notice=doc.createElement('div');notice.id='blocked-notice';notice.hidden=true;notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');notice.textContent='화살표가 마주보면 탈출할수 없어요 한단계 되돌려주세요';board?.parentElement?.append(notice);
+ const board=doc.getElementById('board'), notice=doc.createElement('div');notice.id='blocked-notice';notice.hidden=true;notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');notice.textContent='화살표가 마주보면 클리어가 안됩니다.\n되돌리기를 눌러주세요.';board?.parentElement?.append(notice);
  const setBlocked=value=>{const show=!!value;if(notice.hidden===!show)return;notice.hidden=!show;doc.getElementById('game')?.toggleAttribute('data-blocked',show);};
  const message=doc.getElementById('message'),wallet=doc.getElementById('wallet');let lastMessage='',lastCoins=wallet?.textContent,timer,animation,coinAnimation;
  const lane=doc.createElement('div');lane.id='play-notice-lane';lane.hidden=true;board?.parentElement?.append(lane);const combo=doc.getElementById('combo');if(combo)lane.append(combo);if(message)lane.append(message);

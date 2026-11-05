@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "stages7to40Unchanged": true,
+  "results": [
+    {
+      "stage": 1,
+      "touches": 6,
+      "hit": 0,
+      "turn": 0,
+      "breaks": 2
+    },
+    {
+      "stage": 2,
+      "touches": 9,
+      "hit": 0,
+      "turn": 0,
+      "breaks": 3
+    },
+    {
+      "stage": 3,
+      "touches": 12,
+      "hit": 3,
+      "turn": 0,
+      "breaks": 3
+    },
+    {
+      "stage": 4,
+      "touches": 18,
+      "hit": 6,
+      "turn": 2,
+      "breaks": 4
+    },
+    {
+      "stage": 5,
+      "touches": 27,
+      "hit": 12,
+      "turn": 4,
+      "breaks": 4
+    },
+    {
+      "stage": 6,
+      "touches": 37,
+      "hit": 18,
+      "turn": 5,
+      "breaks": 5
+    }
+  ]
+}

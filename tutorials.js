@@ -10,5 +10,5 @@ export function initTutorials(){
  $('tutorial-close')?.addEventListener('click',close);
  $('tutorial')?.addEventListener('pointerdown',()=>{$('tutorial').dataset.keyboard='false';});
  $('tutorial')?.addEventListener('keydown',event=>{if(event.key==='Tab'){event.preventDefault();$('tutorial').dataset.keyboard='true';$('tutorial-close')?.focus?.({preventScroll:true});}});
- return{reset(){close();played=false;},play(force=false){if(played&&!force)return;played=true;show(PLAY_GUIDE,'game');},home(){close();},close};
+ return{reset(){close();played=false;},play(force=false){if(document.getElementById('game')?.classList.contains('gem-mission'))return;if(played&&!force)return;played=true;show(PLAY_GUIDE,'game');},home(){close();},close};
 }

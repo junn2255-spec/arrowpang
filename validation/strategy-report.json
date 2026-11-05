@@ -1,0 +1,237 @@
+[
+  {
+    "stage": 1,
+    "target": 2,
+    "limit": 9,
+    "verifiedTouches": 6,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "solved",
+      "path": [
+        "a3",
+        "a4",
+        "a5",
+        "a0",
+        "a1",
+        "a2"
+      ],
+      "visited": 192,
+      "minimum": true
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 67,
+        "successRate": 0.22333333333333333,
+        "averageTouches": 8.596666666666666,
+        "averageGems": 0.44666666666666666
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 66,
+        "successRate": 0.22,
+        "averageTouches": 8.34,
+        "averageGems": 0.5966666666666667
+      }
+    },
+    "initialChangingChoices": 6,
+    "initialEscapes": 3
+  },
+  {
+    "stage": 2,
+    "target": 3,
+    "limit": 13,
+    "verifiedTouches": 9,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "solved",
+      "path": [
+        "a6",
+        "a7",
+        "a8",
+        "a3",
+        "a4",
+        "a5",
+        "a0",
+        "a1",
+        "a2"
+      ],
+      "visited": 6894,
+      "minimum": true
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 5,
+        "successRate": 0.016666666666666666,
+        "averageTouches": 12.966666666666667,
+        "averageGems": 0.21333333333333335
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 18,
+        "successRate": 0.06,
+        "averageTouches": 12.76,
+        "averageGems": 0.6566666666666666
+      }
+    },
+    "initialChangingChoices": 9,
+    "initialEscapes": 3
+  },
+  {
+    "stage": 3,
+    "target": 3,
+    "limit": 17,
+    "verifiedTouches": 12,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "solved",
+      "path": [
+        "a6",
+        "a7",
+        "a8",
+        "a8",
+        "a8",
+        "a8",
+        "a3",
+        "a4",
+        "a5",
+        "a0",
+        "a1",
+        "a2"
+      ],
+      "visited": 19666,
+      "minimum": true
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 17,
+        "averageGems": 0.15
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 2,
+        "successRate": 0.006666666666666667,
+        "averageTouches": 16.966666666666665,
+        "averageGems": 0.19666666666666666
+      }
+    },
+    "initialChangingChoices": 9,
+    "initialEscapes": 2
+  },
+  {
+    "stage": 4,
+    "target": 4,
+    "limit": 25,
+    "verifiedTouches": 18,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "solved",
+      "path": [
+        "a6",
+        "a7",
+        "a8",
+        "a8",
+        "a8",
+        "a8",
+        "a3",
+        "a4",
+        "a5",
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a0",
+        "a4",
+        "a1",
+        "a5",
+        "a2"
+      ],
+      "visited": 32923,
+      "minimum": true
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 25,
+        "averageGems": 0.08666666666666667
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 25,
+        "averageGems": 0.35333333333333333
+      }
+    },
+    "initialChangingChoices": 9,
+    "initialEscapes": 2
+  },
+  {
+    "stage": 5,
+    "target": 4,
+    "limit": 30,
+    "verifiedTouches": 27,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "limit",
+      "path": null,
+      "visited": 5000,
+      "minimum": false
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 30,
+        "averageGems": 0.11666666666666667
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 30,
+        "averageGems": 0.25666666666666665
+      }
+    },
+    "initialChangingChoices": 12,
+    "initialEscapes": 1
+  },
+  {
+    "stage": 6,
+    "target": 5,
+    "limit": 38,
+    "verifiedTouches": 37,
+    "plannedSuccess": true,
+    "minimum": {
+      "status": "limit",
+      "path": null,
+      "visited": 5000,
+      "minimum": false
+    },
+    "policies": {
+      "all-changing-touches": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 38,
+        "averageGems": 0.5333333333333333
+      },
+      "escape-or-rock-first": {
+        "trials": 300,
+        "wins": 0,
+        "successRate": 0,
+        "averageTouches": 38,
+        "averageGems": 0.38
+      }
+    },
+    "initialChangingChoices": 14,
+    "initialEscapes": 1
+  }
+]

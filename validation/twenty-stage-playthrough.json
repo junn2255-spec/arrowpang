@@ -1,0 +1,122 @@
+[
+  {
+    "stage": 1,
+    "moves": 49,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 2,
+    "moves": 52,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 3,
+    "moves": 58,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 4,
+    "moves": 63,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 5,
+    "moves": 55,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 6,
+    "moves": 59,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 7,
+    "moves": 54,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 8,
+    "moves": 61,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 9,
+    "moves": 52,
+    "limit": 80,
+    "zones": 2
+  },
+  {
+    "stage": 10,
+    "moves": 55,
+    "limit": 85,
+    "zones": 2
+  },
+  {
+    "stage": 11,
+    "moves": 60,
+    "limit": 75,
+    "zones": 2
+  },
+  {
+    "stage": 12,
+    "moves": 59,
+    "limit": 85,
+    "zones": 2
+  },
+  {
+    "stage": 13,
+    "moves": 61,
+    "limit": 70,
+    "zones": 2
+  },
+  {
+    "stage": 14,
+    "moves": 58,
+    "limit": 80,
+    "zones": 3
+  },
+  {
+    "stage": 15,
+    "moves": 61,
+    "limit": 85,
+    "zones": 3
+  },
+  {
+    "stage": 16,
+    "moves": 53,
+    "limit": 65,
+    "zones": 3
+  },
+  {
+    "stage": 17,
+    "moves": 58,
+    "limit": 75,
+    "zones": 3
+  },
+  {
+    "stage": 18,
+    "moves": 54,
+    "limit": 90,
+    "zones": 4
+  },
+  {
+    "stage": 19,
+    "moves": 64,
+    "limit": 74,
+    "zones": 4
+  },
+  {
+    "stage": 20,
+    "moves": 61,
+    "limit": 80,
+    "zones": 4
+  }
+]

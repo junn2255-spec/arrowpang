@@ -4,7 +4,7 @@ import{DIR,CLOCKWISE,clone,key,move as ordinaryMove}from'./engine.js';
 import{move as chainMove}from'./chain-engine.js';
 export{DIR,clone,key};
 const copy=x=>structuredClone(x);
-export function missionSpecials(level,number=Number(String(level.id??'').match(/(\d+)$/)?.[1])){if(!Number.isInteger(number)||number<1)return level;return {...rainbowLevel(level,number),specials:(level.specials??[]).filter(q=>q.kind==='bomb'?number%2===1:q.kind==='key'?number%3===0:true)};}
+export function missionSpecials(level,number=Number(String(level.id??'').match(/(\d+)$/)?.[1])){if(!Number.isInteger(number)||number<1)return level;return {...rainbowLevel(level,number),specials:(level.specials??[])};}
 function single(s,id,n,rocks,zones,specials,used){
  if(!specials.length)return rainbowExit({...ordinaryMove(s,id,n,rocks,zones),used:[...used]},s.find(b=>b.id===id));
  const b=s.find(q=>q.id===id);if(!b)return{changed:false,moved:false,state:s,rocks,events:[],used:[...used]};
@@ -14,10 +14,10 @@ function single(s,id,n,rocks,zones,specials,used){
   if(nx<0||ny<0||nx>=n||ny>=n){x=nx;y=ny;flush(true);return rainbowExit({changed:true,moved:true,exit:true,state:state.filter(q=>q.id!==id),rocks:stone,to:{x,y},events,used:[...consumed],collision:false},b);}
   if(state.some(q=>q.id!==id&&q.x===nx&&q.y===ny)){collision=true;break;}hit=stone.find(q=>q.hp>0&&q.x===nx&&q.y===ny);if(hit){collision=true;break;}x=nx;y=ny;moved=true;
   const pickup=specials.find(q=>q.x===x&&q.y===y&&!consumed.has(q.id));if(pickup){flush();consumed.add(pickup.id);let removedRocks=[],removedBlocks=[];if(pickup.kind==='key'){
-    // Remove up to two nearest rocks. One key per stage.
-    for(const q of specials.filter(q=>q.kind==='key'))consumed.add(q.id);
-    const ordered=[...stone].sort((a,b)=>(Math.abs(a.x-x)+Math.abs(a.y-y))-(Math.abs(b.x-x)+Math.abs(b.y-y))||String(a.id).localeCompare(String(b.id)));removedRocks=ordered.slice(0,2);const ids=new Set(removedRocks.map(q=>q.id));stone=stone.filter(q=>!ids.has(q.id));
-   }else{removedBlocks=[{...b,x,y,d},...state.filter(q=>q.id!==id).sort((a,b)=>Math.max(Math.abs(a.x-x),Math.abs(a.y-y))-Math.max(Math.abs(b.x-x),Math.abs(b.y-y))||(Math.abs(a.x-x)+Math.abs(a.y-y))-(Math.abs(b.x-x)+Math.abs(b.y-y))||String(a.id).localeCompare(String(b.id))).slice(0,2)];const ids=new Set(removedBlocks.map(q=>q.id));state=state.filter(q=>!ids.has(q.id));}
+    // Remove up to four nearest rocks.
+    // Each key can be collected independently.
+    const ordered=[...stone].sort((a,b)=>(Math.abs(a.x-x)+Math.abs(a.y-y))-(Math.abs(b.x-x)+Math.abs(b.y-y))||String(a.id).localeCompare(String(b.id)));removedRocks=ordered.slice(0,4);const ids=new Set(removedRocks.map(q=>q.id));stone=stone.filter(q=>!ids.has(q.id));
+   }else{removedBlocks=[{...b,x,y,d},...state.filter(q=>q.id!==id).sort((a,b)=>Math.max(Math.abs(a.x-x),Math.abs(a.y-y))-Math.max(Math.abs(b.x-x),Math.abs(b.y-y))||(Math.abs(a.x-x)+Math.abs(a.y-y))-(Math.abs(b.x-x)+Math.abs(b.y-y))||String(a.id).localeCompare(String(b.id))).slice(0,5)];const ids=new Set(removedBlocks.map(q=>q.id));state=state.filter(q=>!ids.has(q.id));}
    events.push({type:'special',kind:pickup.kind,id:pickup.id,x,y,removedRocks,removedBlocks,duration:pickup.kind==='key'?560:640});
    if(pickup.kind==='bomb')return{changed:true,moved:true,exit:false,bombRemoved:true,state,rocks:stone,to:{x,y},events,used:[...consumed],collision:false};
   }

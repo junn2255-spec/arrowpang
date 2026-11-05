@@ -1,0 +1,36 @@
+body.garden-theme #game.gem-mission:not(.clear-screen) .stats,body.garden-theme #game.gem-mission:not(.clear-screen) .wallet-row{visibility:hidden!important;pointer-events:none!important}
+#gem-hud{position:absolute;top:23%;left:3%;width:94%;box-sizing:border-box;display:flex;z-index:5;padding:12px 4px;background:linear-gradient(130deg,#074e52,#00292f);border:2px solid #f4cf78;border-radius:20px;color:#fff3cc;box-shadow:0 6px 12px #001e2780;text-align:center}
+#gem-hud[hidden]{display:none}#gem-hud>div{width:33.33%;border-right:1px solid #ad965b}#gem-hud>div:last-of-type{border:0}#gem-hud small{display:block;font-size:clamp(11px,3vw,18px)}#gem-hud b{display:block;font-size:clamp(22px,6vw,34px);color:#a5ffe9}#gem-hud p{position:absolute;top:100%;width:100%;font-size:13px;color:white;text-shadow:0 2px 3px #000}
+.mission-gem{position:absolute;width:13%;height:13%;object-fit:contain;pointer-events:none;z-index:6;filter:drop-shadow(0 0 7px #be7fff)}
+.gem-burst{position:absolute;top:50%;width:48%;z-index:20;pointer-events:none;animation:gem-burst .85s ease-out forwards}
+@keyframes gem-burst{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}25%{opacity:1}100%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
+#board .gem-hint{animation:gem-hint 1.1s ease-in-out infinite!important;z-index:9}@keyframes gem-hint{50%{filter:brightness(1.6) drop-shadow(0 0 9px #fff);scale:1.06;translate:0 -3px}}
+#gem-fail{background:#064347;color:#fff2d0;border:3px solid #e4c16e;border-radius:22px;text-align:center;max-width:80vw}#gem-fail button{padding:12px 30px;background:#ffd56c;border:0;border-radius:12px;font:inherit}#gem-fail::backdrop{background:#001b2dbb}
+#gem-hud small{opacity:1!important;color:#fff3cc!important}#gem-hud b img{width:26px;height:26px;vertical-align:middle;object-fit:contain}
+
+/* Match the integrated eight-by-eight stone artwork. */
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .board-slot::before{background-image:url('assets/gem-mission-v1/board-8x8.png')}
+body.garden-theme #game#game.gem-mission:not(.clear-screen) #board{left:6.32%;top:6.15%;width:87.55%;height:88.8%}
+#game.gem-mission .mission-gem{width:12.5%;height:12.5%;padding:.5%;box-sizing:border-box}
+.gem-rail{display:flex;align-items:center;justify-content:center;gap:3%;height:clamp(27px,7vw,41px);pointer-events:none}
+.gem-rail img{width:min(25%,30px);aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 1px 2px #482051)}
+.gem-rail .rail-pop{animation:rail-pop .65s ease-out forwards}
+@keyframes rail-pop{35%{transform:scale(1.55);filter:brightness(2.2) drop-shadow(0 0 6px white)}100%{transform:scale(.25);opacity:0}}
+.clear-screen .gem-rail{display:none}
+
+/* Center square artwork on each stone, including the slightly taller rows. */
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .block > span,
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .rotation-zone img {
+  left: 0;
+  top: 50%;
+  translate: 0 -50%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+body.garden-theme #game#game:not(.clear-screen) .board-slot {
+  filter: brightness(1.15);
+}
+/* Cancel the board-wide 15% lift for the golden key alone. */
+body.garden-theme #game#game:not(.clear-screen) .special-marker:has(img[src*="golden-key"]) img {filter:brightness(.869565)}

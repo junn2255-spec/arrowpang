@@ -1,0 +1,156 @@
+#game #aqua-shop {display:none}
+body.garden-theme #game#game:not(.clear-screen) nav {
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:1.3%;
+}
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop {
+  display:block; opacity:1; padding:0; background:none; border:none; box-shadow:none;
+}
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop img {width:100%;height:auto;display:block}
+body.garden-theme #game#game:not(.clear-screen) nav #minigame-preview img {content:url('assets/aqua-ui/mini.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #undo img {content:url('assets/aqua-ui/undo.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #hint img {content:url('assets/aqua-ui/hint.webp')}
+body.garden-theme #game#game:not(.clear-screen) nav #home img {content:url('assets/aqua-ui/home.webp')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='false'] img {content:url('assets/aqua-ui/sound-on.webp')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='true'] img {content:url('assets/aqua-ui/sound-off.webp')}
+body.garden-theme #game#game:not(.clear-screen) #garden-help img {content:url('assets/aqua-ui/help.webp')}
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .wallet-row {
+  visibility:visible!important;display:block;right:2cqw;top:18cqw;width:29.7%;height:9.35cqw;
+}
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .wallet-row .coin-wallet {
+  background:transparent url('assets/aqua-ui/coin.webp') center/contain no-repeat;
+}
+body.garden-theme #game#game.gem-mission:not(.clear-screen) #wallet {color:white;font-size:4.73cqw;padding:0}
+#game #gem-hud {
+  aspect-ratio:1622/260; background:transparent url('assets/aqua-ui/status.webp') center/100% 100% no-repeat;
+  display:grid;grid-template-columns:34.3% 33.3% 32.4%;align-items:end;
+  padding:0 0 1.6cqw;border:0;border-radius:0;box-shadow:none;pointer-events:none;
+}
+#game #gem-hud[hidden] {display:none}
+#game #gem-hud>div {width:auto;border:0}
+#game #gem-hud b {font-size:clamp(17px,5.7cqw,36px);line-height:1;color:#00545a;text-shadow:none}
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop {order:99;grid-column:5} body.garden-theme #game#game:not(.clear-screen) nav #home {grid-column:4}
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop img {transform:none;opacity:.9}
+body.garden-theme #game#game:not(.clear-screen) nav {filter:brightness(.99) saturate(1.07)}
+body.garden-theme #game#game:not(.clear-screen) :is(#settings,#garden-help) {top:2cqw}
+#aqua-shop-dialog {background:#edfcfa;color:#064e52;border:2px solid #009a91;border-radius:20px;text-align:center;padding:1.25rem 2rem;box-shadow:0 7px 24px #002d3060}
+#aqua-shop-dialog::backdrop {background:#001a24a6}
+#aqua-shop-dialog h2 {margin:0}
+#aqua-shop-dialog button {background:#036960;color:white;border:0;border-radius:999px;padding:.5rem 2rem;font:inherit}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#undo,#hint) {position:relative;overflow:visible}
+body.garden-theme #game#game:not(.clear-screen) nav .assist-count {
+ position:absolute;right:0;top:0;display:grid;place-items:center;min-width:1.4em;height:1.4em;
+ padding:0 .18em;box-sizing:border-box;border:1px solid #fff5bd;border-radius:999px;
+ background:#07585b;color:white;font:bold clamp(11px,3cqw,17px)/1 sans-serif;
+ box-shadow:0 1px 3px #192c2caa;pointer-events:none;
+}
+/* Header controls share the logo's lower baseline. */
+body.garden-theme #game#game:not(.clear-screen) #settings img {content:url('assets/aqua-ui/top-music.png')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='false'] img {content:url('assets/aqua-ui/top-music.png')}
+body.garden-theme #game#game:not(.clear-screen) #settings[aria-pressed='true'] img {content:url('assets/aqua-ui/top-music.png');filter:grayscale(1);opacity:.65}
+body.garden-theme #game#game:not(.clear-screen) #garden-help img {content:url('assets/aqua-ui/top-help.png')}
+body.garden-theme #game#game:not(.clear-screen) :is(#settings,#garden-help) {top:9cqw}
+body.garden-theme #game#game.gem-mission:not(.clear-screen) .wallet-row {top:25cqw}
+body.garden-theme #game#game:not(.clear-screen) :is(#settings,#garden-help) {width:12cqw;height:12cqw;top:11cqw}
+#game #gem-hud .round-progress-cell {display:flex;align-items:center;justify-content:center;height:6cqw}
+#game #gem-hud .round-progress-art {display:block;width:94%;height:auto;object-fit:contain}
+/* Bold, outlined score numerals with a warm gold finish. */
+@font-face {
+ font-family:'Aqua Paperlogy Black';
+ src:url('assets/user-fonts-paperlogy/Paperlogy-9Black.ttf') format('truetype');
+ font-weight:900;font-style:normal;font-display:swap;
+}
+#game #gem-hud>div:not(.round-progress-cell)>b {
+ font-family:'Aqua Paperlogy Black',sans-serif;font-weight:900;
+ font-size:clamp(22px,6.2cqw,38px);line-height:1.12;
+ background:linear-gradient(180deg,#fffbd2 5%,#ffe569 38%,#ffb52c 65%,#ed7610 100%);
+ background-clip:text;-webkit-background-clip:text;color:transparent;
+ -webkit-text-stroke:1.2px #07575b;paint-order:stroke fill;
+ text-shadow:none;filter:drop-shadow(0 1px 0 #ffffff) drop-shadow(0 2px 1px #00474a66);
+}
+/* Override the site's global !important Bold font for these two numerals. */
+body.garden-theme #game #gem-hud>div:not(.round-progress-cell)>b {
+ font-family:'Aqua Paperlogy Black',sans-serif!important;
+ font-weight:900!important;
+}
+
+
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop img {content:url('assets/aqua-ui/shop.webp')}
+
+
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop img {filter:drop-shadow(0 3px 2px #09190e80) drop-shadow(0 7px 4px #09190e59)}
+
+
+/* Cream and mint action artwork, uniformly fitted without stretching. */
+body.garden-theme #game#game:not(.clear-screen) nav #minigame-preview img{content:url('assets/cream-buttons-v2/mini.png')}
+body.garden-theme #game#game:not(.clear-screen) nav #undo img{content:url('assets/cream-buttons-v2/undo.png')}
+body.garden-theme #game#game:not(.clear-screen) nav #hint img{content:url('assets/cream-buttons-v2/hint.png')}
+body.garden-theme #game#game:not(.clear-screen) nav #home img{content:url('assets/cream-buttons-v2/home.png')}
+body.garden-theme #game#game:not(.clear-screen) nav #aqua-shop img{content:url('assets/cream-buttons-v2/shop.png')}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,#hint,#home,#aqua-shop) img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;transform:none;opacity:1}
+body.garden-theme #game#game:not(.clear-screen) nav :is(#minigame-preview,#undo,#hint,#home,#aqua-shop) img{border-radius:0;clip-path:none;filter:drop-shadow(0 3px 2px #092b2180) drop-shadow(0 7px 4px #092b2159)}
+
+/* Upgrade-ready guidance above the board, with the existing pointing hand. */
+body.garden-theme #game#game nav #home.upgrade-glowing img {
+ animation:none!important;
+ filter:drop-shadow(0 3px 2px #092b2180) drop-shadow(0 7px 4px #092b2159)!important;
+}
+#game:not(.clear-screen):has(#home.upgrade-glowing) #gem-hud::after {
+ content:'나의집을 업그레이드하세요';position:absolute;top:calc(100% + 4cqw);left:0;width:100%;
+ color:#fff5c7;font-family:'User Paperlogy Bold',sans-serif;font-weight:700;
+ font-size:clamp(15px,4.3cqw,23px);line-height:1.4;text-align:center;
+ -webkit-text-stroke:1px #075448;paint-order:stroke fill;text-shadow:0 2px 3px #002e36;
+ pointer-events:none;
+}
+body.garden-theme #game#game nav #home.upgrade-glowing {position:relative;overflow:visible}
+body.garden-theme #game#game nav #home.upgrade-glowing::after {
+ display:block!important;content:''!important;position:absolute;
+ inset:auto!important;right:-5%!important;bottom:-15%!important;width:40%;aspect-ratio:333/368;
+ background:transparent url('assets/ui/hand.webp') center/contain no-repeat!important;
+ mask:none!important;-webkit-mask:none!important;filter:drop-shadow(0 2px 2px #123a3b80)!important;
+ animation:none!important;opacity:1;z-index:10;pointer-events:none;
+}
+/* Double the upgrade prompt and pointing-hand sizes. */
+#game:not(.clear-screen):has(#home.upgrade-glowing) #gem-hud::after {
+ font-size:clamp(21px,6.02cqw,32.2px);
+}
+body.garden-theme #game#game nav #home.upgrade-glowing::after {width:80%;border-radius:0}
+@keyframes upgradeHandBlink {0%,100%{opacity:1}50%{opacity:.15}}
+body.garden-theme #game#game nav #home.upgrade-glowing::after {animation:upgradeHandBlink 1.2s ease-in-out infinite!important}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game nav #home.upgrade-glowing::after{animation:none!important}}
+html[data-reduce-effects='true'] body.garden-theme #game#game nav #home.upgrade-glowing::after{animation:none!important}
+
+
+#game .minigame-unlock-notice{position:absolute;top:31%;left:0;width:100%;margin:0;z-index:10;text-align:center;color:#fff5c7;font-size:clamp(18px,5.3cqw,29px);line-height:1.3;font-weight:700;-webkit-text-stroke:1px #075448;paint-order:stroke fill;text-shadow:0 2px 3px #002e36;pointer-events:none}
+#game.minigame-unlock-pending #gem-hud::after{display:none}
+body.garden-theme #game#game nav #minigame-preview.unlock-pointing{position:relative;overflow:visible}
+body.garden-theme #game#game nav #minigame-preview.unlock-pointing::after{content:'';position:absolute;right:-5%;bottom:-15%;width:80%;aspect-ratio:333/368;background:url('assets/ui/hand.webp') center/contain no-repeat;z-index:10;pointer-events:none;animation:upgradeHandBlink 1.2s ease-in-out infinite;filter:drop-shadow(0 2px 2px #123a3b80)}
+@media(prefers-reduced-motion:reduce){body.garden-theme #game#game nav #minigame-preview.unlock-pointing::after{animation:none}}
+html[data-reduce-effects='true'] body.garden-theme #game#game nav #minigame-preview.unlock-pointing::after{animation:none}
+
+/* Facing arrows: recovery instruction above the stone board. */
+body.garden-theme #game#game.gem-mission[data-blocked] #blocked-notice {
+ top:0;bottom:auto;transform:translateY(calc(-100% - 1cqw));
+ left:-4%;right:-4%;padding:0;min-height:0;background:none;
+ white-space:pre-line;color:#fff5c7;font-size:clamp(13px,3.7cqw,20px);
+ line-height:1.35;-webkit-text-stroke:.6px #075448;paint-order:stroke fill;text-shadow:0 1px 2px #002e36;
+}
+#game.gem-mission[data-blocked] :is(#play-notice-lane,.minigame-unlock-notice),
+#game.gem-mission[data-blocked] #gem-hud::after {display:none!important}
+body.garden-theme #game#game.gem-mission[data-blocked] #blocked-notice {
+ font-size:clamp(12px,3.7cqw,20px)!important;line-height:1.4!important;
+ color:#fff5c7!important;-webkit-text-fill-color:#fff5c7!important;opacity:1;
+ width:108%;max-width:none;box-sizing:border-box;white-space:pre-line;
+}
+#game-over-popup{max-width:90vw;max-height:85dvh;overflow:visible;border-radius:0;box-shadow:none}
+#game-over-popup>button{left:12%;top:74%;width:76%;height:20%;border-radius:999px}
+body.garden-theme #game#game .block.facing-warning::after{inset:3%;border-width:2.5px;border-radius:18%;box-shadow:0 0 0 1px #38682b,0 0 6px #ddff00,inset 0 0 3px #f2ff2d}
+#gem-fail{padding:0;border:0;background:transparent;border-radius:7%;max-width:90vw;box-shadow:none;overflow:hidden}
+#gem-fail>img{display:block;width:100%;height:auto}
+#gem-fail>button{position:absolute;left:24%;width:52%;height:14%;padding:0;border:0;background:transparent;border-radius:999px;box-shadow:none}
+#gem-fail .move-limit-restart{top:50.5%;cursor:pointer}
+#gem-fail .move-limit-item{top:70.3%;cursor:default;opacity:1}
+#gem-fail>button:focus-visible{outline:2px solid white;outline-offset:2px}
+#game-over-popup>button{left:29%;top:79%;width:42%;height:12%}
+#game-over-popup>.facing-retry{left:26%;top:68%;width:48%;height:11%}
+#game-over-popup>.facing-item{left:26%;top:81.5%;width:48%;height:11%;opacity:1;cursor:default}

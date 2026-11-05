@@ -1,0 +1,42 @@
+.post-clear-menu:not([hidden]) {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #174b63 url("assets/daily-gift-v279/game-background.png") center / cover no-repeat;
+}
+.post-clear-menu[hidden] { display: none; }
+.post-clear-layout {
+  width: min(100%, 61.16vh);
+  width: min(100%, 61.16dvh);
+  aspect-ratio: 981 / 1604;
+  position: relative;
+  container-type: inline-size;
+}
+.post-clear-layout img { display: block; width: 100%; height: auto; pointer-events: none; }
+.post-clear-layout button {
+  padding: 0; margin: 0; border: 0; border-radius: 1rem; background: transparent;
+  cursor: pointer; touch-action: manipulation;
+}
+.post-clear-layout button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+.post-clear-layout button:active { filter: brightness(.92); }
+.post-clear-layout .post-clear-logo, .post-clear-stage, .post-clear-play, .post-clear-actions {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 3px 4px #00292b70);
+}
+.post-clear-layout .post-clear-logo { width: 51%; top: 11.5%; }
+.post-clear-stage { width: 53%; top: 29.2%; }
+.post-clear-number {
+  position: absolute; inset: 43% 5% 5%; display: grid; place-items: center;
+  font: 900 6.3cqw/1 system-ui,sans-serif; color: #114c45;
+}
+.post-clear-play { width: 69%; top: 52%; }
+.post-clear-actions { width: 68%; top: 83%; display: flex; justify-content: space-between; }
+.post-clear-actions button { width: 29.4%; }
+
+.post-clear-actions button{position:relative}
+.post-clear-actions button:disabled::before{content:"🔒";position:absolute;right:1%;top:-5%;font-size:5cqw;line-height:1;filter:drop-shadow(0 1px 2px #222)}
+.post-clear-actions button:disabled::after{content:attr(data-unlock-note);position:absolute;top:104%;inset-inline:-8%;color:#fff9da;font:800 2.65cqw/1.25 system-ui;word-break:keep-all;text-shadow:0 1px 3px #15382f,0 0 4px #183728}

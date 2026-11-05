@@ -7,10 +7,10 @@ export function recordFishingCatch(store,session,id,fish){return store.transact(
 export function creditFishingReward(){return Promise.reject(new Error('물고기는 어망에서 판매해 낚시 코인을 받아 주세요.'));}
 export function installFishingBonus({home,sound,isBusy,onBefore,onReturn}){
  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('./fishing-bonus.css',import.meta.url);document.head.append(css);
- const button=document.createElement('button');button.id='fishing-entry';button.type='button';button.setAttribute('aria-label','낚시터');button.innerHTML='<img src="assets/clear-fishing-v1/fishing.webp" alt="낚시터"><span class="fishing-entry-lock" aria-hidden="true">🔒</span><small class="fishing-entry-note">10번째 게임<br>클리어시<br>열립니다.</small>';document.querySelector('#game nav').append(button);
+ const button=document.createElement('button');button.id='fishing-entry';button.type='button';button.setAttribute('aria-label','낚시터');button.innerHTML='<img src="assets/clear-fishing-v1/fishing.webp" alt="낚시터"><span class="fishing-entry-lock" aria-hidden="true">🔒</span><small class="fishing-entry-note">3스테이지<br>클리어시<br>열립니다.</small>';document.querySelector('#game nav').append(button);
  let childSaving=false,opening=false,dialog=null,frame=null,session=null,settling=Promise.resolve(),closeStarted=false,readyTimer=null,resolveExit=null;
- const fishingUnlocked=()=>!!home.store.read().cleared?.['arrowtok-stage-10'];
- function syncFishingLock(){const locked=!fishingUnlocked();button.classList.toggle('fishing-locked',locked);button.disabled=locked||opening;button.setAttribute('aria-label',locked?'낚시터 잠김. 10번째 게임 클리어시 열립니다.':'낚시터');}
+ const fishingUnlocked=()=>!!home.store.read().cleared?.['arrowtok-stage-03'];
+ function syncFishingLock(){const locked=!fishingUnlocked();button.classList.toggle('fishing-locked',locked);button.disabled=locked||opening;button.setAttribute('aria-label',locked?'낚시터 잠김. 3스테이지 클리어시 열립니다.':'낚시터');}
  const unlockObserver=new MutationObserver(syncFishingLock);for(const id of ['wallet','next']){const el=document.getElementById(id);if(el)unlockObserver.observe(el,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['hidden']});}window.addEventListener('storage',syncFishingLock);syncFishingLock();
  const notify=(type,extra={})=>frame?.contentWindow?.postMessage({channel:CHANNEL,session:session?.id,type,...extra},location.origin);
  const updateWallet=()=>{const coins=home.store.read().coins;for(const id of ['wallet','home-wallet']){const el=document.getElementById(id);if(el)el.textContent=coins;}};
