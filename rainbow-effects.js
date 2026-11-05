@@ -22,7 +22,7 @@ export class RainbowEffects{
    for(let j=0;j<14;j++){const particle=this.node('rainbow-particle',to.x,to.y,7+j%3*2);particle.style.background=`hsl(${j*26} 100% 65%)`;const angle=j*2.4,dist=to.cell*(.5+j%4*.3);particle.animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(180deg) scale(.1)`}],{duration:500+j%4*70,fill:'forwards'});this.later(()=>this.remove(particle),750);}
   }
  },i*65);
- if(!preferences.reduced)preferences.vibrate([18,35,24]);
+ // Special-event vibration is coordinated with bomb and key effects in app.js.
  }
  reward(board,e){const p=this.point(board,e),el=this.node('rainbow-reward',Math.max(8,Math.min(innerWidth-150,p.x-75)),p.y-30,150);el.textContent='+5 코인';el.setAttribute('role','status');el.animate(preferences.reduced?[{opacity:1},{opacity:0}]:[{opacity:0,transform:'translateY(5px) scale(.6)'},{opacity:1,transform:'translateY(-20px) scale(1.15)',offset:.2},{opacity:1,transform:'translateY(-34px) scale(1)',offset:.7},{opacity:0,transform:'translateY(-60px) scale(.9)'}],{duration:1200,fill:'forwards'});this.later(()=>this.remove(el),1200);}
  clear(){for(const t of this.timers)clearTimeout(t);this.timers.clear();for(const el of [...this.nodes])this.remove(el);this.stopAudio();}
