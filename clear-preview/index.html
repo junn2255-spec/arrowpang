@@ -1,0 +1,53 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1스테이지 미션 클리어</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#161341;color:white;font:900 16px system-ui}main{height:100svh;width:min(100vw,62svh);margin:auto;position:relative;overflow:hidden;isolation:isolate;text-align:center;background:radial-gradient(ellipse at 50% 62%,#8851bc,#46328c 48%,#171b56 95%)}.board{position:absolute;inset:21% -5% 13%;background:url(../assets/gem-mission-v1/board-8x8.png) center/contain no-repeat;filter:blur(4px);opacity:.12}.leaf{position:absolute;width:23%;top:-1%;left:0}.right{left:auto;right:0;transform:scaleX(-1)}.wallet{position:absolute;right:4%;top:3%;width:50%;aspect-ratio:3.5;background:url(wallet.webp) center/contain no-repeat;display:grid;place-content:center;padding-left:14%;font-size:min(9vw,5.4svh);text-shadow:0 2px 2px #173534}.rays{position:absolute;left:50%;top:53%;width:135%;aspect-ratio:1;border-radius:50%;background:repeating-conic-gradient(from 6deg,transparent 0deg 11deg,#ffd6888a 14deg,transparent 18deg 30deg);mask-image:radial-gradient(circle,#000 8%,#0008 37%,transparent 69%);animation:spread 3s ease-out infinite,spin 35s linear infinite}.hero{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:min(83%,42svh);aspect-ratio:812/1310;container-type:inline-size;animation:appear .7s ease-out both}.hero img{width:100%;height:100%}.amount{position:absolute;top:94.1%;left:60%;width:24%;transform:translateY(-50%);line-height:1;color:#bb2710;font-size:min(8cqw,var(--fit,8cqw));text-shadow:0 1px #fff5a8}.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}.confetti i{position:absolute;top:-6%;left:var(--x);width:7px;height:13px;background:var(--c);border-radius:1px;animation:fall var(--t) var(--d) linear infinite}@keyframes spread{0%{scale:.6;opacity:.2}40%{opacity:.85}100%{scale:1.15;opacity:0}}.rays{translate:-50% -50%}@keyframes spin{to{rotate:360deg}}@keyframes fall{to{transform:translate(var(--drift),112svh) rotateX(500deg) rotateZ(270deg)}}@media(prefers-reduced-motion:reduce){.rays,.confetti i{animation:none}}
+.rays{width:180%;background:repeating-conic-gradient(from 9deg,transparent 0 9deg,#ffac3e 12deg,#fff1ae 14deg,transparent 17deg 30deg);animation:burst 2.8s ease-out infinite;pointer-events:none}
+.rays.echo{animation-delay:.65s;rotate:16deg}
+@keyframes burst{0%{scale:.24;opacity:0}15%{opacity:.95}62%{opacity:.45}100%{scale:1.27;opacity:0}}
+@keyframes appear{from{opacity:0}to{opacity:1}}
+main{transition:opacity .55s ease-in-out}main.leaving{opacity:0}
+@media(prefers-reduced-motion:reduce){.hero,.rays,.rays.echo{animation:none}.rays{opacity:0}}
+</style><main><div class="board"></div><div class="rays"></div><div class="rays echo"></div><div class="confetti"></div><img class="leaf" src="leaves.webp" alt=""><img class="leaf right" src="leaves.webp" alt=""><div class="wallet" aria-label="보유 코인 450">450</div><div class="hero"><img src="reward-new.webp" alt="잘했어요! 미션 클리어! 획득 코인"><span id="chest-target" style="position:absolute;left:50%;top:74%;width:1px;height:1px"></span><b class="amount">+100</b></div></main><script>
+const colors=['#ffd55c','#fa7fdb','#83edff','#ac83ff','#ff986f'];
+for(let n=0;n<38;n++){const p=document.createElement('i');p.style.cssText='--x:'+Math.random()*100+'%;--c:'+colors[n%5]+';--t:'+(3+Math.random()*4)+'s;--d:-'+Math.random()*7+'s;--drift:'+(Math.random()*90-45)+'px';document.querySelector('.confetti').append(p)}
+const params=new URLSearchParams(location.search);
+const embedded=params.get('game')==='1' && window.parent!==window;
+const amount=document.querySelector('.amount');
+function fitAmount(){amount.style.setProperty('--fit',Math.min(8,38/amount.textContent.length)+'cqw')}
+new MutationObserver(fitAmount).observe(amount,{childList:true,characterData:true,subtree:true});
+if(embedded){
+  amount.textContent='+'+Number(params.get('reward')||0).toLocaleString('ko-KR');
+  document.querySelector('.wallet').textContent=Number(params.get('total')||0).toLocaleString('ko-KR');
+}
+fitAmount();
+setTimeout(() => {
+  document.querySelector('main').classList.add('leaving');
+  setTimeout(() => {
+    if (embedded) window.parent.postMessage('clear-menu', location.origin);
+    else location.replace('../?previewPostClear=1');
+  }, 550);
+}, 4000);
+if(!embedded)setTimeout(async ()=>{
+    const sound=new Audio('../assets/sound2/coin-flight.mp3');
+    sound.volume=.65;
+    sound.play().catch(()=>{});
+    const target=document.querySelector('#chest-target').getBoundingClientRect();
+    const origin=document.querySelector('.amount').getBoundingClientRect();
+    const flights=Array.from({length:8},(_,i)=>{
+      const coin=new Image();
+      coin.src='../assets/home/24-coin.webp';
+      coin.alt='';
+      coin.style.cssText='position:fixed;pointer-events:none;width:min(7vw,4svh);z-index:9;';
+      coin.style.left=origin.x+origin.width/2+'px';
+      coin.style.top=origin.y+'px';
+      document.body.append(coin);
+      const x=target.x-origin.x-origin.width/2,y=target.y-origin.y;
+      const travel=coin.animate([
+        {transform:'translate(-50%,-50%) scale(.6)',opacity:0},
+        {transform:'translate('+ (x*.5+(i-4)*9)+'px,'+(y*.65-35)+'px) scale(1)',opacity:1,offset:.45},
+        {transform:'translate('+x+'px,'+y+'px) scale(.25)',opacity:0}
+      ],{duration:650,delay:i*65,fill:'both',easing:'ease-in-out'});
+      return travel.finished.then(()=>coin.remove());
+    });
+    await Promise.all(flights);
+},800);</script></html>
